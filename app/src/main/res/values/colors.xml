@@ -6,4 +6,6 @@
 
     <color name="white">#ffffff</color>
     <color name="splash_text">#FF0000</color>
+    <color name="light_grey">#F3F3F3</color>
+    <color name="black">#000000</color>
 </resources>

@@ -7,4 +7,18 @@
         <item name="colorAccent">#7B8D93</item>
     </style>
 
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="colorPrimary">#F44336</item>
+        <item name="colorPrimaryDark">#FF0000</item>
+        <item name="colorAccent">#7B8D93</item>
+       <!-- <item name="android:windowBackground">@drawable/launch_screen</item>-->
+    </style>
+
+    <style name="MyTextInputLayout" parent="AppTheme.NoActionBar">
+        <item name="colorAccent">#7B8D93</item>
+        <item name="editTextBackground">@color/light_grey</item>
+    </style>
+
 </resources>

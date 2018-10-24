@@ -1,3 +1,37 @@
 <resources>
     <string name="app_name">Share Food</string>
+
+    <!--login-->
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="facebook">Facebook</string>
+    <string name="signin">Sign in</string>
+    <string name="signup">Sign up</string>
+    <string name="forgot_password">Forgot Password</string>
+    <string name="or">or</string>
+    <string name="signin_with">Sign in with</string>
+    <string name="dont_have_account">Dont have an account? Register Now</string>
+
+    <!--sign up-->
+    <string name="user_name">User name</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string-array name="type">
+        <item>Registering as</item>
+        <item>Individual</item>
+        <item>Restaurant</item>
+        <item>Ngo</item>
+        <item>Others</item>
+    </string-array>
+
+
+    <!--forgot password-->
+    <string name="cancel">Cancel</string>
+    <string name="ok">Ok</string>
+
+
+    <!--dashboard-->
+    <string name="time">Time</string>
+    <string name="food_items">Food items:</string>
+    <string name="sufficient_for"> Sufficient for:</string>
+    <string name="view_on_map">View on Map</string>
 </resources>
