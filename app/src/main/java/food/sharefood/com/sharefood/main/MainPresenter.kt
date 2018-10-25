@@ -11,6 +11,11 @@ class MainPresenter(private var mainView: MainView, private val mainInteractor: 
     }
 
 
+    fun startAddPost()
+    {
+
+    }
+
     override fun onResultSuccess(arrFoodList: List<FoodPostModel>) {
         mainView.hideProgress()
         mainView.setData(arrFoodList)
