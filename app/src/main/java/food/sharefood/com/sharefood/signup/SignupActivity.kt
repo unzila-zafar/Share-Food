@@ -9,18 +9,24 @@ import food.sharefood.com.sharefood.main.MainActivity
 import food.sharefood.com.sharefood.R
 import food.sharefood.com.sharefood.databinding.ActivitySignupBinding
 
-class SignupActivity : AppCompatActivity() {
+class SignupActivity : AppCompatActivity() , SignUpView{
+
+
     lateinit var binding: ActivitySignupBinding
+    lateinit var presenter: SignUpPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_signup)
+
         init()
 
     }
 
     private fun init() {
+        presenter = SignUpPresenter(this, SignUpInteractor())
+
         setRegisterCategories()
 
         binding.buttonSignup.setOnClickListener {
@@ -42,5 +48,14 @@ class SignupActivity : AppCompatActivity() {
             // Apply the adapter to the spinner
             binding.spinner.adapter = adapter
         }
+    }
+
+    override fun showProgress() {
+    }
+
+    override fun hideProgress() {
+    }
+
+    override fun registerUser() {
     }
 }
