@@ -1,6 +1,4 @@
-/build
 
-out/production
 
 .idea/workspace.xml
 .idea/.name
@@ -10,7 +8,7 @@ out/production
 .idea/misc.xml
 .idea/modules
 .idea/vcs.xml
-.idea/*
+.idea/
 
 .gradle/4.6
 .gradle/buildOutputCleanup
@@ -18,3 +16,7 @@ out/production
 
 share-food.iml
 local.properties
+app/app.iml
+app/build/
+build
+.gradle
