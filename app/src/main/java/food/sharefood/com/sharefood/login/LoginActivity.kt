@@ -13,11 +13,16 @@ import android.text.style.ClickableSpan
 import android.view.View
 import food.sharefood.com.sharefood.signup.SignupActivity
 import android.widget.Toast
+import okhttp3.*
+import java.io.IOException
 
 
 class LoginActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityLoginBinding
+
+    private val client = OkHttpClient()
+    private val url = "https://foodshareservice.herokuapp.com/greeting";
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,11 +37,27 @@ class LoginActivity : AppCompatActivity() {
 
         binding.buttonSignIn.setOnClickListener {
 
+            val request = Request.Builder()
+                    .url(url)
+                    .build()
+
+
+            client.newCall(request).enqueue(object : Callback {
+                override fun onFailure(call: Call, e: IOException) {
+                    println("eeeeeeeee" + e.message)
+                    e.printStackTrace()
+                }
+                override fun onResponse(call: Call, response: Response) {
+                    println("successsss ===== , $response.body()?.string()")
+                }
+
+            })
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
 
     }
+
 
 
     fun setBoldSpannable(myText: String): SpannableString {
