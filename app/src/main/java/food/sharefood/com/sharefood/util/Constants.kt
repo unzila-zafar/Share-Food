@@ -1,21 +1,30 @@
 package food.sharefood.com.sharefood.util
 
+import food.sharefood.com.sharefood.util.Constants.WebUrls.Companion.BASE_URL
+
 class Constants
 {
 
-    public final inner class WebUrls
+    public class WebUrls
     {
-        public val BASE_URL: String = "https://foodshareservice.herokuapp.com/";
+        companion object {
+            public const val BASE_URL: String = "https://foodshareservice.herokuapp.com/";
+            public const val LOGIN: String = BASE_URL + "greeting"
 
-        public val LOGIN: String = BASE_URL + "greeting"
+        }
+
+
 
     }
 
 
-    public final inner class APIParams
+    public class APIParams
     {
-        public val ID: String = "_id"
-        public val LOGINID:String = "loginId"
-        public val PASSWORD:String = "password"
+        companion object {
+            public const val ID: String = "_id"
+            public const val LOGINID:String = "loginId"
+            public const val PASSWORD:String = "password"
+        }
+
     }
 }

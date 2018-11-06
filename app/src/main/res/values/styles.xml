@@ -19,6 +19,7 @@
     <style name="MyTextInputLayout" parent="AppTheme.NoActionBar">
         <item name="colorAccent">#7B8D93</item>
         <item name="editTextBackground">@color/light_grey</item>
+        <item name="editTextColor">@color/colorPrimary</item>
     </style>
 
 </resources>

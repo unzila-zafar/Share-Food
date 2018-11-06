@@ -22,8 +22,9 @@ class LoginActivity : AppCompatActivity(), LoginView {
 
     lateinit var binding: ActivityLoginBinding
 
-    private val client = OkHttpClient()
-    private val url = "https://foodshareservice.herokuapp.com/greeting";
+  //  private val client = OkHttpClient()
+  //  private val url = "https://foodshareservice.herokuapp.com/greeting";
+
     private lateinit var presenter:LoginPresenter
 
     override fun onCreate(savedInstanceState: Bundle?)
@@ -44,23 +45,13 @@ class LoginActivity : AppCompatActivity(), LoginView {
 
         binding.buttonSignIn.setOnClickListener {
 
-            val request = Request.Builder()
-                    .url(url)
-                    .build()
+            var email_id: String = binding.email.text.toString()
+            var password: String = binding.password.text.toString()
 
+            if(email_id != null && password != null) {
+                presenter.loginUser(this, email_id, password)
+            }
 
-            client.newCall(request).enqueue(object : Callback {
-                override fun onFailure(call: Call, e: IOException) {
-                    println("eeeeeeeee" + e.message)
-                    e.printStackTrace()
-                }
-                override fun onResponse(call: Call, response: Response) {
-                    println("successsss ===== , $response.body()?.string()")
-                }
-
-            })
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
         }
 
     }
@@ -97,5 +88,26 @@ class LoginActivity : AppCompatActivity(), LoginView {
     }
 
     override fun loginUser() {
+
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
     }
 }
+
+/* val request = Request.Builder()
+         .url(url)
+         .build()
+
+
+ client.newCall(request).enqueue(object : Callback {
+     override fun onFailure(call: Call, e: IOException) {
+         println("eeeeeeeee" + e.message)
+         e.printStackTrace()
+     }
+     override fun onResponse(call: Call, response: Response) {
+         println("successsss ===== , $response.body()?.string()")
+     }
+
+ })
+ val intent = Intent(this, MainActivity::class.java)
+ startActivity(intent)*/

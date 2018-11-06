@@ -5,6 +5,7 @@ import android.text.TextUtils
 import com.android.volley.*
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
+import kotlin.reflect.KClass
 
 class VolleyClass {
 
@@ -13,11 +14,13 @@ class VolleyClass {
         lateinit var instance: VolleyClass
         lateinit var context: Context
         lateinit var requestQueue: RequestQueue
+
     }
 
-    private fun VolleyClass(mContext: Context) {
+    fun VolleyClass(mContext: Context) {
         context = mContext;
         requestQueue = getRequestQueue()
+
     }
 
     fun getRequestQueue(): RequestQueue {
@@ -25,6 +28,14 @@ class VolleyClass {
             requestQueue = Volley.newRequestQueue(context.getApplicationContext())
         }
         return requestQueue
+    }
+
+    @Synchronized
+    public fun getInstance(context: Context): VolleyClass {
+        if (instance == null) {
+            instance = VolleyClass()
+        }
+        return instance
     }
 
 
