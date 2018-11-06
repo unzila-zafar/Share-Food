@@ -17,22 +17,29 @@ import okhttp3.*
 import java.io.IOException
 
 
-class LoginActivity : AppCompatActivity() {
+class LoginActivity : AppCompatActivity(), LoginView {
+
 
     lateinit var binding: ActivityLoginBinding
 
     private val client = OkHttpClient()
     private val url = "https://foodshareservice.herokuapp.com/greeting";
+    private lateinit var presenter:LoginPresenter
 
-    override fun onCreate(savedInstanceState: Bundle?) {
+    override fun onCreate(savedInstanceState: Bundle?)
+    {
         super.onCreate(savedInstanceState)
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_login)
+
         init()
 
     }
 
     private fun init() {
+
+        presenter = LoginPresenter(this,LoginInteractor())
+
         spanText()
 
         binding.buttonSignIn.setOnClickListener {
@@ -83,4 +90,12 @@ class LoginActivity : AppCompatActivity() {
     }
 
 
+    override fun showProgress() {
+    }
+
+    override fun hideProgress() {
+    }
+
+    override fun loginUser() {
+    }
 }
