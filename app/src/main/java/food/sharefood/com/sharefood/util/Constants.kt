@@ -2,28 +2,26 @@ package food.sharefood.com.sharefood.util
 
 import food.sharefood.com.sharefood.util.Constants.WebUrls.Companion.BASE_URL
 
-class Constants
-{
+class Constants {
 
-    public class WebUrls
-    {
+    class WebUrls {
         companion object {
-            public const val BASE_URL: String = "https://foodshareservice.herokuapp.com/";
-            public const val LOGIN: String = BASE_URL + "greeting"
+            const val BASE_URL = "https://foodshareservice.herokuapp.com";
+            const val LOGIN = "$BASE_URL/login"
+            const val GREETING = "$BASE_URL/greeting"
 
         }
-
-
-
     }
 
 
-    public class APIParams
-    {
+    //TODO Review
+    //TODO Please follow formatting of IDE ,its much better and more readable than adding { on new line
+    //TODO Make data class ,its much better
+
+    class APIParams {
         companion object {
-            public const val ID: String = "_id"
-            public const val LOGINID:String = "loginId"
-            public const val PASSWORD:String = "password"
+            const val LOGINID = "loginId"
+            const val PASSWORD = "password"
         }
 
     }
