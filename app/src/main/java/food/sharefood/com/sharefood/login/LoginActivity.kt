@@ -49,7 +49,7 @@ class LoginActivity : AppCompatActivity(), LoginView {
             var password: String = binding.password.text.toString()
 
             if(email_id != null && password != null) {
-                presenter.loginUser(this, email_id, password)
+                presenter.loginUser(this@LoginActivity, email_id, password)
             }
 
         }
