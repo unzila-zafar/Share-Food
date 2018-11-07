@@ -14,7 +14,7 @@ class LoginPresenter(var loginView: LoginView , var loginInteractor: LoginIntera
 
 
 
-    override fun loginSuccess(model: UserModel) {
+    override fun loginSuccess() {
         loginView.hideProgress()
         loginView.loginUser()
     }

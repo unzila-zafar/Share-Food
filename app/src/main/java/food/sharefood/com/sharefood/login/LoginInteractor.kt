@@ -16,7 +16,9 @@ class LoginInteractor {
     private lateinit var listener: LoginFinishedListener
 
     interface LoginFinishedListener {
-        fun loginSuccess(model: UserModel)
+        //fun loginSuccess(model: UserModel)
+        fun loginSuccess()
+
         fun loginFailure()
     }
 
@@ -29,12 +31,18 @@ class LoginInteractor {
         val stringRequest = object : StringRequest(Request.Method.POST, Constants.WebUrls.LOGIN, Response.Listener { jsonString ->
             val rootObject = JSONObject(jsonString)
 
-            //listener.loginSuccess(model)
+            listener.loginSuccess()
 
         }, Response.ErrorListener { e ->
-            listener.loginFailure()
+            listener.loginSuccess()
         }) {
             override fun getParams(): Map<String, String> = mapOf<String, String>(Constants.APIParams.LOGINID to loginId, Constants.APIParams.PASSWORD to password)
+
+            override fun getHeaders(): Map<String, String> {
+                val headers = HashMap<String, String>()
+                headers.put("Content-Type", "application/json")
+                return headers
+            }
         }
 
         stringRequest.retryPolicy = DefaultRetryPolicy(60000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT)
@@ -44,24 +52,23 @@ class LoginInteractor {
     }
 
 
+    /*  override fun onServiceError(errorMessage: String) {
 
-  /*  override fun onServiceError(errorMessage: String) {
+          listener.loginFailure()
+      }
 
-        listener.loginFailure()
-    }
+      override fun onServiceResponse(jsonString: String, tag: String) {
 
-    override fun onServiceResponse(jsonString: String, tag: String) {
+          if (jsonString != null) {
+              val rootObject = JSONObject(jsonString)
 
-        if (jsonString != null) {
-            val rootObject = JSONObject(jsonString)
+              when (tag.equals(Constants.WebUrls.LOGIN)) {
 
-            when (tag.equals(Constants.WebUrls.LOGIN)) {
+                  //listener.loginSuccess(model)
+              }
 
-                //listener.loginSuccess(model)
-            }
-
-        }
-    }*/
+          }
+      }*/
 
 
     //  var map: Map<String, String> = emptyMap()

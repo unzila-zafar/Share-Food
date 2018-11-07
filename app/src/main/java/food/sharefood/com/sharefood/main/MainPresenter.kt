@@ -1,5 +1,8 @@
 package food.sharefood.com.sharefood.main
 
+import android.content.Context
+import food.sharefood.com.sharefood.R
+
 class MainPresenter(private var mainView: MainView, private val mainInteractor: MainInteractor)
     : MainInteractor.OnFinishedListener {
 
@@ -9,6 +12,7 @@ class MainPresenter(private var mainView: MainView, private val mainInteractor: 
         mainView.showProgress()
         mainInteractor.requestData(this)
     }
+
 
 
     fun startAddPost()

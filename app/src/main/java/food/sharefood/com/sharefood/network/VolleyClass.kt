@@ -81,6 +81,12 @@ class VolleyClass {
 
         }) {
             override fun getParams(): Map<String, String> = map
+
+            override fun getHeaders(): Map<String, String> {
+                val headers = HashMap<String, String>()
+                headers.put("Content-Type", "application/json")
+                return headers
+            }
         }
 
         stringRequest.retryPolicy = DefaultRetryPolicy(60000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT)
