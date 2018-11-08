@@ -5,10 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper
 import food.sharefood.com.sharefood.network.ServiceInterface
 import food.sharefood.com.sharefood.network.VolleyClass
 import food.sharefood.com.sharefood.user.UserModel
-import food.sharefood.com.sharefood.util.LoginData
-import food.sharefood.com.sharefood.util.RequestMethods
-import food.sharefood.com.sharefood.util.SignupData
-import food.sharefood.com.sharefood.util.WebUrls
+import food.sharefood.com.sharefood.util.*
 import org.json.JSONObject
 
 class SignUpInteractor : ServiceInterface {
@@ -29,7 +26,7 @@ class SignUpInteractor : ServiceInterface {
         listener = finishedListener
 
         val objectMapper = ObjectMapper()
-        val data = objectMapper.convertValue(SignupData(), JSONObject::class.java)
+        val data = objectMapper.convertValue(FoodSharer(), JSONObject::class.java)
         //data.put("loginId", loginId)
         //data.put("password", password)
 

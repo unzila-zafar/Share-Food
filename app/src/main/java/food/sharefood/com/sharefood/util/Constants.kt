@@ -35,7 +35,7 @@ data class RequestMethods(
 )
 
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
-data class SignupData(
+data class FoodSharer(
         @JsonProperty("loginId")
         var loginId: String = "",
 
