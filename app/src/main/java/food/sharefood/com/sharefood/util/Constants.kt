@@ -22,7 +22,8 @@ data class LoginData(
 data class WebUrls(
         val BASE_URL: String = "https://foodshareservice.herokuapp.com",
         val LOGIN: String = "$BASE_URL/login",
-        val GREETING: String = "$BASE_URL/greeting"
+        val GREETING: String = "$BASE_URL/greeting",
+        val SIGNUP: String = "$BASE_URL/signup"
 )
 
 
@@ -32,3 +33,16 @@ data class RequestMethods(
         val PUT: Int = Request.Method.PUT,
         val DELETE: Int = Request.Method.DELETE
 )
+
+@JsonInclude(JsonInclude.Include.NON_EMPTY)
+data class SignupData(
+        @JsonProperty("loginId")
+        var loginId: String = "",
+
+        @JsonProperty(value = "password")
+        var password: String = ""
+) {
+    override fun toString(): String {
+        return "SignupData(loginId='$loginId', password='$password')"
+    }
+}
