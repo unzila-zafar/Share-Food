@@ -1,25 +1,16 @@
 package food.sharefood.com.sharefood.login
 
 import android.content.Context
-import android.util.Log
-import android.widget.Toast
-import com.android.volley.AuthFailureError
-import com.android.volley.DefaultRetryPolicy
-import com.android.volley.Request
-import com.android.volley.Response
-import com.android.volley.toolbox.JsonObjectRequest
-import com.android.volley.toolbox.JsonRequest
-import com.android.volley.toolbox.StringRequest
-import com.android.volley.toolbox.Volley
-import food.sharefood.com.sharefood.user.UserModel
-import food.sharefood.com.sharefood.util.Constants
-import org.json.JSONObject
-import java.io.ObjectOutput
-import java.util.*
-import java.util.concurrent.ConcurrentHashMap
-import com.android.volley.NetworkResponse
+import com.fasterxml.jackson.databind.ObjectMapper
+import com.fasterxml.jackson.module.kotlin.KotlinModule
+import com.fasterxml.jackson.module.kotlin.convertValue
+import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import food.sharefood.com.sharefood.network.ServiceInterface
 import food.sharefood.com.sharefood.network.VolleyClass
+import food.sharefood.com.sharefood.util.LoginData
+import food.sharefood.com.sharefood.util.RequestMethods
+import food.sharefood.com.sharefood.util.WebUrls
+import org.json.JSONObject
 
 
 class LoginInteractor : ServiceInterface {
@@ -27,9 +18,7 @@ class LoginInteractor : ServiceInterface {
     private lateinit var listener: LoginFinishedListener
 
     interface LoginFinishedListener {
-        //fun loginSuccess(model: UserModel)
         fun loginSuccess()
-
         fun loginFailure()
     }
 
@@ -38,57 +27,16 @@ class LoginInteractor : ServiceInterface {
 
         listener = finishedListener
 
-        var map: Map<String, String> = emptyMap()
+        val objectMapper = ObjectMapper()
+        val data = objectMapper.convertValue(LoginData(), JSONObject::class.java)
+        data.put("loginId", loginId)
+        data.put("password", password)
 
-        map = mapOf<String, String>(Constants.APIParams.LOGINID to loginId, Constants.APIParams.PASSWORD to password)
+        println("data === $data")
 
-        //var volleyInstance: VolleyClass = VolleyClass()
-
-        VolleyClass.getInstance(context).createRequest(Constants.WebUrls.LOGIN, Request.Method.POST, map, this, Constants.WebUrls.LOGIN)
-
-
-        /*   val queue = Volley.newRequestQueue(context)
-
-           val request = object : StringRequest(
-                   Request.Method.POST,
-                   Constants.WebUrls.LOGIN,
-                   Response.Listener { response ->
-                       println("response = $response")
-                       //val responseObject = JSONObject(response)
-                       //println("responseObject = $responseObject")
-                   },
-                   Response.ErrorListener { e ->
-                       println("error = $e")
-                       e.printStackTrace()
-                       //listener.loginFailure()
-                   }
-           ) {
-
-               @Throws(AuthFailureError::class)
-
-               override fun getParams(): MutableMap<String, String> {
-                   val params = HashMap<String, String>()
-                   params.put(Constants.APIParams.LOGINID, loginId)
-                   params.put(Constants.APIParams.PASSWORD, password)
-
-                   return params
-
-               }
-
-               override fun getHeaders(): MutableMap<String, String> {
-                   val headers = HashMap<String, String>()
-                   headers.put("Content-Type", "application/json")
-                   return headers
-               }
-
-           }
-           request.retryPolicy = DefaultRetryPolicy(0, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT)
-
-           Log.e("request= ","$request")
-           queue.add(request)*/
+        VolleyClass.getInstance(context).createPostRequest(WebUrls().LOGIN, RequestMethods().POST, data, this, WebUrls().LOGIN)
 
     }
-
 
 
     override fun onServiceResponse(jsonString: String, tag: String) {
@@ -96,7 +44,7 @@ class LoginInteractor : ServiceInterface {
         if (jsonString != null) {
             val rootObject = JSONObject(jsonString)
 
-            if (tag.equals(Constants.WebUrls.LOGIN)) {
+            if (tag.equals(WebUrls().LOGIN)) {
 
                 listener.loginSuccess()
             }
@@ -107,44 +55,5 @@ class LoginInteractor : ServiceInterface {
         listener.loginFailure()
 
     }
-
-
-
-    /*  override fun onServiceError(errorMessage: String) {
-
-          listener.loginFailure()
-      }
-<<<<<<< HEAD
-
-      override fun onServiceResponse(jsonString: String, tag: String) {
-
-          if (jsonString != null) {
-              val rootObject = JSONObject(jsonString)
-
-              when (tag.equals(Constants.WebUrls.LOGIN)) {
-
-                  //listener.loginSuccess(model)
-              }
-
-=======
-
-      override fun onServiceResponse(jsonString: String, tag: String) {
-
-          if (jsonString != null) {
-              val rootObject = JSONObject(jsonString)
-
-              when (tag.equals(Constants.WebUrls.LOGIN)) {
-
-                  //listener.loginSuccess(model)
-              }
-
->>>>>>> e302dfb80f1da66cc0c54fa09160daf31618f390
-          }
-      }*/
-
-
-    //  var map: Map<String, String> = emptyMap()
-
-    //  map = mapOf<String, String>(Constants.APIParams.LOGINID to loginId, Constants.APIParams.PASSWORD to password)
 
 }

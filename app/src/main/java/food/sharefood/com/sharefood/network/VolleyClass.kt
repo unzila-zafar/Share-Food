@@ -3,8 +3,10 @@ package food.sharefood.com.sharefood.network
 import android.content.Context
 import android.text.TextUtils
 import com.android.volley.*
+import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
+import org.json.JSONObject
 import kotlin.reflect.KClass
 
 class VolleyClass {
@@ -68,6 +70,29 @@ class VolleyClass {
         requestQueue?.add(request)
     }
 
+    fun createPostRequest(url: String, requestMethod: Int, data: JSONObject, listener: ServiceInterface, tag: String) {
+        val request = object : JsonObjectRequest(requestMethod, url, data,Response.Listener { s ->
+
+            listener.onServiceResponse(data.toString(), tag)
+
+        }, Response.ErrorListener { error ->
+
+            when (error) {
+                AuthFailureError() -> listener.onServiceError("Authentication Error")
+                NetworkError() -> listener.onServiceError("Please check your internet connection")
+                ParseError() -> listener.onServiceError("Parse error.")
+                ServerError() -> listener.onServiceError("Server error. Please try again later")
+                TimeoutError() -> listener.onServiceError("Server Timeout. Please try again later")
+            }
+
+        } ) {
+
+        }
+
+        request.retryPolicy = DefaultRetryPolicy(60000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT)
+
+        requestQueue?.add(request)
+    }
 
     fun createRequest(url: String, requestMethod: Int, map: Map<String, String>, listener: ServiceInterface, tag: String) {
 

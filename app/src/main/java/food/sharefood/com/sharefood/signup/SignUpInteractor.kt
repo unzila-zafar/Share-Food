@@ -1,12 +1,8 @@
 package food.sharefood.com.sharefood.signup
 
 import android.content.Context
-import com.android.volley.Request
 import food.sharefood.com.sharefood.network.ServiceInterface
-import food.sharefood.com.sharefood.network.VolleyClass
 import food.sharefood.com.sharefood.user.UserModel
-import food.sharefood.com.sharefood.util.Constants
-import org.json.JSONObject
 
 class SignUpInteractor : ServiceInterface {
 
@@ -28,24 +24,24 @@ class SignUpInteractor : ServiceInterface {
 
         var map: Map<String, String> = emptyMap()
 
-        map = mapOf<String, String>(Constants.APIParams.LOGINID to "12", Constants.APIParams.PASSWORD to "123")
+       /* map = mapOf<String, String>(Constants.APIParams.LOGINID to "12", Constants.APIParams.PASSWORD to "123")
 
         //var volleyInstance: VolleyClass = VolleyClass()
 
         VolleyClass.getInstance(context).createRequest(Constants.WebUrls.LOGIN, Request.Method.POST, map, this, Constants.WebUrls.LOGIN)
-
+*/
     }
 
     override fun onServiceResponse(jsonString: String, tag: String) {
 
-        if (jsonString != null) {
+        /*if (jsonString != null) {
             val rootObject = JSONObject(jsonString)
 
             if (tag.equals(Constants.WebUrls.LOGIN)) {
 
                 listener.onSignUpSuccess()
             }
-        }
+        }*/
     }
 
     override fun onServiceError(errorMessage: String) {

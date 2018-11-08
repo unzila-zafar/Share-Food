@@ -1,28 +1,34 @@
 package food.sharefood.com.sharefood.util
 
-import food.sharefood.com.sharefood.util.Constants.WebUrls.Companion.BASE_URL
-
-class Constants {
-
-    class WebUrls {
-        companion object {
-            const val BASE_URL = "https://foodshareservice.herokuapp.com";
-            const val LOGIN = "$BASE_URL/login"
-            const val GREETING = "$BASE_URL/greeting"
-
-        }
-    }
+import com.android.volley.Request
+import com.fasterxml.jackson.annotation.JsonInclude
+import com.fasterxml.jackson.annotation.JsonProperty
 
 
-    //TODO Review
-    //TODO Please follow formatting of IDE ,its much better and more readable than adding { on new line
-    //TODO Make data class ,its much better
+@JsonInclude(JsonInclude.Include.NON_EMPTY)
+data class LoginData(
+        @JsonProperty("loginId")
+        var loginId: String = "",
 
-    class APIParams {
-        companion object {
-            const val LOGINID = "loginId"
-            const val PASSWORD = "password"
-        }
-
+        @JsonProperty(value = "password")
+        var password: String = ""
+) {
+    override fun toString(): String {
+        return "LoginData(loginId='$loginId', password='$password')"
     }
 }
+
+
+data class WebUrls(
+        val BASE_URL: String = "https://foodshareservice.herokuapp.com",
+        val LOGIN: String = "$BASE_URL/login",
+        val GREETING: String = "$BASE_URL/greeting"
+)
+
+
+data class RequestMethods(
+        val POST: Int = Request.Method.POST,
+        val GET: Int = Request.Method.GET,
+        val PUT: Int = Request.Method.PUT,
+        val DELETE: Int = Request.Method.DELETE
+)
