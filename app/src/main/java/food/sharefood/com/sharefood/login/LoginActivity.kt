@@ -8,16 +8,19 @@ import food.sharefood.com.sharefood.main.MainActivity
 import food.sharefood.com.sharefood.R
 import food.sharefood.com.sharefood.databinding.ActivityLoginBinding
 import android.text.*
+import android.text.method.DialerKeyListener
 import android.text.method.LinkMovementMethod
 import android.text.style.ClickableSpan
 import android.view.View
 import food.sharefood.com.sharefood.signup.SignupActivity
 import android.widget.Toast
+import food.sharefood.com.sharefood.dialog.DialogUtils
 import okhttp3.*
 import java.io.IOException
 
 
 class LoginActivity : AppCompatActivity(), LoginView {
+
 
 
     lateinit var binding: ActivityLoginBinding
@@ -82,15 +85,24 @@ class LoginActivity : AppCompatActivity(), LoginView {
 
 
     override fun showProgress() {
+
+        DialogUtils.ShowProgressDialog(this)
     }
 
     override fun hideProgress() {
+
+        DialogUtils.HideProgressDialog()
     }
 
     override fun loginUser() {
 
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
+    }
+
+    override fun loginFailure(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+
     }
 }
 

@@ -5,4 +5,5 @@ interface SignUpView {
     fun showProgress()
     fun hideProgress()
     fun registerUser()
+    fun registerFailure(message : String)
 }

@@ -5,11 +5,13 @@ import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.widget.ArrayAdapter
+import android.widget.Toast
 import food.sharefood.com.sharefood.main.MainActivity
 import food.sharefood.com.sharefood.R
 import food.sharefood.com.sharefood.databinding.ActivitySignupBinding
+import food.sharefood.com.sharefood.dialog.DialogUtils
 
-class SignupActivity : AppCompatActivity() , SignUpView{
+class SignupActivity : AppCompatActivity(), SignUpView {
 
 
     lateinit var binding: ActivitySignupBinding
@@ -31,8 +33,8 @@ class SignupActivity : AppCompatActivity() , SignUpView{
 
         binding.buttonSignup.setOnClickListener {
 
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
+            presenter.registerUser(this)
+
         }
     }
 
@@ -51,11 +53,23 @@ class SignupActivity : AppCompatActivity() , SignUpView{
     }
 
     override fun showProgress() {
+
+        DialogUtils.ShowProgressDialog(this)
     }
 
     override fun hideProgress() {
+
+        DialogUtils.HideProgressDialog()
     }
 
     override fun registerUser() {
+
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+        finish()
+    }
+
+    override fun registerFailure(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 }

@@ -5,4 +5,5 @@ interface LoginView
     fun showProgress()
     fun hideProgress()
     fun loginUser()
+    fun loginFailure(message: String)
 }

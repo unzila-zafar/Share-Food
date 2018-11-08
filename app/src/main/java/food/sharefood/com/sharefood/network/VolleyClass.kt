@@ -11,13 +11,24 @@ class VolleyClass {
 
     companion object {
         private val TAG = VolleyClass::class.java!!.getSimpleName()
-        lateinit var instance: VolleyClass
+        var instance: VolleyClass? = null
         lateinit var context: Context
         lateinit var requestQueue: RequestQueue
 
+
+
+        fun  getInstance(mContext: Context): VolleyClass {
+            context = mContext
+            if (instance == null)  // NOT thread safe!
+                instance = VolleyClass()
+
+            return instance!!
+        }
+
+
     }
 
-    fun VolleyClass(mContext: Context) {
+   /* fun VolleyClass(mContext: Context) {
         context = mContext;
         requestQueue = getRequestQueue()
 
@@ -28,24 +39,33 @@ class VolleyClass {
             requestQueue = Volley.newRequestQueue(context.getApplicationContext())
         }
         return requestQueue
-    }
+    }*/
 
-    @Synchronized
+
+    val requestQueue: RequestQueue? = null
+        get() {
+            if (field == null) {
+                return Volley.newRequestQueue(context)
+            }
+            return field
+        }
+
+ /*   @Synchronized
     public fun getInstance(context: Context): VolleyClass {
         if (instance == null) {
             instance = VolleyClass()
         }
         return instance
-    }
+    }*/
 
 
     fun <T> addToRequestQueue(request: Request<T>, tag: String) {
         request.tag = if (TextUtils.isEmpty(tag)) TAG else tag
-        getRequestQueue().add(request)
+        requestQueue?.add(request)
     }
 
     fun <T> addToRequestQueue(request: Request<T>) {
-        getRequestQueue().add(request)
+        requestQueue?.add(request)
     }
 
 
@@ -84,7 +104,7 @@ class VolleyClass {
 
             override fun getHeaders(): Map<String, String> {
                 val headers = HashMap<String, String>()
-                headers.put("Content-Type", "application/json")
+                headers.put("Content-Type", "application/json; charset=utf8")
                 return headers
             }
         }

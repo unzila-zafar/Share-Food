@@ -1,6 +1,7 @@
 package food.sharefood.com.sharefood.login
 
 import android.content.Context
+import android.util.Log
 import android.widget.Toast
 import com.android.volley.AuthFailureError
 import com.android.volley.DefaultRetryPolicy
@@ -16,8 +17,12 @@ import org.json.JSONObject
 import java.io.ObjectOutput
 import java.util.*
 import java.util.concurrent.ConcurrentHashMap
+import com.android.volley.NetworkResponse
+import food.sharefood.com.sharefood.network.ServiceInterface
+import food.sharefood.com.sharefood.network.VolleyClass
 
-class LoginInteractor {
+
+class LoginInteractor : ServiceInterface {
 
     private lateinit var listener: LoginFinishedListener
 
@@ -32,47 +37,77 @@ class LoginInteractor {
     fun requestLoginUser(context: Context, loginId: String, password: String, finishedListener: LoginFinishedListener) {
 
         listener = finishedListener
-        val queue = Volley.newRequestQueue(context)
 
-        val request = object : StringRequest(
-                Request.Method.POST,
-                Constants.WebUrls.LOGIN,
-                Response.Listener { response ->
-                    println("response = $response")
-                    //val responseObject = JSONObject(response)
-                    //println("responseObject = $responseObject")
-                },
-                Response.ErrorListener { e ->
-                    println("error = $e")
-                    e.printStackTrace()
-                    //listener.loginFailure()
-                }
-        ) {
+        var map: Map<String, String> = emptyMap()
 
-            @Throws(AuthFailureError::class)
+        map = mapOf<String, String>(Constants.APIParams.LOGINID to loginId, Constants.APIParams.PASSWORD to password)
 
-            override fun getParams(): MutableMap<String, String> {
-                val params = HashMap<String, String>()
-                params.put(Constants.APIParams.LOGINID, loginId)
-                params.put(Constants.APIParams.PASSWORD, password)
+        //var volleyInstance: VolleyClass = VolleyClass()
 
-                return params
-            }
-
-            override fun getHeaders(): MutableMap<String, String> {
-                val headers = HashMap<String, String>()
-                headers.put("Content-Type", "application/json; charset=utf-8")
-                return headers
-            }
+        VolleyClass.getInstance(context).createRequest(Constants.WebUrls.LOGIN, Request.Method.POST, map, this, Constants.WebUrls.LOGIN)
 
 
-        }
-        request.retryPolicy = DefaultRetryPolicy(0, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT)
+        /*   val queue = Volley.newRequestQueue(context)
 
-        println("request = $request")
-        queue.add(request)
+           val request = object : StringRequest(
+                   Request.Method.POST,
+                   Constants.WebUrls.LOGIN,
+                   Response.Listener { response ->
+                       println("response = $response")
+                       //val responseObject = JSONObject(response)
+                       //println("responseObject = $responseObject")
+                   },
+                   Response.ErrorListener { e ->
+                       println("error = $e")
+                       e.printStackTrace()
+                       //listener.loginFailure()
+                   }
+           ) {
+
+               @Throws(AuthFailureError::class)
+
+               override fun getParams(): MutableMap<String, String> {
+                   val params = HashMap<String, String>()
+                   params.put(Constants.APIParams.LOGINID, loginId)
+                   params.put(Constants.APIParams.PASSWORD, password)
+
+                   return params
+
+               }
+
+               override fun getHeaders(): MutableMap<String, String> {
+                   val headers = HashMap<String, String>()
+                   headers.put("Content-Type", "application/json")
+                   return headers
+               }
+
+           }
+           request.retryPolicy = DefaultRetryPolicy(0, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT)
+
+           Log.e("request= ","$request")
+           queue.add(request)*/
 
     }
+
+
+
+    override fun onServiceResponse(jsonString: String, tag: String) {
+
+        if (jsonString != null) {
+            val rootObject = JSONObject(jsonString)
+
+            if (tag.equals(Constants.WebUrls.LOGIN)) {
+
+                listener.loginSuccess()
+            }
+        }
+    }
+
+    override fun onServiceError(errorMessage: String) {
+        listener.loginFailure()
+
+    }
+
 
 
     /*  override fun onServiceError(errorMessage: String) {
