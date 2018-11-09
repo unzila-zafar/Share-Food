@@ -78,15 +78,24 @@ class VolleyClass {
         }, Response.ErrorListener { error ->
 
             when (error) {
-                AuthFailureError() -> listener.onServiceError("Authentication Error")
-                NetworkError() -> listener.onServiceError("Please check your internet connection")
-                ParseError() -> listener.onServiceError("Parse error.")
-                ServerError() -> listener.onServiceError("Server error. Please try again later")
-                TimeoutError() -> listener.onServiceError("Server Timeout. Please try again later")
+                AuthFailureError() ->
+                    listener.onServiceError("Authentication Error")
+                NetworkError() ->
+                    listener.onServiceError("Please check your internet connection")
+                ParseError() ->
+                    listener.onServiceError("Parse error.")
+                ServerError() ->
+                    listener.onServiceError("Server error. Please try again later")
+                TimeoutError() ->
+                    listener.onServiceError("Server Timeout. Please try again later")
             }
 
         } ) {
-
+            override fun getHeaders(): Map<String, String> {
+                val headers = HashMap<String, String>()
+                headers.put("Content-Type", "application/json; charset=utf8")
+                return headers
+            }
         }
 
         request.retryPolicy = DefaultRetryPolicy(60000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT)

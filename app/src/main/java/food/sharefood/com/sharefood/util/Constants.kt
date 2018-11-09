@@ -3,6 +3,8 @@ package food.sharefood.com.sharefood.util
 import com.android.volley.Request
 import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
+import javax.crypto.Cipher
+import javax.crypto.SecretKey
 
 
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
@@ -11,8 +13,8 @@ data class LoginData(
         var loginId: String = "",
 
         @JsonProperty(value = "password")
-        var password: String = ""
-) {
+        var password: String = "")
+{
     override fun toString(): String {
         return "LoginData(loginId='$loginId', password='$password')"
     }
@@ -43,24 +45,26 @@ data class FoodSharer(
         var password: String = "",
 
         @JsonProperty(value = "name")
-        val name : String = "",
+        val name: String = "",
 
         @JsonProperty(value = "registeredAs")
         val registeredAs: String = "",
 
         @JsonProperty(value = "address")
-        val address : String = "",
+        val address: String = "",
 
         @JsonProperty(value = "picture")
-        val picture : String = "", //this should be base64 data
+        val picture: String = "", //this should be base64 data
 
         @JsonProperty(value = "facebookUrl")
         val facebookUrl: String = "",
 
         @JsonProperty(value = "facebookId")
-        val facebookId : String = ""
+        val facebookId: String = ""
 ) {
     override fun toString(): String {
         return "SignupData(loginId='$loginId', password='$password', name='$name', registeredAs='$registeredAs', address='$address', picture='$picture', facebookUrl='$facebookUrl', facebookId='$facebookId')"
     }
+
+
 }
