@@ -1,5 +1,5 @@
 
-
+.idea/
 .idea/workspace.xml
 .idea/.name
 .idea/gradle.xml
@@ -8,7 +8,9 @@
 .idea/misc.xml
 .idea/modules
 .idea/vcs.xml
-.idea/
+.idea/libraries
+.idea/modules.xml
+.idea/runConfigurations.xml
 
 .gradle/4.6
 .gradle/buildOutputCleanup
