@@ -4,19 +4,16 @@ import android.content.Intent
 import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import food.sharefood.com.sharefood.main.MainActivity
-import food.sharefood.com.sharefood.R
-import food.sharefood.com.sharefood.databinding.ActivityLoginBinding
-import android.text.*
-import android.text.method.DialerKeyListener
+import android.text.SpannableString
 import android.text.method.LinkMovementMethod
 import android.text.style.ClickableSpan
 import android.view.View
-import food.sharefood.com.sharefood.signup.SignupActivity
 import android.widget.Toast
+import food.sharefood.com.sharefood.R
+import food.sharefood.com.sharefood.databinding.ActivityLoginBinding
 import food.sharefood.com.sharefood.dialog.DialogUtils
-import okhttp3.*
-import java.io.IOException
+import food.sharefood.com.sharefood.main.MainActivity
+import food.sharefood.com.sharefood.signup.SignupActivity
 
 
 class LoginActivity : AppCompatActivity(), LoginView {
@@ -24,9 +21,6 @@ class LoginActivity : AppCompatActivity(), LoginView {
 
 
     lateinit var binding: ActivityLoginBinding
-
-  //  private val client = OkHttpClient()
-  //  private val url = "https://foodshareservice.herokuapp.com/greeting";
 
     private lateinit var presenter:LoginPresenter
 

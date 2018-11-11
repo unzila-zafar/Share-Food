@@ -16,19 +16,25 @@ class SignUpInteractor : ServiceInterface {
 
     interface onSignUpFinishedListener {
         fun onSignUpSuccess(model: UserModel)
-        fun onSignUpFailure(message :String)
+        fun onSignUpFailure(message: String)
         fun onSignUpSuccess()
     }
 
 
-    fun requestSignUpUser(context: Context,finishedListener: onSignUpFinishedListener) {
+    fun requestSignUpUser(context: Context, finishedListener: onSignUpFinishedListener) {
 
         listener = finishedListener
 
         val objectMapper = ObjectMapper()
         val data = objectMapper.convertValue(FoodSharer(), JSONObject::class.java)
-        //data.put("loginId", loginId)
-        //data.put("password", password)
+        println("FoodSharer() = " + FoodSharer())
+        data.put("loginId", FoodSharer().loginId)
+        data.put("password", FoodSharer().password)
+        data.put("name", FoodSharer().name)
+        data.put("registeredAs", FoodSharer().registeredAs)
+        data.put("picture", FoodSharer().picture)
+        data.put("address", FoodSharer().address)
+
 
         println("data === $data")
 
