@@ -14,7 +14,7 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
 
-        val postDelayed = Handler().postDelayed(
+        Handler().postDelayed(
                 Runnable {
                     val intent = Intent(this, LoginActivity::class.java)
                     startActivity(intent)

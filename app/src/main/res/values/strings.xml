@@ -22,6 +22,7 @@
         <item>Ngo</item>
         <item>Others</item>
     </string-array>
+    <string name="address">Address</string>
 
 
     <!--forgot password-->

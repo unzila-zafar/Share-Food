@@ -12,21 +12,12 @@ import java.security.NoSuchAlgorithmException
 import javax.crypto.Cipher
 import javax.crypto.SecretKey
 
-class LoginPresenter(var loginView: LoginView , var loginInteractor: LoginInteractor) : LoginInteractor.LoginFinishedListener
-{
+class LoginPresenter(var loginView: LoginView, var loginInteractor: LoginInteractor) : LoginInteractor.LoginFinishedListener {
 
-    fun loginUser(context : Context, id : String , password : String)
-    {
+    fun loginUser(context: Context, id: String, password: String) {
         loginView.showProgress()
 
-        loginInteractor.requestLoginUser(context,id, getMd5Base64(password).toString(),this)
-    }
-
-    fun getMd5Base64(password: String): String? {
-        val md5 = MessageDigest.getInstance("MD5")
-        val hash = BigInteger(1, md5.digest(password.toByteArray(Charset.defaultCharset()))).toString(16)
-
-        return hash
+        loginInteractor.requestLoginUser(context, id, password, this)
     }
 
 
@@ -35,8 +26,7 @@ class LoginPresenter(var loginView: LoginView , var loginInteractor: LoginIntera
         loginView.loginUser()
     }
 
-    override fun loginFailure()
-    {
+    override fun loginFailure() {
         loginView.hideProgress()
     }
 

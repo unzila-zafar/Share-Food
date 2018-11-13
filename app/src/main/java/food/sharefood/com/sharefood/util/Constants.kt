@@ -44,22 +44,22 @@ data class FoodSharer(
         var password: String = "",
 
         @JsonProperty(value = "name")
-        val name: String = "",
+        var name: String = "",
 
         @JsonProperty(value = "registeredAs")
-        val registeredAs: String? = "",
+        var registeredAs: String? = "",
 
         @JsonProperty(value = "address")
-        val address: String? = "",
+        var address: String? = "",
 
         @JsonProperty(value = "picture")
-        val picture: String? = "", //this should be base64 data
+        var picture: String? = "", //this should be base64 data
 
         @JsonProperty(value = "facebookUrl")
-        val facebookUrl: String? = "",
+        var facebookUrl: String? = "",
 
         @JsonProperty(value = "facebookId")
-        val facebookId: String? = ""
+        var facebookId: String? = ""
 ) {
     override fun toString(): String {
         return "FoodSharer(loginId='$loginId', password='$password', name='$name', registeredAs='$registeredAs', address='$address', picture='$picture', facebookUrl='$facebookUrl', facebookId='$facebookId')"

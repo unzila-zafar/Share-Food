@@ -43,14 +43,14 @@ class SignUpInteractor : ServiceInterface {
 
     override fun onServiceResponse(jsonString: String, tag: String) {
 
-        /*if (jsonString != null) {
+        if (jsonString != null) {
             val rootObject = JSONObject(jsonString)
 
-            if (tag.equals(Constants.WebUrls.LOGIN)) {
+            if (tag.equals(WebUrls().SIGNUP)) {
 
                 listener.onSignUpSuccess()
             }
-        }*/
+        }
     }
 
     override fun onServiceError(errorMessage: String) {
