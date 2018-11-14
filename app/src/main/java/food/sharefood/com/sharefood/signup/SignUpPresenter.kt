@@ -1,74 +1,87 @@
 package food.sharefood.com.sharefood.signup
 
+import android.Manifest
 import android.content.Context
+import android.content.DialogInterface
+import android.content.Intent
+import android.location.Location
+import android.location.LocationListener
+import android.location.LocationManager
+import android.os.Bundle
+import android.provider.Settings
 import android.support.v7.app.AlertDialog
 import food.sharefood.com.sharefood.databinding.ActivitySignupBinding
 import food.sharefood.com.sharefood.user.UserModel
 import food.sharefood.com.sharefood.util.FoodSharer
-import food.sharefood.com.sharefood.util.Helper.Companion.getMd5Base64
+import food.sharefood.com.sharefood.util.Helper
 
 
-class SignUpPresenter(var signUpView: SignUpView, var signUpInteractor: SignUpInteractor) : SignUpInteractor.onSignUpFinishedListener {
+class SignUpPresenter(var signUpView: SignUpView, var signUpInteractor: SignUpInteractor, var mContext: Context) : SignUpInteractor.onSignUpFinishedListener {
 
     private var spinnerPosition: Int = 0
-    private lateinit var mContext:Context
     private var selectedImageUrl: String = ""
+    private var currentLocation: String = ""
+    private var locationManager: LocationManager? = null
+    private lateinit var foodSharer: FoodSharer
 
 
     fun registerUser(context: Context, binding: ActivitySignupBinding) {
-        mContext = context
         signUpView.showProgress()
 
         if (checkData(binding)) {
-            signUpInteractor.requestSignUpUser(context, this)
+            signUpInteractor.requestSignUpUser(context, this, foodSharer)
         }
     }
 
-    fun checkData(binding: ActivitySignupBinding): Boolean
-    {
+    fun checkData(binding: ActivitySignupBinding): Boolean {
         var checkValues: Boolean = false
 
-        FoodSharer().loginId = binding.emailEdit.text.toString()
-        FoodSharer().name = binding.nameEdit.text.toString()
-        FoodSharer().address = binding.addressEdit.text.toString()
-        FoodSharer().password = binding.signupPassword.text.toString()
-        var confirmPassword: String = binding.confirmPwdEdit.text.toString()
+        foodSharer = FoodSharer();
+
+        foodSharer.loginId = binding.emailEdit.text.toString()
+        foodSharer.name = binding.nameEdit.text.toString()
+        foodSharer.password = binding.signupPassword.text.toString()
+
+        //var confirmPassword: String = binding.confirmPwdEdit.text.toString()
 
 
-        if (!FoodSharer().password.isEmpty()) {
+        checkValues = !foodSharer.password.isEmpty()
+        if (checkValues) {
+            foodSharer.password = Helper.encrypt(foodSharer.password)
 
-            checkValues = !confirmPassword.isEmpty() && FoodSharer().password.equals(confirmPassword)
-
-            if (!checkValues) {
-                binding.confirmLayout.error = "Password doesn't match"
-            } else {
-                FoodSharer().password = getMd5Base64(FoodSharer().password).toString()
-            }
         } else {
             binding.passwordLayout.error = "Please enter password"
         }
 
-        checkValues = !FoodSharer().loginId.isEmpty()
+        checkValues = !foodSharer.loginId.isEmpty()
         if (!checkValues) {
+            foodSharer.loginId = Helper.encrypt(foodSharer.loginId)
             binding.emailLayout.error = "Please enter login id"
         }
 
-        checkValues = !FoodSharer().name.isEmpty()
+        checkValues = !foodSharer.name.isEmpty()
         if (!checkValues) {
-            binding.emailLayout.error = "Please enter user name"
+            foodSharer.name = Helper.encrypt(foodSharer.name)
+            binding.nameLayout.error = "Please enter user name"
         }
 
         checkValues = spinnerPosition != 0
         if (checkValues) {
-            FoodSharer().registeredAs = spinnerPosition.toString()
+            foodSharer.registeredAs = Helper.encrypt(spinnerPosition.toString())
         }
 
         checkValues = !selectedImageUrl.isEmpty()
 
-        if(checkValues){
-            FoodSharer().picture = selectedImageUrl
+        if (checkValues) {
+            foodSharer.picture = Helper.encrypt(selectedImageUrl)
         }
 
+        checkValues = !currentLocation.isEmpty()
+
+        if(checkValues)
+        {
+            foodSharer.address = Helper.encrypt(currentLocation)
+        }
 
         return checkValues
     }
@@ -78,7 +91,7 @@ class SignUpPresenter(var signUpView: SignUpView, var signUpInteractor: SignUpIn
     }
 
 
-    override fun onSignUpSuccess(model: UserModel) {
+    override fun onSignUpSuccess(foodSharer: FoodSharer) {
         signUpView.registerUser()
     }
 
@@ -92,8 +105,7 @@ class SignUpPresenter(var signUpView: SignUpView, var signUpInteractor: SignUpIn
     }
 
 
-    fun alertDialog(context: Context)
-    {
+    fun alertDialog(context: Context) {
         val builder = AlertDialog.Builder(context)
 
         val items = arrayOf<CharSequence>(
@@ -102,7 +114,7 @@ class SignUpPresenter(var signUpView: SignUpView, var signUpInteractor: SignUpIn
                 "Cancel")
         // Set the alert dialog title
         builder.setTitle("Choose image")
-        builder.setItems(items,{_, which ->
+        builder.setItems(items, { _, which ->
 
             signUpView.selectImage(which)
 
@@ -115,9 +127,58 @@ class SignUpPresenter(var signUpView: SignUpView, var signUpInteractor: SignUpIn
         dialog.show()
     }
 
-    fun saveSelectedImagePath(path : String)
-    {
+    fun saveSelectedImagePath(path: String) {
         selectedImageUrl = path
     }
 
+
+    fun getCurrentLocation() {
+
+        if (!isLocationEnabled())
+            showAlert();
+
+        //define the listener
+        val locationListener: LocationListener = object : LocationListener {
+            override fun onLocationChanged(location: Location) {
+                currentLocation = location.latitude.toString() + "," + location.longitude.toString()
+            }
+
+            override fun onStatusChanged(provider: String, status: Int, extras: Bundle) {}
+            override fun onProviderEnabled(provider: String) {}
+            override fun onProviderDisabled(provider: String) {}
+        }
+
+        if (Helper.checkPermission(mContext,
+                        arrayOf(Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION)
+                        , Helper.REQUEST_LOCATION)) {
+            locationManager?.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0L, 0f, locationListener);
+        }
+    }
+
+
+    private fun isLocationEnabled(): Boolean {
+        locationManager = mContext.getSystemService(Context.LOCATION_SERVICE) as LocationManager?
+        return locationManager!!.isProviderEnabled(LocationManager.GPS_PROVIDER) || locationManager!!.isProviderEnabled(LocationManager.NETWORK_PROVIDER)
+    }
+
+    private fun showAlert() {
+        val dialog = AlertDialog.Builder(mContext)
+        dialog.setTitle("Enable Location")
+                .setMessage("Your Locations Settings is set to 'Off'.\nPlease Enable Location to " + "use this app")
+                .setPositiveButton("Location Settings", DialogInterface.OnClickListener { paramDialogInterface, paramInt ->
+                    val myIntent = Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS)
+                    mContext.startActivity(myIntent)
+                })
+                .setNegativeButton("Cancel", DialogInterface.OnClickListener { paramDialogInterface, paramInt -> })
+        dialog.show()
+    }
+
+
+    /*  checkValues = !confirmPassword.isEmpty() && FoodSharer().password.equals(confirmPassword)
+
+      if (!checkValues) {
+          binding.confirmLayout.error = "Password doesn't match"
+      } else {
+          FoodSharer().password = getMd5Base64(FoodSharer().password).toString()
+      }*/
 }

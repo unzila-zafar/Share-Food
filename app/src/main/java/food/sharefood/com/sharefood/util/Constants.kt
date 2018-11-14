@@ -3,8 +3,7 @@ package food.sharefood.com.sharefood.util
 import com.android.volley.Request
 import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
-import javax.crypto.Cipher
-import javax.crypto.SecretKey
+
 
 
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
@@ -53,15 +52,27 @@ data class FoodSharer(
         var address: String? = "",
 
         @JsonProperty(value = "picture")
-        var picture: String? = "", //this should be base64 data
+        var picture: String? = "" //this should be base64 data
 
-        @JsonProperty(value = "facebookUrl")
+       /* @JsonProperty(value = "facebookUrl")
         var facebookUrl: String? = "",
 
         @JsonProperty(value = "facebookId")
-        var facebookId: String? = ""
+        var facebookId: String? = ""*/
 ) {
     override fun toString(): String {
-        return "FoodSharer(loginId='$loginId', password='$password', name='$name', registeredAs='$registeredAs', address='$address', picture='$picture', facebookUrl='$facebookUrl', facebookId='$facebookId')"
+        return "FoodSharer(loginId='$loginId', password='$password', name='$name', registeredAs='$registeredAs', address='$address', picture='$picture'"
+    }
+}
+
+class APIParams
+{
+    companion object {
+        var LOGIN_ID: String = "loginId"
+        var PASSWORD: String = "password"
+        var NAME: String = "name"
+        var REGISTERED_AS : String = "registeredAs"
+        var PICTURE: String = "picture"
+        var ADDRESS: String ="address"
     }
 }

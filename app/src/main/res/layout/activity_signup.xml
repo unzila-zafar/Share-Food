@@ -103,6 +103,7 @@
                     android:layout_marginTop="@dimen/eight_margin"
                     android:textColorHint="@color/colorAccent"
                     android:theme="@style/MyTextInputLayout"
+                    android:visibility="gone"
                     app:layout_constraintTop_toBottomOf="@+id/password_layout">
 
                     <android.support.design.widget.TextInputEditText
@@ -132,6 +133,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="@string/address"
+                        android:visibility="gone"
                         android:inputType="textPassword"
                         android:padding="@dimen/five_margin"
                         android:textColor="@color/colorAccent"
@@ -146,6 +148,7 @@
                     android:background="@color/light_grey"
                     android:padding="@dimen/eight_margin"
                     android:text="Registering as"
+
                     app:layout_constraintTop_toBottomOf="@+id/address_layout" />
 
                 <Button

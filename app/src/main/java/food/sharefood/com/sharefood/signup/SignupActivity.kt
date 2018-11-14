@@ -9,10 +9,8 @@ import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
 import android.provider.MediaStore
-import android.support.v4.app.ActivityCompat
 import android.support.v4.content.FileProvider
 import android.support.v7.app.AppCompatActivity
-import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
@@ -21,20 +19,13 @@ import food.sharefood.com.sharefood.main.MainActivity
 import food.sharefood.com.sharefood.R
 import food.sharefood.com.sharefood.databinding.ActivitySignupBinding
 import food.sharefood.com.sharefood.dialog.DialogUtils
-import food.sharefood.com.sharefood.util.FoodSharer
 import food.sharefood.com.sharefood.util.Helper
 import java.io.File
 import java.io.IOException
-import android.R.attr.gravity
-import android.R.attr.radius
-import android.R.attr.x
-import android.R.attr.y
-import android.R.attr.opacity
-import android.R.attr.angle
 import android.graphics.Bitmap
-import android.support.v4.content.ContextCompat
 import com.bumptech.glide.Glide
 import com.cloudinary.android.MediaManager
+import food.sharefood.com.sharefood.BuildConfig
 import food.sharefood.com.sharefood.util.Helper.Companion.getRealPathFromURI
 
 
@@ -55,9 +46,11 @@ class SignupActivity : AppCompatActivity(), SignUpView, AdapterView.OnItemSelect
     }
 
     private fun init() {
-        presenter = SignUpPresenter(this, SignUpInteractor())
+        presenter = SignUpPresenter(this, SignUpInteractor(), this)
 
         setRegisterCategories()
+
+        presenter.getCurrentLocation()
 
         binding.buttonSignup.setOnClickListener {
 
@@ -77,7 +70,7 @@ class SignupActivity : AppCompatActivity(), SignUpView, AdapterView.OnItemSelect
         ArrayAdapter.createFromResource(
                 this,
                 R.array.type,
-                android.R.layout.simple_spinner_item
+                R.layout.spinner_text
         ).also { adapter ->
             // Specify the layout to use when the list of choices appears
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
@@ -143,6 +136,12 @@ class SignupActivity : AppCompatActivity(), SignUpView, AdapterView.OnItemSelect
                     startCamera()
                 }
             }
+
+            Helper.REQUEST_LOCATION -> {
+                if (!grantResults.isEmpty() || grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    presenter.getCurrentLocation()
+                }
+            }
         }
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
     }
@@ -154,19 +153,29 @@ class SignupActivity : AppCompatActivity(), SignUpView, AdapterView.OnItemSelect
             val cameraIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
             var imageFile: File? = null
             try {
-                imageFile = File.createTempFile(System.currentTimeMillis().toString(), "jpg",
+                imageFile = File.createTempFile(System.currentTimeMillis().toString(), ".jpg",
                         getExternalFilesDir(Environment.DIRECTORY_PICTURES))
-            } catch (e: IOException) {
+            } catch (e: Exception) {
                 e.printStackTrace()
             }
 
-            if (imageFile!!.exists()) {
-                mCapturedPhoto = Uri.fromFile(imageFile)
-                val photoURI = FileProvider.getUriForFile(this@SignupActivity,
-                        "food.sharefood.com.sharefood.provider",
-                        imageFile)
-                cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI)
-                startActivityForResult(cameraIntent, Helper.REQUEST_TAKE_PHOTO)
+            if (imageFile != null) {
+                if (imageFile.exists()) {
+                    mCapturedPhoto = Uri.fromFile(imageFile)
+
+                    val photoURI = FileProvider.getUriForFile(this, "food.sharefood.com.sharefood.provider", imageFile)
+
+                    val pm = getPackageManager()
+                    if (cameraIntent.resolveActivity(pm) != null) {
+                        cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI)
+                        startActivityForResult(cameraIntent, Helper.REQUEST_TAKE_PHOTO)
+                    }
+
+                    /*val photoURI = FileProvider.getUriForFile(this@SignupActivity,
+                            "food.sharefood.com.sharefood.provider",
+                            imageFile)*/
+
+                }
             }
         }
     }

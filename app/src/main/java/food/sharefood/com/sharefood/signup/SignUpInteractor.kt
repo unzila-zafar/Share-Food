@@ -13,27 +13,28 @@ class SignUpInteractor : ServiceInterface {
 
     private lateinit var model: UserModel
     private lateinit var listener: onSignUpFinishedListener
+    private lateinit var foodSharer: FoodSharer
 
     interface onSignUpFinishedListener {
-        fun onSignUpSuccess(model: UserModel)
+        fun onSignUpSuccess(foodSharer: FoodSharer)
         fun onSignUpFailure(message: String)
         fun onSignUpSuccess()
     }
 
 
-    fun requestSignUpUser(context: Context, finishedListener: onSignUpFinishedListener) {
+    fun requestSignUpUser(context: Context, finishedListener: onSignUpFinishedListener, foodSharer: FoodSharer) {
 
         listener = finishedListener
 
         val objectMapper = ObjectMapper()
         val data = objectMapper.convertValue(FoodSharer(), JSONObject::class.java)
         println("FoodSharer() = " + FoodSharer())
-        data.put("loginId", FoodSharer().loginId)
-        data.put("password", FoodSharer().password)
-        data.put("name", FoodSharer().name)
-        data.put("registeredAs", FoodSharer().registeredAs)
-        data.put("picture", FoodSharer().picture)
-        data.put("address", FoodSharer().address)
+        data.put(APIParams.LOGIN_ID, foodSharer.loginId)
+        data.put(APIParams.PASSWORD, foodSharer.password)
+        data.put(APIParams.NAME, foodSharer.name)
+        data.put(APIParams.REGISTERED_AS, foodSharer.registeredAs)
+        data.put(APIParams.PICTURE, foodSharer.picture)
+        data.put(APIParams.ADDRESS, foodSharer.address)
 
 
         println("data === $data")
@@ -48,12 +49,45 @@ class SignUpInteractor : ServiceInterface {
 
             if (tag.equals(WebUrls().SIGNUP)) {
 
-                listener.onSignUpSuccess()
+                if (rootObject != null)
+                {
+                    setUserData(rootObject)
+
+                    listener.onSignUpSuccess(foodSharer)
+                }
+
+
             }
         }
     }
 
     override fun onServiceError(errorMessage: String) {
         listener.onSignUpFailure(errorMessage)
+    }
+
+
+    private fun setUserData(rootObject: JSONObject)
+    {
+        foodSharer = FoodSharer()
+
+        if (rootObject.has(APIParams.LOGIN_ID) && !rootObject.isNull(APIParams.LOGIN_ID)) {
+            foodSharer.loginId = rootObject.getString(APIParams.LOGIN_ID)
+        }
+
+        if (rootObject.has(APIParams.NAME) && !rootObject.isNull(APIParams.NAME)) {
+            foodSharer.name = rootObject.getString(APIParams.NAME)
+        }
+
+        if (rootObject.has(APIParams.ADDRESS) && !rootObject.isNull(APIParams.ADDRESS)) {
+            foodSharer.address = rootObject.getString(APIParams.ADDRESS)
+        }
+
+        if (rootObject.has(APIParams.REGISTERED_AS) && !rootObject.isNull(APIParams.REGISTERED_AS)) {
+            foodSharer.registeredAs = rootObject.getString(APIParams.REGISTERED_AS)
+        }
+
+        if (rootObject.has(APIParams.PICTURE) && !rootObject.isNull(APIParams.PICTURE)) {
+            foodSharer.picture = rootObject.getString(APIParams.PICTURE)
+        }
     }
 }
