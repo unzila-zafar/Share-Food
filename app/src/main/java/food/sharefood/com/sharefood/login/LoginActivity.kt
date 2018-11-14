@@ -3,6 +3,7 @@ package food.sharefood.com.sharefood.login
 import android.content.Intent
 import android.databinding.DataBindingUtil
 import android.os.Bundle
+import android.support.constraint.solver.widgets.Helper
 import android.support.v7.app.AppCompatActivity
 import android.text.SpannableString
 import android.text.method.LinkMovementMethod
@@ -46,6 +47,9 @@ class LoginActivity : AppCompatActivity(), LoginView {
             var password: String = binding.password.text.toString()
 
             if(email_id != null && password != null) {
+
+                email_id = food.sharefood.com.sharefood.util.Helper.encrypt(email_id)
+                password = food.sharefood.com.sharefood.util.Helper.encrypt(password)
                 presenter.loginUser(this@LoginActivity, email_id, password)
             }
 
