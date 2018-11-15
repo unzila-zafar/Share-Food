@@ -29,7 +29,7 @@ import food.sharefood.com.sharefood.BuildConfig
 import food.sharefood.com.sharefood.util.Helper.Companion.getRealPathFromURI
 
 
-class SignupActivity : AppCompatActivity(), SignUpView, AdapterView.OnItemSelectedListener {
+class SignupActivity : AppCompatActivity(), SignUpView {
 
 
     lateinit var binding: ActivitySignupBinding
@@ -77,6 +77,17 @@ class SignupActivity : AppCompatActivity(), SignUpView, AdapterView.OnItemSelect
             // Apply the adapter to the spinner
             binding.spinner.adapter = adapter
         }
+        binding.spinner?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+
+            }
+
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                presenter.setSpinnerSelectedPosition(position)
+
+            }
+
+        }
     }
 
     override fun showProgress() {
@@ -98,16 +109,6 @@ class SignupActivity : AppCompatActivity(), SignUpView, AdapterView.OnItemSelect
 
     override fun registerFailure(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
-    }
-
-
-    override fun onNothingSelected(p0: AdapterView<*>?) {
-
-    }
-
-    override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-
-        presenter.setSpinnerSelectedPosition(p2)
     }
 
 

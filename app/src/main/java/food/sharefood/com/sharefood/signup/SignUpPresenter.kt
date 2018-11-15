@@ -168,8 +168,12 @@ class SignUpPresenter(var signUpView: SignUpView, var signUpInteractor: SignUpIn
                 .setPositiveButton("Location Settings", DialogInterface.OnClickListener { paramDialogInterface, paramInt ->
                     val myIntent = Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS)
                     mContext.startActivity(myIntent)
+                    paramDialogInterface.dismiss()
                 })
-                .setNegativeButton("Cancel", DialogInterface.OnClickListener { paramDialogInterface, paramInt -> })
+                .setNegativeButton("Cancel", DialogInterface.OnClickListener {
+                    paramDialogInterface, paramInt ->
+                    paramDialogInterface.dismiss()
+                })
         dialog.show()
     }
 
