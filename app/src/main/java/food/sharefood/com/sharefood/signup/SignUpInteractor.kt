@@ -28,7 +28,6 @@ class SignUpInteractor : ServiceInterface {
 
         val objectMapper = ObjectMapper()
         val data = objectMapper.convertValue(FoodSharer(), JSONObject::class.java)
-        println("FoodSharer() = " + FoodSharer())
         data.put(APIParams.LOGIN_ID, foodSharer.loginId)
         data.put(APIParams.PASSWORD, foodSharer.password)
         data.put(APIParams.NAME, foodSharer.name)
@@ -36,8 +35,8 @@ class SignUpInteractor : ServiceInterface {
         data.put(APIParams.PICTURE, foodSharer.picture)
         data.put(APIParams.ADDRESS, foodSharer.address)
 
+        println("data === ${Helper.decrypt(data.toString())}")
 
-        println("data === $data")
 
         VolleyClass.getInstance(context).createPostRequest(WebUrls().SIGNUP, RequestMethods().POST, data, this, WebUrls().SIGNUP)
     }
@@ -49,8 +48,7 @@ class SignUpInteractor : ServiceInterface {
 
             if (tag.equals(WebUrls().SIGNUP)) {
 
-                if (rootObject != null)
-                {
+                if (rootObject != null) {
                     setUserData(rootObject)
 
                     listener.onSignUpSuccess(foodSharer)
@@ -66,8 +64,7 @@ class SignUpInteractor : ServiceInterface {
     }
 
 
-    private fun setUserData(rootObject: JSONObject)
-    {
+    private fun setUserData(rootObject: JSONObject) {
         foodSharer = FoodSharer()
 
         if (rootObject.has(APIParams.LOGIN_ID) && !rootObject.isNull(APIParams.LOGIN_ID)) {

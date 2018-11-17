@@ -11,7 +11,6 @@ import android.os.Bundle
 import android.provider.Settings
 import android.support.v7.app.AlertDialog
 import food.sharefood.com.sharefood.databinding.ActivitySignupBinding
-import food.sharefood.com.sharefood.user.UserModel
 import food.sharefood.com.sharefood.util.FoodSharer
 import food.sharefood.com.sharefood.util.Helper
 
@@ -34,56 +33,38 @@ class SignUpPresenter(var signUpView: SignUpView, var signUpInteractor: SignUpIn
     }
 
     fun checkData(binding: ActivitySignupBinding): Boolean {
-        var checkValues: Boolean = false
 
         foodSharer = FoodSharer();
-
         foodSharer.loginId = binding.emailEdit.text.toString()
         foodSharer.name = binding.nameEdit.text.toString()
         foodSharer.password = binding.signupPassword.text.toString()
+        foodSharer.registeredAs = spinnerPosition.toString()
 
-        //var confirmPassword: String = binding.confirmPwdEdit.text.toString()
-
-
-        checkValues = !foodSharer.password.isEmpty()
-        if (checkValues) {
-            foodSharer.password = Helper.encrypt(foodSharer.password)
-
-        } else {
+        if (foodSharer.password.isEmpty()) {
             binding.passwordLayout.error = "Please enter password"
+            signUpView.hideProgress()
+            return false
         }
 
-        checkValues = !foodSharer.loginId.isEmpty()
-        if (!checkValues) {
-            foodSharer.loginId = Helper.encrypt(foodSharer.loginId)
+        if (foodSharer.loginId.isEmpty()) {
             binding.emailLayout.error = "Please enter login id"
+            signUpView.hideProgress()
+            return false
         }
 
-        checkValues = !foodSharer.name.isEmpty()
-        if (!checkValues) {
-            foodSharer.name = Helper.encrypt(foodSharer.name)
+        if (foodSharer.name.isEmpty()) {
             binding.nameLayout.error = "Please enter user name"
+            signUpView.hideProgress()
+            return false
         }
 
-        checkValues = spinnerPosition != 0
-        if (checkValues) {
-            foodSharer.registeredAs = Helper.encrypt(spinnerPosition.toString())
+        if (spinnerPosition == 0) {
+            binding.nameLayout.error = "Invalid option for Registering As"
+            signUpView.hideProgress()
+            return false
         }
 
-        checkValues = !selectedImageUrl.isEmpty()
-
-        if (checkValues) {
-            foodSharer.picture = Helper.encrypt(selectedImageUrl)
-        }
-
-        checkValues = !currentLocation.isEmpty()
-
-        if(checkValues)
-        {
-            foodSharer.address = Helper.encrypt(currentLocation)
-        }
-
-        return checkValues
+        return true
     }
 
     fun setSpinnerSelectedPosition(position: Int) {
@@ -170,8 +151,7 @@ class SignUpPresenter(var signUpView: SignUpView, var signUpInteractor: SignUpIn
                     mContext.startActivity(myIntent)
                     paramDialogInterface.dismiss()
                 })
-                .setNegativeButton("Cancel", DialogInterface.OnClickListener {
-                    paramDialogInterface, paramInt ->
+                .setNegativeButton("Cancel", DialogInterface.OnClickListener { paramDialogInterface, paramInt ->
                     paramDialogInterface.dismiss()
                 })
         dialog.show()
