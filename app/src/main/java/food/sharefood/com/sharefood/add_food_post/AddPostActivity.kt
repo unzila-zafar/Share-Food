@@ -5,16 +5,20 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import food.sharefood.com.sharefood.R
 import food.sharefood.com.sharefood.databinding.ActivityAddPostBinding
+import food.sharefood.com.sharefood.dialog.DialogUtils
+import food.sharefood.com.sharefood.util.FoodSharePost
 
-class AddPostActivity : AppCompatActivity()
-{
-    lateinit var binding: ActivityAddPostBinding
+class AddPostActivity : AppCompatActivity(), AddPostView {
 
-    override fun onCreate(savedInstanceState: Bundle?)
-    {
+
+    private lateinit var binding: ActivityAddPostBinding
+    private lateinit var presenter: AddPostPresenter
+
+
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = DataBindingUtil.setContentView(this , R.layout.activity_add_post)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_add_post)
 
 
         init()
@@ -22,8 +26,7 @@ class AddPostActivity : AppCompatActivity()
     }
 
 
-    private fun init()
-    {
+    private fun init() {
 
         setSupportActionBar(binding.toolbar.toolbar)
 
@@ -32,9 +35,27 @@ class AddPostActivity : AppCompatActivity()
 
         binding.toolbar.toolbar.setNavigationOnClickListener { onBackPressed() }
 
+        presenter = AddPostPresenter(this, AddPostInteractor())
+
         binding.buttonAdd.setOnClickListener {
 
+            presenter.addPost(this, binding)
             finish()
         }
+    }
+
+
+    override fun showProgress() {
+        DialogUtils.ShowProgressDialog(this)
+    }
+
+    override fun hideProgress() {
+        DialogUtils.HideProgressDialog()
+    }
+
+    override fun onSuccess(foodSharePost: FoodSharePost) {
+    }
+
+    override fun onFailure(message: String) {
     }
 }

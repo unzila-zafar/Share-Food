@@ -3,6 +3,7 @@ package food.sharefood.com.sharefood.util
 import com.android.volley.Request
 import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
+import food.sharefood.com.sharefood.R.string.address
 import java.util.*
 
 
@@ -61,7 +62,7 @@ data class FoodSharer(
         var tokenStartTime: Long? = null,
 
         @JsonProperty(value = "tokenExpiryTime")
-        var tokenExpiryTime : Long? = null
+        var tokenExpiryTime: Long? = null
 
 ) {
     override fun toString(): String {
@@ -69,17 +70,61 @@ data class FoodSharer(
     }
 }
 
-class APIParams
-{
+@JsonInclude(JsonInclude.Include.NON_EMPTY)
+data class FoodSharePost(
+        @JsonProperty(value = "name")
+        var name: String? = "",
+
+        @JsonProperty(value = "email")
+        var email: String? = "",
+
+        @JsonProperty(value = "phone")
+        var phone_number: String,
+
+        @JsonProperty(value = "sufficientFor")
+        var sufficientFor: String,
+
+        @JsonProperty(value = "pickUntilTime")
+        var pickUntilTime: String? = "",
+
+        @JsonProperty(value = "foodPickupLocation")
+        var foodPickupLocation: String? = "",
+
+        @JsonProperty(value = "foodItems")
+        var foodItems: Array<String>,
+
+        @JsonProperty(value = "token")
+        var token: String? = "",
+
+        @JsonProperty(value = "tokenStartTime")
+        var tokenStartTime: Long? = null,
+
+        @JsonProperty(value = "tokenExpiryTime")
+        var tokenExpiryTime: Long? = null
+){
+    override fun toString(): String {
+        return "FoodSharerPost(name='$name', email='$email', foodPickupLocation='$foodPickupLocation', phone_number='$phone_number', sufficientFor='$sufficientFor', pickUntilTime='$pickUntilTime', foodItems='$foodItems'"
+    }
+}
+
+class APIParams {
     companion object {
         var LOGIN_ID: String = "loginId"
         var PASSWORD: String = "password"
         var NAME: String = "name"
-        var REGISTERED_AS : String = "registeredAs"
+        var REGISTERED_AS: String = "registeredAs"
         var PICTURE: String = "picture"
-        var ADDRESS: String ="address"
+        var ADDRESS: String = "address"
         var TOKEN = "token"
         var TOKEN_START = "tokenStartTime"
         var TOKEN_END = "tokenExpiryTime"
+
+        /*add post*/
+        var EMAIL = "email"
+        var PICKUP_LOCATION = "foodPickupLocation"
+        var PICKUP_TIME = "pickUntilTime"
+        var FOOD_ITEMS = "foodItems"
+        var PHONE = "phone"
+        var SUFFICIENT_FOR = "sufficientFor"
     }
 }

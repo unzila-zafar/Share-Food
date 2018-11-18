@@ -49,6 +49,7 @@
     <string name="pick">Pick until</string>
     <string name="items">Food items</string>
     <string name="add">Add</string>
+    <string name="phone_number">Phone  Number</string>
 
     <!--settings-->
     <string name="settings">Settings</string>
