@@ -29,7 +29,7 @@ class SignUpInteractor : ServiceInterface {
         val objectMapper = ObjectMapper()
         val data = objectMapper.convertValue(FoodSharer(), JSONObject::class.java)
         data.put(APIParams.LOGIN_ID, foodSharer.loginId)
-        data.put(APIParams.PASSWORD, Helper.encrypt(foodSharer.password))
+        data.put(APIParams.PASSWORD, foodSharer.password)
         data.put(APIParams.NAME, foodSharer.name)
         data.put(APIParams.REGISTERED_AS, foodSharer.registeredAs)
         data.put(APIParams.PICTURE, foodSharer.picture)

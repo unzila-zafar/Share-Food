@@ -28,7 +28,7 @@ class LoginInteractor : ServiceInterface {
         val objectMapper = ObjectMapper()
         val data = objectMapper.convertValue(LoginData(), JSONObject::class.java)
         data.put(APIParams.LOGIN_ID, loginId)
-        data.put(APIParams.PASSWORD, Helper.encrypt(password))
+        data.put(APIParams.PASSWORD, password)
 
         println("data === $data")
 
