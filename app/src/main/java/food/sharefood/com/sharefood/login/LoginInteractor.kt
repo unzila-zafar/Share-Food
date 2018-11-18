@@ -7,10 +7,7 @@ import com.fasterxml.jackson.module.kotlin.convertValue
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import food.sharefood.com.sharefood.network.ServiceInterface
 import food.sharefood.com.sharefood.network.VolleyClass
-import food.sharefood.com.sharefood.util.APIParams
-import food.sharefood.com.sharefood.util.LoginData
-import food.sharefood.com.sharefood.util.RequestMethods
-import food.sharefood.com.sharefood.util.WebUrls
+import food.sharefood.com.sharefood.util.*
 import org.json.JSONObject
 
 
@@ -31,7 +28,7 @@ class LoginInteractor : ServiceInterface {
         val objectMapper = ObjectMapper()
         val data = objectMapper.convertValue(LoginData(), JSONObject::class.java)
         data.put(APIParams.LOGIN_ID, loginId)
-        data.put(APIParams.PASSWORD, password)
+        data.put(APIParams.PASSWORD, Helper.encrypt(password))
 
         println("data === $data")
 

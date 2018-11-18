@@ -3,7 +3,7 @@ package food.sharefood.com.sharefood.util
 import com.android.volley.Request
 import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
-
+import java.util.*
 
 
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
@@ -52,13 +52,17 @@ data class FoodSharer(
         var address: String? = "",
 
         @JsonProperty(value = "picture")
-        var picture: String? = "" //this should be base64 data
+        var picture: String? = "",
 
-       /* @JsonProperty(value = "facebookUrl")
-        var facebookUrl: String? = "",
+        @JsonProperty(value = "token")
+        var token: String? = "",
 
-        @JsonProperty(value = "facebookId")
-        var facebookId: String? = ""*/
+        @JsonProperty(value = "tokenStartTime")
+        var tokenStartTime: Long? = null,
+
+        @JsonProperty(value = "tokenExpiryTime")
+        var tokenExpiryTime : Long? = null
+
 ) {
     override fun toString(): String {
         return "FoodSharer(loginId='$loginId', password='$password', name='$name', registeredAs='$registeredAs', address='$address', picture='$picture'"
@@ -74,5 +78,8 @@ class APIParams
         var REGISTERED_AS : String = "registeredAs"
         var PICTURE: String = "picture"
         var ADDRESS: String ="address"
+        var TOKEN = "token"
+        var TOKEN_START = "tokenStartTime"
+        var TOKEN_END = "tokenExpiryTime"
     }
 }

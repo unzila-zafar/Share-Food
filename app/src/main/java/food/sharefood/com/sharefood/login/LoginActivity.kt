@@ -47,9 +47,6 @@ class LoginActivity : AppCompatActivity(), LoginView {
             var password: String = binding.password.text.toString()
 
             if(email_id != null && password != null) {
-
-                email_id = food.sharefood.com.sharefood.util.Helper.encrypt(email_id)
-                password = food.sharefood.com.sharefood.util.Helper.encrypt(password)
                 presenter.loginUser(this@LoginActivity, email_id, password)
             }
 
@@ -103,21 +100,3 @@ class LoginActivity : AppCompatActivity(), LoginView {
 
     }
 }
-
-/* val request = Request.Builder()
-         .url(url)
-         .build()
-
-
- client.newCall(request).enqueue(object : Callback {
-     override fun onFailure(call: Call, e: IOException) {
-         println("eeeeeeeee" + e.message)
-         e.printStackTrace()
-     }
-     override fun onResponse(call: Call, response: Response) {
-         println("successsss ===== , $response.body()?.string()")
-     }
-
- })
- val intent = Intent(this, MainActivity::class.java)
- startActivity(intent)*/

@@ -29,13 +29,17 @@ class SignUpInteractor : ServiceInterface {
         val objectMapper = ObjectMapper()
         val data = objectMapper.convertValue(FoodSharer(), JSONObject::class.java)
         data.put(APIParams.LOGIN_ID, foodSharer.loginId)
-        data.put(APIParams.PASSWORD, foodSharer.password)
+        data.put(APIParams.PASSWORD, Helper.encrypt(foodSharer.password))
         data.put(APIParams.NAME, foodSharer.name)
         data.put(APIParams.REGISTERED_AS, foodSharer.registeredAs)
         data.put(APIParams.PICTURE, foodSharer.picture)
         data.put(APIParams.ADDRESS, foodSharer.address)
+        data.put(APIParams.TOKEN, foodSharer.token)
+        data.put(APIParams.TOKEN_START, foodSharer.tokenStartTime.toString())
+        data.put(APIParams.TOKEN_END, foodSharer.tokenExpiryTime.toString())
 
-        println("data === ${Helper.decrypt(data.toString())}")
+
+        println("data === $data")
 
 
         VolleyClass.getInstance(context).createPostRequest(WebUrls().SIGNUP, RequestMethods().POST, data, this, WebUrls().SIGNUP)

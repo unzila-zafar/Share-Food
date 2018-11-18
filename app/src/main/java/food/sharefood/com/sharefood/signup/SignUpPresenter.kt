@@ -39,6 +39,8 @@ class SignUpPresenter(var signUpView: SignUpView, var signUpInteractor: SignUpIn
         foodSharer.name = binding.nameEdit.text.toString()
         foodSharer.password = binding.signupPassword.text.toString()
         foodSharer.registeredAs = spinnerPosition.toString()
+        foodSharer.picture = selectedImageUrl
+        foodSharer.address = currentLocation
 
         if (foodSharer.password.isEmpty()) {
             binding.passwordLayout.error = "Please enter password"
@@ -82,6 +84,7 @@ class SignUpPresenter(var signUpView: SignUpView, var signUpInteractor: SignUpIn
     }
 
     override fun onSignUpSuccess() {
+        signUpView.hideProgress()
         signUpView.registerUser()
     }
 
@@ -95,11 +98,7 @@ class SignUpPresenter(var signUpView: SignUpView, var signUpInteractor: SignUpIn
                 "Cancel")
         // Set the alert dialog title
         builder.setTitle("Choose image")
-        builder.setItems(items, { _, which ->
-
-            signUpView.selectImage(which)
-
-        })
+        builder.setItems(items, { _, which -> signUpView.selectImage(which) })
 
         // Create a new AlertDialog using builder object
         val dialog = builder.create()
@@ -157,12 +156,4 @@ class SignUpPresenter(var signUpView: SignUpView, var signUpInteractor: SignUpIn
         dialog.show()
     }
 
-
-    /*  checkValues = !confirmPassword.isEmpty() && FoodSharer().password.equals(confirmPassword)
-
-      if (!checkValues) {
-          binding.confirmLayout.error = "Password doesn't match"
-      } else {
-          FoodSharer().password = getMd5Base64(FoodSharer().password).toString()
-      }*/
 }
