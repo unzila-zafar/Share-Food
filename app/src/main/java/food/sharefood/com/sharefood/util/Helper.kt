@@ -16,6 +16,9 @@ import java.nio.ByteBuffer
 import java.security.SecureRandom
 import java.util.*
 import javax.crypto.spec.GCMParameterSpec
+import android.util.Base64.NO_WRAP
+import android.graphics.Bitmap
+import java.io.ByteArrayOutputStream
 
 
 class Helper {
@@ -120,6 +123,7 @@ class Helper {
                 cursor.getString(column_index)
             } else null
         }
+        
 
     }
 

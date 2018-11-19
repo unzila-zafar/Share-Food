@@ -1,6 +1,10 @@
 package food.sharefood.com.sharefood.add_food_post
 
 import android.content.Context
+import android.content.DialogInterface
+import android.content.Intent
+import android.provider.Settings
+import android.support.v7.app.AlertDialog
 import food.sharefood.com.sharefood.databinding.ActivityAddPostBinding
 import food.sharefood.com.sharefood.databinding.ActivitySignupBinding
 import food.sharefood.com.sharefood.util.FoodSharePost
@@ -56,6 +60,29 @@ class AddPostPresenter(var addPostView: AddPostView , var addPostInteractor: Add
         return true
     }*/
 
+    fun fillPhotoList(context: Context)
+    {
+
+    }
+
+
+    fun alertDialog(context: Context) {
+        val builder = AlertDialog.Builder(context)
+
+        val items = arrayOf<CharSequence>(
+                "Camera",
+                "Gallery",
+                "Cancel")
+        // Set the alert dialog title
+        builder.setTitle("Choose image")
+        builder.setItems(items, { _, which -> addPostView.selectImage(which) })
+
+        // Create a new AlertDialog using builder object
+        val dialog = builder.create()
+
+        // Finally, display the alert dialog
+        dialog.show()
+    }
 
 
     override fun onPostSuccess() {

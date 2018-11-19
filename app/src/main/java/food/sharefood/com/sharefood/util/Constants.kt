@@ -107,6 +107,22 @@ data class FoodSharePost(
     }
 }
 
+class IntArrayWrapper(size: Int,
+                      val setterObs : ((index: Int, value: Int) -> Unit)? = null){
+    val field = IntArray(size)
+    val size
+        get() = field.size
+    operator fun iterator() = field.iterator()
+
+    operator fun get(i: Int) : Int {
+        return field[i]
+    }
+    operator fun set(i: Int, value: Int){
+        field[i] = value
+        setterObs?.invoke(i, value)
+    }
+}
+
 class APIParams {
     companion object {
         var LOGIN_ID: String = "loginId"

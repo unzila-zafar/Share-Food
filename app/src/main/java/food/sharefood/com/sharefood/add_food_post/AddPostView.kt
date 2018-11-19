@@ -8,4 +8,6 @@ interface AddPostView {
     fun hideProgress()
     fun onSuccess(foodSharePost: FoodSharePost)
     fun onFailure(message: String)
+    fun selectImage(position: Int)
+
 }

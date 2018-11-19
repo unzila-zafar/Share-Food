@@ -28,12 +28,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
-                    <ImageView
-                        android:id="@+id/foodPic"
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/add_photo_list"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        app:srcCompat="@drawable/ic_launcher_background"
-                        tools:ignore="VectorDrawableCompat" />
+                        />
                 </android.support.constraint.ConstraintLayout>
 
 
