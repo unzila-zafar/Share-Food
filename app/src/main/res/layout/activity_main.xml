@@ -38,7 +38,7 @@
             android:id="@+id/floatingActionButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/fifteen_margin"
+            android:layout_margin="15dp"
             android:clickable="true"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintRight_toRightOf="parent"
@@ -48,8 +48,7 @@
             android:id="@+id/tabs_main"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorPrimary"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:background="@color/colorPrimary" app:layout_constraintBottom_toBottomOf="parent"
             app:tabMode="fixed" />
 
     </android.support.constraint.ConstraintLayout>

@@ -1,6 +1,7 @@
 package food.sharefood.com.sharefood.add_food_post
 
 import android.content.Context
+import android.graphics.Bitmap
 import android.support.constraint.solver.widgets.Helper
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -14,7 +15,7 @@ import food.sharefood.com.sharefood.databinding.ItemPhotoBinding
 import kotlinx.android.synthetic.main.item_food_list.view.*
 
 
-class AddPhotoAdapter(var context: Context, var presenter: AddPostPresenter, var photoList: List<String>) : RecyclerView.Adapter<AddPhotoAdapter.AddPhotoHolder>() {
+class AddPhotoAdapter(var context: Context, var presenter: AddPostPresenter, var photoList: ArrayList<Bitmap>) : RecyclerView.Adapter<AddPhotoAdapter.AddPhotoHolder>() {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AddPhotoHolder {
@@ -31,7 +32,7 @@ class AddPhotoAdapter(var context: Context, var presenter: AddPostPresenter, var
 
     override fun onBindViewHolder(holder: AddPhotoHolder, position: Int) {
 
-        if (position == 1) {
+        if (position == 0) {
             Glide.with(context).load(R.drawable.ic_add).into(holder.binding.imageView)
         } else {
             Glide.with(context).load(photoList.get(position)).into(holder.binding.imageView)
@@ -39,7 +40,7 @@ class AddPhotoAdapter(var context: Context, var presenter: AddPostPresenter, var
         }
 
         holder.binding.imageView.setOnClickListener {
-            if (position == 1) {
+            if (position == 0) {
                 presenter.alertDialog(context)
             }
         }

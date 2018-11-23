@@ -4,11 +4,13 @@ import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Build
 import android.provider.MediaStore
 import android.support.v4.app.ActivityCompat
 import android.support.v4.content.ContextCompat
+import java.io.File
 import javax.crypto.Cipher
 import javax.crypto.spec.IvParameterSpec
 import javax.crypto.spec.SecretKeySpec
@@ -16,9 +18,7 @@ import java.nio.ByteBuffer
 import java.security.SecureRandom
 import java.util.*
 import javax.crypto.spec.GCMParameterSpec
-import android.util.Base64.NO_WRAP
-import android.graphics.Bitmap
-import java.io.ByteArrayOutputStream
+
 
 
 class Helper {
@@ -55,6 +55,26 @@ class Helper {
             } else {
                 return true
             }
+        }
+
+
+        fun setDataInList(picPath : String) : ArrayList<String>
+        {
+            var encryptedImagesList : ArrayList<String> = ArrayList()
+
+            var encodedString = Helper.encoder(picPath)
+
+            encryptedImagesList.add(encodedString)
+
+            return encryptedImagesList
+        }
+
+
+        @SuppressLint("NewApi")
+        fun encoder(filePath: String): String{
+            val bytes = File(filePath).readBytes()
+            val base64 = Base64.getEncoder().encodeToString(bytes)
+            return base64
         }
 
 
@@ -123,7 +143,7 @@ class Helper {
                 cursor.getString(column_index)
             } else null
         }
-        
+
 
     }
 

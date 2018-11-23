@@ -1,5 +1,7 @@
 package food.sharefood.com.sharefood.main
 
+
+import android.content.Intent
 import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.design.widget.TabLayout
@@ -7,8 +9,10 @@ import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentActivity
 import android.support.v7.app.AppCompatDelegate
 import food.sharefood.com.sharefood.R
+import food.sharefood.com.sharefood.add_food_post.AddPostActivity
 import food.sharefood.com.sharefood.databinding.ActivityMainBinding
 import food.sharefood.com.sharefood.settings.FragmentSettings
+import food.sharefood.com.sharefood.signup.SignupActivity
 
 class MainActivity : FragmentActivity()
 {
@@ -60,6 +64,12 @@ class MainActivity : FragmentActivity()
             }
 
         })
+
+        binding.floatingActionButton.setOnClickListener {
+
+            this@MainActivity.startActivity(Intent(this@MainActivity, AddPostActivity::class.java))
+
+        }
     }
 
     fun startFragment(fragment: Fragment, tag: String) {

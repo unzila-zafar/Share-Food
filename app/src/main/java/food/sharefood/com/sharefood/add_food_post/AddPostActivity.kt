@@ -12,24 +12,30 @@ import android.os.Environment
 import android.provider.MediaStore
 import android.support.v4.content.FileProvider
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.LinearLayoutManager
+import android.widget.LinearLayout
+import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.cloudinary.android.MediaManager
 import food.sharefood.com.sharefood.R
 import food.sharefood.com.sharefood.databinding.ActivityAddPostBinding
 import food.sharefood.com.sharefood.dialog.DialogUtils
+import food.sharefood.com.sharefood.network.VolleyClass.Companion.context
 import food.sharefood.com.sharefood.util.FoodSharePost
 import food.sharefood.com.sharefood.util.Helper
 import food.sharefood.com.sharefood.util.IntArrayWrapper
 import java.io.File
+import kotlin.properties.Delegates
 
 class AddPostActivity : AppCompatActivity(), AddPostView {
-
 
 
     private lateinit var binding: ActivityAddPostBinding
     private lateinit var presenter: AddPostPresenter
     private lateinit var mCapturedPhoto: Uri
-
+    var list: ArrayList<Bitmap> = ArrayList()
+    var encodedList: ArrayList<String> = ArrayList()
+    private var capturePhotoPath : String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,6 +58,12 @@ class AddPostActivity : AppCompatActivity(), AddPostView {
         binding.toolbar.toolbar.setNavigationOnClickListener { onBackPressed() }
 
         presenter = AddPostPresenter(this, AddPostInteractor())
+
+        if (list != null) {
+            list.add(BitmapFactory.decodeResource(getResources(), R.drawable.ic_add))
+
+            presenter.fillPhotoList(this, list, binding)
+        }
 
         binding.buttonAdd.setOnClickListener {
 
@@ -123,6 +135,7 @@ class AddPostActivity : AppCompatActivity(), AddPostView {
 
                     val photoURI = FileProvider.getUriForFile(this, "food.sharefood.com.sharefood.provider", imageFile)
 
+                    capturePhotoPath = Helper.getRealPathFromURI(photoURI, this)
                     val pm = getPackageManager()
                     if (cameraIntent.resolveActivity(pm) != null) {
                         cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI)
@@ -157,13 +170,25 @@ class AddPostActivity : AppCompatActivity(), AddPostView {
                 if (mCapturedPhoto != null) {
                     var updatedPic: Bitmap = BitmapFactory.decodeFile(mCapturedPhoto.path)
 
-                    var list : ArrayList<String> = ArrayList()
+                    if (list != null && list.size < 10) {
+                        list.add(updatedPic)
 
-                    list.add()
+                        IntArrayWrapper(list.size) { index, value ->
+                            println("$index changed to $value")
+                        }
 
-                    IntArrayWrapper()
+                        presenter.fillPhotoList(this, list, binding)
 
-                    presenter.fillPhotoList(this)
+                        // var max: Int by Delegates.observable(0) {property, oldValue, newValue ->
+                        encodedList = Helper.setDataInList(capturePhotoPath!!)
+
+                        //}
+
+
+                    } else {
+                        Toast.makeText(this, "Images limit exceed!", Toast.LENGTH_SHORT).show()
+                    }
+
 
                 }
 
@@ -173,11 +198,22 @@ class AddPostActivity : AppCompatActivity(), AddPostView {
                 val selectedImageUri = data?.getData()
                 val picturePath = Helper.getRealPathFromURI(selectedImageUri!!, this)
                 mCapturedPhoto = selectedImageUri
+                var updatedPic: Bitmap = BitmapFactory.decodeFile(picturePath)
 
-                Glide.with(this).load(picturePath).into(binding.imageView)
+                if (list != null && list.size < 10) {
+                    list.add(updatedPic)
 
-                var url: String = MediaManager.get().url().secure(true).generate(mCapturedPhoto.path)
-                presenter.saveSelectedImagePath(url)
+                  /*  IntArrayWrapper(list.size) { index, value ->
+                        println("$index changed to $value")
+                    }*/
+
+                    presenter.fillPhotoList(this, list, binding)
+
+                    encodedList = Helper.setDataInList(picturePath!!)
+                } else {
+                    Toast.makeText(this, "Images limit exceed!", Toast.LENGTH_SHORT).show()
+
+                }
             }
         }
     }

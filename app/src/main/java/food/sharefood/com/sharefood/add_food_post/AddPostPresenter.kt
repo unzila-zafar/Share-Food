@@ -3,12 +3,18 @@ package food.sharefood.com.sharefood.add_food_post
 import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
+import android.graphics.Bitmap
 import android.provider.Settings
 import android.support.v7.app.AlertDialog
+import android.support.v7.widget.LinearLayoutManager
+import android.widget.LinearLayout
 import food.sharefood.com.sharefood.databinding.ActivityAddPostBinding
 import food.sharefood.com.sharefood.databinding.ActivitySignupBinding
+import food.sharefood.com.sharefood.network.VolleyClass
 import food.sharefood.com.sharefood.util.FoodSharePost
 import food.sharefood.com.sharefood.util.FoodSharer
+import food.sharefood.com.sharefood.util.Helper
+import food.sharefood.com.sharefood.util.IntArrayWrapper
 
 class AddPostPresenter(var addPostView: AddPostView , var addPostInteractor: AddPostInteractor) : AddPostInteractor.AddPostFinishedListener
 {
@@ -60,8 +66,14 @@ class AddPostPresenter(var addPostView: AddPostView , var addPostInteractor: Add
         return true
     }*/
 
-    fun fillPhotoList(context: Context)
+    fun fillPhotoList(context: Context, imagesList: ArrayList<Bitmap>, binding: ActivityAddPostBinding)
     {
+
+        var adapter = AddPhotoAdapter(context, this, imagesList)
+
+        binding.addPhotoList.layoutManager = LinearLayoutManager(context, LinearLayout.HORIZONTAL, false)
+
+        binding.addPhotoList.adapter = adapter
 
     }
 

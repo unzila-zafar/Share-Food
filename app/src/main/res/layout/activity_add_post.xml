@@ -13,27 +13,28 @@
             android:id="@+id/toolbar"
             layout="@layout/app_toolbar" />
 
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/food_image"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/add_photo_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </android.support.constraint.ConstraintLayout>
+
+
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/ten_margin"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar">
+            app:layout_constraintTop_toBottomOf="@+id/food_image">
 
             <android.support.constraint.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-
-                <android.support.constraint.ConstraintLayout
-                    android:id="@+id/food_image"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <android.support.v7.widget.RecyclerView
-                        android:id="@+id/add_photo_list"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        />
-                </android.support.constraint.ConstraintLayout>
 
 
                 <android.support.design.widget.TextInputLayout

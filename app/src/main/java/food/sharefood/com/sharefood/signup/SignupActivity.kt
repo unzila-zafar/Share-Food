@@ -26,7 +26,9 @@ import android.graphics.Bitmap
 import com.bumptech.glide.Glide
 import com.cloudinary.android.MediaManager
 import food.sharefood.com.sharefood.BuildConfig
+import food.sharefood.com.sharefood.util.AppSharedPref
 import food.sharefood.com.sharefood.util.Helper.Companion.getRealPathFromURI
+import food.sharefood.com.sharefood.util.SharedPrefKeys
 
 
 class SignupActivity : AppCompatActivity(), SignUpView {
@@ -77,7 +79,7 @@ class SignupActivity : AppCompatActivity(), SignUpView {
             // Apply the adapter to the spinner
             binding.spinner.adapter = adapter
         }
-        binding.spinner?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+        binding.spinner?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onNothingSelected(parent: AdapterView<*>?) {
 
             }
@@ -101,6 +103,9 @@ class SignupActivity : AppCompatActivity(), SignUpView {
     }
 
     override fun registerUser() {
+
+        AppSharedPref.loadPrefs(this)
+        AppSharedPref.saveData(SharedPrefKeys.LOGGED_IN, AppSharedPref.BOOLEAN, true, this)
 
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
@@ -164,11 +169,11 @@ class SignupActivity : AppCompatActivity(), SignUpView {
                 if (imageFile.exists()) {
                     mCapturedPhoto = Uri.fromFile(imageFile)
 
-                    val photoURI = FileProvider.getUriForFile(this, "food.sharefood.com.sharefood.provider", imageFile)
+                    var photoUri = FileProvider.getUriForFile(this, "food.sharefood.com.sharefood.provider", imageFile)
 
                     val pm = getPackageManager()
                     if (cameraIntent.resolveActivity(pm) != null) {
-                        cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI)
+                        cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoUri)
                         startActivityForResult(cameraIntent, Helper.REQUEST_TAKE_PHOTO)
                     }
 

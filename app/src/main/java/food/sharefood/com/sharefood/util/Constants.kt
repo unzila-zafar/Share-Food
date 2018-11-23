@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
 import food.sharefood.com.sharefood.R.string.address
 import java.util.*
+import kotlin.collections.ArrayList
 
 
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
@@ -123,6 +124,7 @@ class IntArrayWrapper(size: Int,
     }
 }
 
+
 class APIParams {
     companion object {
         var LOGIN_ID: String = "loginId"
@@ -142,5 +144,12 @@ class APIParams {
         var FOOD_ITEMS = "foodItems"
         var PHONE = "phone"
         var SUFFICIENT_FOR = "sufficientFor"
+    }
+}
+
+class SharedPrefKeys
+{
+    companion object {
+        var LOGGED_IN = "login"
     }
 }
