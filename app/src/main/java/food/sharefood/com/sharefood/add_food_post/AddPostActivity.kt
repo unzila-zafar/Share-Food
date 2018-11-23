@@ -135,7 +135,7 @@ class AddPostActivity : AppCompatActivity(), AddPostView {
 
                     val photoURI = FileProvider.getUriForFile(this, "food.sharefood.com.sharefood.provider", imageFile)
 
-                    capturePhotoPath = Helper.getRealPathFromURI(photoURI, this)
+                    //capturePhotoPath = Helper.getRealPathFromURI(photoURI, this)
                     val pm = getPackageManager()
                     if (cameraIntent.resolveActivity(pm) != null) {
                         cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI)
@@ -180,7 +180,7 @@ class AddPostActivity : AppCompatActivity(), AddPostView {
                         presenter.fillPhotoList(this, list, binding)
 
                         // var max: Int by Delegates.observable(0) {property, oldValue, newValue ->
-                        encodedList = Helper.setDataInList(capturePhotoPath!!)
+                        encodedList = Helper.setDataInList(mCapturedPhoto.path)
 
                         //}
 

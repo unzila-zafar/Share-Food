@@ -37,18 +37,17 @@
                 android:id="@+id/text_description"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center"
+                android:gravity="left|center"
                 android:text="description"
                 android:textColor="@color/black"
                 android:textSize="@dimen/fourteen_size"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintLeft_toLeftOf="parent" />
 
             <TextView
                 android:id="@+id/text_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center"
+                android:gravity="right|center"
                 android:text="4:54 Pm"
                 android:textColor="@color/black"
                 android:textSize="@dimen/fourteen_size"
@@ -66,7 +65,7 @@
                 android:id="@+id/textHeadingItems"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center"
+                android:gravity="left|center"
                 android:text="@string/food_items"
                 android:textColor="@color/black"
                 android:textSize="@dimen/sixteen_size"
@@ -76,7 +75,7 @@
                 android:id="@+id/text_item_values"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center"
+                android:gravity="right|center"
                 android:text="TextView"
                 android:textColor="@color/black"
                 android:textSize="@dimen/fourteen_size"
@@ -95,21 +94,22 @@
                 android:id="@+id/text_heading_count"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center"
+                android:gravity="left|center"
                 android:text="@string/sufficient_for"
                 android:textColor="@color/black"
-                android:textSize="@dimen/sixteen_size" />
+                android:textSize="@dimen/sixteen_size"
+                app:layout_constraintLeft_toLeftOf="parent"/>
 
             <TextView
                 android:id="@+id/text_count_value"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/five_margin"
-                android:gravity="center"
+                android:gravity="right|center"
                 android:text="TextView"
                 android:textColor="@color/black"
                 android:textSize="@dimen/fourteen_size"
-                app:layout_constraintLeft_toRightOf="@+id/text_heading_count" />
+                app:layout_constraintRight_toRightOf="parent" />
         </android.support.constraint.ConstraintLayout>
 
         <android.support.constraint.ConstraintLayout
@@ -128,7 +128,9 @@
                 android:layout_height="wrap_content"
                 android:text="Location"
                 android:textColor="@color/black"
-                android:textSize="@dimen/sixteen_size" />
+                android:textSize="@dimen/sixteen_size"
+                android:gravity="left|center"
+                app:layout_constraintLeft_toLeftOf="parent"/>
 
             <TextView
                 android:id="@+id/textView10"
@@ -137,6 +139,7 @@
                 app:layout_constraintRight_toRightOf="parent"
                 android:text="@string/view_on_map"
                 android:textColor="@color/black"
+                android:gravity="right|center"
                 android:textSize="@dimen/sixteen_size"/>
         </android.support.constraint.ConstraintLayout>
 

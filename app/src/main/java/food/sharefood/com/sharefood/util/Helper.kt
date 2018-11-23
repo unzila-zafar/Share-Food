@@ -18,7 +18,10 @@ import java.nio.ByteBuffer
 import java.security.SecureRandom
 import java.util.*
 import javax.crypto.spec.GCMParameterSpec
-
+import android.graphics.BitmapFactory
+import java.io.ByteArrayOutputStream
+import android.util.Base64
+import android.util.Base64.encodeToString
 
 
 class Helper {
@@ -28,7 +31,6 @@ class Helper {
         val REQUEST_TAKE_PHOTO = 0
         val REQUEST_SELECT_IMAGE_IN_ALBUM = 1
         val REQUEST_LOCATION = 2
-
 
 
         fun checkPermission(context: Context, permissions: Array<String>, requestCode: Int): Boolean {
@@ -58,9 +60,8 @@ class Helper {
         }
 
 
-        fun setDataInList(picPath : String) : ArrayList<String>
-        {
-            var encryptedImagesList : ArrayList<String> = ArrayList()
+        fun setDataInList(picPath: String): ArrayList<String> {
+            var encryptedImagesList: ArrayList<String> = ArrayList()
 
             var encodedString = Helper.encoder(picPath)
 
@@ -71,9 +72,21 @@ class Helper {
 
 
         @SuppressLint("NewApi")
-        fun encoder(filePath: String): String{
+        fun encoder(filePath: String): String {
+
+            val baos = ByteArrayOutputStream()
+            val bitmap = BitmapFactory.decodeFile(filePath)
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos)
+            val imageBytes = baos.toByteArray()
+            val base64 = Base64.encodeToString(imageBytes, Base64.DEFAULT)
+
+       /*     val baos = ByteArrayOutputStream()
+            val bitmap = BitmapFactory.decodeFile(filePath)
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos)
+            val imageBytes = baos.toByteArray()
+
             val bytes = File(filePath).readBytes()
-            val base64 = Base64.getEncoder().encodeToString(bytes)
+            val base64 = Base64.encodeToString(imageBytes)*/
             return base64
         }
 
@@ -82,7 +95,7 @@ class Helper {
             val secretKeySpec = SecretKeySpec(password.toByteArray(), "AES")
             val iv = ByteArray(16)
             val charArray = password.toCharArray()
-            for (i in 0 until charArray.size){
+            for (i in 0 until charArray.size) {
                 iv[i] = charArray[i].toByte()
             }
             val ivParameterSpec = IvParameterSpec(iv)
@@ -118,7 +131,7 @@ class Helper {
             return cipherMessage.toString()
         }
 
-        fun decrypt(data:String) : String{
+        fun decrypt(data: String): String {
             val byteBuffer = ByteBuffer.wrap(data.toByteArray())
             val ivLength = byteBuffer.int
             if (ivLength < 12 || ivLength >= 16) { // check input parameter
@@ -130,7 +143,6 @@ class Helper {
 
             return byteBuffer.get(cipherText).toString()
         }
-
 
 
         fun getRealPathFromURI(contentURI: Uri, context: Activity): String? {

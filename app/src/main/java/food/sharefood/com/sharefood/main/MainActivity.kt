@@ -4,6 +4,7 @@ package food.sharefood.com.sharefood.main
 import android.content.Intent
 import android.databinding.DataBindingUtil
 import android.os.Bundle
+import android.os.Handler
 import android.support.design.widget.TabLayout
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentActivity
@@ -73,10 +74,14 @@ class MainActivity : FragmentActivity()
     }
 
     fun startFragment(fragment: Fragment, tag: String) {
-        supportFragmentManager
-                .beginTransaction()
-                .add(R.id.fragment_frame, fragment, tag)
-                .commit()
+
+        Handler().postDelayed(Runnable {
+            supportFragmentManager
+                    .beginTransaction()
+                    .add(R.id.fragment_frame, fragment, tag)
+                    .commit()
+        }, 5000)
+
     }
 
 
