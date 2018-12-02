@@ -31,10 +31,12 @@ class AddPostInteractor : ServiceInterface
         data.put(APIParams.PICKUP_TIME , foodSharePost.pickUntilTime)
         data.put(APIParams.FOOD_ITEMS , foodSharePost.foodItems)
         data.put(APIParams.SUFFICIENT_FOR , foodSharePost.sufficientFor)
+        data.put(APIParams.PICTURE , foodSharePost.postPictures)
+        data.put(APIParams.TOKEN , AppSharedPref.getData(SharedPrefKeys.TOKEN, AppSharedPref.STRING, context))
 
         println("data === $data")
 
-        VolleyClass.getInstance(context).createPostRequest(WebUrls().GREETING, RequestMethods().POST, data, this, WebUrls().GREETING)
+        VolleyClass.getInstance(context).createPostRequest(WebUrls().GETPOST, RequestMethods().POST, data, this, WebUrls().GREETING)
 
     }
 

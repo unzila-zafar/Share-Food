@@ -11,8 +11,10 @@ import android.os.Bundle
 import android.provider.Settings
 import android.support.v7.app.AlertDialog
 import food.sharefood.com.sharefood.databinding.ActivitySignupBinding
+import food.sharefood.com.sharefood.util.AppSharedPref
 import food.sharefood.com.sharefood.util.FoodSharer
 import food.sharefood.com.sharefood.util.Helper
+import food.sharefood.com.sharefood.util.SharedPrefKeys
 
 
 class SignUpPresenter(var signUpView: SignUpView, var signUpInteractor: SignUpInteractor, var mContext: Context) : SignUpInteractor.onSignUpFinishedListener {
@@ -75,6 +77,10 @@ class SignUpPresenter(var signUpView: SignUpView, var signUpInteractor: SignUpIn
 
 
     override fun onSignUpSuccess(foodSharer: FoodSharer) {
+
+        AppSharedPref.loadPrefs(mContext)
+        AppSharedPref.saveData(SharedPrefKeys.TOKEN , AppSharedPref.STRING, foodSharer.token!!, mContext)
+
         signUpView.registerUser()
     }
 

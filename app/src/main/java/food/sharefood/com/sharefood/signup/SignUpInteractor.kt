@@ -24,6 +24,7 @@ class SignUpInteractor : ServiceInterface {
 
     fun requestSignUpUser(context: Context, finishedListener: onSignUpFinishedListener, foodSharer: FoodSharer) {
 
+
         listener = finishedListener
 
         val objectMapper = ObjectMapper()
@@ -89,6 +90,12 @@ class SignUpInteractor : ServiceInterface {
 
         if (rootObject.has(APIParams.PICTURE) && !rootObject.isNull(APIParams.PICTURE)) {
             foodSharer.picture = rootObject.getString(APIParams.PICTURE)
+        }
+
+        if(rootObject.has(APIParams.TOKEN) && !rootObject.isNull(APIParams.TOKEN))
+        {
+            foodSharer.token = rootObject.getString(APIParams.TOKEN)
+
         }
     }
 }

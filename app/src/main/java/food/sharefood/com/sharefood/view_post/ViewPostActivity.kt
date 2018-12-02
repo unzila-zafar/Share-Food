@@ -2,6 +2,7 @@ package food.sharefood.com.sharefood.view_post
 
 import android.databinding.DataBindingUtil
 import android.os.Bundle
+import android.support.v4.view.ViewPager
 import android.support.v7.app.AppCompatActivity
 import food.sharefood.com.sharefood.R
 import food.sharefood.com.sharefood.databinding.ActivityViewFoodPostBinding
@@ -9,6 +10,7 @@ import food.sharefood.com.sharefood.databinding.ActivityViewFoodPostBinding
 class ViewPostActivity: AppCompatActivity() {
 
     lateinit var binding: ActivityViewFoodPostBinding
+    private lateinit var viewPager: ViewPager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

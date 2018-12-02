@@ -4,6 +4,7 @@ import com.android.volley.Request
 import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
 import food.sharefood.com.sharefood.R.string.address
+import food.sharefood.com.sharefood.R.string.phone_number
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -25,7 +26,10 @@ data class WebUrls(
         val BASE_URL: String = "https://foodshareservice.herokuapp.com",
         val LOGIN: String = "$BASE_URL/login",
         val GREETING: String = "$BASE_URL/greeting",
-        val SIGNUP: String = "$BASE_URL/signup"
+        val SIGNUP: String = "$BASE_URL/signup",
+        val GETPOST: String = "$BASE_URL/foodSharePost"
+
+
 )
 
 
@@ -74,10 +78,10 @@ data class FoodSharer(
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 data class FoodSharePost(
         @JsonProperty(value = "name")
-        var name: String? = "",
+        var name: String = "",
 
         @JsonProperty(value = "email")
-        var email: String? = "",
+        var email: String = "",
 
         @JsonProperty(value = "phone")
         var phone_number: String,
@@ -92,7 +96,10 @@ data class FoodSharePost(
         var foodPickupLocation: String? = "",
 
         @JsonProperty(value = "foodItems")
-        var foodItems: Array<String>,
+        var foodItems: String,
+
+        @JsonProperty(value = "postPictures")
+        var postPictures: ArrayList<String>? = null,
 
         @JsonProperty(value = "token")
         var token: String? = "",
@@ -102,9 +109,11 @@ data class FoodSharePost(
 
         @JsonProperty(value = "tokenExpiryTime")
         var tokenExpiryTime: Long? = null
+
+
 ){
     override fun toString(): String {
-        return "FoodSharerPost(name='$name', email='$email', foodPickupLocation='$foodPickupLocation', phone_number='$phone_number', sufficientFor='$sufficientFor', pickUntilTime='$pickUntilTime', foodItems='$foodItems'"
+        return "FoodSharerPost(name='$name', email='$email', foodPickupLocation='$foodPickupLocation', phone_number='$phone_number', sufficientFor='$sufficientFor', pickUntilTime='$pickUntilTime', foodItems='$foodItems', postPictures='$postPictures'"
     }
 }
 
@@ -151,5 +160,8 @@ class SharedPrefKeys
 {
     companion object {
         var LOGGED_IN = "login"
+        var TOKEN = "token"
+        var TOKENSTART = "token_start"
+        var TOKENEND = "token_end"
     }
 }

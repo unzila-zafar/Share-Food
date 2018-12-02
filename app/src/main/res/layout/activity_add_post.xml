@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
@@ -13,29 +13,21 @@
             android:id="@+id/toolbar"
             layout="@layout/app_toolbar" />
 
-        <android.support.constraint.ConstraintLayout
-            android:id="@+id/food_image"
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/toolbar">
 
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/add_photo_list"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-        </android.support.constraint.ConstraintLayout>
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
 
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/ten_margin"
-            app:layout_constraintTop_toBottomOf="@+id/food_image">
-
-            <android.support.constraint.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/add_photo_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
 
                 <android.support.design.widget.TextInputLayout
                     android:id="@+id/name_layout"
@@ -43,9 +35,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/twenty_margin"
+
                     android:textColorHint="@color/colorAccent"
-                    android:theme="@style/MyTextInputLayout"
-                    app:layout_constraintTop_toBottomOf="@+id/food_image">
+                    android:theme="@style/MyTextInputLayout">
 
                     <android.support.design.widget.TextInputEditText
                         android:id="@+id/add_name_edit"
@@ -66,8 +58,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/twenty_margin"
                     android:textColorHint="@color/colorAccent"
-                    android:theme="@style/MyTextInputLayout"
-                    app:layout_constraintTop_toBottomOf="@+id/name_layout">
+                    android:theme="@style/MyTextInputLayout">
 
                     <android.support.design.widget.TextInputEditText
                         android:id="@+id/add_email_edit"
@@ -108,8 +99,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/twenty_margin"
                     android:textColorHint="@color/colorAccent"
-                    android:theme="@style/MyTextInputLayout"
-                    app:layout_constraintTop_toBottomOf="@+id/phone_layout">
+                    android:theme="@style/MyTextInputLayout">
 
                     <android.support.design.widget.TextInputEditText
                         android:id="@+id/add_sufficient_edit"
@@ -130,8 +120,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/twenty_margin"
                     android:textColorHint="@color/colorAccent"
-                    android:theme="@style/MyTextInputLayout"
-                    app:layout_constraintTop_toBottomOf="@+id/sufficient_for_layout">
+                    android:theme="@style/MyTextInputLayout">
 
                     <android.support.design.widget.TextInputEditText
                         android:id="@+id/add_picktime_edit"
@@ -151,8 +140,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/twenty_margin"
                     android:textColorHint="@color/colorAccent"
-                    android:theme="@style/MyTextInputLayout"
-                    app:layout_constraintTop_toBottomOf="@+id/pick_layout">
+                    android:theme="@style/MyTextInputLayout">
 
                     <android.support.design.widget.TextInputEditText
                         android:id="@+id/add_location_edit"
@@ -173,8 +161,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/twenty_margin"
                     android:textColorHint="@color/colorAccent"
-                    android:theme="@style/MyTextInputLayout"
-                    app:layout_constraintTop_toBottomOf="@+id/add_location_layout">
+                    android:theme="@style/MyTextInputLayout">
 
                     <android.support.design.widget.TextInputEditText
                         android:id="@+id/add_fooditems_edit"
@@ -190,20 +177,16 @@
 
                 <Button
                     android:id="@+id/buttonAdd"
-                    android:layout_width="wrap_content"
+                    android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:layout_marginTop="@dimen/ten_margin"
                     android:layout_marginRight="@dimen/twenty_margin"
                     android:background="@color/colorPrimary"
                     android:text="@string/add"
-                    android:textAllCaps="false"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/fooditems_layout" />
-            </android.support.constraint.ConstraintLayout>
+                    android:textAllCaps="false" />
 
-
+            </LinearLayout>
         </ScrollView>
-
 
     </android.support.constraint.ConstraintLayout>
 </layout>

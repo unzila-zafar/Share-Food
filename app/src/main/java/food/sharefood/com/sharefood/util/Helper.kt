@@ -22,6 +22,7 @@ import android.graphics.BitmapFactory
 import java.io.ByteArrayOutputStream
 import android.util.Base64
 import android.util.Base64.encodeToString
+import com.cloudinary.android.MediaManager
 
 
 class Helper {
@@ -64,6 +65,7 @@ class Helper {
             var encryptedImagesList: ArrayList<String> = ArrayList()
 
             var encodedString = Helper.encoder(picPath)
+            encodedString =  MediaManager.get().url().secure(true).generate(encodedString)
 
             encryptedImagesList.add(encodedString)
 

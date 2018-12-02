@@ -12,20 +12,23 @@ import android.os.Environment
 import android.provider.MediaStore
 import android.support.v4.content.FileProvider
 import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.LinearLayoutManager
-import android.widget.LinearLayout
 import android.widget.Toast
-import com.bumptech.glide.Glide
-import com.cloudinary.android.MediaManager
 import food.sharefood.com.sharefood.R
 import food.sharefood.com.sharefood.databinding.ActivityAddPostBinding
 import food.sharefood.com.sharefood.dialog.DialogUtils
-import food.sharefood.com.sharefood.network.VolleyClass.Companion.context
 import food.sharefood.com.sharefood.util.FoodSharePost
 import food.sharefood.com.sharefood.util.Helper
 import food.sharefood.com.sharefood.util.IntArrayWrapper
 import java.io.File
-import kotlin.properties.Delegates
+import java.util.*
+import android.support.v4.app.ShareCompat.IntentBuilder
+import android.R.attr.data
+import android.app.Activity
+import android.content.RestrictionsManager.RESULT_ERROR
+import android.support.v4.app.FragmentActivity
+import android.util.Log
+import com.google.android.gms.location.places.ui.PlaceAutocomplete
+
 
 class AddPostActivity : AppCompatActivity(), AddPostView {
 
@@ -34,8 +37,9 @@ class AddPostActivity : AppCompatActivity(), AddPostView {
     private lateinit var presenter: AddPostPresenter
     private lateinit var mCapturedPhoto: Uri
     var list: ArrayList<Bitmap> = ArrayList()
-    var encodedList: ArrayList<String> = ArrayList()
+    var imagesUrlList: ArrayList<String> = ArrayList()
     private var capturePhotoPath : String? = null
+    private val PLACE_AUTOCOMPLETE_REQUEST_CODE = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -67,8 +71,14 @@ class AddPostActivity : AppCompatActivity(), AddPostView {
 
         binding.buttonAdd.setOnClickListener {
 
-            presenter.addPost(this, binding)
-            finish()
+            presenter.addPost(this, binding, imagesUrlList)
+            //finish()
+        }
+
+        binding.addLocationLayout.setOnClickListener {
+            val intent = PlaceAutocomplete.IntentBuilder(PlaceAutocomplete.MODE_OVERLAY)
+                    .build(this)
+            startActivityForResult(intent, PLACE_AUTOCOMPLETE_REQUEST_CODE)
         }
     }
 
@@ -180,7 +190,7 @@ class AddPostActivity : AppCompatActivity(), AddPostView {
                         presenter.fillPhotoList(this, list, binding)
 
                         // var max: Int by Delegates.observable(0) {property, oldValue, newValue ->
-                        encodedList = Helper.setDataInList(mCapturedPhoto.path)
+                        imagesUrlList = Helper.setDataInList(mCapturedPhoto.path)
 
                         //}
 
@@ -203,16 +213,32 @@ class AddPostActivity : AppCompatActivity(), AddPostView {
                 if (list != null && list.size < 10) {
                     list.add(updatedPic)
 
-                  /*  IntArrayWrapper(list.size) { index, value ->
-                        println("$index changed to $value")
-                    }*/
-
                     presenter.fillPhotoList(this, list, binding)
 
-                    encodedList = Helper.setDataInList(picturePath!!)
+                    imagesUrlList = Helper.setDataInList(picturePath!!)
                 } else {
                     Toast.makeText(this, "Images limit exceed!", Toast.LENGTH_SHORT).show()
 
+                }
+            }
+
+            PLACE_AUTOCOMPLETE_REQUEST_CODE ->
+            {
+                if (resultCode === Activity.RESULT_OK) {
+                    val place = PlaceAutocomplete.getPlace(this, data)
+                    var longitude : Double = place.latLng.longitude
+                    var latitude : Double = place.latLng.latitude
+
+
+                    presenter.setLocationData(latitude, longitude)
+
+                } else if (resultCode === PlaceAutocomplete.RESULT_ERROR) {
+                    val status = PlaceAutocomplete.getStatus(this, data)
+
+                    Toast.makeText(this, "No Location Found.", Toast.LENGTH_SHORT).show()
+
+                } else if (resultCode === Activity.RESULT_CANCELED) {
+                    // The user canceled the operation.
                 }
             }
         }

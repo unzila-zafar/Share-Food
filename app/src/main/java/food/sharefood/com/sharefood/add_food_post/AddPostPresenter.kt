@@ -1,73 +1,95 @@
 package food.sharefood.com.sharefood.add_food_post
 
 import android.content.Context
-import android.content.DialogInterface
-import android.content.Intent
 import android.graphics.Bitmap
-import android.provider.Settings
 import android.support.v7.app.AlertDialog
 import android.support.v7.widget.LinearLayoutManager
 import android.widget.LinearLayout
 import food.sharefood.com.sharefood.databinding.ActivityAddPostBinding
-import food.sharefood.com.sharefood.databinding.ActivitySignupBinding
-import food.sharefood.com.sharefood.network.VolleyClass
-import food.sharefood.com.sharefood.util.FoodSharePost
-import food.sharefood.com.sharefood.util.FoodSharer
-import food.sharefood.com.sharefood.util.Helper
-import food.sharefood.com.sharefood.util.IntArrayWrapper
 
-class AddPostPresenter(var addPostView: AddPostView , var addPostInteractor: AddPostInteractor) : AddPostInteractor.AddPostFinishedListener
-{
+import food.sharefood.com.sharefood.util.FoodSharePost
+
+class AddPostPresenter(var addPostView: AddPostView, var addPostInteractor: AddPostInteractor) : AddPostInteractor.AddPostFinishedListener {
     private lateinit var foodSharePost: FoodSharePost
 
-    fun addPost(context: Context , binding: ActivityAddPostBinding)
-    {
+    fun addPost(context: Context, binding: ActivityAddPostBinding, imagesList: ArrayList<String>) {
         addPostView.showProgress()
 
-        addPostInteractor.requestAddPost(context,foodSharePost, this)
+        if(checkData(binding, imagesList)) {
+            addPostInteractor.requestAddPost(context, foodSharePost, this)
+        }
 
     }
 
 
-   /* fun checkData(binding: ActivityAddPostBinding): Boolean {
+    fun checkData(binding: ActivityAddPostBinding, imagesList: ArrayList<String>): Boolean {
 
-        foodSharePost = FoodSharePost()
-        foodSharePost.name = binding.nameEdit.text.toString()
-        foodSharer.name = binding.nameEdit.text.toString()
-        foodSharer.password = binding.signupPassword.text.toString()
-        foodSharer.registeredAs = spinnerPosition.toString()
-        foodSharer.picture = selectedImageUrl
-        foodSharer.address = currentLocation
+        var checkValues: Boolean = true
+        foodSharePost.name = binding.addNameEdit.text.toString()
+        foodSharePost.email = binding.addEmailEdit.text.toString()
+        foodSharePost.phone_number = binding.addNumberEdit.text.toString()
+        foodSharePost.sufficientFor = binding.addSufficientEdit.text.toString()
+        foodSharePost.pickUntilTime = binding.addPicktimeEdit.text.toString()
+        foodSharePost.foodPickupLocation = binding.addLocationEdit.text.toString()
+        foodSharePost.postPictures = imagesList
+        foodSharePost.foodItems = binding.addFooditemsEdit.text.toString()
 
-        if (foodSharer.password.isEmpty()) {
-            binding.passwordLayout.error = "Please enter password"
-            signUpView.hideProgress()
-            return false
+        if (!foodSharePost.email.isEmpty() && !foodSharePost.phone_number.isEmpty()
+                && !foodSharePost.foodPickupLocation!!.isEmpty() && !foodSharePost.foodItems.isEmpty() && !foodSharePost.pickUntilTime!!.isEmpty()) {
+
+
         }
 
-        if (foodSharer.loginId.isEmpty()) {
-            binding.emailLayout.error = "Please enter login id"
-            signUpView.hideProgress()
-            return false
+
+        if (foodSharePost.email.isEmpty()) {
+            binding.emailLayout.error = "Please enter email"
+            addPostView.hideProgress()
+            checkValues = false
         }
 
-        if (foodSharer.name.isEmpty()) {
-            binding.nameLayout.error = "Please enter user name"
-            signUpView.hideProgress()
-            return false
+        if (foodSharePost.phone_number.isEmpty()) {
+            binding.phoneLayout.error = "Please enter phone number"
+            addPostView.hideProgress()
+            checkValues = false
         }
 
-        if (spinnerPosition == 0) {
-            binding.nameLayout.error = "Invalid option for Registering As"
-            signUpView.hideProgress()
-            return false
+        if (foodSharePost.pickUntilTime!!.isEmpty()) {
+            binding.pickLayout.error = "Please enter pickup time"
+            addPostView.hideProgress()
+            checkValues = false
         }
 
-        return true
-    }*/
+        if (foodSharePost.foodPickupLocation!!.isEmpty()) {
+            binding.addLocationLayout.error = "Please add location"
+            addPostView.hideProgress()
+            checkValues = false
+        }
 
-    fun fillPhotoList(context: Context, imagesList: ArrayList<Bitmap>, binding: ActivityAddPostBinding)
-    {
+        if (foodSharePost.foodItems.isEmpty()) {
+            binding.fooditemsLayout.error = "Please add food items"
+            addPostView.hideProgress()
+            checkValues = false
+        }
+
+        if (checkValues) {
+            foodSharePost = FoodSharePost(foodSharePost.name,
+                    foodSharePost.email,
+                    foodSharePost.phone_number,
+                    foodSharePost.sufficientFor,
+                    foodSharePost.pickUntilTime,
+                    foodSharePost.foodPickupLocation,
+                    foodSharePost.foodItems,
+                    foodSharePost.postPictures);
+
+            return true
+        } else {
+
+
+            return false
+        }
+    }
+
+    fun fillPhotoList(context: Context, imagesList: ArrayList<Bitmap>, binding: ActivityAddPostBinding) {
 
         var adapter = AddPhotoAdapter(context, this, imagesList)
 
@@ -94,6 +116,11 @@ class AddPostPresenter(var addPostView: AddPostView , var addPostInteractor: Add
 
         // Finally, display the alert dialog
         dialog.show()
+    }
+
+    fun setLocationData(longitude : Double, latitude : Double)
+    {
+        foodSharePost.foodPickupLocation = latitude.toString()+ "," + longitude.toString()
     }
 
 
