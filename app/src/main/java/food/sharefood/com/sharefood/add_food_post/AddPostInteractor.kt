@@ -36,7 +36,7 @@ class AddPostInteractor : ServiceInterface
 
         println("data === $data")
 
-        VolleyClass.getInstance(context).createPostRequest(WebUrls().GETPOST, RequestMethods().POST, data, this, WebUrls().GREETING)
+        VolleyClass.getInstance(context).createPostRequest(WebUrls().GETPOST, RequestMethods().POST, data, this, WebUrls().GETPOST)
 
     }
 

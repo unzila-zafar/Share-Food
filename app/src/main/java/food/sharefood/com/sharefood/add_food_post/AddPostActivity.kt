@@ -59,7 +59,9 @@ class AddPostActivity : AppCompatActivity(), AddPostView {
         supportActionBar?.setDisplayHomeAsUpEnabled(true);
         supportActionBar?.setDisplayShowHomeEnabled(true);
 
+        binding.toolbar.toolbar.setTitle(getString(R.string.add_post))
         binding.toolbar.toolbar.setNavigationOnClickListener { onBackPressed() }
+
 
         presenter = AddPostPresenter(this, AddPostInteractor())
 

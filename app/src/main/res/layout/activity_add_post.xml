@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <android.support.constraint.ConstraintLayout
@@ -15,7 +14,9 @@
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:fillViewport="true"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/toolbar">
 
             <LinearLayout
@@ -27,15 +28,15 @@
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/add_photo_list"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="180dp" />
 
                 <android.support.design.widget.TextInputLayout
                     android:id="@+id/name_layout"
                     style="@style/AppTheme"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/twenty_margin"
-
+                    android:layout_marginLeft="@dimen/twenty_margin"
+                    android:layout_marginRight="@dimen/twenty_margin"
                     android:textColorHint="@color/colorAccent"
                     android:theme="@style/MyTextInputLayout">
 
@@ -56,7 +57,9 @@
                     style="@style/AppTheme"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/twenty_margin"
+                    android:layout_marginLeft="@dimen/twenty_margin"
+                    android:layout_marginTop="@dimen/ten_margin"
+                    android:layout_marginRight="@dimen/twenty_margin"
                     android:textColorHint="@color/colorAccent"
                     android:theme="@style/MyTextInputLayout">
 
@@ -76,7 +79,9 @@
                     style="@style/AppTheme"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/twenty_margin"
+                    android:layout_marginLeft="@dimen/twenty_margin"
+                    android:layout_marginTop="@dimen/ten_margin"
+                    android:layout_marginRight="@dimen/twenty_margin"
                     android:textColorHint="@color/colorAccent"
                     android:theme="@style/MyTextInputLayout"
                     app:layout_constraintTop_toBottomOf="@+id/email_layout">
@@ -97,7 +102,9 @@
                     style="@style/AppTheme"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/twenty_margin"
+                    android:layout_marginLeft="@dimen/twenty_margin"
+                    android:layout_marginTop="@dimen/ten_margin"
+                    android:layout_marginRight="@dimen/twenty_margin"
                     android:textColorHint="@color/colorAccent"
                     android:theme="@style/MyTextInputLayout">
 
@@ -118,7 +125,9 @@
                     style="@style/AppTheme"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/twenty_margin"
+                    android:layout_marginLeft="@dimen/twenty_margin"
+                    android:layout_marginTop="@dimen/ten_margin"
+                    android:layout_marginRight="@dimen/twenty_margin"
                     android:textColorHint="@color/colorAccent"
                     android:theme="@style/MyTextInputLayout">
 
@@ -138,7 +147,9 @@
                     style="@style/AppTheme"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/twenty_margin"
+                    android:layout_marginLeft="@dimen/twenty_margin"
+                    android:layout_marginTop="@dimen/ten_margin"
+                    android:layout_marginRight="@dimen/twenty_margin"
                     android:textColorHint="@color/colorAccent"
                     android:theme="@style/MyTextInputLayout">
 
@@ -159,7 +170,9 @@
                     style="@style/AppTheme"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/twenty_margin"
+                    android:layout_marginLeft="@dimen/twenty_margin"
+                    android:layout_marginTop="@dimen/ten_margin"
+                    android:layout_marginRight="@dimen/twenty_margin"
                     android:textColorHint="@color/colorAccent"
                     android:theme="@style/MyTextInputLayout">
 
@@ -177,12 +190,15 @@
 
                 <Button
                     android:id="@+id/buttonAdd"
-                    android:layout_width="40dp"
+                    android:layout_width="match_parent"
                     android:layout_height="40dp"
+                    android:layout_marginLeft="@dimen/twenty_margin"
                     android:layout_marginTop="@dimen/ten_margin"
                     android:layout_marginRight="@dimen/twenty_margin"
+                    android:layout_marginBottom="@dimen/ten_margin"
                     android:background="@color/colorPrimary"
-                    android:text="@string/add"
+                    android:gravity="center"
+                    android:text="@string/add_post"
                     android:textAllCaps="false" />
 
             </LinearLayout>

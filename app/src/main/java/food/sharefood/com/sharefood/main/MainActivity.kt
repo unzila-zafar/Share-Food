@@ -39,6 +39,7 @@ class MainActivity : FragmentActivity()
 
         binding.tabsMain.getTabAt(0)?.select()
 
+
         binding.tabsMain.addOnTabSelectedListener(object :
                 TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab) {
@@ -71,6 +72,8 @@ class MainActivity : FragmentActivity()
             this@MainActivity.startActivity(Intent(this@MainActivity, AddPostActivity::class.java))
 
         }
+
+        binding.toolbar.toolbar.title = getString(R.string.dashboard)
     }
 
     fun startFragment(fragment: Fragment, tag: String) {
