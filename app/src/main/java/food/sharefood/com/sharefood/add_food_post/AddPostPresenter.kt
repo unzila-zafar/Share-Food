@@ -16,6 +16,7 @@ import food.sharefood.com.sharefood.util.FoodSharePost
 import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.collections.ArrayList
 
 class AddPostPresenter(var addPostView: AddPostView, var addPostInteractor: AddPostInteractor) : AddPostInteractor.AddPostFinishedListener {
     private lateinit var foodSharePost: FoodSharePost
@@ -32,7 +33,8 @@ class AddPostPresenter(var addPostView: AddPostView, var addPostInteractor: AddP
 
     fun checkData(binding: ActivityAddPostBinding, imagesList: ArrayList<String>): Boolean {
 
-        var checkValues: Boolean = true
+        var checkValues = true
+        foodSharePost = FoodSharePost();
         foodSharePost.name = binding.addNameEdit.text.toString()
         foodSharePost.email = binding.addEmailEdit.text.toString()
         foodSharePost.phone_number = binding.addNumberEdit.text.toString()
@@ -40,13 +42,13 @@ class AddPostPresenter(var addPostView: AddPostView, var addPostInteractor: AddP
         foodSharePost.pickUntilTime = binding.addPicktimeEdit.text.toString()
         foodSharePost.foodPickupLocation = binding.addLocationEdit.text.toString()
         foodSharePost.postPictures = imagesList
+
         foodSharePost.foodItems = binding.addFooditemsEdit.text.toString()
 
-        if (!foodSharePost.email.isEmpty() && !foodSharePost.phone_number.isEmpty()
+        //TODO Why this???
+       /* if (!foodSharePost.email.isEmpty() && !foodSharePost.phone_number.isEmpty()
                 && !foodSharePost.foodPickupLocation!!.isEmpty() && !foodSharePost.foodItems.isEmpty() && !foodSharePost.pickUntilTime!!.isEmpty()) {
-
-
-        }
+        }*/
 
 
         if (foodSharePost.email.isEmpty()) {
@@ -67,11 +69,12 @@ class AddPostPresenter(var addPostView: AddPostView, var addPostInteractor: AddP
             checkValues = false
         }
 
-        if (foodSharePost.foodPickupLocation!!.isEmpty()) {
+        //TODO can we autopopulate location?
+        /*if (foodSharePost.foodPickupLocation!!.isEmpty()) {
             binding.addLocationLayout.error = "Please add location"
             addPostView.hideProgress()
             checkValues = false
-        }
+        }*/
 
         if (foodSharePost.foodItems.isEmpty()) {
             binding.fooditemsLayout.error = "Please add food items"
@@ -79,22 +82,7 @@ class AddPostPresenter(var addPostView: AddPostView, var addPostInteractor: AddP
             checkValues = false
         }
 
-        if (checkValues) {
-            foodSharePost = FoodSharePost(foodSharePost.name,
-                    foodSharePost.email,
-                    foodSharePost.phone_number,
-                    foodSharePost.sufficientFor,
-                    foodSharePost.pickUntilTime,
-                    foodSharePost.foodPickupLocation,
-                    foodSharePost.foodItems,
-                    foodSharePost.postPictures);
-
-            return true
-        } else {
-
-
-            return false
-        }
+        return checkValues
     }
 
     fun fillPhotoList(context: Context, imagesList: ArrayList<Bitmap>, binding: ActivityAddPostBinding) {

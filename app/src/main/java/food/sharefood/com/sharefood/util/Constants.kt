@@ -84,10 +84,10 @@ data class FoodSharePost(
         var email: String = "",
 
         @JsonProperty(value = "phone")
-        var phone_number: String,
+        var phone_number: String = "",
 
         @JsonProperty(value = "sufficientFor")
-        var sufficientFor: String,
+        var sufficientFor: String = "",
 
         @JsonProperty(value = "pickUntilTime")
         var pickUntilTime: String? = "",
@@ -96,10 +96,10 @@ data class FoodSharePost(
         var foodPickupLocation: String? = "",
 
         @JsonProperty(value = "foodItems")
-        var foodItems: String,
+        var foodItems: String = "",
 
         @JsonProperty(value = "postPictures")
-        var postPictures: ArrayList<String>? = null,
+        var postPictures: ArrayList<String>? = ArrayList(),
 
         @JsonProperty(value = "token")
         var token: String? = "",
