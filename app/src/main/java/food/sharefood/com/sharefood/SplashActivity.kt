@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.os.Handler
 
 import android.support.v7.app.AppCompatActivity
+import food.sharefood.com.sharefood.add_food_post.AddPostActivity
 import food.sharefood.com.sharefood.login.LoginActivity
 import food.sharefood.com.sharefood.main.MainActivity
 import food.sharefood.com.sharefood.util.AppSharedPref
@@ -25,7 +26,7 @@ class SplashActivity : AppCompatActivity() {
 
             Handler().postDelayed(
                     Runnable {
-                        val intent = Intent(this, LoginActivity::class.java)
+                        val intent = Intent(this, LoginActivity::class.java) //LoginActivity
                         startActivity(intent)
                         finish()
 

@@ -24,13 +24,18 @@ import java.util.*
 import android.support.v4.app.ShareCompat.IntentBuilder
 import android.R.attr.data
 import android.app.Activity
+import android.content.Context
 import android.content.RestrictionsManager.RESULT_ERROR
 import android.support.v4.app.FragmentActivity
+import android.util.Base64
 import android.util.Log
 import com.google.android.gms.location.places.ui.PlaceAutocomplete
+import java.security.MessageDigest
+import java.security.NoSuchAlgorithmException
 
 
 class AddPostActivity : AppCompatActivity(), AddPostView {
+
 
 
     private lateinit var binding: ActivityAddPostBinding
@@ -39,7 +44,7 @@ class AddPostActivity : AppCompatActivity(), AddPostView {
     var list: ArrayList<Bitmap> = ArrayList()
     var imagesUrlList: ArrayList<String> = ArrayList()
     private var capturePhotoPath : String? = null
-    private val PLACE_AUTOCOMPLETE_REQUEST_CODE = 1
+    private val PLACE_AUTOCOMPLETE_REQUEST_CODE = 188
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -59,7 +64,7 @@ class AddPostActivity : AppCompatActivity(), AddPostView {
         supportActionBar?.setDisplayHomeAsUpEnabled(true);
         supportActionBar?.setDisplayShowHomeEnabled(true);
 
-        binding.toolbar.toolbar.setTitle(getString(R.string.add_post))
+        binding.toolbar.toolbar.setTitle(resources.getString(R.string.add_post))
         binding.toolbar.toolbar.setNavigationOnClickListener { onBackPressed() }
 
 
@@ -77,10 +82,14 @@ class AddPostActivity : AppCompatActivity(), AddPostView {
             //finish()
         }
 
-        binding.addLocationLayout.setOnClickListener {
+        binding.addLocationEdit.setOnClickListener {
             val intent = PlaceAutocomplete.IntentBuilder(PlaceAutocomplete.MODE_OVERLAY)
                     .build(this)
             startActivityForResult(intent, PLACE_AUTOCOMPLETE_REQUEST_CODE)
+        }
+
+        binding.addPicktimeEdit.setOnClickListener {
+            presenter.showDatePickerDialog(this)
         }
     }
 
@@ -108,6 +117,10 @@ class AddPostActivity : AppCompatActivity(), AddPostView {
         {
             startGallery()
         }
+    }
+
+    override fun setSelectedDateTime(dateTime: String) {
+        binding.addPicktimeEdit.setText(dateTime)
     }
 
 
@@ -245,4 +258,6 @@ class AddPostActivity : AppCompatActivity(), AddPostView {
             }
         }
     }
+
+
 }

@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">Share Food</string>
 
+    <string name="google_api_key">AIzaSyDgNpBpN6uEzsUdc-hBkCLAFrnlOGoD2pA</string>
+
+
     <!--login-->
     <string name="email">Email</string>
     <string name="password">Password</string>

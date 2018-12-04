@@ -9,5 +9,6 @@ interface AddPostView {
     fun onSuccess(foodSharePost: FoodSharePost)
     fun onFailure(message: String)
     fun selectImage(position: Int)
+    fun setSelectedDateTime(dateTime : String)
 
 }
