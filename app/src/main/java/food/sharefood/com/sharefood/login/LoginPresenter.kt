@@ -5,6 +5,7 @@ import android.graphics.drawable.Drawable
 import android.provider.SyncStateContract
 import android.util.Base64
 import food.sharefood.com.sharefood.user.UserModel
+import food.sharefood.com.sharefood.util.FoodSharer
 import java.math.BigInteger
 import java.nio.charset.Charset
 import java.security.MessageDigest
@@ -21,9 +22,9 @@ class LoginPresenter(var loginView: LoginView, var loginInteractor: LoginInterac
     }
 
 
-    override fun loginSuccess() {
+    override fun loginSuccess(foodSharer: FoodSharer) {
         loginView.hideProgress()
-        loginView.loginUser()
+        loginView.loginUser(foodSharer)
     }
 
     override fun loginFailure() {

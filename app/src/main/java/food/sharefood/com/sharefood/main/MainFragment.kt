@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import food.sharefood.com.sharefood.R
 import food.sharefood.com.sharefood.databinding.FragmentMainBinding
+import food.sharefood.com.sharefood.dialog.DialogUtils
 
 class MainFragment : Fragment() , MainView
 {
@@ -25,7 +26,7 @@ class MainFragment : Fragment() , MainView
 
 
         mainPresenter = MainPresenter(this, MainInteractor())
-        mainPresenter.getListData()
+        mainPresenter.getListData(activity!!)
 
         return binding.root
 
@@ -33,9 +34,11 @@ class MainFragment : Fragment() , MainView
 
 
     override fun showProgress() {
+        DialogUtils.ShowProgressDialog(activity!!)
     }
 
     override fun hideProgress() {
+        DialogUtils.HideProgressDialog()
     }
 
     override fun setData(arrFood: List<FoodPostModel>) {

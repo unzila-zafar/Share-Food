@@ -23,6 +23,7 @@ import java.io.ByteArrayOutputStream
 import android.util.Base64
 import android.util.Base64.encodeToString
 import com.cloudinary.android.MediaManager
+import org.json.JSONObject
 
 
 class Helper {
@@ -158,6 +159,48 @@ class Helper {
             } else null
         }
 
+
+         fun setUserData(rootObject: JSONObject): FoodSharer {
+            var foodSharer = FoodSharer()
+
+            if (rootObject.has(APIParams.LOGIN_ID) && !rootObject.isNull(APIParams.LOGIN_ID)) {
+                foodSharer.loginId = rootObject.getString(APIParams.LOGIN_ID)
+            }
+
+            if (rootObject.has(APIParams.NAME) && !rootObject.isNull(APIParams.NAME)) {
+                foodSharer.name = rootObject.getString(APIParams.NAME)
+            }
+
+            if (rootObject.has(APIParams.ADDRESS) && !rootObject.isNull(APIParams.ADDRESS)) {
+                foodSharer.address = rootObject.getString(APIParams.ADDRESS)
+            }
+
+            if (rootObject.has(APIParams.REGISTERED_AS) && !rootObject.isNull(APIParams.REGISTERED_AS)) {
+                foodSharer.registeredAs = rootObject.getString(APIParams.REGISTERED_AS)
+            }
+
+            if (rootObject.has(APIParams.PICTURE) && !rootObject.isNull(APIParams.PICTURE)) {
+                foodSharer.picture = rootObject.getString(APIParams.PICTURE)
+            }
+
+            if(rootObject.has(APIParams.TOKEN) && !rootObject.isNull(APIParams.TOKEN))
+            {
+                foodSharer.token = rootObject.getString(APIParams.TOKEN)
+
+            }
+
+            if(rootObject.has(APIParams.TOKEN_START) && !rootObject.isNull(APIParams.TOKEN_START))
+            {
+                foodSharer.tokenStartTime = rootObject.getLong(APIParams.TOKEN_START)
+            }
+
+            if(rootObject.has(APIParams.TOKEN_END) && !rootObject.isNull(APIParams.TOKEN_END))
+            {
+                foodSharer.tokenExpiryTime = rootObject.getLong(APIParams.TOKEN_END)
+            }
+
+            return foodSharer
+        }
 
     }
 

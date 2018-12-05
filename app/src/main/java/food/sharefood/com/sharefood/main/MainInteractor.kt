@@ -1,10 +1,18 @@
 package food.sharefood.com.sharefood.main
 
+import android.content.Context
 import android.support.v7.widget.LinearLayoutManager
 import android.widget.LinearLayout
+import com.fasterxml.jackson.databind.ObjectMapper
 import food.sharefood.com.sharefood.R
+import food.sharefood.com.sharefood.network.ServiceInterface
+import food.sharefood.com.sharefood.network.VolleyClass
+import food.sharefood.com.sharefood.network.VolleyClass.Companion.context
+import food.sharefood.com.sharefood.util.*
+import org.json.JSONObject
 
-class MainInteractor {
+class MainInteractor : ServiceInterface {
+
 
     val food_description = arrayOf("abcd", "abcd", "abcd")
     val food_quatity = arrayOf("2kg", "10kg", "15kg")
@@ -14,21 +22,47 @@ class MainInteractor {
     val food_menu_items = arrayOf("Chinese", "Italian Food", "Pizza")
     var food_post_array: MutableList<FoodPostModel> = ArrayList()
 
+    lateinit var listener: OnFinishedListener
+
     interface OnFinishedListener {
         fun onResultSuccess(arrFoodList: List<FoodPostModel>)
         fun onResultFail(strError: String)
     }
 
 
-    fun requestData(finishedListener: OnFinishedListener) {
-        //implement Api call
+    fun requestData(context: Context, finishedListener: OnFinishedListener) {
+        listener = finishedListener
+
         setListData()
 
-        finishedListener.onResultSuccess(food_post_array)
+        listener.onResultSuccess(food_post_array)
+
+     /*   val objectMapper = ObjectMapper()
+        val data = objectMapper.convertValue(LoginData(), JSONObject::class.java)
+        data.put(APIParams.TOKEN, AppSharedPref.getData(SharedPrefKeys.TOKEN, AppSharedPref.STRING, context))
+
+        VolleyClass.getInstance(context).createPostRequest(WebUrls().GETPOST, RequestMethods().POST, data, this, WebUrls().GETPOST)
+*/
     }
 
-    private fun setListData()
-    {
+    override fun onServiceResponse(jsonString: String, tag: String) {
+
+        if (jsonString != null) {
+            val rootObject = JSONObject(jsonString)
+
+            if (tag.equals(WebUrls().GETPOST)) {
+
+                //listener.onResultSuccess(food_post_array)
+            }
+        }
+
+    }
+
+    override fun onServiceError(errorMessage: String) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    private fun setListData() {
         food_post_array.clear();
 
         for (i in food_description.indices) {
@@ -41,4 +75,6 @@ class MainInteractor {
 
 
     }
+
+
 }

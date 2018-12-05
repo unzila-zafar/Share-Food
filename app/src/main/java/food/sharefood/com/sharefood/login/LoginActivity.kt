@@ -17,6 +17,7 @@ import food.sharefood.com.sharefood.dialog.DialogUtils
 import food.sharefood.com.sharefood.main.MainActivity
 import food.sharefood.com.sharefood.signup.SignupActivity
 import food.sharefood.com.sharefood.util.AppSharedPref
+import food.sharefood.com.sharefood.util.FoodSharer
 import food.sharefood.com.sharefood.util.SharedPrefKeys
 
 
@@ -90,9 +91,12 @@ class LoginActivity : AppCompatActivity(), LoginView {
         DialogUtils.HideProgressDialog()
     }
 
-    override fun loginUser() {
+    override fun loginUser(foodSharer: FoodSharer) {
+
         AppSharedPref.loadPrefs(this)
         AppSharedPref.saveData(SharedPrefKeys.LOGGED_IN, AppSharedPref.BOOLEAN, true, this)
+        AppSharedPref.saveData(SharedPrefKeys.TOKEN, AppSharedPref.STRING, foodSharer.token!!, this)
+
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
         finish()

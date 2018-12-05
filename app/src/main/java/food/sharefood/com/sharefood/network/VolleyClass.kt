@@ -73,7 +73,7 @@ class VolleyClass {
     fun createPostRequest(url: String, requestMethod: Int, data: JSONObject, listener: ServiceInterface, tag: String) {
         val request = object : JsonObjectRequest(requestMethod, url, data,Response.Listener { s ->
 
-            listener.onServiceResponse(data.toString(), tag)
+            listener.onServiceResponse(s.toString(), tag)
 
         }, Response.ErrorListener { error ->
 

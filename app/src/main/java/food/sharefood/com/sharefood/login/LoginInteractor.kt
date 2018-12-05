@@ -16,7 +16,7 @@ class LoginInteractor : ServiceInterface {
     private lateinit var listener: LoginFinishedListener
 
     interface LoginFinishedListener {
-        fun loginSuccess()
+        fun loginSuccess(foodSharer: FoodSharer)
         fun loginFailure()
     }
 
@@ -44,7 +44,7 @@ class LoginInteractor : ServiceInterface {
 
             if (tag.equals(WebUrls().LOGIN)) {
 
-                listener.loginSuccess()
+                listener.loginSuccess(Helper.setUserData(rootObject))
             }
         }
     }

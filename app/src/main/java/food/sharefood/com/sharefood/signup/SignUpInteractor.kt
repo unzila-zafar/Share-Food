@@ -97,5 +97,15 @@ class SignUpInteractor : ServiceInterface {
             foodSharer.token = rootObject.getString(APIParams.TOKEN)
 
         }
+
+        if(rootObject.has(APIParams.TOKEN_START) && !rootObject.isNull(APIParams.TOKEN_START))
+        {
+            foodSharer.tokenStartTime = rootObject.getLong(APIParams.TOKEN_START)
+        }
+
+        if(rootObject.has(APIParams.TOKEN_END) && !rootObject.isNull(APIParams.TOKEN_END))
+        {
+            foodSharer.tokenExpiryTime = rootObject.getLong(APIParams.TOKEN_END)
+        }
     }
 }

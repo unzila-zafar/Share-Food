@@ -5,7 +5,6 @@
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/ten_margin"
         android:background="@color/white">
 
 
@@ -18,12 +17,13 @@
 
         <ImageView
             android:id="@+id/image_food"
-            android:layout_width="match_parent"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:background="@color/light_grey"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:src="@mipmap/ic_launcher"/>
+            android:gravity="center"
+            android:src="@mipmap/ic_launcher"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
 
 
         <android.support.constraint.ConstraintLayout
@@ -37,21 +37,21 @@
                 android:id="@+id/text_description"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="left|center"
                 android:text="description"
                 android:textColor="@color/black"
                 android:textSize="@dimen/fourteen_size"
-                app:layout_constraintLeft_toLeftOf="parent" />
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
 
             <TextView
                 android:id="@+id/text_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="right|center"
+                android:layout_marginLeft="10dp"
                 android:text="4:54 Pm"
                 android:textColor="@color/black"
                 android:textSize="@dimen/fourteen_size"
-                app:layout_constraintRight_toRightOf="parent" />
+                app:layout_constraintLeft_toRightOf="@+id/text_description" />
         </android.support.constraint.ConstraintLayout>
 
         <android.support.constraint.ConstraintLayout
@@ -65,21 +65,21 @@
                 android:id="@+id/textHeadingItems"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="left|center"
                 android:text="@string/food_items"
                 android:textColor="@color/black"
                 android:textSize="@dimen/sixteen_size"
-                app:layout_constraintLeft_toLeftOf="parent" />
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
 
             <TextView
                 android:id="@+id/text_item_values"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="right|center"
                 android:text="TextView"
+                android:layout_marginLeft="10dp"
                 android:textColor="@color/black"
                 android:textSize="@dimen/fourteen_size"
-                app:layout_constraintRight_toRightOf="parent" />
+                app:layout_constraintLeft_toRightOf="@+id/textHeadingItems" />
         </android.support.constraint.ConstraintLayout>
 
         <android.support.constraint.ConstraintLayout
@@ -94,30 +94,29 @@
                 android:id="@+id/text_heading_count"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="left|center"
                 android:text="@string/sufficient_for"
                 android:textColor="@color/black"
                 android:textSize="@dimen/sixteen_size"
-                app:layout_constraintLeft_toLeftOf="parent"/>
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
 
             <TextView
                 android:id="@+id/text_count_value"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/five_margin"
-                android:gravity="right|center"
+                android:layout_marginLeft="10dp"
                 android:text="TextView"
                 android:textColor="@color/black"
                 android:textSize="@dimen/fourteen_size"
-                app:layout_constraintRight_toRightOf="parent" />
+                app:layout_constraintLeft_toRightOf="@+id/text_heading_count" />
         </android.support.constraint.ConstraintLayout>
 
         <android.support.constraint.ConstraintLayout
             android:id="@+id/location_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/ten_margin"
             android:layout_marginLeft="@dimen/ten_margin"
+            android:layout_marginTop="@dimen/ten_margin"
             android:layout_marginRight="@dimen/ten_margin"
             android:layout_marginBottom="@dimen/fifteen_margin"
             app:layout_constraintTop_toBottomOf="@+id/person_layout">
@@ -129,18 +128,18 @@
                 android:text="Location"
                 android:textColor="@color/black"
                 android:textSize="@dimen/sixteen_size"
-                android:gravity="left|center"
-                app:layout_constraintLeft_toLeftOf="parent"/>
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
 
             <TextView
                 android:id="@+id/textView10"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintRight_toRightOf="parent"
                 android:text="@string/view_on_map"
                 android:textColor="@color/black"
-                android:gravity="right|center"
-                android:textSize="@dimen/sixteen_size"/>
+                android:layout_marginLeft="10dp"
+                android:textSize="@dimen/sixteen_size"
+                app:layout_constraintLeft_toRightOf="@+id/textLocation" />
         </android.support.constraint.ConstraintLayout>
 
 
