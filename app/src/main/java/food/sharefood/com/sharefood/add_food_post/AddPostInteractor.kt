@@ -34,17 +34,15 @@ class AddPostInteractor : ServiceInterface
         data.put(APIParams.PICTURE , foodSharePost.postPictures)
         data.put(APIParams.TOKEN , AppSharedPref.getData(SharedPrefKeys.TOKEN, AppSharedPref.STRING, context))
 
-        println("data === $data")
-
-        VolleyClass.getInstance(context).createPostRequest(WebUrls().GETPOST, RequestMethods().POST, data, this, WebUrls().GETPOST)
+        VolleyClass.getInstance(context).createPostRequest(WebUrls().NEW_FOOD_SHARE_POST, RequestMethods().POST, data, this, WebUrls().NEW_FOOD_SHARE_POST)
 
     }
 
-
-    override fun onServiceResponse(jsonString: String, tag: String)
-    {
+    override fun onServiceResponse(jsonString: String, tag: String) {
+        listener.onPostSuccess()
     }
 
     override fun onServiceError(errorMessage: String) {
+        listener.onPostError()
     }
 }

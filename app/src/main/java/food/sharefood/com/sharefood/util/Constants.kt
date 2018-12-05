@@ -27,7 +27,8 @@ data class WebUrls(
         val LOGIN: String = "$BASE_URL/user/login",
         val GREETING: String = "$BASE_URL/user/greeting",
         val SIGNUP: String = "$BASE_URL/user/signup",
-        val GETPOST: String = "$BASE_URL/post/foodSharePost"
+        val NEW_FOOD_SHARE_POST: String = "$BASE_URL/posts/addFoodSharePost",
+        val GET_FOOD_SHARE_POSTS: String = "$BASE_URL/posts/allFoodSharePosts"
 
 
 )

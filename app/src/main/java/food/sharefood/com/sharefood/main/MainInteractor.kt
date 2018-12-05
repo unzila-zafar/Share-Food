@@ -20,6 +20,8 @@ class MainInteractor : ServiceInterface {
     val food_location = arrayOf("islamabad", "karachi", "lahore")
     val food_pic = arrayOf(R.drawable.ic_launcher_background, R.drawable.ic_launcher_background, R.drawable.ic_launcher_background)
     val food_menu_items = arrayOf("Chinese", "Italian Food", "Pizza")
+
+    //TODO its list so name should not be array
     var food_post_array: MutableList<FoodPostModel> = ArrayList()
 
     lateinit var listener: OnFinishedListener
@@ -37,22 +39,24 @@ class MainInteractor : ServiceInterface {
 
         listener.onResultSuccess(food_post_array)
 
-     /*   val objectMapper = ObjectMapper()
+       val objectMapper = ObjectMapper()
         val data = objectMapper.convertValue(LoginData(), JSONObject::class.java)
         data.put(APIParams.TOKEN, AppSharedPref.getData(SharedPrefKeys.TOKEN, AppSharedPref.STRING, context))
 
-        VolleyClass.getInstance(context).createPostRequest(WebUrls().GETPOST, RequestMethods().POST, data, this, WebUrls().GETPOST)
-*/
+        println("Request to send = ${WebUrls().GET_FOOD_SHARE_POSTS}")
+        println("data = ${data}")
+        VolleyClass.getInstance(context).createPostRequest(WebUrls().GET_FOOD_SHARE_POSTS, RequestMethods().POST, data, this, WebUrls().GET_FOOD_SHARE_POSTS)
+
     }
 
     override fun onServiceResponse(jsonString: String, tag: String) {
-
+        println("onServiceResponse:: $jsonString")
         if (jsonString != null) {
             val rootObject = JSONObject(jsonString)
+            println("rootObject === $rootObject")
 
-            if (tag.equals(WebUrls().GETPOST)) {
-
-                //listener.onResultSuccess(food_post_array)
+            if (tag.equals(WebUrls().GET_FOOD_SHARE_POSTS)) {
+                listener.onResultSuccess(food_post_array)
             }
         }
 
@@ -63,15 +67,16 @@ class MainInteractor : ServiceInterface {
     }
 
     private fun setListData() {
-        food_post_array.clear();
+        //food_post_array.clear();
+        println("List Size obtained from response :: ${food_post_array.size}")
 
-        for (i in food_description.indices) {
+        /*for (i in food_description.indices) {
             val description: String = food_description[i]
             var model: FoodPostModel = FoodPostModel(description = food_description[i],
                     time = food_time[i], foodItems = food_menu_items[i], foodQuantity = food_quatity[i],
                     foodLocation = food_location[i], longitude = 0.0, latitude = 0.0, foodPic = food_pic[i])
             food_post_array.add(model)
-        }
+        }*/
 
 
     }
