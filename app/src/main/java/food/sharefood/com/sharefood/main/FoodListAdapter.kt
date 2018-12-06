@@ -7,9 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import food.sharefood.com.sharefood.R
 import food.sharefood.com.sharefood.databinding.ItemFoodListBinding
+import food.sharefood.com.sharefood.util.FoodSharePost
 import kotlinx.android.synthetic.main.item_food_list.view.*
 
-class FoodListAdapter(private val foodDataList: List<FoodPostModel>, private val listener: (Int) -> Unit) : RecyclerView.Adapter<FoodListAdapter.FoodViewHolder>() {
+class FoodListAdapter(private val foodDataList: List<FoodSharePost>, private val listener: (Int) -> Unit) : RecyclerView.Adapter<FoodListAdapter.FoodViewHolder>() {
 
     override fun onBindViewHolder(holder: FoodViewHolder, position: Int) = holder.bind(foodDataList[position])
 
@@ -34,13 +35,13 @@ class FoodListAdapter(private val foodDataList: List<FoodPostModel>, private val
 
     inner class FoodViewHolder(itemBinding: ItemFoodListBinding) : RecyclerView.ViewHolder(itemBinding.root) {
 
-        fun bind(item: FoodPostModel) {
+        fun bind(item: FoodSharePost) {
             with(itemView) {
-                text_time.text = item.time
-                textLocation.text = item.foodLocation
-                text_description.text = item.description
-                image_food.setImageResource(item.foodPic)
-                text_count_value.text = item.foodQuantity
+                text_time.text = item.pickUntilTime
+                textLocation.text = item.foodPickupLocation
+                //text_description.text = item.description
+               // image_food.setImageResource(item.postPictures)
+                text_count_value.text = item.sufficientFor
                 text_item_values.text = item.foodItems
 
             }

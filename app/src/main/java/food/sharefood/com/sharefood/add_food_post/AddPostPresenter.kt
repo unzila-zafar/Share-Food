@@ -19,7 +19,7 @@ import java.util.*
 import kotlin.collections.ArrayList
 
 class AddPostPresenter(var addPostView: AddPostView, var addPostInteractor: AddPostInteractor) : AddPostInteractor.AddPostFinishedListener {
-    private lateinit var foodSharePost: FoodSharePost
+    private var foodSharePost: FoodSharePost = FoodSharePost()
 
     fun addPost(context: Context, binding: ActivityAddPostBinding, imagesList: ArrayList<String>) {
         addPostView.showProgress()
@@ -114,18 +114,21 @@ class AddPostPresenter(var addPostView: AddPostView, var addPostInteractor: AddP
         dialog.show()
     }
 
-    fun setLocationData(longitude: Double, latitude: Double) {
+    fun setLocationData(longitude: Double, latitude: Double, place: String) {
         foodSharePost.foodPickupLocation = latitude.toString() + "," + longitude.toString()
+        addPostView.setSelectedLocation(place)
     }
 
 
-    override fun onPostSuccess() {
+    override fun onPostSuccess(foodSharePost: FoodSharePost) {
         addPostView.hideProgress()
+        addPostView.onSuccess(foodSharePost)
     }
 
-    override fun onPostError() {
+    override fun onPostError(message: String) {
 
         addPostView.hideProgress()
+        addPostView.onFailure(message)
     }
 
 

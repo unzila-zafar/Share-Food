@@ -9,6 +9,7 @@ import food.sharefood.com.sharefood.network.ServiceInterface
 import food.sharefood.com.sharefood.network.VolleyClass
 import food.sharefood.com.sharefood.network.VolleyClass.Companion.context
 import food.sharefood.com.sharefood.util.*
+import org.json.JSONArray
 import org.json.JSONObject
 
 class MainInteractor : ServiceInterface {
@@ -27,7 +28,7 @@ class MainInteractor : ServiceInterface {
     lateinit var listener: OnFinishedListener
 
     interface OnFinishedListener {
-        fun onResultSuccess(arrFoodList: List<FoodPostModel>)
+        fun onResultSuccess(arrFoodList: List<FoodSharePost>)
         fun onResultFail(strError: String)
     }
 
@@ -35,11 +36,7 @@ class MainInteractor : ServiceInterface {
     fun requestData(context: Context, finishedListener: OnFinishedListener) {
         listener = finishedListener
 
-        setListData()
-
-        listener.onResultSuccess(food_post_array)
-
-       val objectMapper = ObjectMapper()
+        val objectMapper = ObjectMapper()
         val data = objectMapper.convertValue(LoginData(), JSONObject::class.java)
         data.put(APIParams.TOKEN, AppSharedPref.getData(SharedPrefKeys.TOKEN, AppSharedPref.STRING, context))
 
@@ -52,11 +49,11 @@ class MainInteractor : ServiceInterface {
     override fun onServiceResponse(jsonString: String, tag: String) {
         println("onServiceResponse:: $jsonString")
         if (jsonString != null) {
-            val rootObject = JSONObject(jsonString)
+            val rootObject = JSONArray(jsonString)
             println("rootObject === $rootObject")
 
             if (tag.equals(WebUrls().GET_FOOD_SHARE_POSTS)) {
-                listener.onResultSuccess(food_post_array)
+                listener.onResultSuccess(Helper.setFoodPostData(rootObject))
             }
         }
 
@@ -66,12 +63,12 @@ class MainInteractor : ServiceInterface {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    private fun setListData() {
+    private fun setListData(arrays: FoodPostArrays) {
         //food_post_array.clear();
         println("List Size obtained from response :: ${food_post_array.size}")
 
-        /*for (i in food_description.indices) {
-            val description: String = food_description[i]
+    /*    for (i in arrays.foodSharePostArray!!.indices) {
+
             var model: FoodPostModel = FoodPostModel(description = food_description[i],
                     time = food_time[i], foodItems = food_menu_items[i], foodQuantity = food_quatity[i],
                     foodLocation = food_location[i], longitude = 0.0, latitude = 0.0, foodPic = food_pic[i])

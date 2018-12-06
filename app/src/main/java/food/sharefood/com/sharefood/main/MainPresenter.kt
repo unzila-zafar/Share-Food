@@ -1,7 +1,7 @@
 package food.sharefood.com.sharefood.main
 
 import android.content.Context
-import food.sharefood.com.sharefood.R
+import food.sharefood.com.sharefood.util.FoodSharePost
 
 class MainPresenter(private var mainView: MainView, private val mainInteractor: MainInteractor)
     : MainInteractor.OnFinishedListener {
@@ -15,7 +15,7 @@ class MainPresenter(private var mainView: MainView, private val mainInteractor: 
 
 
 
-    override fun onResultSuccess(arrFoodList: List<FoodPostModel>) {
+    override fun onResultSuccess(arrFoodList: List<FoodSharePost>) {
         mainView.hideProgress()
         mainView.setData(arrFoodList)
     }

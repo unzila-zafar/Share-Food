@@ -112,23 +112,25 @@ data class FoodSharePost(
         var tokenExpiryTime: Long? = null
 
 
-){
+) {
     override fun toString(): String {
         return "FoodSharerPost(name='$name', email='$email', foodPickupLocation='$foodPickupLocation', phone_number='$phone_number', sufficientFor='$sufficientFor', pickUntilTime='$pickUntilTime', foodItems='$foodItems', postPictures='$postPictures'"
     }
 }
 
 class IntArrayWrapper(size: Int,
-                      val setterObs : ((index: Int, value: Int) -> Unit)? = null){
+                      val setterObs: ((index: Int, value: Int) -> Unit)? = null) {
     val field = IntArray(size)
     val size
         get() = field.size
+
     operator fun iterator() = field.iterator()
 
-    operator fun get(i: Int) : Int {
+    operator fun get(i: Int): Int {
         return field[i]
     }
-    operator fun set(i: Int, value: Int){
+
+    operator fun set(i: Int, value: Int) {
         field[i] = value
         setterObs?.invoke(i, value)
     }
@@ -154,11 +156,11 @@ class APIParams {
         var FOOD_ITEMS = "foodItems"
         var PHONE = "phone"
         var SUFFICIENT_FOR = "sufficientFor"
+        var PHONE_NUMBER = "phone_number"
     }
 }
 
-class SharedPrefKeys
-{
+class SharedPrefKeys {
     companion object {
         var LOGGED_IN = "login"
         var TOKEN = "token"
@@ -166,3 +168,9 @@ class SharedPrefKeys
         var TOKENEND = "token_end"
     }
 }
+
+data class FoodPostArrays(
+
+        var foodSharePostArray: ArrayList<FoodSharePost> ?= null
+
+)

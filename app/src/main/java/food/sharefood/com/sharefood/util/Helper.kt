@@ -23,6 +23,7 @@ import java.io.ByteArrayOutputStream
 import android.util.Base64
 import android.util.Base64.encodeToString
 import com.cloudinary.android.MediaManager
+import org.json.JSONArray
 import org.json.JSONObject
 
 
@@ -66,7 +67,7 @@ class Helper {
             var encryptedImagesList: ArrayList<String> = ArrayList()
 
             var encodedString = Helper.encoder(picPath)
-            encodedString =  MediaManager.get().url().secure(true).generate(encodedString)
+            encodedString = MediaManager.get().url().secure(true).generate(encodedString)
 
             encryptedImagesList.add(encodedString)
 
@@ -83,13 +84,13 @@ class Helper {
             val imageBytes = baos.toByteArray()
             val base64 = Base64.encodeToString(imageBytes, Base64.DEFAULT)
 
-       /*     val baos = ByteArrayOutputStream()
-            val bitmap = BitmapFactory.decodeFile(filePath)
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos)
-            val imageBytes = baos.toByteArray()
+            /*     val baos = ByteArrayOutputStream()
+                 val bitmap = BitmapFactory.decodeFile(filePath)
+                 bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos)
+                 val imageBytes = baos.toByteArray()
 
-            val bytes = File(filePath).readBytes()
-            val base64 = Base64.encodeToString(imageBytes)*/
+                 val bytes = File(filePath).readBytes()
+                 val base64 = Base64.encodeToString(imageBytes)*/
             return base64
         }
 
@@ -160,7 +161,7 @@ class Helper {
         }
 
 
-         fun setUserData(rootObject: JSONObject): FoodSharer {
+        fun setUserData(rootObject: JSONObject): FoodSharer {
             var foodSharer = FoodSharer()
 
             if (rootObject.has(APIParams.LOGIN_ID) && !rootObject.isNull(APIParams.LOGIN_ID)) {
@@ -183,25 +184,117 @@ class Helper {
                 foodSharer.picture = rootObject.getString(APIParams.PICTURE)
             }
 
-            if(rootObject.has(APIParams.TOKEN) && !rootObject.isNull(APIParams.TOKEN))
-            {
+            if (rootObject.has(APIParams.TOKEN) && !rootObject.isNull(APIParams.TOKEN)) {
                 foodSharer.token = rootObject.getString(APIParams.TOKEN)
 
             }
 
-            if(rootObject.has(APIParams.TOKEN_START) && !rootObject.isNull(APIParams.TOKEN_START))
-            {
+            if (rootObject.has(APIParams.TOKEN_START) && !rootObject.isNull(APIParams.TOKEN_START)) {
                 foodSharer.tokenStartTime = rootObject.getLong(APIParams.TOKEN_START)
             }
 
-            if(rootObject.has(APIParams.TOKEN_END) && !rootObject.isNull(APIParams.TOKEN_END))
-            {
+            if (rootObject.has(APIParams.TOKEN_END) && !rootObject.isNull(APIParams.TOKEN_END)) {
                 foodSharer.tokenExpiryTime = rootObject.getLong(APIParams.TOKEN_END)
             }
 
             return foodSharer
         }
 
+
+        fun setFoodPostData(rootArray: JSONArray): List<FoodSharePost> {
+            var arrayFoodData: MutableList<FoodSharePost> = mutableListOf()
+            (0..(rootArray.length() - 1)).forEach { i ->
+                var rootObject = rootArray.getJSONObject(i)
+
+
+                var foodSharePost = FoodSharePost()
+
+
+                if (rootObject.has(APIParams.EMAIL) && !rootObject.isNull(APIParams.EMAIL)) {
+                    foodSharePost.email = rootObject.getString(APIParams.EMAIL)
+                }
+
+                if (rootObject.has(APIParams.NAME) && !rootObject.isNull(APIParams.NAME)) {
+                    foodSharePost.name = rootObject.getString(APIParams.NAME)
+                }
+
+                if (rootObject.has(APIParams.SUFFICIENT_FOR) && !rootObject.isNull(APIParams.SUFFICIENT_FOR)) {
+                    foodSharePost.sufficientFor = rootObject.getString(APIParams.SUFFICIENT_FOR)
+                }
+
+                if (rootObject.has(APIParams.PICKUP_TIME) && !rootObject.isNull(APIParams.PICKUP_TIME)) {
+                    foodSharePost.pickUntilTime = rootObject.getString(APIParams.PICKUP_TIME)
+                }
+
+                if (rootObject.has(APIParams.PICKUP_LOCATION) && !rootObject.isNull(APIParams.PICKUP_LOCATION)) {
+                    foodSharePost.foodPickupLocation = rootObject.getString(APIParams.PICKUP_LOCATION)
+                }
+
+                if (rootObject.has(APIParams.TOKEN) && !rootObject.isNull(APIParams.TOKEN)) {
+                    foodSharePost.token = rootObject.getString(APIParams.TOKEN)
+
+                }
+
+                if (rootObject.has(APIParams.FOOD_ITEMS) && !rootObject.isNull(APIParams.FOOD_ITEMS)) {
+                    foodSharePost.foodItems = rootObject.getString(APIParams.FOOD_ITEMS)
+                }
+
+                if (rootObject.has(APIParams.PHONE_NUMBER) && !rootObject.isNull(APIParams.PHONE_NUMBER)) {
+                    foodSharePost.phone_number = rootObject.getString(APIParams.PHONE_NUMBER)
+                }
+
+                arrayFoodData.add(foodSharePost)
+
+            }
+            return arrayFoodData
+        }
+
+
+        fun addFoodPostData(rootObject: JSONObject): FoodSharePost {
+           // var arrayFoodData: MutableList<FoodSharePost> = mutableListOf()
+
+
+            var foodSharePost = FoodSharePost()
+
+
+            if (rootObject.has(APIParams.EMAIL) && !rootObject.isNull(APIParams.EMAIL)) {
+                foodSharePost.email = rootObject.getString(APIParams.EMAIL)
+            }
+
+            if (rootObject.has(APIParams.NAME) && !rootObject.isNull(APIParams.NAME)) {
+                foodSharePost.name = rootObject.getString(APIParams.NAME)
+            }
+
+            if (rootObject.has(APIParams.SUFFICIENT_FOR) && !rootObject.isNull(APIParams.SUFFICIENT_FOR)) {
+                foodSharePost.sufficientFor = rootObject.getString(APIParams.SUFFICIENT_FOR)
+            }
+
+            if (rootObject.has(APIParams.PICKUP_TIME) && !rootObject.isNull(APIParams.PICKUP_TIME)) {
+                foodSharePost.pickUntilTime = rootObject.getString(APIParams.PICKUP_TIME)
+            }
+
+            if (rootObject.has(APIParams.PICKUP_LOCATION) && !rootObject.isNull(APIParams.PICKUP_LOCATION)) {
+                foodSharePost.foodPickupLocation = rootObject.getString(APIParams.PICKUP_LOCATION)
+            }
+
+            if (rootObject.has(APIParams.TOKEN) && !rootObject.isNull(APIParams.TOKEN)) {
+                foodSharePost.token = rootObject.getString(APIParams.TOKEN)
+
+            }
+
+            if (rootObject.has(APIParams.FOOD_ITEMS) && !rootObject.isNull(APIParams.FOOD_ITEMS)) {
+                foodSharePost.foodItems = rootObject.getString(APIParams.FOOD_ITEMS)
+            }
+
+            if (rootObject.has(APIParams.PHONE_NUMBER) && !rootObject.isNull(APIParams.PHONE_NUMBER)) {
+                foodSharePost.phone_number = rootObject.getString(APIParams.PHONE_NUMBER)
+            }
+
+            //arrayFoodData.add(foodSharePost)
+
+
+            return foodSharePost
+        }
     }
 
 

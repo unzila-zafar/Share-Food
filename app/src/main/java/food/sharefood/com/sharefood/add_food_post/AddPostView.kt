@@ -10,5 +10,6 @@ interface AddPostView {
     fun onFailure(message: String)
     fun selectImage(position: Int)
     fun setSelectedDateTime(dateTime : String)
+    fun setSelectedLocation(location : String)
 
 }

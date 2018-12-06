@@ -21,21 +21,13 @@ import food.sharefood.com.sharefood.util.Helper
 import food.sharefood.com.sharefood.util.IntArrayWrapper
 import java.io.File
 import java.util.*
-import android.support.v4.app.ShareCompat.IntentBuilder
-import android.R.attr.data
+
 import android.app.Activity
-import android.content.Context
-import android.content.RestrictionsManager.RESULT_ERROR
-import android.support.v4.app.FragmentActivity
-import android.util.Base64
-import android.util.Log
+
 import com.google.android.gms.location.places.ui.PlaceAutocomplete
-import java.security.MessageDigest
-import java.security.NoSuchAlgorithmException
 
 
 class AddPostActivity : AppCompatActivity(), AddPostView {
-
 
 
     private lateinit var binding: ActivityAddPostBinding
@@ -43,7 +35,7 @@ class AddPostActivity : AppCompatActivity(), AddPostView {
     private lateinit var mCapturedPhoto: Uri
     var list: ArrayList<Bitmap> = ArrayList()
     var imagesUrlList: ArrayList<String> = ArrayList()
-    private var capturePhotoPath : String? = null
+    private var capturePhotoPath: String? = null
     private val PLACE_AUTOCOMPLETE_REQUEST_CODE = 188
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -103,9 +95,12 @@ class AddPostActivity : AppCompatActivity(), AddPostView {
     }
 
     override fun onSuccess(foodSharePost: FoodSharePost) {
+
+        finish()
     }
 
     override fun onFailure(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 
     override fun selectImage(position: Int) {
@@ -123,6 +118,11 @@ class AddPostActivity : AppCompatActivity(), AddPostView {
         binding.addPicktimeEdit.setText(dateTime)
     }
 
+
+    override fun setSelectedLocation(location: String) {
+
+        binding.addLocationEdit.setText(location)
+    }
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
         when (requestCode) {
@@ -237,15 +237,15 @@ class AddPostActivity : AppCompatActivity(), AddPostView {
                 }
             }
 
-            PLACE_AUTOCOMPLETE_REQUEST_CODE ->
-            {
+            PLACE_AUTOCOMPLETE_REQUEST_CODE -> {
                 if (resultCode === Activity.RESULT_OK) {
                     val place = PlaceAutocomplete.getPlace(this, data)
-                    var longitude : Double = place.latLng.longitude
-                    var latitude : Double = place.latLng.latitude
+                    var longitude: Double = place.latLng.longitude
+                    var latitude: Double = place.latLng.latitude
+                    var placeName: String = place.name.toString()
 
 
-                    presenter.setLocationData(latitude, longitude)
+                    presenter.setLocationData(latitude, longitude, placeName)
 
                 } else if (resultCode === PlaceAutocomplete.RESULT_ERROR) {
                     val status = PlaceAutocomplete.getStatus(this, data)

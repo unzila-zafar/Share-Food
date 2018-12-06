@@ -11,6 +11,7 @@ import android.widget.LinearLayout
 import food.sharefood.com.sharefood.R
 import food.sharefood.com.sharefood.databinding.FragmentMainBinding
 import food.sharefood.com.sharefood.dialog.DialogUtils
+import food.sharefood.com.sharefood.util.FoodSharePost
 
 class MainFragment : Fragment() , MainView
 {
@@ -41,7 +42,7 @@ class MainFragment : Fragment() , MainView
         DialogUtils.HideProgressDialog()
     }
 
-    override fun setData(arrFood: List<FoodPostModel>) {
+    override fun setData(arrFood: List<FoodSharePost>) {
 
         if (arrFood.size != 0) {
             binding.foodList.layoutManager = LinearLayoutManager(activity, LinearLayout.VERTICAL, false)

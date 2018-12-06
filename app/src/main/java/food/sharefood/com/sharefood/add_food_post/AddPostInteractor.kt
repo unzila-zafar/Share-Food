@@ -7,14 +7,13 @@ import food.sharefood.com.sharefood.network.VolleyClass
 import food.sharefood.com.sharefood.util.*
 import org.json.JSONObject
 
-class AddPostInteractor : ServiceInterface
-{
+class AddPostInteractor : ServiceInterface {
     private lateinit var listener: AddPostFinishedListener
 
     interface AddPostFinishedListener {
 
-        fun onPostSuccess()
-        fun onPostError()
+        fun onPostSuccess(foodSharePost: FoodSharePost)
+        fun onPostError(message: String)
 
     }
 
@@ -27,22 +26,27 @@ class AddPostInteractor : ServiceInterface
         data.put(APIParams.NAME, foodSharePost.name)
         data.put(APIParams.EMAIL, foodSharePost.email)
         data.put(APIParams.PHONE, foodSharePost.phone_number)
-        data.put(APIParams.PICKUP_LOCATION , foodSharePost.foodPickupLocation)
-        data.put(APIParams.PICKUP_TIME , foodSharePost.pickUntilTime)
-        data.put(APIParams.FOOD_ITEMS , foodSharePost.foodItems)
-        data.put(APIParams.SUFFICIENT_FOR , foodSharePost.sufficientFor)
-        data.put(APIParams.PICTURE , foodSharePost.postPictures)
-        data.put(APIParams.TOKEN , AppSharedPref.getData(SharedPrefKeys.TOKEN, AppSharedPref.STRING, context))
+        data.put(APIParams.PICKUP_LOCATION, foodSharePost.foodPickupLocation)
+        data.put(APIParams.PICKUP_TIME, foodSharePost.pickUntilTime)
+        data.put(APIParams.FOOD_ITEMS, foodSharePost.foodItems)
+        data.put(APIParams.SUFFICIENT_FOR, foodSharePost.sufficientFor)
+        data.put(APIParams.PICTURE, foodSharePost.postPictures)
+        data.put(APIParams.TOKEN, AppSharedPref.getData(SharedPrefKeys.TOKEN, AppSharedPref.STRING, context))
 
         VolleyClass.getInstance(context).createPostRequest(WebUrls().NEW_FOOD_SHARE_POST, RequestMethods().POST, data, this, WebUrls().NEW_FOOD_SHARE_POST)
 
     }
 
     override fun onServiceResponse(jsonString: String, tag: String) {
-        listener.onPostSuccess()
+        if (jsonString != null) {
+            var rootObject = JSONObject(jsonString)
+
+            listener.onPostSuccess(Helper.addFoodPostData(rootObject))
+
+        }
     }
 
     override fun onServiceError(errorMessage: String) {
-        listener.onPostError()
+        listener.onPostError(errorMessage)
     }
 }
