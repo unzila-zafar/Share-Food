@@ -14,4 +14,6 @@
     <dimen name="fourty_margin">40dp</dimen>
     <dimen name="fifty_margin">50dp</dimen>
 
+    <dimen name="small_card_width">300dp</dimen>
+
 </resources>

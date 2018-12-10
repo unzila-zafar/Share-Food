@@ -10,11 +10,10 @@
         <android.support.v7.widget.RecyclerView
             android:id="@+id/food_list"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:fillViewport="true"
-            app:layout_constraintBottom_toBottomOf="parent">
+            android:layout_height="match_parent"
+            android:scrollbars="none"
+            android:gravity="center_horizontal"
+            android:background="@color/white">
         </android.support.v7.widget.RecyclerView>
 
     </android.support.constraint.ConstraintLayout>

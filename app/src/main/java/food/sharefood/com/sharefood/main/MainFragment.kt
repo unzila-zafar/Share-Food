@@ -1,6 +1,7 @@
 package food.sharefood.com.sharefood.main
 
 import android.databinding.DataBindingUtil
+import android.graphics.Rect
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
@@ -12,18 +13,20 @@ import food.sharefood.com.sharefood.R
 import food.sharefood.com.sharefood.databinding.FragmentMainBinding
 import food.sharefood.com.sharefood.dialog.DialogUtils
 import food.sharefood.com.sharefood.util.FoodSharePost
+import android.opengl.ETC1.getWidth
+import android.support.v7.widget.RecyclerView
+import food.sharefood.com.sharefood.databinding.ItemFoodListBinding
 
-class MainFragment : Fragment() , MainView
-{
+
+class MainFragment : Fragment(), MainView {
 
 
     private lateinit var binding: FragmentMainBinding
     private lateinit var mainPresenter: MainPresenter
 
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View?
-    {
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_main , container, false)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_main, container, false)
 
 
         mainPresenter = MainPresenter(this, MainInteractor())
@@ -56,8 +59,7 @@ class MainFragment : Fragment() , MainView
         }
     }
 
-    override fun setDataError(strError: String)
-    {
+    override fun setDataError(strError: String) {
 
     }
 

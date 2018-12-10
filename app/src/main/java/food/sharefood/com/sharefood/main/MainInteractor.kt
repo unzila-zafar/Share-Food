@@ -36,13 +36,16 @@ class MainInteractor : ServiceInterface {
     fun requestData(context: Context, finishedListener: OnFinishedListener) {
         listener = finishedListener
 
-        val objectMapper = ObjectMapper()
-        val data = objectMapper.convertValue(LoginData(), JSONObject::class.java)
-        data.put(APIParams.TOKEN, AppSharedPref.getData(SharedPrefKeys.TOKEN, AppSharedPref.STRING, context))
+        val  map: HashMap<String, String> = HashMap()
+        /* val objectMapper = ObjectMapper()
+         val data = objectMapper.convertValue(LoginData(), JSONObject::class.java)
+         data.put(APIParams.TOKEN, AppSharedPref.getData(SharedPrefKeys.TOKEN, AppSharedPref.STRING, context))
 
-        println("Request to send = ${WebUrls().GET_FOOD_SHARE_POSTS}")
-        println("data = ${data}")
-        VolleyClass.getInstance(context).createPostRequest(WebUrls().GET_FOOD_SHARE_POSTS, RequestMethods().POST, data, this, WebUrls().GET_FOOD_SHARE_POSTS)
+         println("Request to send = ${WebUrls().GET_FOOD_SHARE_POSTS}")
+         println("data = ${data}")*/
+
+        map.put(APIParams.TOKEN, AppSharedPref.getData(SharedPrefKeys.TOKEN, AppSharedPref.STRING, context).toString())
+        VolleyClass.getInstance(context).createRequest(WebUrls().GET_FOOD_SHARE_POSTS, RequestMethods().POST, map, this, WebUrls().GET_FOOD_SHARE_POSTS)
 
     }
 

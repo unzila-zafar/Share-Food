@@ -14,15 +14,11 @@
             layout="@layout/post_toolbar"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <android.support.v4.view.ViewPager
-            android:id="@+id/viewpager"
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/images_view_List"
             android:layout_width="match_parent"
-            android:layout_height="250dp"
-            android:layout_marginTop="@dimen/ten_margin"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/postBar" />
-
+            android:layout_height="wrap_content"
+            android:layout_gravity="center" />
 
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
@@ -30,7 +26,7 @@
             android:layout_margin="@dimen/fifteen_margin"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/viewpager">
+            app:layout_constraintTop_toBottomOf="@+id/images_view_List">
 
 
             <android.support.constraint.ConstraintLayout

@@ -1,10 +1,12 @@
 package food.sharefood.com.sharefood.main
 
 
+import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import food.sharefood.com.sharefood.R
 import food.sharefood.com.sharefood.databinding.ItemFoodListBinding
 import food.sharefood.com.sharefood.util.FoodSharePost
@@ -40,13 +42,16 @@ class FoodListAdapter(private val foodDataList: List<FoodSharePost>, private val
                 text_time.text = item.pickUntilTime
                 textLocation.text = item.foodPickupLocation
                 //text_description.text = item.description
-               // image_food.setImageResource(item.postPictures)
+                // image_food.setImageResource(item.postPictures)
                 text_count_value.text = item.sufficientFor
                 text_item_values.text = item.foodItems
 
+                imagesList.layoutManager = LinearLayoutManager(context, LinearLayout.HORIZONTAL, false)
+
+                imagesList.adapter = FoodImagesAdapter(context, item.postPictures)
+
             }
         }
-
 
 
     }
