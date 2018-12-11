@@ -109,7 +109,10 @@ data class FoodSharePost(
         var tokenStartTime: Long? = null,
 
         @JsonProperty(value = "tokenExpiryTime")
-        var tokenExpiryTime: Long? = null
+        var tokenExpiryTime: Long? = null,
+
+        @JsonProperty(value = "postCreationTime")
+        var postCreationTime: String? = ""
 
 
 ) : Serializable {
@@ -157,6 +160,8 @@ class APIParams {
         var PHONE = "phone"
         var SUFFICIENT_FOR = "sufficientFor"
         var PHONE_NUMBER = "phone_number"
+        var POST_PICTURES: String = "postPictures"
+        var POST_CREATION_TIME : String = "postCreationTime"
     }
 }
 

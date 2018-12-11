@@ -34,8 +34,7 @@ class AddPostActivity : AppCompatActivity(), AddPostView {
     private lateinit var presenter: AddPostPresenter
     private lateinit var mCapturedPhoto: Uri
     var list: ArrayList<Bitmap> = ArrayList()
-    var imagesUrlList: ArrayList<String> = ArrayList()
-    private var capturePhotoPath: String? = null
+    private var imagesUrlList: ArrayList<String> = ArrayList()
     private val PLACE_AUTOCOMPLETE_REQUEST_CODE = 188
 
     override fun onCreate(savedInstanceState: Bundle?) {
