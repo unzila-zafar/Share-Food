@@ -50,13 +50,13 @@ class AddPostPresenter(var addPostView: AddPostView, var addPostInteractor: AddP
             checkValues = false
         }
 
-       /* if (foodSharePost.foodPickupLocation!!.isEmpty()) {
+        if (foodSharePost.foodPickupLocation!!.isEmpty()) {
             binding.addLocationLayout.error = "Please add location"
             addPostView.hideProgress()
             checkValues = false
-        }*/
+        }
 
-        foodSharePost.foodPickupLocation = "kfc"
+        //foodSharePost.foodPickupLocation = "kfc"
 
         if (foodSharePost.foodItems.isEmpty()) {
             binding.fooditemsLayout.error = "Please add food items"
