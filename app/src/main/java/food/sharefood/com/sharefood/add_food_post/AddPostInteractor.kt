@@ -10,6 +10,7 @@ import food.sharefood.com.sharefood.network.VolleyClass
 import food.sharefood.com.sharefood.util.*
 import org.json.JSONArray
 import org.json.JSONObject
+import java.util.*
 
 class AddPostInteractor : ServiceInterface {
     private lateinit var listener: AddPostFinishedListener
@@ -37,7 +38,8 @@ class AddPostInteractor : ServiceInterface {
         data.put(APIParams.SUFFICIENT_FOR, foodSharePost.sufficientFor)
         val postPictures = JSONArray(foodSharePost.postPictures)
         data.put(APIParams.POST_PICTURES, postPictures)
-        data.put(APIParams.POST_CREATION_TIME, foodSharePost.postCreationTime)
+        val creationDate = Date()
+        data.put(APIParams.POST_CREATION_TIME, creationDate)
         data.put(APIParams.TOKEN, AppSharedPref.getData(SharedPrefKeys.TOKEN, AppSharedPref.STRING, context))
 
         println("data = $data")
