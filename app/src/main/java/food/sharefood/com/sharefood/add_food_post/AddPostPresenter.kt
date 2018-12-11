@@ -35,8 +35,8 @@ class AddPostPresenter(var addPostView: AddPostView, var addPostInteractor: AddP
 
         var checkValues = true
         foodSharePost = FoodSharePost();
-        foodSharePost.name = binding.addNameEdit.text.toString()
-        foodSharePost.email = binding.addEmailEdit.text.toString()
+       // foodSharePost.name = binding.addNameEdit.text.toString()
+      //  foodSharePost.email = binding.addEmailEdit.text.toString()
         foodSharePost.phone_number = binding.addNumberEdit.text.toString()
         foodSharePost.sufficientFor = binding.addSufficientEdit.text.toString()
         foodSharePost.pickUntilTime = binding.addPicktimeEdit.text.toString()
@@ -51,11 +51,11 @@ class AddPostPresenter(var addPostView: AddPostView, var addPostInteractor: AddP
         }*/
 
 
-        if (foodSharePost.email.isEmpty()) {
+      /*  if (foodSharePost.email.isEmpty()) {
             binding.emailLayout.error = "Please enter email"
             addPostView.hideProgress()
             checkValues = false
-        }
+        }*/
 
         if (foodSharePost.phone_number.isEmpty()) {
             binding.phoneLayout.error = "Please enter phone number"
@@ -70,11 +70,11 @@ class AddPostPresenter(var addPostView: AddPostView, var addPostInteractor: AddP
         }
 
         //TODO can we autopopulate location?
-        /*if (foodSharePost.foodPickupLocation!!.isEmpty()) {
+        if (foodSharePost.foodPickupLocation!!.isEmpty()) {
             binding.addLocationLayout.error = "Please add location"
             addPostView.hideProgress()
             checkValues = false
-        }*/
+        }
 
         if (foodSharePost.foodItems.isEmpty()) {
             binding.fooditemsLayout.error = "Please add food items"

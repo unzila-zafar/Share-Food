@@ -10,7 +10,6 @@ import android.os.Build
 import android.provider.MediaStore
 import android.support.v4.app.ActivityCompat
 import android.support.v4.content.ContextCompat
-import java.io.File
 import javax.crypto.Cipher
 import javax.crypto.spec.IvParameterSpec
 import javax.crypto.spec.SecretKeySpec
@@ -21,7 +20,6 @@ import javax.crypto.spec.GCMParameterSpec
 import android.graphics.BitmapFactory
 import java.io.ByteArrayOutputStream
 import android.util.Base64
-import android.util.Base64.encodeToString
 import com.cloudinary.android.MediaManager
 import org.json.JSONArray
 import org.json.JSONObject
@@ -253,7 +251,6 @@ class Helper {
         fun addFoodPostData(rootObject: JSONObject): FoodSharePost {
            // var arrayFoodData: MutableList<FoodSharePost> = mutableListOf()
 
-
             var foodSharePost = FoodSharePost()
 
 
@@ -275,6 +272,7 @@ class Helper {
 
             if (rootObject.has(APIParams.PICKUP_LOCATION) && !rootObject.isNull(APIParams.PICKUP_LOCATION)) {
                 foodSharePost.foodPickupLocation = rootObject.getString(APIParams.PICKUP_LOCATION)
+
             }
 
             if (rootObject.has(APIParams.TOKEN) && !rootObject.isNull(APIParams.TOKEN)) {

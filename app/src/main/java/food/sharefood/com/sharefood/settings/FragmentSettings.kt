@@ -7,8 +7,11 @@ import android.support.v7.app.AppCompatActivity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.squareup.picasso.Picasso
 import food.sharefood.com.sharefood.R
 import food.sharefood.com.sharefood.databinding.ActivitySettingsBinding
+import food.sharefood.com.sharefood.user.UserModel
+
 
 class FragmentSettings :Fragment()
 {
@@ -20,6 +23,14 @@ class FragmentSettings :Fragment()
     {
 
         binding = DataBindingUtil.inflate(inflater, R.layout.activity_settings , container , false)
+
+        var userModel = UserModel
+
+        if(userModel != null)
+        {
+            //Picasso.with(activity).load(userModel.ge)
+        }
+
 
         return binding.root
     }

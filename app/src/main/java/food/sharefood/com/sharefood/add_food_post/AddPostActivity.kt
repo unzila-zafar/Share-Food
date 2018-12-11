@@ -56,7 +56,7 @@ class AddPostActivity : AppCompatActivity(), AddPostView {
         supportActionBar?.setDisplayHomeAsUpEnabled(true);
         supportActionBar?.setDisplayShowHomeEnabled(true);
 
-        binding.toolbar.toolbar.setTitle(resources.getString(R.string.add_post))
+        binding.toolbar.toolbarTitle.text = resources.getString(R.string.add_post)
         binding.toolbar.toolbar.setNavigationOnClickListener { onBackPressed() }
 
 
@@ -160,16 +160,12 @@ class AddPostActivity : AppCompatActivity(), AddPostView {
 
                     val photoURI = FileProvider.getUriForFile(this, "food.sharefood.com.sharefood.provider", imageFile)
 
-                    //capturePhotoPath = Helper.getRealPathFromURI(photoURI, this)
                     val pm = getPackageManager()
                     if (cameraIntent.resolveActivity(pm) != null) {
                         cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI)
                         startActivityForResult(cameraIntent, Helper.REQUEST_TAKE_PHOTO)
                     }
 
-                    /*val photoURI = FileProvider.getUriForFile(this@SignupActivity,
-                            "food.sharefood.com.sharefood.provider",
-                            imageFile)*/
 
                 }
             }
@@ -253,7 +249,6 @@ class AddPostActivity : AppCompatActivity(), AddPostView {
                     Toast.makeText(this, "No Location Found.", Toast.LENGTH_SHORT).show()
 
                 } else if (resultCode === Activity.RESULT_CANCELED) {
-                    // The user canceled the operation.
                 }
             }
         }

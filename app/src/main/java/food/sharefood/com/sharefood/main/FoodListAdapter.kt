@@ -1,6 +1,9 @@
 package food.sharefood.com.sharefood.main
 
 
+import android.content.Intent
+import android.graphics.drawable.Drawable
+import android.support.v4.content.ContextCompat.startActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -9,7 +12,9 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import food.sharefood.com.sharefood.R
 import food.sharefood.com.sharefood.databinding.ItemFoodListBinding
+import food.sharefood.com.sharefood.util.Extras
 import food.sharefood.com.sharefood.util.FoodSharePost
+import food.sharefood.com.sharefood.view_post.ViewPostActivity
 import kotlinx.android.synthetic.main.item_food_list.view.*
 
 class FoodListAdapter(private val foodDataList: List<FoodSharePost>, private val listener: (Int) -> Unit) : RecyclerView.Adapter<FoodListAdapter.FoodViewHolder>() {
@@ -23,15 +28,12 @@ class FoodListAdapter(private val foodDataList: List<FoodSharePost>, private val
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FoodViewHolder {
-        // var binding: ItemFoodListBinding =
 
         val inflater = LayoutInflater.from(parent.context)
 
         val binding = ItemFoodListBinding.inflate(inflater)
 
-        //val view = inflater.inflate(R.layout.item_food_list, parent, false)
         return FoodViewHolder(binding)
-        // return FoodViewHolder(View.inflate(parent.context , R.layout.item_food_list , parent))
     }
 
 
@@ -49,6 +51,12 @@ class FoodListAdapter(private val foodDataList: List<FoodSharePost>, private val
                 imagesList.layoutManager = LinearLayoutManager(context, LinearLayout.HORIZONTAL, false)
 
                 imagesList.adapter = FoodImagesAdapter(context, item.postPictures)
+
+                cardView.setOnClickListener {
+                    val intent = Intent(context, ViewPostActivity::class.java)
+                    intent.putExtra(Extras.FOOD_MODEL, item)
+                    context.startActivity(intent)
+                }
 
             }
         }

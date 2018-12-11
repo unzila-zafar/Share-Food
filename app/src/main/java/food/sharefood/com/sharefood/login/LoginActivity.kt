@@ -16,6 +16,7 @@ import food.sharefood.com.sharefood.databinding.ActivityLoginBinding
 import food.sharefood.com.sharefood.dialog.DialogUtils
 import food.sharefood.com.sharefood.main.MainActivity
 import food.sharefood.com.sharefood.signup.SignupActivity
+import food.sharefood.com.sharefood.user.UserModel
 import food.sharefood.com.sharefood.util.AppSharedPref
 import food.sharefood.com.sharefood.util.FoodSharer
 import food.sharefood.com.sharefood.util.SharedPrefKeys
@@ -96,6 +97,10 @@ class LoginActivity : AppCompatActivity(), LoginView {
         AppSharedPref.loadPrefs(this)
         AppSharedPref.saveData(SharedPrefKeys.LOGGED_IN, AppSharedPref.BOOLEAN, true, this)
         AppSharedPref.saveData(SharedPrefKeys.TOKEN, AppSharedPref.STRING, foodSharer.token!!, this)
+        AppSharedPref.saveData(SharedPrefKeys.NAME, AppSharedPref.STRING, foodSharer.name, this)
+        AppSharedPref.saveData(SharedPrefKeys.EMAIL, AppSharedPref.STRING, foodSharer.loginId, this)
+
+        UserModel(foodSharer.name, foodSharer.loginId, foodSharer.registeredAs!!, foodSharer.address!!, foodSharer.picture!! )
 
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)

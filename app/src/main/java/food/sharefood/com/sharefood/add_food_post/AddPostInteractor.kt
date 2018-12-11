@@ -23,8 +23,8 @@ class AddPostInteractor : ServiceInterface {
 
         val objectMapper = ObjectMapper()
         val data = objectMapper.convertValue(LoginData(), JSONObject::class.java)
-        data.put(APIParams.NAME, foodSharePost.name)
-        data.put(APIParams.EMAIL, foodSharePost.email)
+        data.put(APIParams.NAME, AppSharedPref.getData(SharedPrefKeys.NAME, AppSharedPref.STRING, context))
+        data.put(APIParams.EMAIL, AppSharedPref.getData(SharedPrefKeys.EMAIL, AppSharedPref.STRING, context))
         data.put(APIParams.PHONE, foodSharePost.phone_number)
         data.put(APIParams.PICKUP_LOCATION, foodSharePost.foodPickupLocation)
         data.put(APIParams.PICKUP_TIME, foodSharePost.pickUntilTime)

@@ -3,8 +3,8 @@ package food.sharefood.com.sharefood.util
 import com.android.volley.Request
 import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
-import food.sharefood.com.sharefood.R.string.address
-import food.sharefood.com.sharefood.R.string.phone_number
+import food.sharefood.com.sharefood.R.string.*
+import java.io.Serializable
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -112,7 +112,7 @@ data class FoodSharePost(
         var tokenExpiryTime: Long? = null
 
 
-) {
+) : Serializable {
     override fun toString(): String {
         return "FoodSharerPost(name='$name', email='$email', foodPickupLocation='$foodPickupLocation', phone_number='$phone_number', sufficientFor='$sufficientFor', pickUntilTime='$pickUntilTime', foodItems='$foodItems', postPictures='$postPictures'"
     }
@@ -166,11 +166,20 @@ class SharedPrefKeys {
         var TOKEN = "token"
         var TOKENSTART = "token_start"
         var TOKENEND = "token_end"
+        var NAME = "name"
+        var EMAIL = "email"
+    }
+}
+
+class Extras {
+    companion object {
+        var FOOD_MODEL = "food_model"
     }
 }
 
 data class FoodPostArrays(
 
-        var foodSharePostArray: ArrayList<FoodSharePost> ?= null
+        var foodSharePostArray: ArrayList<FoodSharePost>? = null
 
 )
+
