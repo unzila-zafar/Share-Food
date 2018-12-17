@@ -4,11 +4,13 @@ import android.content.Context
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import com.bumptech.glide.Glide
 import com.squareup.picasso.Picasso
 
 import food.sharefood.com.sharefood.databinding.ItemImagesFoodBinding
 
 import kotlinx.android.synthetic.main.item_images_food.view.*
+
 
 class FoodImagesAdapter(val context: Context, private val imagesList: ArrayList<String>?) : RecyclerView.Adapter<FoodImagesAdapter.FoodImagesHolder>() {
 
@@ -32,9 +34,9 @@ class FoodImagesAdapter(val context: Context, private val imagesList: ArrayList<
     inner class FoodImagesHolder(item: ItemImagesFoodBinding) : RecyclerView.ViewHolder(item.root) {
         fun bind(item: String) {
             with(itemView) {
-                Picasso.with(context).load(item).into(image_food)
+                Glide.with(context).load(item).into(image_food)
+
             }
-            // image_food.setImageResource(item.postPictures)
 
         }
     }

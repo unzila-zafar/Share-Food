@@ -25,6 +25,16 @@ import java.util.*
 import android.app.Activity
 
 import com.google.android.gms.location.places.ui.PlaceAutocomplete
+import com.cloudinary.android.callback.ErrorInfo
+import food.sharefood.com.sharefood.R.id.imageView
+import food.sharefood.com.sharefood.main.MainActivity
+import com.squareup.picasso.Picasso
+import com.cloudinary.android.callback.UploadCallback
+import android.R.attr.data
+import android.util.Log
+import com.cloudinary.Transformation
+import com.cloudinary.android.MediaManager
+import com.cloudinary.android.Utils
 
 
 class AddPostActivity : AppCompatActivity(), AddPostView {
@@ -34,8 +44,9 @@ class AddPostActivity : AppCompatActivity(), AddPostView {
     private lateinit var presenter: AddPostPresenter
     private lateinit var mCapturedPhoto: Uri
     var list: ArrayList<Bitmap> = ArrayList()
-    private var imagesUrlList: ArrayList<String> = ArrayList()
+    private var imagesPathList: ArrayList<String> = ArrayList()
     private val PLACE_AUTOCOMPLETE_REQUEST_CODE = 188
+    private val UNSIGNED_UPLOAD_PRESET = "v1fykxtz"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,16 +61,16 @@ class AddPostActivity : AppCompatActivity(), AddPostView {
 
     private fun init() {
 
-        setSupportActionBar(binding.toolbar.toolbar)
+        setSupportActionBar(binding.addToolbar.toolbar)
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true);
         supportActionBar?.setDisplayShowHomeEnabled(true);
 
-        binding.toolbar.toolbarTitle.text = resources.getString(R.string.add_post)
-        binding.toolbar.toolbar.setNavigationOnClickListener { onBackPressed() }
+        binding.addToolbar.toolbarTitle.text = resources.getString(R.string.add_post)
+        binding.addToolbar.toolbar.setNavigationOnClickListener { onBackPressed() }
 
 
-        presenter = AddPostPresenter(this, AddPostInteractor())
+        presenter = AddPostPresenter(this, this, AddPostInteractor())
 
         if (list != null) {
             list.add(BitmapFactory.decodeResource(getResources(), R.drawable.ic_add))
@@ -69,7 +80,7 @@ class AddPostActivity : AppCompatActivity(), AddPostView {
 
         binding.buttonAdd.setOnClickListener {
 
-            presenter.addPost(this, binding, imagesUrlList)
+            presenter.addPost(this, binding, imagesPathList)
             //finish()
         }
 
@@ -199,10 +210,7 @@ class AddPostActivity : AppCompatActivity(), AddPostView {
 
                         presenter.fillPhotoList(this, list, binding)
 
-                        // var max: Int by Delegates.observable(0) {property, oldValue, newValue ->
-                        imagesUrlList = Helper.setDataInList(mCapturedPhoto.path)
-
-                        //}
+                        imagesPathList.add(mCapturedPhoto.path)
 
 
                     } else {
@@ -225,7 +233,8 @@ class AddPostActivity : AppCompatActivity(), AddPostView {
 
                     presenter.fillPhotoList(this, list, binding)
 
-                    imagesUrlList = Helper.setDataInList(picturePath!!)
+                    imagesPathList.add(picturePath.toString())
+
                 } else {
                     Toast.makeText(this, "Images limit exceed!", Toast.LENGTH_SHORT).show()
 
@@ -251,7 +260,8 @@ class AddPostActivity : AppCompatActivity(), AddPostView {
                 }
             }
         }
-    }
 
+
+    }
 
 }

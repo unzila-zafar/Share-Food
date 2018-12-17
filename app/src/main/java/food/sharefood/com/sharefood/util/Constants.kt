@@ -179,6 +179,8 @@ class SharedPrefKeys {
 class Extras {
     companion object {
         var FOOD_MODEL = "food_model"
+        var LATITUDE_VALUE = "latitude"
+        var LONGITUDE_VALUE = "longitude"
     }
 }
 

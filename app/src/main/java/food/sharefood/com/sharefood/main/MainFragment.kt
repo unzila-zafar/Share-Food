@@ -13,9 +13,6 @@ import food.sharefood.com.sharefood.R
 import food.sharefood.com.sharefood.databinding.FragmentMainBinding
 import food.sharefood.com.sharefood.dialog.DialogUtils
 import food.sharefood.com.sharefood.util.FoodSharePost
-import android.opengl.ETC1.getWidth
-import android.support.v7.widget.RecyclerView
-import food.sharefood.com.sharefood.databinding.ItemFoodListBinding
 
 
 class MainFragment : Fragment(), MainView {

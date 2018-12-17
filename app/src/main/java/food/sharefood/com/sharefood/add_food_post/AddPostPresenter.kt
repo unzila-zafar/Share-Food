@@ -8,25 +8,38 @@ import android.support.v7.app.AlertDialog
 import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
 import android.widget.LinearLayout
+import android.widget.Toast
+import com.cloudinary.android.MediaManager
+import com.cloudinary.android.callback.ErrorInfo
+import com.cloudinary.android.callback.UploadCallback
+import food.sharefood.com.sharefood.R.id.image
+import food.sharefood.com.sharefood.R.id.imagesList
 import food.sharefood.com.sharefood.databinding.ActivityAddPostBinding
+import food.sharefood.com.sharefood.dialog.DialogUtils
 import food.sharefood.com.sharefood.util.FoodSharePost
+import food.sharefood.com.sharefood.util.Helper
 import java.text.SimpleDateFormat
 import java.util.*
 
-class AddPostPresenter(var addPostView: AddPostView, var addPostInteractor: AddPostInteractor) : AddPostInteractor.AddPostFinishedListener {
+class AddPostPresenter(var context: Context, var addPostView: AddPostView, var addPostInteractor: AddPostInteractor) : AddPostInteractor.AddPostFinishedListener {
     private var foodSharePost: FoodSharePost = FoodSharePost()
+    private var imagesUrlList: ArrayList<String> = ArrayList()
+    private val UNSIGNED_UPLOAD_PRESET = "v1fykxtz"
 
     fun addPost(context: Context, binding: ActivityAddPostBinding, imagesList: ArrayList<String>) {
         addPostView.showProgress()
 
-        if (checkData(binding, imagesList)) {
-            addPostInteractor.requestAddPost(context, foodSharePost, this)
+        if (Helper.checkNetworkConnectivity(context) && imagesList.size != 0) {
+            uploadToCloudinary(imagesList, binding)
+        } else {
+
+            sendPostApiCall(binding)
         }
 
     }
 
 
-    fun checkData(binding: ActivityAddPostBinding, imagesList: ArrayList<String>): Boolean {
+    fun checkData(binding: ActivityAddPostBinding): Boolean {
 
         var checkValues = true
         foodSharePost = FoodSharePost()
@@ -34,9 +47,10 @@ class AddPostPresenter(var addPostView: AddPostView, var addPostInteractor: AddP
         foodSharePost.sufficientFor = binding.addSufficientEdit.text.toString()
         foodSharePost.pickUntilTime = binding.addPicktimeEdit.text.toString()
         foodSharePost.foodPickupLocation = binding.addLocationEdit.text.toString()
-        foodSharePost.postPictures = imagesList
-
         foodSharePost.foodItems = binding.addFooditemsEdit.text.toString()
+
+        if (imagesUrlList.size != 0)
+            foodSharePost.postPictures = imagesUrlList
 
         if (foodSharePost.phone_number.isEmpty()) {
             binding.phoneLayout.error = "Please enter phone number"
@@ -50,11 +64,11 @@ class AddPostPresenter(var addPostView: AddPostView, var addPostInteractor: AddP
             checkValues = false
         }
 
-        if (foodSharePost.foodPickupLocation!!.isEmpty()) {
-            binding.addLocationLayout.error = "Please add location"
-            addPostView.hideProgress()
-            checkValues = false
-        }
+        /*  if (foodSharePost.foodPickupLocation!!.isEmpty()) {
+              binding.addLocationLayout.error = "Please add location"
+              addPostView.hideProgress()
+              checkValues = false
+          }*/
 
         //foodSharePost.foodPickupLocation = "kfc"
 
@@ -63,6 +77,7 @@ class AddPostPresenter(var addPostView: AddPostView, var addPostInteractor: AddP
             addPostView.hideProgress()
             checkValues = false
         }
+
 
         return checkValues
     }
@@ -138,5 +153,58 @@ class AddPostPresenter(var addPostView: AddPostView, var addPostInteractor: AddP
 
                 }, c.get(Calendar.YEAR), c.get(Calendar.MONTH), c.get(Calendar.DAY_OF_MONTH))
         datePickerStart.show()
+    }
+
+    fun uploadToCloudinary(imagesList: ArrayList<String>, binding: ActivityAddPostBinding) {
+        if (imagesList.size != 0) {
+            (0..(imagesList.size - 1)).forEach { i ->
+
+                MediaManager.get()
+                        .upload(imagesList.get(i))
+                        .unsigned(UNSIGNED_UPLOAD_PRESET)
+                        .option("resource_type", "image")
+                        .callback(object : UploadCallback {
+                            override fun onStart(requestId: String) {
+                                Log.d("upload: ", "onStart")
+                                DialogUtils.ShowProgressDialog(context)
+
+                            }
+
+                            override fun onProgress(requestId: String, bytes: Long, totalBytes: Long) {
+                            }
+
+                            override fun onSuccess(requestId: String, resultData: Map<*, *>) {
+                                Toast.makeText(context, "Upload successful", Toast.LENGTH_LONG).show()
+                                DialogUtils.HideProgressDialog()
+                                imagesUrlList = Helper.setDataInList(resultData["public_id"].toString())
+
+                                if (i == (imagesList.size - 1)) {
+                                    sendPostApiCall(binding)
+                                }
+
+                            }
+
+                            override fun onError(requestId: String, error: ErrorInfo) {
+                                Log.d("upload: ", error.description)
+                                DialogUtils.HideProgressDialog()
+                                Toast.makeText(context, "Upload was not successful", Toast.LENGTH_LONG).show()
+                            }
+
+                            override fun onReschedule(requestId: String, error: ErrorInfo) {
+                                Log.d("upload: ", "onReschedule")
+                                DialogUtils.HideProgressDialog()
+                            }
+                        }).dispatch()
+            }
+
+
+        }
+    }
+
+
+    private fun sendPostApiCall(binding: ActivityAddPostBinding) {
+        if (checkData(binding)) {
+            addPostInteractor.requestAddPost(context, foodSharePost, this)
+        }
     }
 }

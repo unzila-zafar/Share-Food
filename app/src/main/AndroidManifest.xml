@@ -53,6 +53,9 @@
             android:name=".forgot_password.ForgotPassword"
             android:screenOrientation="portrait" />
 
+        <activity android:name=".add_food_post.MapViewActivity"
+            android:screenOrientation="portrait" />
+
 
         <meta-data
             android:name="CLOUDINARY_URL"

@@ -18,11 +18,14 @@ import java.security.SecureRandom
 import java.util.*
 import javax.crypto.spec.GCMParameterSpec
 import android.graphics.BitmapFactory
+import android.net.ConnectivityManager
+import android.net.NetworkInfo
 import java.io.ByteArrayOutputStream
 import android.util.Base64
 import com.cloudinary.android.MediaManager
 import org.json.JSONArray
 import org.json.JSONObject
+import kotlin.collections.ArrayList
 
 
 class Helper {
@@ -32,7 +35,7 @@ class Helper {
         val REQUEST_TAKE_PHOTO = 0
         val REQUEST_SELECT_IMAGE_IN_ALBUM = 1
         val REQUEST_LOCATION = 2
-
+        val LOCATION_PERMISSION_REQUEST_CODE= 222
 
         fun checkPermission(context: Context, permissions: Array<String>, requestCode: Int): Boolean {
             val currentAPIVersion = Build.VERSION.SDK_INT
@@ -64,8 +67,8 @@ class Helper {
         fun setDataInList(picPath: String): ArrayList<String> {
             var encryptedImagesList: ArrayList<String> = ArrayList()
 
-            var encodedString = Helper.encoder(picPath)
-            encodedString = MediaManager.get().url().secure(true).generate(encodedString)
+            //var encodedString = Helper.encoder(picPath)
+            var encodedString = MediaManager.get().url().secure(true).generate(picPath)
 
             encryptedImagesList.add(encodedString)
 
@@ -158,6 +161,14 @@ class Helper {
             } else null
         }
 
+        fun checkNetworkConnectivity(context: Context): Boolean {
+            val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+            val activeNetwork: NetworkInfo? = connectivityManager.activeNetworkInfo
+            val isConnected: Boolean = activeNetwork?.isConnectedOrConnecting == true
+
+            return isConnected
+        }
+
 
         fun setUserData(rootObject: JSONObject): FoodSharer {
             var foodSharer = FoodSharer()
@@ -241,6 +252,14 @@ class Helper {
                     foodSharePost.phone_number = rootObject.getString(APIParams.PHONE_NUMBER)
                 }
 
+
+                if (rootObject.has(APIParams.POST_PICTURES) && !rootObject.isNull(APIParams.POST_PICTURES)) {
+                    var pixArray = rootObject.getJSONArray(APIParams.POST_PICTURES)
+                    (0..(pixArray.length() - 1)).forEach { j ->
+                        foodSharePost.postPictures?.add(pixArray.get(j).toString())
+                    }
+                }
+
                 arrayFoodData.add(foodSharePost)
 
             }
@@ -249,7 +268,7 @@ class Helper {
 
 
         fun addFoodPostData(rootObject: JSONObject): FoodSharePost {
-           // var arrayFoodData: MutableList<FoodSharePost> = mutableListOf()
+            // var arrayFoodData: MutableList<FoodSharePost> = mutableListOf()
 
             var foodSharePost = FoodSharePost()
 

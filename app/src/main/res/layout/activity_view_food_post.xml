@@ -16,7 +16,7 @@
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/images_post_List"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             app:layout_constraintTop_toBottomOf="@+id/postBar"/>
@@ -144,6 +144,19 @@
                     android:textColor="@color/black"
                     android:textSize="@dimen/fourteen_size"
                     app:layout_constraintLeft_toRightOf="@+id/textHeadingLocation" />
+
+
+                <TextView
+                    android:id="@+id/viewMap"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintRight_toRightOf="parent"
+                    android:text="@string/view_on_map"
+                    android:layout_marginRight="@dimen/ten_margin"
+                    android:textColor="@color/splash_text"
+
+                    android:textSize="@dimen/sixteen_size" />
+
             </android.support.constraint.ConstraintLayout>
 
 
