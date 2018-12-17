@@ -155,6 +155,7 @@ class APIParams {
         var TOKEN = "token"
         var TOKEN_START = "tokenStartTime"
         var TOKEN_END = "tokenExpiryTime"
+        var _ID = "_id"
 
         /*add post*/
         var EMAIL = "email"

@@ -29,6 +29,7 @@ class AddPostInteractor : ServiceInterface {
         val objectMapper = ObjectMapper()
         objectMapper.enable(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY);
         val data = objectMapper.convertValue(FoodSharePost(), JSONObject::class.java)
+        data.put(APIParams._ID, "")
         data.put(APIParams.NAME, AppSharedPref.getData(SharedPrefKeys.NAME, AppSharedPref.STRING, context))
         data.put(APIParams.EMAIL, AppSharedPref.getData(SharedPrefKeys.EMAIL, AppSharedPref.STRING, context))
         data.put(APIParams.PHONE, foodSharePost.phone_number)
