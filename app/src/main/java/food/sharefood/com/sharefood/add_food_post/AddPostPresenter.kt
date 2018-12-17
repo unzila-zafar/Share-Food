@@ -156,8 +156,10 @@ class AddPostPresenter(var context: Context, var addPostView: AddPostView, var a
     }
 
     fun uploadToCloudinary(imagesList: ArrayList<String>, binding: ActivityAddPostBinding) {
+        var counter = 0
         if (imagesList.size != 0) {
             (0..(imagesList.size - 1)).forEach { i ->
+
 
                 MediaManager.get()
                         .upload(imagesList.get(i))
@@ -176,12 +178,12 @@ class AddPostPresenter(var context: Context, var addPostView: AddPostView, var a
                             override fun onSuccess(requestId: String, resultData: Map<*, *>) {
                                 Toast.makeText(context, "Upload successful", Toast.LENGTH_LONG).show()
                                 DialogUtils.HideProgressDialog()
-                                imagesUrlList = Helper.setDataInList(resultData["public_id"].toString())
+                                imagesUrlList.add(MediaManager.get().url().secure(true).generate(resultData["public_id"].toString())) //Helper.setDataInList(resultData["public_id"].toString())
 
-                                if (i == (imagesList.size - 1)) {
+                                if (counter == (imagesList.size - 1)) {
                                     sendPostApiCall(binding)
                                 }
-
+                                counter++
                             }
 
                             override fun onError(requestId: String, error: ErrorInfo) {
