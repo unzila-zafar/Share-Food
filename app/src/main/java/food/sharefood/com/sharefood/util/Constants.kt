@@ -28,7 +28,8 @@ data class WebUrls(
         val GREETING: String = "$BASE_URL/user/greeting",
         val SIGNUP: String = "$BASE_URL/user/signup",
         val NEW_FOOD_SHARE_POST: String = "$BASE_URL/posts/addFoodSharePost",
-        val GET_FOOD_SHARE_POSTS: String = "$BASE_URL/posts/allFoodSharePosts"
+        val GET_FOOD_SHARE_POSTS: String = "$BASE_URL/posts/allFoodSharePosts",
+        val DELETE_FOOD_POST: String = "$BASE_URL/posts/deleteFoodSharePost"
 
 
 )
@@ -186,7 +187,9 @@ class Extras {
         var FOOD_MODEL = "food_model"
         var LATITUDE_VALUE = "latitude"
         var LONGITUDE_VALUE = "longitude"
-    }
+        var ADD_POST_DATA = 1
+        var REFRESH_POSTS_DATA = "refresh_posts"
+}
 }
 
 data class FoodPostArrays(

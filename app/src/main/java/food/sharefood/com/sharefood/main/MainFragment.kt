@@ -1,9 +1,13 @@
 package food.sharefood.com.sharefood.main
 
+import android.content.BroadcastReceiver
+import android.content.Context
+import android.content.Intent
+import android.content.IntentFilter
 import android.databinding.DataBindingUtil
-import android.graphics.Rect
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v4.content.LocalBroadcastManager
 import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +16,7 @@ import android.widget.LinearLayout
 import food.sharefood.com.sharefood.R
 import food.sharefood.com.sharefood.databinding.FragmentMainBinding
 import food.sharefood.com.sharefood.dialog.DialogUtils
+import food.sharefood.com.sharefood.util.Extras
 import food.sharefood.com.sharefood.util.FoodSharePost
 
 
@@ -61,5 +66,29 @@ class MainFragment : Fragment(), MainView {
     }
 
     override fun onItemClick(adapterPosition: Int) {
+    }
+
+    val broadCastReceiver = object : BroadcastReceiver() {
+        override fun onReceive(contxt: Context?, intent: Intent?) {
+
+            when (intent?.action) {
+                Extras.REFRESH_POSTS_DATA ->
+                    mainPresenter.getListData(activity!!)
+
+            }
+        }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        LocalBroadcastManager.getInstance(activity!!)
+                .registerReceiver(broadCastReceiver, IntentFilter(Extras.REFRESH_POSTS_DATA))
+    }
+
+
+    override fun onStop() {
+        super.onStop()
+        LocalBroadcastManager.getInstance(activity!!)
+                .unregisterReceiver(broadCastReceiver)
     }
 }

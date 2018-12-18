@@ -204,9 +204,9 @@ class AddPostActivity : AppCompatActivity(), AddPostView {
                     if (list != null && list.size < 10) {
                         list.add(updatedPic)
 
-                        IntArrayWrapper(list.size) { index, value ->
+                    /*    IntArrayWrapper(list.size) { index, value ->
                             println("$index changed to $value")
-                        }
+                        }*/
 
                         presenter.fillPhotoList(this, list, binding)
 

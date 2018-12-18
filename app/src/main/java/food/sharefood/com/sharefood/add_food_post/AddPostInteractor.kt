@@ -58,7 +58,8 @@ class AddPostInteractor : ServiceInterface {
         }
     }
 
-    override fun onServiceError(errorMessage: String) {
+    override fun onServiceError(errorMessage: String)
+    {
         listener.onPostError(errorMessage)
     }
 }

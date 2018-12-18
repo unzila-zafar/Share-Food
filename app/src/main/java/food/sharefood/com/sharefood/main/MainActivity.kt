@@ -14,6 +14,7 @@ import food.sharefood.com.sharefood.databinding.ActivityMainBinding
 import food.sharefood.com.sharefood.settings.FragmentSettings
 
 import android.support.v4.app.FragmentTransaction
+import food.sharefood.com.sharefood.util.Extras
 
 
 class MainActivity : FragmentActivity() {
@@ -74,7 +75,7 @@ class MainActivity : FragmentActivity() {
 
         binding.floatingActionButton.setOnClickListener {
 
-            this@MainActivity.startActivity(Intent(this@MainActivity, AddPostActivity::class.java))
+            this@MainActivity.startActivityForResult(Intent(this@MainActivity, AddPostActivity::class.java), Extras.ADD_POST_DATA)
 
         }
 
@@ -96,6 +97,19 @@ class MainActivity : FragmentActivity() {
                      .commit()
          }, 5000)*/
 
+    }
+
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        when (requestCode) {
+            Extras.ADD_POST_DATA -> {
+                val intent = Intent()
+                intent.setAction(Extras.REFRESH_POSTS_DATA)
+                sendBroadcast(intent)
+            }
+        }
     }
 
 
