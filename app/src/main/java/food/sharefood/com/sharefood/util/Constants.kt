@@ -79,9 +79,6 @@ data class FoodSharer(
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 data class FoodSharePost(
 
-        @JsonProperty(value = "_id")
-        var _id: String? = "",
-
         @JsonProperty(value = "name")
         var name: String = "",
 
@@ -121,7 +118,7 @@ data class FoodSharePost(
 
 ) : Serializable {
     override fun toString(): String {
-        return "FoodSharerPost(_id='$_id', name='$name', email='$email', foodPickupLocation='$foodPickupLocation', phone_number='$phone_number', sufficientFor='$sufficientFor', pickUntilTime='$pickUntilTime', foodItems='$foodItems', postPictures='$postPictures'"
+        return "FoodSharerPost(name='$name', email='$email', foodPickupLocation='$foodPickupLocation', phone_number='$phone_number', sufficientFor='$sufficientFor', pickUntilTime='$pickUntilTime', foodItems='$foodItems', postPictures='$postPictures'"
     }
 }
 
@@ -155,7 +152,6 @@ class APIParams {
         var TOKEN = "token"
         var TOKEN_START = "tokenStartTime"
         var TOKEN_END = "tokenExpiryTime"
-        var _ID = "_id"
 
         /*add post*/
         var EMAIL = "email"
