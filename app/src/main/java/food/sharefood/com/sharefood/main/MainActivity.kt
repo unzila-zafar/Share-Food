@@ -15,6 +15,7 @@ import food.sharefood.com.sharefood.settings.FragmentSettings
 
 import android.support.v4.app.FragmentTransaction
 import food.sharefood.com.sharefood.util.Extras
+import food.sharefood.com.sharefood.util.Helper
 
 
 class MainActivity : FragmentActivity() {
@@ -75,11 +76,13 @@ class MainActivity : FragmentActivity() {
 
         binding.floatingActionButton.setOnClickListener {
 
-            this@MainActivity.startActivityForResult(Intent(this@MainActivity, AddPostActivity::class.java), Extras.ADD_POST_DATA)
+            val intent = Intent(this@MainActivity, AddPostActivity::class.java)
+            intent.putExtra(Extras.IS_FROM_HOME, true)
+            this@MainActivity.startActivityForResult(intent, Extras.ADD_POST_DATA)
 
         }
 
-        binding.toolbar.toolbar.title = getString(R.string.dashboard)
+        binding.mainToolbar.toolbar.title = getString(R.string.dashboard)
     }
 
     fun startFragment(fragment: Fragment, tag: String) {
@@ -112,5 +115,11 @@ class MainActivity : FragmentActivity() {
         }
     }
 
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Helper.displayList.clear()
+        Helper.foodPostImagesArray.clear()
+    }
 
 }

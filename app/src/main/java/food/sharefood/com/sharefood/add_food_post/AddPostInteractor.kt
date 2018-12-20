@@ -8,28 +8,37 @@ import com.fasterxml.jackson.databind.ObjectMapper
 import food.sharefood.com.sharefood.network.ServiceInterface
 import food.sharefood.com.sharefood.network.VolleyClass
 import food.sharefood.com.sharefood.util.*
+import food.sharefood.com.sharefood.view_post.ViewPostInteractor
 import org.json.JSONArray
 import org.json.JSONObject
 import java.util.*
 
 class AddPostInteractor : ServiceInterface {
     private lateinit var listener: AddPostFinishedListener
+    private lateinit var postMode : String
 
     interface AddPostFinishedListener {
 
-        fun onPostSuccess(foodSharePost: FoodSharePost)
+        fun onPostSuccess(foodSharePost: FoodSharePost, mode : String)
         fun onPostError(message: String)
+      /*  fun editPostSuccess()
+        fun editPostFailure()*/
 
     }
 
 
-    fun requestAddPost(context: Context, foodSharePost: FoodSharePost, finishedListener: AddPostFinishedListener) {
+    fun requestAddPost(context: Context, foodSharePost: FoodSharePost, finishedListener: AddPostFinishedListener, mode: String) {
         listener = finishedListener
+        postMode = mode
 
         val objectMapper = ObjectMapper()
         objectMapper.enable(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY);
         val data = objectMapper.convertValue(FoodSharePost(), JSONObject::class.java)
-        data.put(APIParams._ID, "")
+        if (mode.equals("add")) {
+            data.put(APIParams._ID, "")
+        } else {
+            data.putOpt(APIParams._ID, foodSharePost._id)
+        }
         data.put(APIParams.NAME, AppSharedPref.getData(SharedPrefKeys.NAME, AppSharedPref.STRING, context))
         data.put(APIParams.EMAIL, AppSharedPref.getData(SharedPrefKeys.EMAIL, AppSharedPref.STRING, context))
         data.put(APIParams.PHONE, foodSharePost.phone_number)
@@ -49,17 +58,17 @@ class AddPostInteractor : ServiceInterface {
 
     }
 
+
     override fun onServiceResponse(jsonString: String, tag: String) {
         if (jsonString != null) {
             var rootObject = JSONObject(jsonString)
 
-            listener.onPostSuccess(Helper.addFoodPostData(rootObject))
+            listener.onPostSuccess(Helper.addFoodPostData(rootObject), postMode)
 
         }
     }
 
-    override fun onServiceError(errorMessage: String)
-    {
+    override fun onServiceError(errorMessage: String) {
         listener.onPostError(errorMessage)
     }
 }

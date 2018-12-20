@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/phone_layout"
+        style="@style/AppTheme"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/twenty_margin"
+        android:layout_marginTop="@dimen/ten_margin"
+        android:layout_marginRight="@dimen/twenty_margin"
+        android:textColorHint="@color/colorAccent"
+        android:theme="@style/MyTextInputLayout"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/add_number_edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/phone_number"
+            android:imeOptions="actionNext"
+            android:inputType="number"
+            android:padding="@dimen/eight_margin"
+            android:textColor="@color/colorAccent"
+            android:textColorHint="@color/colorAccent" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/sufficient_for_layout"
+        style="@style/AppTheme"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/twenty_margin"
+        android:layout_marginTop="@dimen/ten_margin"
+        android:layout_marginRight="@dimen/twenty_margin"
+        android:textColorHint="@color/colorAccent"
+        android:theme="@style/MyTextInputLayout"
+        >
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/add_sufficient_edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/sufficient_for"
+            android:imeOptions="actionNext"
+            android:inputType="number"
+            android:padding="@dimen/eight_margin"
+            android:textColor="@color/colorAccent"
+            android:textColorHint="@color/colorAccent" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.design.widget.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="hint" />
+    </android.support.design.widget.TextInputLayout>
+</android.support.constraint.ConstraintLayout>

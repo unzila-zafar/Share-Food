@@ -3,7 +3,6 @@ package food.sharefood.com.sharefood.add_food_post
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.content.Context
-import android.graphics.Bitmap
 import android.support.v7.app.AlertDialog
 import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
@@ -12,22 +11,26 @@ import android.widget.Toast
 import com.cloudinary.android.MediaManager
 import com.cloudinary.android.callback.ErrorInfo
 import com.cloudinary.android.callback.UploadCallback
-import food.sharefood.com.sharefood.R.id.image
-import food.sharefood.com.sharefood.R.id.imagesList
+import food.sharefood.com.sharefood.R
 import food.sharefood.com.sharefood.databinding.ActivityAddPostBinding
 import food.sharefood.com.sharefood.dialog.DialogUtils
+import food.sharefood.com.sharefood.util.FoodPostArrays
 import food.sharefood.com.sharefood.util.FoodSharePost
 import food.sharefood.com.sharefood.util.Helper
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.collections.ArrayList
+
 
 class AddPostPresenter(var context: Context, var addPostView: AddPostView, var addPostInteractor: AddPostInteractor) : AddPostInteractor.AddPostFinishedListener {
     private var foodSharePost: FoodSharePost = FoodSharePost()
     private var imagesUrlList: ArrayList<String> = ArrayList()
     private val UNSIGNED_UPLOAD_PRESET = "v1fykxtz"
+    private lateinit var postMode: String
 
-    fun addPost(context: Context, binding: ActivityAddPostBinding, imagesList: ArrayList<String>) {
+    fun addPost(context: Context, binding: ActivityAddPostBinding, imagesList: ArrayList<String>, mode: String) {
         addPostView.showProgress()
+        postMode = mode
 
         if (Helper.checkNetworkConnectivity(context) && imagesList.size != 0) {
             uploadToCloudinary(imagesList, binding)
@@ -82,7 +85,7 @@ class AddPostPresenter(var context: Context, var addPostView: AddPostView, var a
         return checkValues
     }
 
-    fun fillPhotoList(context: Context, imagesList: ArrayList<Bitmap>, binding: ActivityAddPostBinding) {
+    fun fillPhotoList(context: Context, imagesList: ArrayList<String>, binding: ActivityAddPostBinding) {
 
         var adapter = AddPhotoAdapter(context, this, imagesList)
 
@@ -92,6 +95,28 @@ class AddPostPresenter(var context: Context, var addPostView: AddPostView, var a
 
     }
 
+    fun setEditData(foodPost: FoodSharePost, binding: ActivityAddPostBinding) {
+        binding.addNumberEdit.setText(foodPost.phone_number)
+        binding.addSufficientEdit.setText(foodPost.sufficientFor)
+        binding.addPicktimeEdit.setText(foodPost.pickUntilTime)
+        binding.addLocationEdit.setText(foodPost.foodPickupLocation)
+        binding.addFooditemsEdit.setText(foodPost.foodItems)
+
+       // var list: ArrayList<String> = ArrayList()
+
+        if (foodPost.postPictures!!.size != 10) {
+
+            Helper.displayList.add(Helper.getURLForResource(R.drawable.ic_add))
+        }
+
+
+        (0..(foodPost.postPictures!!.size - 1)).forEach { i ->
+            Helper.foodPostImagesArray.add(foodPost.postPictures!!.get(i))
+            Helper.displayList.add(foodPost.postPictures!!.get(i))
+        }
+
+        fillPhotoList(context, Helper.displayList, binding)
+    }
 
     fun alertDialog(context: Context) {
         val builder = AlertDialog.Builder(context)
@@ -117,9 +142,9 @@ class AddPostPresenter(var context: Context, var addPostView: AddPostView, var a
     }
 
 
-    override fun onPostSuccess(foodSharePost: FoodSharePost) {
+    override fun onPostSuccess(foodSharePost: FoodSharePost, mode: String) {
         addPostView.hideProgress()
-        addPostView.onSuccess(foodSharePost)
+        addPostView.onSuccess(foodSharePost, mode)
     }
 
     override fun onPostError(message: String) {
@@ -206,7 +231,7 @@ class AddPostPresenter(var context: Context, var addPostView: AddPostView, var a
 
     private fun sendPostApiCall(binding: ActivityAddPostBinding) {
         if (checkData(binding)) {
-            addPostInteractor.requestAddPost(context, foodSharePost, this)
+            addPostInteractor.requestAddPost(context, foodSharePost, this, postMode)
         }
     }
 }

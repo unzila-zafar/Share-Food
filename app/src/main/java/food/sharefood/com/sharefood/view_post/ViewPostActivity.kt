@@ -8,13 +8,16 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.widget.LinearLayout
 import food.sharefood.com.sharefood.R
+import food.sharefood.com.sharefood.add_food_post.AddPostActivity
 import food.sharefood.com.sharefood.add_food_post.MapViewActivity
 import food.sharefood.com.sharefood.databinding.ActivityViewFoodPostBinding
+import food.sharefood.com.sharefood.dialog.DialogUtils
 import food.sharefood.com.sharefood.main.FoodImagesAdapter
 import food.sharefood.com.sharefood.network.VolleyClass.Companion.context
 import food.sharefood.com.sharefood.util.Extras
 import food.sharefood.com.sharefood.util.FoodSharePost
 import kotlinx.android.synthetic.main.post_toolbar.view.*
+import java.util.concurrent.ThreadPoolExecutor
 
 class ViewPostActivity : AppCompatActivity(), PostView {
 
@@ -76,7 +79,9 @@ class ViewPostActivity : AppCompatActivity(), PostView {
 
         binding.postBar.postToolbar.imageEdit.setOnClickListener {
 
-            presenter.sendEditCall(postData)
+            var intent = Intent(context, AddPostActivity::class.java)
+            intent.putExtra(Extras.Set_EDIT_POST_DATA, postData)
+            startActivityForResult(intent, Extras.EDIT_POST_RESPONSE)
 
         }
 
@@ -110,10 +115,25 @@ class ViewPostActivity : AppCompatActivity(), PostView {
     }
 
     override fun showProgress() {
-
+        DialogUtils.ShowProgressDialog(this)
     }
 
     override fun hideProgress() {
+        DialogUtils.HideProgressDialog()
+    }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        when(requestCode)
+        {
+            Extras.EDIT_POST_RESPONSE ->
+            {
+                if(data != null) {
+                    postData = data!!.getSerializableExtra(Extras.GET_EDIT_POST_DATA) as FoodSharePost
+                    presenter.setData(binding, postData)
+                }
+            }
+        }
     }
 }

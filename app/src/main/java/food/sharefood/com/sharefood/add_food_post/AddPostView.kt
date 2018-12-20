@@ -6,7 +6,7 @@ interface AddPostView {
 
     fun showProgress()
     fun hideProgress()
-    fun onSuccess(foodSharePost: FoodSharePost)
+    fun onSuccess(foodSharePost: FoodSharePost, mode: String)
     fun onFailure(message: String)
     fun selectImage(position: Int)
     fun setSelectedDateTime(dateTime : String)

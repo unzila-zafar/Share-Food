@@ -189,12 +189,17 @@ class Extras {
         var LONGITUDE_VALUE = "longitude"
         var ADD_POST_DATA = 1
         var REFRESH_POSTS_DATA = "refresh_posts"
+        var Set_EDIT_POST_DATA = "edit_data"
+        var GET_EDIT_POST_DATA = "get_data"
+        var EDIT_POST_RESPONSE = 2
+        var IS_FROM_HOME = "is_from_home"
 }
 }
 
 data class FoodPostArrays(
 
         var foodSharePostArray: ArrayList<FoodSharePost>? = null
+
 
 )
 

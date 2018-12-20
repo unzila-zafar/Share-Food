@@ -1,10 +1,13 @@
 package food.sharefood.com.sharefood.view_post
 
 import android.content.Context
+import android.content.Intent
 import android.support.v7.widget.LinearLayoutManager
 import android.widget.LinearLayout
+import food.sharefood.com.sharefood.add_food_post.AddPostActivity
 import food.sharefood.com.sharefood.databinding.ActivityViewFoodPostBinding
 import food.sharefood.com.sharefood.main.FoodImagesAdapter
+import food.sharefood.com.sharefood.util.Extras
 import food.sharefood.com.sharefood.util.FoodSharePost
 
 class ViewPostPresenter(var context: Context, var postView: PostView, var viewPostInteractor: ViewPostInteractor) : ViewPostInteractor.ViewPostInterface {
@@ -29,17 +32,16 @@ class ViewPostPresenter(var context: Context, var postView: PostView, var viewPo
     }
 
 
-    fun sendDeleteCall(foodSharePost: FoodSharePost)
-    {
+    fun sendDeleteCall(foodSharePost: FoodSharePost) {
         postView.showProgress()
         viewPostInteractor.requestDeletePost(context, foodSharePost, this)
     }
 
 
-    fun sendEditCall(foodSharePost: FoodSharePost)
-    {
+    fun sendEditCall(foodSharePost: FoodSharePost) {
         postView.showProgress()
-        viewPostInteractor.requestEditPost(context, foodSharePost, this)
+
+        // viewPostInteractor.requestEditPost(context, foodSharePost, this)
     }
 
     private fun setPictures(arrayPic: ArrayList<String>, binding: ActivityViewFoodPostBinding) {
@@ -60,12 +62,4 @@ class ViewPostPresenter(var context: Context, var postView: PostView, var viewPo
         postView.hideProgress()
     }
 
-    override fun editPostSuccess() {
-        postView.hideProgress()
-        postView.editPost()
-    }
-
-    override fun editPostFailure() {
-        postView.hideProgress()
-    }
 }

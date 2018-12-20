@@ -23,8 +23,11 @@ import android.net.NetworkInfo
 import java.io.ByteArrayOutputStream
 import android.util.Base64
 import com.cloudinary.android.MediaManager
+import food.sharefood.com.sharefood.R
 import org.json.JSONArray
 import org.json.JSONObject
+import java.io.FileNotFoundException
+import java.io.InputStream
 import kotlin.collections.ArrayList
 
 
@@ -35,7 +38,11 @@ class Helper {
         val REQUEST_TAKE_PHOTO = 0
         val REQUEST_SELECT_IMAGE_IN_ALBUM = 1
         val REQUEST_LOCATION = 2
-        val LOCATION_PERMISSION_REQUEST_CODE= 222
+        val LOCATION_PERMISSION_REQUEST_CODE = 222
+
+        var foodPostImagesArray: ArrayList<String> = ArrayList()
+        var displayList: java.util.ArrayList<String> = java.util.ArrayList()
+
 
         fun checkPermission(context: Context, permissions: Array<String>, requestCode: Int): Boolean {
             val currentAPIVersion = Build.VERSION.SDK_INT
@@ -217,6 +224,9 @@ class Helper {
 
 
                 var foodSharePost = FoodSharePost()
+                if (rootObject.has(APIParams._ID) && !rootObject.isNull(APIParams._ID)) {
+                    foodSharePost._id = rootObject.getString(APIParams._ID)
+                }
 
 
                 if (rootObject.has(APIParams.EMAIL) && !rootObject.isNull(APIParams.EMAIL)) {
@@ -272,6 +282,9 @@ class Helper {
 
             var foodSharePost = FoodSharePost()
 
+            if (rootObject.has(APIParams._ID) && !rootObject.isNull(APIParams._ID)) {
+                foodSharePost._id = rootObject.getString(APIParams._ID)
+            }
 
             if (rootObject.has(APIParams.EMAIL) && !rootObject.isNull(APIParams.EMAIL)) {
                 foodSharePost.email = rootObject.getString(APIParams.EMAIL)
@@ -312,7 +325,32 @@ class Helper {
 
             return foodSharePost
         }
+
+        fun decodeUriToBitmap(mContext: Context, sendUri: Uri): Bitmap? {
+            var getBitmap: Bitmap? = null
+            try {
+                val image_stream: InputStream?
+                try {
+                    image_stream = mContext.contentResolver.openInputStream(sendUri)
+                    getBitmap = BitmapFactory.decodeStream(image_stream)
+                } catch (e: FileNotFoundException) {
+                    e.printStackTrace()
+                }
+
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+
+            return getBitmap
+        }
+
+
+        fun getURLForResource(resourceId: Int): String {
+            return Uri.parse("android.resource://" + R::class.java!!.getPackage().getName() + "/" + resourceId).toString()
+        }
     }
+
+
 
 
 }

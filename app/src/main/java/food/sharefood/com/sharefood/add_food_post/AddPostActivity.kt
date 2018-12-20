@@ -31,10 +31,14 @@ import food.sharefood.com.sharefood.main.MainActivity
 import com.squareup.picasso.Picasso
 import com.cloudinary.android.callback.UploadCallback
 import android.R.attr.data
+import android.annotation.SuppressLint
+import android.os.Build
+import android.support.annotation.RequiresApi
 import android.util.Log
 import com.cloudinary.Transformation
 import com.cloudinary.android.MediaManager
 import com.cloudinary.android.Utils
+import food.sharefood.com.sharefood.util.Extras
 
 
 class AddPostActivity : AppCompatActivity(), AddPostView {
@@ -43,10 +47,12 @@ class AddPostActivity : AppCompatActivity(), AddPostView {
     private lateinit var binding: ActivityAddPostBinding
     private lateinit var presenter: AddPostPresenter
     private lateinit var mCapturedPhoto: Uri
-    var list: ArrayList<Bitmap> = ArrayList()
-    private var imagesPathList: ArrayList<String> = ArrayList()
+    var list: ArrayList<String> = ArrayList()
+   //private var imagesPathList: ArrayList<String> = ArrayList()
     private val PLACE_AUTOCOMPLETE_REQUEST_CODE = 188
-    private val UNSIGNED_UPLOAD_PRESET = "v1fykxtz"
+    private lateinit var postMode: String
+    private var isFromHome: Boolean = false
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -59,6 +65,8 @@ class AddPostActivity : AppCompatActivity(), AddPostView {
     }
 
 
+
+    @SuppressLint("NewApi")
     private fun init() {
 
         setSupportActionBar(binding.addToolbar.toolbar)
@@ -72,15 +80,35 @@ class AddPostActivity : AppCompatActivity(), AddPostView {
 
         presenter = AddPostPresenter(this, this, AddPostInteractor())
 
-        if (list != null) {
-            list.add(BitmapFactory.decodeResource(getResources(), R.drawable.ic_add))
+        if (intent != null)
+            isFromHome = intent.getBooleanExtra(Extras.IS_FROM_HOME, false)
 
-            presenter.fillPhotoList(this, list, binding)
+        if (!isFromHome) {
+            val foodEditData = intent.getSerializableExtra(Extras.Set_EDIT_POST_DATA) as? FoodSharePost
+
+            if (foodEditData != null) {
+                postMode = "edit"
+
+                presenter.setEditData(foodEditData, binding)
+
+            }
+        } else {
+            postMode = "add"
+
+            if (Helper.displayList != null) {
+
+                Helper.displayList.add(resources.getDrawable(R.drawable.ic_add, null).toString())
+
+                presenter.fillPhotoList(this, Helper.displayList, binding)
+            }
         }
 
         binding.buttonAdd.setOnClickListener {
 
-            presenter.addPost(this, binding, imagesPathList)
+           // presenter.addPost(this, binding, imagesPathList, postMode)
+            if(Helper.foodPostImagesArray.size != 0) {
+                presenter.addPost(this, binding, Helper.foodPostImagesArray, postMode)
+            }
             //finish()
         }
 
@@ -104,8 +132,12 @@ class AddPostActivity : AppCompatActivity(), AddPostView {
         DialogUtils.HideProgressDialog()
     }
 
-    override fun onSuccess(foodSharePost: FoodSharePost) {
-
+    override fun onSuccess(foodSharePost: FoodSharePost, mode: String) {
+        if (foodSharePost != null) {
+            var intent = Intent()
+            intent.putExtra(Extras.GET_EDIT_POST_DATA, foodSharePost)
+            setResult(RESULT_OK, intent)
+        }
         finish()
     }
 
@@ -201,16 +233,19 @@ class AddPostActivity : AppCompatActivity(), AddPostView {
                 if (mCapturedPhoto != null) {
                     var updatedPic: Bitmap = BitmapFactory.decodeFile(mCapturedPhoto.path)
 
-                    if (list != null && list.size < 10) {
-                        list.add(updatedPic)
+                    if (Helper.displayList != null && Helper.displayList.size < 10) {
+                        Helper.displayList.add(mCapturedPhoto.path)
 
-                    /*    IntArrayWrapper(list.size) { index, value ->
-                            println("$index changed to $value")
-                        }*/
+                        /*    IntArrayWrapper(list.size) { index, value ->
+                                println("$index changed to $value")
+                            }*/
+                        //imagesPathList.add(mCapturedPhoto.path)
 
-                        presenter.fillPhotoList(this, list, binding)
+                        Helper.foodPostImagesArray.add(mCapturedPhoto.path)
 
-                        imagesPathList.add(mCapturedPhoto.path)
+                        presenter.fillPhotoList(this, Helper.displayList, binding)
+
+
 
 
                     } else {
@@ -228,12 +263,15 @@ class AddPostActivity : AppCompatActivity(), AddPostView {
                 mCapturedPhoto = selectedImageUri
                 var updatedPic: Bitmap = BitmapFactory.decodeFile(picturePath)
 
-                if (list != null && list.size < 10) {
-                    list.add(updatedPic)
+                if (Helper.displayList != null && Helper.displayList.size < 10) {
+                    Helper.displayList.add(mCapturedPhoto.path)
 
-                    presenter.fillPhotoList(this, list, binding)
+                    presenter.fillPhotoList(this, Helper.displayList, binding)
 
-                    imagesPathList.add(picturePath.toString())
+                   // imagesPathList.add(picturePath.toString())
+
+                    Helper.foodPostImagesArray.add(mCapturedPhoto.path)
+
 
                 } else {
                     Toast.makeText(this, "Images limit exceed!", Toast.LENGTH_SHORT).show()
