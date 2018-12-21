@@ -3,16 +3,19 @@
     <dimen name="eighteen_text_size">18sp</dimen>
     <dimen name="sixteen_size">16sp</dimen>
     <dimen name="fourteen_size">14sp</dimen>
+    <dimen name="twenty_text_size">20sp</dimen>
 
     <dimen name="five_margin">5dp</dimen>
     <dimen name="eight_margin">8dp</dimen>
     <dimen name="twenty_margin">20dp</dimen>
     <dimen name="ten_margin">10dp</dimen>
+    <dimen name="thirty_size">30dp</dimen>
     <dimen name="twenty_five_margin">25dp</dimen>
     <dimen name="thirty_margin">30dp</dimen>
     <dimen name="fifteen_margin">15dp</dimen>
     <dimen name="fourty_margin">40dp</dimen>
     <dimen name="fifty_margin">50dp</dimen>
+    <dimen name="thirty_five_size">35dp</dimen>
 
     <dimen name="small_card_width">300dp</dimen>
 

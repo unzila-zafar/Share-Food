@@ -10,8 +10,8 @@ class DialogUtils {
 
 
     companion object {
-        private var progressDialog: AlertDialog? = null
-        private var dialogBuilder: AlertDialog.Builder? = null
+        internal var progressDialog: AlertDialog? = null
+        var dialogBuilder: AlertDialog.Builder? = null
         internal lateinit var dialogView: View
 
         fun ShowProgressDialog(context: Context) {

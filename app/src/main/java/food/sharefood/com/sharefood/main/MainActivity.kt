@@ -14,6 +14,7 @@ import food.sharefood.com.sharefood.databinding.ActivityMainBinding
 import food.sharefood.com.sharefood.settings.FragmentSettings
 
 import android.support.v4.app.FragmentTransaction
+import food.sharefood.com.sharefood.search.SearchActivity
 import food.sharefood.com.sharefood.util.Extras
 import food.sharefood.com.sharefood.util.Helper
 
@@ -83,6 +84,11 @@ class MainActivity : FragmentActivity() {
         }
 
         binding.mainToolbar.toolbar.title = getString(R.string.dashboard)
+
+        binding.mainToolbar.imageSearch.setOnClickListener {
+
+            startActivity(Intent(this@MainActivity, SearchActivity::class.java))
+        }
     }
 
     fun startFragment(fragment: Fragment, tag: String) {

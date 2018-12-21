@@ -31,9 +31,9 @@
                     android:textSize="@dimen/twenty_margin"/>
 
                 <ImageView
-                    android:id="@+id/imageView2"
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
+                    android:id="@+id/filterBtn"
+                    android:layout_width="@dimen/thirty_five_size"
+                    android:layout_height="@dimen/thirty_five_size"
                     app:srcCompat="@drawable/ic_filter"
                     android:layout_marginRight="@dimen/ten_margin"
                     app:layout_constraintRight_toRightOf="parent"
