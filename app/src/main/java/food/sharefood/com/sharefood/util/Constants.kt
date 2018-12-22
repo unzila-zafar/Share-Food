@@ -81,7 +81,7 @@ data class FoodSharer(
 data class FoodSharePost(
 
         @JsonProperty(value = "_id")
-        var _id: String = "",
+        var _id: String? = "",
 
         @JsonProperty(value = "name")
         var name: String = "",
@@ -122,7 +122,7 @@ data class FoodSharePost(
 
 ) : Serializable {
     override fun toString(): String {
-        return "FoodSharerPost(name='$name', email='$email', foodPickupLocation='$foodPickupLocation', phone_number='$phone_number', sufficientFor='$sufficientFor', pickUntilTime='$pickUntilTime', foodItems='$foodItems', postPictures='$postPictures'"
+        return "FoodSharerPost(_id='$_id',name='$name', email='$email', foodPickupLocation='$foodPickupLocation', phone_number='$phone_number', sufficientFor='$sufficientFor', pickUntilTime='$pickUntilTime', foodItems='$foodItems', postPictures='$postPictures'"
     }
 }
 
