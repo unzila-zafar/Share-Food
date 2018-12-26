@@ -1,5 +1,6 @@
 package food.sharefood.com.sharefood.add_food_post
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.drawable.Drawable
@@ -16,7 +17,7 @@ import food.sharefood.com.sharefood.databinding.ItemPhotoBinding
 import kotlinx.android.synthetic.main.item_food_list.view.*
 
 
-class AddPhotoAdapter(var context: Context, var presenter: AddPostPresenter, var photoList: ArrayList<String>) : RecyclerView.Adapter<AddPhotoAdapter.AddPhotoHolder>() {
+class AddPhotoAdapter(var context: Context, var presenter: AddPostPresenter, var photoList: ArrayList<String>, var mode: String) : RecyclerView.Adapter<AddPhotoAdapter.AddPhotoHolder>() {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AddPhotoHolder {
@@ -31,9 +32,36 @@ class AddPhotoAdapter(var context: Context, var presenter: AddPostPresenter, var
         return photoList.size
     }
 
+    @SuppressLint("NewApi")
     override fun onBindViewHolder(holder: AddPhotoHolder, position: Int) {
 
-        Glide.with(context).load(photoList.get(position)).into(holder.binding.imageView)
+        if (mode.equals(food.sharefood.com.sharefood.util.Helper.postAddMode)) {
+
+            if (isInteger(photoList.get(position))) {
+                holder.binding.imageView.setImageResource(Integer.parseInt(photoList.get(position)))
+                //Glide.with(context).load(photoList.get(position)).into(holder.binding.imageView)
+            } else {
+                Glide.with(context).load(photoList.get(position)).into(holder.binding.imageView)
+            }
+            //  if(position == 0)
+            //  {
+            // Glide.with(context).load(context.resources.getDrawable(R.drawable.ic_add, null)).into(holder.binding.imageView)
+            //  }
+            //   else
+            // {
+            // Glide.with(context).load(photoList.get(position)).into(holder.binding.imageView)
+            // }
+        } else {
+            Glide.with(context).load(photoList.get(position)).into(holder.binding.imageView)
+        }
+        /*   if (isInteger(photoList.get(position))) {
+               Glide.with(context).load(photoList.get(position)).into(holder.binding.imageView)
+           } else {
+               Glide.with(context).load(photoList.get(position)).into(holder.binding.imageView)
+           }*/
+        //Glide.with(context).load(photoList.get(position)).into(holder.binding.imageView)
+
+
         /*  if (photoList.size != 10) {
               if (position == 0) {
                   Glide.with(context).load(R.drawable.ic_add).into(holder.binding.imageView)
@@ -66,6 +94,17 @@ class AddPhotoAdapter(var context: Context, var presenter: AddPostPresenter, var
             }
         }
 
+    }
+
+    fun isInteger(s: String): Boolean {
+        try {
+            Integer.parseInt(s)
+        } catch (e: NumberFormatException) {
+            return false
+        }
+
+        // only got here if we didn't return false
+        return true
     }
 
 

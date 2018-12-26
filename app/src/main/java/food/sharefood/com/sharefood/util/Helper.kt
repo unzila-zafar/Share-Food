@@ -39,6 +39,8 @@ class Helper {
         val REQUEST_SELECT_IMAGE_IN_ALBUM = 1
         val REQUEST_LOCATION = 2
         val LOCATION_PERMISSION_REQUEST_CODE = 222
+        val postAddMode = "add"
+        val postEditMode = "edit"
 
         var foodPostImagesArray: ArrayList<String> = ArrayList()
         var displayList: java.util.ArrayList<String> = java.util.ArrayList()
@@ -348,9 +350,16 @@ class Helper {
         fun getURLForResource(resourceId: Int): String {
             return Uri.parse("android.resource://" + R::class.java!!.getPackage().getName() + "/" + resourceId).toString()
         }
+
+
+        fun getImage(imageName: String, context: Context): Int {
+
+            var drawableResourceId = context.getResources().getIdentifier(imageName, "drawable", context.getPackageName());
+
+            return drawableResourceId;
+
+        }
     }
-
-
 
 
 }

@@ -1,6 +1,7 @@
 package food.sharefood.com.sharefood.main
 
 
+import android.content.Context
 import android.content.Intent
 import android.databinding.DataBindingUtil
 import android.os.Bundle
@@ -14,6 +15,8 @@ import food.sharefood.com.sharefood.databinding.ActivityMainBinding
 import food.sharefood.com.sharefood.settings.FragmentSettings
 
 import android.support.v4.app.FragmentTransaction
+import android.support.v7.app.AlertDialog
+import android.view.LayoutInflater
 import food.sharefood.com.sharefood.search.SearchActivity
 import food.sharefood.com.sharefood.util.Extras
 import food.sharefood.com.sharefood.util.Helper
@@ -87,7 +90,8 @@ class MainActivity : FragmentActivity() {
 
         binding.mainToolbar.imageSearch.setOnClickListener {
 
-            startActivity(Intent(this@MainActivity, SearchActivity::class.java))
+            showFilterDialog()
+            //startActivity(Intent(this@MainActivity, SearchActivity::class.java))
         }
     }
 
@@ -108,6 +112,17 @@ class MainActivity : FragmentActivity() {
 
     }
 
+    private fun showFilterDialog() {
+
+        val dialogBuilder = AlertDialog.Builder(this)
+        val inflater = getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+        val dialogView = inflater.inflate(R.layout.dialog_filter, null)
+        dialogBuilder!!.setView(dialogView)
+        val dialog: AlertDialog = dialogBuilder!!.create()
+
+        // Display the alert dialog on app interface
+        dialog.show()
+    }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)

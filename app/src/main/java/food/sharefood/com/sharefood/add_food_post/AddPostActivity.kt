@@ -48,9 +48,10 @@ class AddPostActivity : AppCompatActivity(), AddPostView {
     private lateinit var presenter: AddPostPresenter
     private lateinit var mCapturedPhoto: Uri
     var list: ArrayList<String> = ArrayList()
-   //private var imagesPathList: ArrayList<String> = ArrayList()
+    //private var imagesPathList: ArrayList<String> = ArrayList()
     private val PLACE_AUTOCOMPLETE_REQUEST_CODE = 188
     private lateinit var postMode: String
+    private lateinit var postID: String
     private var isFromHome: Boolean = false
 
 
@@ -63,7 +64,6 @@ class AddPostActivity : AppCompatActivity(), AddPostView {
         init()
 
     }
-
 
 
     @SuppressLint("NewApi")
@@ -87,26 +87,29 @@ class AddPostActivity : AppCompatActivity(), AddPostView {
             val foodEditData = intent.getSerializableExtra(Extras.Set_EDIT_POST_DATA) as? FoodSharePost
 
             if (foodEditData != null) {
-                postMode = "edit"
+                postMode = Helper.postEditMode
 
                 presenter.setEditData(foodEditData, binding)
 
             }
         } else {
-            postMode = "add"
+            Helper.displayList.clear()
+            postMode = Helper.postAddMode
 
             if (Helper.displayList != null) {
+                val uri = Uri.parse("android.resource://your.package.here/drawable/" + resources.getDrawable(R.drawable.ic_add, null).toString())
+                val drawable = Helper.getImage(R.drawable.ic_add.toString(), this)
 
-                Helper.displayList.add(resources.getDrawable(R.drawable.ic_add, null).toString())
+                Helper.displayList.add(drawable.toString())
 
-                presenter.fillPhotoList(this, Helper.displayList, binding)
+                presenter.fillPhotoList(this, Helper.displayList, binding, postMode)
             }
         }
 
         binding.buttonAdd.setOnClickListener {
 
-           // presenter.addPost(this, binding, imagesPathList, postMode)
-            if(Helper.foodPostImagesArray.size != 0) {
+            // presenter.addPost(this, binding, imagesPathList, postMode)
+            if (Helper.foodPostImagesArray.size != 0) {
                 presenter.addPost(this, binding, Helper.foodPostImagesArray, postMode)
             }
             //finish()
@@ -243,9 +246,7 @@ class AddPostActivity : AppCompatActivity(), AddPostView {
 
                         Helper.foodPostImagesArray.add(mCapturedPhoto.path)
 
-                        presenter.fillPhotoList(this, Helper.displayList, binding)
-
-
+                        presenter.fillPhotoList(this, Helper.displayList, binding, postMode)
 
 
                     } else {
@@ -264,13 +265,13 @@ class AddPostActivity : AppCompatActivity(), AddPostView {
                 var updatedPic: Bitmap = BitmapFactory.decodeFile(picturePath)
 
                 if (Helper.displayList != null && Helper.displayList.size < 10) {
-                    Helper.displayList.add(mCapturedPhoto.path)
+                    Helper.displayList.add(picturePath.toString())
 
-                    presenter.fillPhotoList(this, Helper.displayList, binding)
+                    presenter.fillPhotoList(this, Helper.displayList, binding, postMode)
 
-                   // imagesPathList.add(picturePath.toString())
+                    // imagesPathList.add(picturePath.toString())
 
-                    Helper.foodPostImagesArray.add(mCapturedPhoto.path)
+                    Helper.foodPostImagesArray.add(picturePath.toString())
 
 
                 } else {

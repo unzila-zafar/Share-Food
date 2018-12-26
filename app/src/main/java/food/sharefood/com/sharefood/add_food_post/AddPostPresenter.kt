@@ -27,6 +27,7 @@ class AddPostPresenter(var context: Context, var addPostView: AddPostView, var a
     private var imagesUrlList: ArrayList<String> = ArrayList()
     private val UNSIGNED_UPLOAD_PRESET = "v1fykxtz"
     private lateinit var postMode: String
+    private lateinit var postID : String
 
     fun addPost(context: Context, binding: ActivityAddPostBinding, imagesList: ArrayList<String>, mode: String) {
         addPostView.showProgress()
@@ -51,6 +52,7 @@ class AddPostPresenter(var context: Context, var addPostView: AddPostView, var a
         foodSharePost.pickUntilTime = binding.addPicktimeEdit.text.toString()
         foodSharePost.foodPickupLocation = binding.addLocationEdit.text.toString()
         foodSharePost.foodItems = binding.addFooditemsEdit.text.toString()
+        foodSharePost._id = postID
 
         if (imagesUrlList.size != 0)
             foodSharePost.postPictures = imagesUrlList
@@ -85,9 +87,9 @@ class AddPostPresenter(var context: Context, var addPostView: AddPostView, var a
         return checkValues
     }
 
-    fun fillPhotoList(context: Context, imagesList: ArrayList<String>, binding: ActivityAddPostBinding) {
+    fun fillPhotoList(context: Context, imagesList: ArrayList<String>, binding: ActivityAddPostBinding, postMode :String) {
 
-        var adapter = AddPhotoAdapter(context, this, imagesList)
+        var adapter = AddPhotoAdapter(context, this, imagesList, postMode)
 
         binding.addPhotoList.layoutManager = LinearLayoutManager(context, LinearLayout.HORIZONTAL, false)
 
@@ -101,7 +103,7 @@ class AddPostPresenter(var context: Context, var addPostView: AddPostView, var a
         binding.addPicktimeEdit.setText(foodPost.pickUntilTime)
         binding.addLocationEdit.setText(foodPost.foodPickupLocation)
         binding.addFooditemsEdit.setText(foodPost.foodItems)
-
+        postID = foodPost._id!!
        // var list: ArrayList<String> = ArrayList()
 
         if (foodPost.postPictures!!.size != 10) {
@@ -115,7 +117,7 @@ class AddPostPresenter(var context: Context, var addPostView: AddPostView, var a
             Helper.displayList.add(foodPost.postPictures!!.get(i))
         }
 
-        fillPhotoList(context, Helper.displayList, binding)
+        fillPhotoList(context, Helper.displayList, binding, Helper.postEditMode)
     }
 
     fun alertDialog(context: Context) {
@@ -184,44 +186,52 @@ class AddPostPresenter(var context: Context, var addPostView: AddPostView, var a
         var counter = 0
         if (imagesList.size != 0) {
             (0..(imagesList.size - 1)).forEach { i ->
+                if (imagesList.get(i).contains("cloudinary")) {
+                    imagesUrlList.add(imagesList.get(i))
 
+                    if (counter == (imagesList.size - 1)) {
+                        sendPostApiCall(binding)
+                    }
+                    counter++
+                } else {
 
-                MediaManager.get()
-                        .upload(imagesList.get(i))
-                        .unsigned(UNSIGNED_UPLOAD_PRESET)
-                        .option("resource_type", "image")
-                        .callback(object : UploadCallback {
-                            override fun onStart(requestId: String) {
-                                Log.d("upload: ", "onStart")
-                                DialogUtils.ShowProgressDialog(context)
+                    MediaManager.get()
+                            .upload(imagesList.get(i))
+                            .unsigned(UNSIGNED_UPLOAD_PRESET)
+                            .option("resource_type", "image")
+                            .callback(object : UploadCallback {
+                                override fun onStart(requestId: String) {
+                                    Log.d("upload: ", "onStart")
+                                    DialogUtils.ShowProgressDialog(context)
 
-                            }
-
-                            override fun onProgress(requestId: String, bytes: Long, totalBytes: Long) {
-                            }
-
-                            override fun onSuccess(requestId: String, resultData: Map<*, *>) {
-                                Toast.makeText(context, "Upload successful", Toast.LENGTH_LONG).show()
-                                DialogUtils.HideProgressDialog()
-                                imagesUrlList.add(MediaManager.get().url().secure(true).generate(resultData["public_id"].toString())) //Helper.setDataInList(resultData["public_id"].toString())
-
-                                if (counter == (imagesList.size - 1)) {
-                                    sendPostApiCall(binding)
                                 }
-                                counter++
-                            }
 
-                            override fun onError(requestId: String, error: ErrorInfo) {
-                                Log.d("upload: ", error.description)
-                                DialogUtils.HideProgressDialog()
-                                Toast.makeText(context, "Upload was not successful", Toast.LENGTH_LONG).show()
-                            }
+                                override fun onProgress(requestId: String, bytes: Long, totalBytes: Long) {
+                                }
 
-                            override fun onReschedule(requestId: String, error: ErrorInfo) {
-                                Log.d("upload: ", "onReschedule")
-                                DialogUtils.HideProgressDialog()
-                            }
-                        }).dispatch()
+                                override fun onSuccess(requestId: String, resultData: Map<*, *>) {
+                                    Toast.makeText(context, "Upload successful", Toast.LENGTH_LONG).show()
+                                    DialogUtils.HideProgressDialog()
+                                    imagesUrlList.add(MediaManager.get().url().secure(true).generate(resultData["public_id"].toString())) //Helper.setDataInList(resultData["public_id"].toString())
+
+                                    if (counter == (imagesList.size - 1)) {
+                                        sendPostApiCall(binding)
+                                    }
+                                    counter++
+                                }
+
+                                override fun onError(requestId: String, error: ErrorInfo) {
+                                    Log.d("upload: ", error.description)
+                                    DialogUtils.HideProgressDialog()
+                                    Toast.makeText(context, "Upload was not successful", Toast.LENGTH_LONG).show()
+                                }
+
+                                override fun onReschedule(requestId: String, error: ErrorInfo) {
+                                    Log.d("upload: ", "onReschedule")
+                                    DialogUtils.HideProgressDialog()
+                                }
+                            }).dispatch()
+                }
             }
 
 

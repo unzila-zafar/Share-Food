@@ -63,22 +63,7 @@ class MainInteractor : ServiceInterface {
     }
 
     override fun onServiceError(errorMessage: String) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
-    private fun setListData(arrays: FoodPostArrays) {
-        //food_post_array.clear();
-        println("List Size obtained from response :: ${food_post_array.size}")
-
-    /*    for (i in arrays.foodSharePostArray!!.indices) {
-
-            var model: FoodPostModel = FoodPostModel(description = food_description[i],
-                    time = food_time[i], foodItems = food_menu_items[i], foodQuantity = food_quatity[i],
-                    foodLocation = food_location[i], longitude = 0.0, latitude = 0.0, foodPic = food_pic[i])
-            food_post_array.add(model)
-        }*/
-
-
+        listener.onResultFail(errorMessage)
     }
 
 
