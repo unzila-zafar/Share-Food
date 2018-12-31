@@ -1,11 +1,13 @@
 package food.sharefood.com.sharefood.main
 
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.design.widget.TabLayout
+import android.support.v4.app.ActivityCompat.startActivityForResult
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentActivity
 import android.support.v7.app.AppCompatDelegate
@@ -17,7 +19,8 @@ import food.sharefood.com.sharefood.settings.FragmentSettings
 import android.support.v4.app.FragmentTransaction
 import android.support.v7.app.AlertDialog
 import android.view.LayoutInflater
-import food.sharefood.com.sharefood.search.SearchActivity
+import com.google.android.gms.location.places.ui.PlaceAutocomplete
+import food.sharefood.com.sharefood.databinding.DialogFilterBinding
 import food.sharefood.com.sharefood.util.Extras
 import food.sharefood.com.sharefood.util.Helper
 
@@ -25,6 +28,8 @@ import food.sharefood.com.sharefood.util.Helper
 class MainActivity : FragmentActivity() {
 
     lateinit var binding: ActivityMainBinding
+    var activity: Activity = this
+    val PLACE_AUTOCOMPLETE_REQUEST_CODE = 188
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -48,10 +53,6 @@ class MainActivity : FragmentActivity() {
 
         startFragment(fragment, "main_fragment")
 
-        /*   Handler().postDelayed(
-                   {
-                       binding.tabsMain.getTabAt(0)?.select()
-                   }, 1000)*/
 
 
         binding.tabsMain.addOnTabSelectedListener(object :
@@ -90,7 +91,11 @@ class MainActivity : FragmentActivity() {
 
         binding.mainToolbar.imageSearch.setOnClickListener {
 
-            showFilterDialog()
+            if(showDialogInterface!= null)
+            {
+                showDialogInterface.showDialog(this)
+            }
+            //showFilterDialog()
             //startActivity(Intent(this@MainActivity, SearchActivity::class.java))
         }
     }
@@ -103,26 +108,9 @@ class MainActivity : FragmentActivity() {
         ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
         ft.commit()
 
-        /* Handler().postDelayed(Runnable {
-             supportFragmentManager
-                     .beginTransaction()
-                     .add(R.id.fragment_frame, fragment, tag)
-                     .commit()
-         }, 5000)*/
-
     }
 
-    private fun showFilterDialog() {
 
-        val dialogBuilder = AlertDialog.Builder(this)
-        val inflater = getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-        val dialogView = inflater.inflate(R.layout.dialog_filter, null)
-        dialogBuilder!!.setView(dialogView)
-        val dialog: AlertDialog = dialogBuilder!!.create()
-
-        // Display the alert dialog on app interface
-        dialog.show()
-    }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
@@ -133,6 +121,11 @@ class MainActivity : FragmentActivity() {
                 intent.setAction(Extras.REFRESH_POSTS_DATA)
                 sendBroadcast(intent)
             }
+
+            PLACE_AUTOCOMPLETE_REQUEST_CODE ->
+            {
+
+            }
         }
     }
 
@@ -142,5 +135,25 @@ class MainActivity : FragmentActivity() {
         Helper.displayList.clear()
         Helper.foodPostImagesArray.clear()
     }
+
+    interface ShowAlertDialogInterface
+    {
+        fun showDialog(context: Context)
+    }
+
+    companion object {
+        lateinit var showDialogInterface : ShowAlertDialogInterface
+
+
+        fun setDialogInterface(showAlertDialogInterface: ShowAlertDialogInterface)
+        {
+            showDialogInterface = showAlertDialogInterface
+        }
+
+
+    }
+
+
+
 
 }

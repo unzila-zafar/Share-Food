@@ -29,7 +29,9 @@ data class WebUrls(
         val SIGNUP: String = "$BASE_URL/user/signup",
         val NEW_FOOD_SHARE_POST: String = "$BASE_URL/posts/addFoodSharePost",
         val GET_FOOD_SHARE_POSTS: String = "$BASE_URL/posts/allFoodSharePosts",
-        val DELETE_FOOD_POST: String = "$BASE_URL/posts/deleteFoodSharePost"
+        val DELETE_FOOD_POST: String = "$BASE_URL/posts/deleteFoodSharePost",
+        val SEARCH_ANY_FOOD_POST : String = "$BASE_URL/posts/searchAnyFoodSharePost",
+        val SEARCH_EXACT_FOOD_POST : String = "$BASE_URL/posts/searchExactFoodSharePost"
 
 
 )

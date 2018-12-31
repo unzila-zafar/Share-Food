@@ -36,7 +36,7 @@ class MainInteractor : ServiceInterface {
     fun requestData(context: Context, finishedListener: OnFinishedListener) {
         listener = finishedListener
 
-        val  map: HashMap<String, String> = HashMap()
+        val map: HashMap<String, String> = HashMap()
         /* val objectMapper = ObjectMapper()
          val data = objectMapper.convertValue(LoginData(), JSONObject::class.java)
          data.put(APIParams.TOKEN, AppSharedPref.getData(SharedPrefKeys.TOKEN, AppSharedPref.STRING, context))
@@ -49,13 +49,36 @@ class MainInteractor : ServiceInterface {
 
     }
 
+    fun requestSearch(context: Context, foodSharePost: FoodSharePost, finishedListener: OnFinishedListener) {
+        listener = finishedListener
+
+        val map: HashMap<String, String> = HashMap()
+        val objectMapper = ObjectMapper()
+        val data = objectMapper.convertValue(FoodSharePost(), JSONObject::class.java)
+        data.put(APIParams.NAME, foodSharePost.name)
+        data.put(APIParams.EMAIL, foodSharePost.email)
+        data.put(APIParams.PHONE, foodSharePost.phone_number)
+        data.put(APIParams.PICKUP_LOCATION, foodSharePost.foodPickupLocation)
+        data.put(APIParams.PICKUP_TIME, foodSharePost.pickUntilTime)
+        data.put(APIParams.FOOD_ITEMS, foodSharePost.foodItems)
+        data.put(APIParams.SUFFICIENT_FOR, foodSharePost.sufficientFor)
+        map.put(APIParams.TOKEN, AppSharedPref.getData(SharedPrefKeys.TOKEN, AppSharedPref.STRING, context).toString())
+        VolleyClass.getInstance(context).createRequest(WebUrls().SEARCH_ANY_FOOD_POST, RequestMethods().POST, map, this, WebUrls().SEARCH_ANY_FOOD_POST)
+
+    }
+
     override fun onServiceResponse(jsonString: String, tag: String) {
         println("onServiceResponse:: $jsonString")
+
         if (jsonString != null) {
             val rootObject = JSONArray(jsonString)
             println("rootObject === $rootObject")
 
             if (tag.equals(WebUrls().GET_FOOD_SHARE_POSTS)) {
+                listener.onResultSuccess(Helper.setFoodPostData(rootObject))
+            }
+            if(tag.equals(WebUrls().SEARCH_ANY_FOOD_POST))
+            {
                 listener.onResultSuccess(Helper.setFoodPostData(rootObject))
             }
         }

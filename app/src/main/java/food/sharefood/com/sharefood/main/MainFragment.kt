@@ -20,7 +20,8 @@ import food.sharefood.com.sharefood.util.Extras
 import food.sharefood.com.sharefood.util.FoodSharePost
 
 
-class MainFragment : Fragment(), MainView {
+class MainFragment : Fragment(), MainView , MainActivity.ShowAlertDialogInterface{
+
 
 
     private lateinit var binding: FragmentMainBinding
@@ -33,6 +34,8 @@ class MainFragment : Fragment(), MainView {
 
         mainPresenter = MainPresenter(this, MainInteractor())
         mainPresenter.getListData(activity!!)
+
+        MainActivity.setDialogInterface(this)
 
         return binding.root
 
@@ -90,5 +93,10 @@ class MainFragment : Fragment(), MainView {
         super.onStop()
         LocalBroadcastManager.getInstance(activity!!)
                 .unregisterReceiver(broadCastReceiver)
+    }
+
+
+    override fun showDialog(context: Context) {
+        mainPresenter.showFilterDialog(context)
     }
 }
