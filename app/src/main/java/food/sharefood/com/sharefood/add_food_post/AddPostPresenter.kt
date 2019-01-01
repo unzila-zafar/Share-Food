@@ -52,12 +52,13 @@ class AddPostPresenter(var context: Context, var addPostView: AddPostView, var a
         foodSharePost.pickUntilTime = binding.addPicktimeEdit.text.toString()
         foodSharePost.foodPickupLocation = binding.addLocationEdit.text.toString()
         foodSharePost.foodItems = binding.addFooditemsEdit.text.toString()
-        foodSharePost._id = postID
+        if(postID != null)
+            foodSharePost._id = postID
 
         if (imagesUrlList.size != 0)
             foodSharePost.postPictures = imagesUrlList
 
-        if (foodSharePost.phone_number.isEmpty()) {
+        if (foodSharePost.phone_number!!.isEmpty()) {
             binding.phoneLayout.error = "Please enter phone number"
             addPostView.hideProgress()
             checkValues = false
@@ -77,7 +78,7 @@ class AddPostPresenter(var context: Context, var addPostView: AddPostView, var a
 
         //foodSharePost.foodPickupLocation = "kfc"
 
-        if (foodSharePost.foodItems.isEmpty()) {
+        if (foodSharePost.foodItems!!.isEmpty()) {
             binding.fooditemsLayout.error = "Please add food items"
             addPostView.hideProgress()
             checkValues = false
@@ -139,7 +140,8 @@ class AddPostPresenter(var context: Context, var addPostView: AddPostView, var a
     }
 
     fun setLocationData(longitude: Double, latitude: Double, place: String) {
-        foodSharePost.foodPickupLocation = latitude.toString() + "," + longitude.toString()
+        foodSharePost.latitude = latitude.toString()
+        foodSharePost.longitude = longitude.toString()
         addPostView.setSelectedLocation(place)
     }
 

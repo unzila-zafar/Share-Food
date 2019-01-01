@@ -21,8 +21,8 @@ class ViewPostPresenter(var context: Context, var postView: PostView, var viewPo
 
             var location: String = binding.textLocation.text.toString()
             val locationData = arrayOf(location.split(","))
-            // latitude = locationData[0].toString().toDouble()
-            // longitude = locationData[1].toString().toDouble()
+             var latitude = locationData[0].toString().toDouble()
+             var longitude = locationData[1].toString().toDouble()
 
             // binding.textSharing.text = postData. //TODO: add user type i.e individual etc
 

@@ -17,6 +17,7 @@ class MainPresenter(private var mainView: MainView, private val mainInteractor: 
     : MainInteractor.OnFinishedListener {
 
     private lateinit var foodSharePost: FoodSharePost
+    private lateinit var binding: DialogFilterBinding
 
     fun getListData(context: Context) {
         mainView.showProgress()
@@ -66,7 +67,7 @@ class MainPresenter(private var mainView: MainView, private val mainInteractor: 
 
         val dialogBuilder = AlertDialog.Builder(context)
         // val inflater = getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-        val binding: DialogFilterBinding = DataBindingUtil.inflate(LayoutInflater.from(context), R.layout.dialog_filter, null, false)
+        binding = DataBindingUtil.inflate(LayoutInflater.from(context), R.layout.dialog_filter, null, false)
 
         //val dialogView = inflater.inflate(R.layout.dialog_filter, null)
 
@@ -79,6 +80,7 @@ class MainPresenter(private var mainView: MainView, private val mainInteractor: 
 
         binding.searchbutton.setOnClickListener {
             setSearchData(binding)
+            searchPost(context)
             dialog.dismiss()
         }
 
@@ -91,10 +93,19 @@ class MainPresenter(private var mainView: MainView, private val mainInteractor: 
         }
 
         binding.searchLocationEdit.setOnClickListener {
-            MainActivity.getPostLocation()
+            mainView.showLocationPicker()
         }
         // Display the alert dialog on app interface
         dialog.show()
+    }
+
+    fun setLocationData(longitude: Double, latitude: Double, place: String)
+    {
+        foodSharePost.foodPickupLocation = latitude.toString() + "," + longitude.toString()
+        if(binding != null)
+        {
+            binding.searchLocationEdit.setText(place)
+        }
     }
 
 

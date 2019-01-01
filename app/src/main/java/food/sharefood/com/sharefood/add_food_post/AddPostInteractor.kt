@@ -46,6 +46,8 @@ class AddPostInteractor : ServiceInterface {
         data.put(APIParams.PICKUP_TIME, foodSharePost.pickUntilTime)
         data.put(APIParams.FOOD_ITEMS, foodSharePost.foodItems)
         data.put(APIParams.SUFFICIENT_FOR, foodSharePost.sufficientFor)
+        data.put(APIParams.LATITUDE, foodSharePost.latitude)
+        data.put(APIParams.LONGITUDE, foodSharePost.longitude)
         val postPictures = JSONArray(foodSharePost.postPictures)
         data.put(APIParams.POST_PICTURES, postPictures)
         val creationDate = Date()

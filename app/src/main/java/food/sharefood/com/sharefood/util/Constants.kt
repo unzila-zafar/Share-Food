@@ -30,8 +30,8 @@ data class WebUrls(
         val NEW_FOOD_SHARE_POST: String = "$BASE_URL/posts/addFoodSharePost",
         val GET_FOOD_SHARE_POSTS: String = "$BASE_URL/posts/allFoodSharePosts",
         val DELETE_FOOD_POST: String = "$BASE_URL/posts/deleteFoodSharePost",
-        val SEARCH_ANY_FOOD_POST : String = "$BASE_URL/posts/searchAnyFoodSharePost",
-        val SEARCH_EXACT_FOOD_POST : String = "$BASE_URL/posts/searchExactFoodSharePost"
+        val SEARCH_ANY_FOOD_POST: String = "$BASE_URL/posts/searchAnyFoodSharePost",
+        val SEARCH_EXACT_FOOD_POST: String = "$BASE_URL/posts/searchExactFoodSharePost"
 
 
 )
@@ -86,16 +86,16 @@ data class FoodSharePost(
         var _id: String? = "",
 
         @JsonProperty(value = "name")
-        var name: String = "",
+        var name: String? = "",
 
         @JsonProperty(value = "email")
-        var email: String = "",
+        var email: String? = "",
 
         @JsonProperty(value = "phone")
-        var phone_number: String = "",
+        var phone_number: String? = "",
 
         @JsonProperty(value = "sufficientFor")
-        var sufficientFor: String = "",
+        var sufficientFor: String? = "",
 
         @JsonProperty(value = "pickUntilTime")
         var pickUntilTime: String? = "",
@@ -104,7 +104,7 @@ data class FoodSharePost(
         var foodPickupLocation: String? = "",
 
         @JsonProperty(value = "foodItems")
-        var foodItems: String = "",
+        var foodItems: String? = "",
 
         @JsonProperty(value = "postPictures")
         var postPictures: ArrayList<String>? = ArrayList(),
@@ -119,12 +119,41 @@ data class FoodSharePost(
         var tokenExpiryTime: Long? = null,
 
         @JsonProperty(value = "postCreationTime")
-        var postCreationTime: String? = ""
+        var postCreationTime: String? = "",
+
+        @JsonProperty(value = "comments")
+        var comments: ArrayList<String>? = ArrayList(),
+
+        @JsonProperty(value = "shares")
+        var shares: ArrayList<String>? = ArrayList(),
+
+        @JsonProperty(value = "likes")
+        var likes: ArrayList<String>? = ArrayList(),
+
+        @JsonProperty(value = "longitude")
+        var longitude: String? = "",
+
+        @JsonProperty(value = "latitude")
+        var latitude: String? = "",
+
+        @JsonProperty(value = "noOfTimesPostSeen")
+        var noOfTimesPostSeen: String? = "",
+
+        @JsonProperty(value = "viewedBy")
+        var viewedBy: ArrayList<String>? = ArrayList()
 
 
 ) : Serializable {
+    override fun equals(other: Any?): Boolean {
+        return super.equals(other)
+    }
+
+    override fun hashCode(): Int {
+        return super.hashCode()
+    }
+
     override fun toString(): String {
-        return "FoodSharerPost(_id='$_id',name='$name', email='$email', foodPickupLocation='$foodPickupLocation', phone_number='$phone_number', sufficientFor='$sufficientFor', pickUntilTime='$pickUntilTime', foodItems='$foodItems', postPictures='$postPictures'"
+        return "FoodSharePost(_id=$_id, name=$name, email=$email, phone_number=$phone_number, sufficientFor=$sufficientFor, pickUntilTime=$pickUntilTime, foodPickupLocation=$foodPickupLocation, foodItems=$foodItems, postPictures=$postPictures, token=$token, tokenStartTime=$tokenStartTime, tokenExpiryTime=$tokenExpiryTime, postCreationTime=$postCreationTime, comments=$comments, shares=$shares, likes=$likes, longitude=$longitude, latitude=$latitude, noOfTimesPostSeen=$noOfTimesPostSeen, viewedBy=$viewedBy)"
     }
 }
 
@@ -169,7 +198,9 @@ class APIParams {
         var SUFFICIENT_FOR = "sufficientFor"
         var PHONE_NUMBER = "phone_number"
         var POST_PICTURES: String = "postPictures"
-        var POST_CREATION_TIME : String = "postCreationTime"
+        var POST_CREATION_TIME: String = "postCreationTime"
+        var LATITUDE = "latitude"
+        var LONGITUDE = "longitude"
     }
 }
 
@@ -195,7 +226,7 @@ class Extras {
         var GET_EDIT_POST_DATA = "get_data"
         var EDIT_POST_RESPONSE = 2
         var IS_FROM_HOME = "is_from_home"
-}
+    }
 }
 
 data class FoodPostArrays(

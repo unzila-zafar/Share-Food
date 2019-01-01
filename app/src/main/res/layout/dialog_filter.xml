@@ -53,7 +53,7 @@
                         android:layout_height="wrap_content"
                         android:hint="@string/name"
                         android:imeOptions="actionNext"
-                        android:inputType="number"
+                        android:inputType="textPersonName"
                         android:padding="@dimen/eight_margin"
                         android:textColor="@color/colorAccent"
                         android:textColorHint="@color/colorAccent" />
@@ -77,7 +77,7 @@
                         android:layout_height="wrap_content"
                         android:hint="@string/email"
                         android:imeOptions="actionNext"
-                        android:inputType="number"
+                        android:inputType="textEmailAddress"
                         android:padding="@dimen/eight_margin"
                         android:textColor="@color/colorAccent"
                         android:textColorHint="@color/colorAccent" />

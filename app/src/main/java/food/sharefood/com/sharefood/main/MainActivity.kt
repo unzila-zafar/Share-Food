@@ -1,13 +1,11 @@
 package food.sharefood.com.sharefood.main
 
 
-import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.design.widget.TabLayout
-import android.support.v4.app.ActivityCompat.startActivityForResult
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentActivity
 import android.support.v7.app.AppCompatDelegate
@@ -17,10 +15,6 @@ import food.sharefood.com.sharefood.databinding.ActivityMainBinding
 import food.sharefood.com.sharefood.settings.FragmentSettings
 
 import android.support.v4.app.FragmentTransaction
-import android.support.v7.app.AlertDialog
-import android.view.LayoutInflater
-import com.google.android.gms.location.places.ui.PlaceAutocomplete
-import food.sharefood.com.sharefood.databinding.DialogFilterBinding
 import food.sharefood.com.sharefood.util.Extras
 import food.sharefood.com.sharefood.util.Helper
 
@@ -28,8 +22,7 @@ import food.sharefood.com.sharefood.util.Helper
 class MainActivity : FragmentActivity() {
 
     lateinit var binding: ActivityMainBinding
-    var activity: Activity = this
-    val PLACE_AUTOCOMPLETE_REQUEST_CODE = 188
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -122,10 +115,7 @@ class MainActivity : FragmentActivity() {
                 sendBroadcast(intent)
             }
 
-            PLACE_AUTOCOMPLETE_REQUEST_CODE ->
-            {
 
-            }
         }
     }
 

@@ -271,6 +271,12 @@ class Helper {
                         foodSharePost.postPictures?.add(pixArray.get(j).toString())
                     }
                 }
+                if (rootObject.has(APIParams.LATITUDE) && !rootObject.isNull(APIParams.LATITUDE)) {
+                    foodSharePost.latitude = rootObject.getString(APIParams.LATITUDE)
+                }
+                if (rootObject.has(APIParams.LONGITUDE) && !rootObject.isNull(APIParams.LONGITUDE)) {
+                    foodSharePost.longitude = rootObject.getString(APIParams.LONGITUDE)
+                }
 
                 arrayFoodData.add(foodSharePost)
 
@@ -322,6 +328,12 @@ class Helper {
                 foodSharePost.phone_number = rootObject.getString(APIParams.PHONE_NUMBER)
             }
 
+            if (rootObject.has(APIParams.LONGITUDE) && !rootObject.isNull(APIParams.LONGITUDE)) {
+                foodSharePost.longitude = rootObject.getString(APIParams.LONGITUDE)
+            }
+            if (rootObject.has(APIParams.LATITUDE) && !rootObject.isNull(APIParams.LATITUDE)) {
+                foodSharePost.latitude = rootObject.getString(APIParams.LATITUDE)
+            }
             //arrayFoodData.add(foodSharePost)
 
 

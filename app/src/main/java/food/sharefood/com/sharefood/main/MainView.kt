@@ -9,4 +9,5 @@ interface MainView
     fun setData(arrFood: List<FoodSharePost>)
     fun setDataError(strError: String)
     fun onItemClick(adapterPosition: Int)
+    fun showLocationPicker()
 }

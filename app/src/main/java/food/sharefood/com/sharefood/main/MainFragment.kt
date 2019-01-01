@@ -1,5 +1,6 @@
 package food.sharefood.com.sharefood.main
 
+import android.app.Activity
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
@@ -13,6 +14,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
+import android.widget.Toast
+import com.google.android.gms.location.places.ui.PlaceAutocomplete
 import food.sharefood.com.sharefood.R
 import food.sharefood.com.sharefood.databinding.FragmentMainBinding
 import food.sharefood.com.sharefood.dialog.DialogUtils
@@ -20,13 +23,12 @@ import food.sharefood.com.sharefood.util.Extras
 import food.sharefood.com.sharefood.util.FoodSharePost
 
 
-class MainFragment : Fragment(), MainView , MainActivity.ShowAlertDialogInterface{
-
+class MainFragment : Fragment(), MainView, MainActivity.ShowAlertDialogInterface {
 
 
     private lateinit var binding: FragmentMainBinding
     private lateinit var mainPresenter: MainPresenter
-
+    private val PLACE_AUTOCOMPLETE_REQUEST_CODE = 188
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_main, container, false)
@@ -98,5 +100,37 @@ class MainFragment : Fragment(), MainView , MainActivity.ShowAlertDialogInterfac
 
     override fun showDialog(context: Context) {
         mainPresenter.showFilterDialog(context)
+    }
+
+    //show picker dialog for search
+    override fun showLocationPicker() {
+        val intent = PlaceAutocomplete.IntentBuilder(PlaceAutocomplete.MODE_OVERLAY)
+                .build(activity)
+        startActivityForResult(intent, PLACE_AUTOCOMPLETE_REQUEST_CODE)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        when (requestCode) {
+            PLACE_AUTOCOMPLETE_REQUEST_CODE -> {
+                if (resultCode === Activity.RESULT_OK) {
+                    val place = PlaceAutocomplete.getPlace(activity, data)
+                    var longitude: Double = place.latLng.longitude
+                    var latitude: Double = place.latLng.latitude
+                    var placeName: String = place.name.toString()
+
+
+                    mainPresenter.setLocationData(latitude, longitude, placeName)
+
+                } else if (resultCode === PlaceAutocomplete.RESULT_ERROR) {
+                    val status = PlaceAutocomplete.getStatus(activity, data)
+
+                    Toast.makeText(activity, "No Location Found.", Toast.LENGTH_SHORT).show()
+
+                } else if (resultCode === Activity.RESULT_CANCELED) {
+                }
+            }
+        }
     }
 }

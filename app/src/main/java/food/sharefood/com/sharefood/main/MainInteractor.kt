@@ -15,15 +15,6 @@ import org.json.JSONObject
 class MainInteractor : ServiceInterface {
 
 
-    val food_description = arrayOf("abcd", "abcd", "abcd")
-    val food_quatity = arrayOf("2kg", "10kg", "15kg")
-    val food_time = arrayOf("2:39am", "5:30 pm", "4:00 pm")
-    val food_location = arrayOf("islamabad", "karachi", "lahore")
-    val food_pic = arrayOf(R.drawable.ic_launcher_background, R.drawable.ic_launcher_background, R.drawable.ic_launcher_background)
-    val food_menu_items = arrayOf("Chinese", "Italian Food", "Pizza")
-
-    //TODO its list so name should not be array
-    var food_post_array: MutableList<FoodPostModel> = ArrayList()
 
     lateinit var listener: OnFinishedListener
 
