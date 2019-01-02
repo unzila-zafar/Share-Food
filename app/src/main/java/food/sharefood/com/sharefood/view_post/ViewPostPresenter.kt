@@ -20,10 +20,10 @@ class ViewPostPresenter(var context: Context, var postView: PostView, var viewPo
             binding.textLocation.text = foodSharePost.foodPickupLocation
 
             var location: String = binding.textLocation.text.toString()
-            val locationData = arrayOf(location.split(","))
-             var latitude = locationData[0].toString().toDouble()
-             var longitude = locationData[1].toString().toDouble()
+            var latitude = foodSharePost.latitude.toString().toDouble()
+            var longitude = foodSharePost.longitude.toString().toDouble()
 
+            binding.textLocation.setText(location)
             // binding.textSharing.text = postData. //TODO: add user type i.e individual etc
 
             setPictures(foodSharePost.postPictures!!, binding)

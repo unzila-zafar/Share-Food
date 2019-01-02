@@ -27,7 +27,9 @@ class AddPostPresenter(var context: Context, var addPostView: AddPostView, var a
     private var imagesUrlList: ArrayList<String> = ArrayList()
     private val UNSIGNED_UPLOAD_PRESET = "v1fykxtz"
     private lateinit var postMode: String
-    private lateinit var postID : String
+    private var postID : String = ""
+    private lateinit var latitude: String
+    private lateinit var longitude: String
 
     fun addPost(context: Context, binding: ActivityAddPostBinding, imagesList: ArrayList<String>, mode: String) {
         addPostView.showProgress()
@@ -52,7 +54,7 @@ class AddPostPresenter(var context: Context, var addPostView: AddPostView, var a
         foodSharePost.pickUntilTime = binding.addPicktimeEdit.text.toString()
         foodSharePost.foodPickupLocation = binding.addLocationEdit.text.toString()
         foodSharePost.foodItems = binding.addFooditemsEdit.text.toString()
-        if(postID != null)
+        if(!postID.isEmpty())
             foodSharePost._id = postID
 
         if (imagesUrlList.size != 0)
@@ -68,6 +70,15 @@ class AddPostPresenter(var context: Context, var addPostView: AddPostView, var a
             binding.pickLayout.error = "Please enter pickup time"
             addPostView.hideProgress()
             checkValues = false
+        }
+        if(!latitude!!.isEmpty())
+        {
+            foodSharePost.latitude = latitude
+        }
+
+        if(!longitude!!.isEmpty())
+        {
+            foodSharePost.longitude = longitude
         }
 
         /*  if (foodSharePost.foodPickupLocation!!.isEmpty()) {
@@ -140,8 +151,8 @@ class AddPostPresenter(var context: Context, var addPostView: AddPostView, var a
     }
 
     fun setLocationData(longitude: Double, latitude: Double, place: String) {
-        foodSharePost.latitude = latitude.toString()
-        foodSharePost.longitude = longitude.toString()
+        this.latitude = latitude.toString()
+        this.longitude = longitude.toString()
         addPostView.setSelectedLocation(place)
     }
 
@@ -244,6 +255,11 @@ class AddPostPresenter(var context: Context, var addPostView: AddPostView, var a
     private fun sendPostApiCall(binding: ActivityAddPostBinding) {
         if (checkData(binding)) {
             addPostInteractor.requestAddPost(context, foodSharePost, this, postMode)
+        }
+        else
+        {
+            DialogUtils.HideProgressDialog()
+            Toast.makeText(context, "Please fill all details", Toast.LENGTH_SHORT).show()
         }
     }
 }

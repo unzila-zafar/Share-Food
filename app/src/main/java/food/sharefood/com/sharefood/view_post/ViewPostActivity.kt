@@ -37,8 +37,7 @@ class ViewPostActivity : AppCompatActivity(), PostView {
 
     }
 
-    private fun init()
-    {
+    private fun init() {
         setSupportActionBar(binding.postBar.postToolbar)
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true);
@@ -53,23 +52,13 @@ class ViewPostActivity : AppCompatActivity(), PostView {
 
         presenter.setData(binding, postData)
 
-        /*  if(postData != null)
-          {
-              binding.textPostItemValues.text = postData.foodItems
-              binding.valueSufficent.text = postData.sufficientFor
-              binding.textPickupTime.text = postData.pickUntilTime
-              binding.textLocation.text = postData.foodPickupLocation
+        if (postData != null) {
 
-              var location : String = binding.textLocation.text.toString()
-              val locationData = arrayOf(location.split(","))
-             // latitude = locationData[0].toString().toDouble()
-             // longitude = locationData[1].toString().toDouble()
 
-             // binding.textSharing.text = postData. //TODO: add user type i.e individual etc
+            latitude = postData.latitude.toString().toDouble()
+            longitude = postData.longitude.toString().toDouble()
 
-              setPictures(postData.postPictures!!)
-          }
-  */
+        }
         binding.viewMap.setOnClickListener {
             val intent = Intent(context, MapViewActivity::class.java)
             intent.putExtra(Extras.LATITUDE_VALUE, latitude)
@@ -125,11 +114,9 @@ class ViewPostActivity : AppCompatActivity(), PostView {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-        when(requestCode)
-        {
-            Extras.EDIT_POST_RESPONSE ->
-            {
-                if(data != null) {
+        when (requestCode) {
+            Extras.EDIT_POST_RESPONSE -> {
+                if (data != null) {
                     postData = data!!.getSerializableExtra(Extras.GET_EDIT_POST_DATA) as FoodSharePost
                     presenter.setData(binding, postData)
                 }
