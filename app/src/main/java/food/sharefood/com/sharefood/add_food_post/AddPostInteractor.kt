@@ -15,14 +15,14 @@ import java.util.*
 
 class AddPostInteractor : ServiceInterface {
     private lateinit var listener: AddPostFinishedListener
-    private lateinit var postMode : String
+    private lateinit var postMode: String
 
     interface AddPostFinishedListener {
 
-        fun onPostSuccess(foodSharePost: FoodSharePost, mode : String)
+        fun onPostSuccess(foodSharePost: FoodSharePost, mode: String)
         fun onPostError(message: String)
-      /*  fun editPostSuccess()
-        fun editPostFailure()*/
+        /*  fun editPostSuccess()
+          fun editPostFailure()*/
 
     }
 
@@ -34,20 +34,18 @@ class AddPostInteractor : ServiceInterface {
         val objectMapper = ObjectMapper()
         objectMapper.enable(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY);
         val data = objectMapper.convertValue(FoodSharePost(), JSONObject::class.java)
-        if (mode.equals("add")) {
-            data.put(APIParams._ID, "")
-        } else {
+        if (!mode.equals("add")) {
             data.putOpt(APIParams._ID, foodSharePost._id)
         }
         data.put(APIParams.NAME, AppSharedPref.getData(SharedPrefKeys.NAME, AppSharedPref.STRING, context))
         data.put(APIParams.EMAIL, AppSharedPref.getData(SharedPrefKeys.EMAIL, AppSharedPref.STRING, context))
         data.put(APIParams.PHONE, foodSharePost.phone_number)
-        data.put(APIParams.PICKUP_LOCATION, foodSharePost.foodPickupLocation)
+        data.put(APIParams.PICKUP_LOCATION, "kfc")
         data.put(APIParams.PICKUP_TIME, foodSharePost.pickUntilTime)
         data.put(APIParams.FOOD_ITEMS, foodSharePost.foodItems)
         data.put(APIParams.SUFFICIENT_FOR, foodSharePost.sufficientFor)
-        data.put(APIParams.LATITUDE, foodSharePost.latitude)
-        data.put(APIParams.LONGITUDE, foodSharePost.longitude)
+        data.put(APIParams.LATITUDE, "49.838824")
+        data.put(APIParams.LONGITUDE, "8.6449696")
         val postPictures = JSONArray(foodSharePost.postPictures)
         data.put(APIParams.POST_PICTURES, postPictures)
         val creationDate = Date()
