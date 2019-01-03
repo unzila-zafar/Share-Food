@@ -136,12 +136,16 @@ class AddPostActivity : AppCompatActivity(), AddPostView {
     }
 
     override fun onSuccess(foodSharePost: FoodSharePost, mode: String) {
-        if (foodSharePost != null) {
-            var intent = Intent()
-            intent.putExtra(Extras.GET_EDIT_POST_DATA, foodSharePost)
-            setResult(RESULT_OK, intent)
+        if (mode.equals(Helper.postEditMode)) {
+            if (foodSharePost != null) {
+                var intent = Intent()
+                intent.putExtra(Extras.GET_EDIT_POST_DATA, foodSharePost)
+                setResult(RESULT_OK, intent)
+            }
+            finish()
+        } else {
+            finish()
         }
-        finish()
     }
 
     override fun onFailure(message: String) {
@@ -288,7 +292,7 @@ class AddPostActivity : AppCompatActivity(), AddPostView {
                     var placeName: String = place.name.toString()
 
 
-                    presenter.setLocationData(latitude, longitude, placeName)
+                    presenter.setLocationData(longitude, latitude, placeName)
 
                 } else if (resultCode === PlaceAutocomplete.RESULT_ERROR) {
                     val status = PlaceAutocomplete.getStatus(this, data)

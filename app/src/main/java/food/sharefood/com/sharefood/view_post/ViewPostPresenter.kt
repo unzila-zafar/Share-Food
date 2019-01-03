@@ -3,6 +3,7 @@ package food.sharefood.com.sharefood.view_post
 import android.content.Context
 import android.content.Intent
 import android.support.v7.widget.LinearLayoutManager
+import android.view.View
 import android.widget.LinearLayout
 import food.sharefood.com.sharefood.add_food_post.AddPostActivity
 import food.sharefood.com.sharefood.databinding.ActivityViewFoodPostBinding
@@ -20,10 +21,13 @@ class ViewPostPresenter(var context: Context, var postView: PostView, var viewPo
             binding.textLocation.text = foodSharePost.foodPickupLocation
 
             var location: String = binding.textLocation.text.toString()
-            var latitude = foodSharePost.latitude.toString().toDouble()
-            var longitude = foodSharePost.longitude.toString().toDouble()
 
-            binding.textLocation.setText(location)
+            if (location != null) {
+                binding.viewMap.setVisibility(View.VISIBLE)
+                binding.textLocation.setText(location)
+            } else {
+                binding.viewMap.setVisibility(View.GONE)
+            }
             // binding.textSharing.text = postData. //TODO: add user type i.e individual etc
 
             setPictures(foodSharePost.postPictures!!, binding)

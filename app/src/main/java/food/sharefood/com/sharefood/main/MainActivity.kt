@@ -111,7 +111,7 @@ class MainActivity : FragmentActivity() {
         when (requestCode) {
             Extras.ADD_POST_DATA -> {
                 val intent = Intent()
-                intent.setAction(Extras.REFRESH_POSTS_DATA)
+                intent.action = Extras.REFRESH_POSTS_DATA
                 sendBroadcast(intent)
             }
 

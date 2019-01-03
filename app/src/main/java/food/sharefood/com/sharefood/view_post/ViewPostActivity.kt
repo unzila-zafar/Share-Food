@@ -54,15 +54,17 @@ class ViewPostActivity : AppCompatActivity(), PostView {
 
         if (postData != null) {
 
+            if(postData.latitude != null && !postData.latitude!!.isEmpty())
+                latitude = postData.latitude.toString().toDouble()
 
-            latitude = postData.latitude.toString().toDouble()
-            longitude = postData.longitude.toString().toDouble()
+            if(postData.longitude != null && !postData.longitude!!.isEmpty())
+                longitude = postData.longitude.toString().toDouble()
 
         }
         binding.viewMap.setOnClickListener {
             val intent = Intent(context, MapViewActivity::class.java)
-            intent.putExtra(Extras.LATITUDE_VALUE, latitude)
-            intent.putExtra(Extras.LONGITUDE_VALUE, longitude)
+            intent.putExtra(Extras.LATITUDE_VALUE, longitude)
+            intent.putExtra(Extras.LONGITUDE_VALUE, latitude)
             context.startActivity(intent)
         }
 
@@ -95,7 +97,7 @@ class ViewPostActivity : AppCompatActivity(), PostView {
     override fun deletePost() {
 
         var intent = Intent()
-        intent.setAction(Extras.REFRESH_POSTS_DATA)
+        intent.action = Extras.REFRESH_POSTS_DATA
         sendBroadcast(intent)
         finish()
     }
@@ -119,6 +121,8 @@ class ViewPostActivity : AppCompatActivity(), PostView {
                 if (data != null) {
                     postData = data!!.getSerializableExtra(Extras.GET_EDIT_POST_DATA) as FoodSharePost
                     presenter.setData(binding, postData)
+                    latitude = postData.latitude.toString()!!.toDouble()
+                    longitude = postData.longitude.toString()!!.toDouble()
                 }
             }
         }

@@ -11,28 +11,28 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import food.sharefood.com.sharefood.R
+import food.sharefood.com.sharefood.databinding.ActivityMapBinding
 import food.sharefood.com.sharefood.util.Extras
 import food.sharefood.com.sharefood.util.Helper
 import food.sharefood.com.sharefood.util.Helper.Companion.LOCATION_PERMISSION_REQUEST_CODE
 
 class MapViewActivity : AppCompatActivity(),
         OnMapReadyCallback {
-
+    // private lateinit var binding: ActivityMapBinding
     private var latitude: Double = 0.0
     private var longitude: Double = 0.0
-
+    var map: GoogleMap? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        setContentView(R.layout.activity_map)
         setUpMap()
 
     }
 
 
     private fun setUpMap() {
-        if(intent != null)
-        {
+        if (intent != null) {
             latitude = intent.getDoubleExtra(Extras.LATITUDE_VALUE, 0.0)
             longitude = intent.getDoubleExtra(Extras.LONGITUDE_VALUE, 0.0)
         }
@@ -55,7 +55,9 @@ class MapViewActivity : AppCompatActivity(),
 
                 if (!grantResults.isEmpty() || grantResults[0] == PackageManager.PERMISSION_GRANTED) {
 
-
+                    val mapFragment: SupportMapFragment? =
+                            supportFragmentManager.findFragmentById(R.id.map) as? SupportMapFragment
+                    mapFragment?.getMapAsync(this)
                 }
             }
         }
@@ -65,11 +67,17 @@ class MapViewActivity : AppCompatActivity(),
 
     override fun onMapReady(googleMap: GoogleMap?) {
 
-        googleMap ?: return
-        with(googleMap) {
-            val latLng = LatLng(latitude, longitude)
-            moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 13f))
-            addMarker(MarkerOptions().position(latLng))
+        this.map = googleMap
+
+        val latLng = LatLng(latitude, longitude)
+
+        map?.let {
+            it.addMarker(MarkerOptions().position(latLng).title("Marker in Dhaka"))
+            it.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 13f))
         }
+
+        /*   map!!.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15f))
+           map!!.addMarker(MarkerOptions().position(latLng))*/
+
     }
 }
