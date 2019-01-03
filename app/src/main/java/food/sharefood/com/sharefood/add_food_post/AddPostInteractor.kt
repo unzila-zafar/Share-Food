@@ -12,6 +12,7 @@ import food.sharefood.com.sharefood.view_post.ViewPostInteractor
 import org.json.JSONArray
 import org.json.JSONObject
 import java.util.*
+import kotlin.collections.ArrayList
 
 class AddPostInteractor : ServiceInterface {
     private lateinit var listener: AddPostFinishedListener
@@ -40,12 +41,12 @@ class AddPostInteractor : ServiceInterface {
         data.put(APIParams.NAME, AppSharedPref.getData(SharedPrefKeys.NAME, AppSharedPref.STRING, context))
         data.put(APIParams.EMAIL, AppSharedPref.getData(SharedPrefKeys.EMAIL, AppSharedPref.STRING, context))
         data.put(APIParams.PHONE, foodSharePost.phone_number)
-        data.put(APIParams.PICKUP_LOCATION, "kfc")
+        data.put(APIParams.PICKUP_LOCATION, foodSharePost.foodPickupLocation)
         data.put(APIParams.PICKUP_TIME, foodSharePost.pickUntilTime)
         data.put(APIParams.FOOD_ITEMS, foodSharePost.foodItems)
         data.put(APIParams.SUFFICIENT_FOR, foodSharePost.sufficientFor)
-        data.put(APIParams.LATITUDE, "49.838824")
-        data.put(APIParams.LONGITUDE, "8.6449696")
+        data.put(APIParams.LATITUDE, foodSharePost.latitude)
+        data.put(APIParams.LONGITUDE, foodSharePost.longitude)
         val postPictures = JSONArray(foodSharePost.postPictures)
         data.put(APIParams.POST_PICTURES, postPictures)
         val creationDate = Date()
@@ -64,7 +65,7 @@ class AddPostInteractor : ServiceInterface {
             var rootObject = JSONObject(jsonString)
 
             listener.onPostSuccess(Helper.addFoodPostData(rootObject), postMode)
-
+            Helper.foodPostImagesArray.clear()
         }
     }
 
