@@ -77,7 +77,7 @@ class ViewPostActivity : AppCompatActivity(), PostView {
         }
 
         binding.postBar.postToolbar.imageRemove.setOnClickListener {
-            presenter.sendDeleteCall(postData)
+            presenter.showDeleteDialog(postData)
         }
 
     }

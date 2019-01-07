@@ -1,0 +1,2 @@
+# Referenced at E:\unzila data\workspace\ShareFood\app\build\intermediates\merged_manifests\debug\processDebugManifest\merged\AndroidManifest.xml:28
+-keep class food.sharefood.com.sharefood.util.ApplicationClass { <init>(...); }

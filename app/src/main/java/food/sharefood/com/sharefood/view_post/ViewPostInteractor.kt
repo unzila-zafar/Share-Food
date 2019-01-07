@@ -43,7 +43,7 @@ class ViewPostInteractor : ServiceInterface {
 
         println("data = $data")
 
-        VolleyClass.getInstance(context).createPostRequest(WebUrls().DELETE_FOOD_POST, RequestMethods().POST, data, this, WebUrls().DELETE_FOOD_POST)
+        VolleyClass.getInstance(context).createPostRequest(WebUrls().DELETE_FOOD_POST, RequestMethods().DELETE, data, this, WebUrls().DELETE_FOOD_POST)
 
 
     }

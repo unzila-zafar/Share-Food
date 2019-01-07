@@ -62,6 +62,9 @@
             android:screenOrientation="portrait"/>
 
 
+        <activity android:name=".image_preview.ImagePreviewActivity"
+            android:screenOrientation="portrait"/>
+
         <meta-data
             android:name="CLOUDINARY_URL"
             android:value="cloudinary://@androidcloud" />

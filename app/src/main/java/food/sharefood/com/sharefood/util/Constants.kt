@@ -226,6 +226,7 @@ class Extras {
         var GET_EDIT_POST_DATA = "get_data"
         var EDIT_POST_RESPONSE = 2
         var IS_FROM_HOME = "is_from_home"
+        var IMAGE_PATH = "image_path"
     }
 }
 

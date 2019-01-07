@@ -18,7 +18,7 @@ import food.sharefood.com.sharefood.util.Helper.Companion.LOCATION_PERMISSION_RE
 
 class MapViewActivity : AppCompatActivity(),
         OnMapReadyCallback {
-    // private lateinit var binding: ActivityMapBinding
+
     private var latitude: Double = 0.0
     private var longitude: Double = 0.0
     var map: GoogleMap? = null
@@ -72,8 +72,8 @@ class MapViewActivity : AppCompatActivity(),
         val latLng = LatLng(latitude, longitude)
 
         map?.let {
-            it.addMarker(MarkerOptions().position(latLng).title("Marker in Dhaka"))
-            it.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 13f))
+            it.addMarker(MarkerOptions().position(latLng))
+            it.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 5f))
         }
 
         /*   map!!.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15f))

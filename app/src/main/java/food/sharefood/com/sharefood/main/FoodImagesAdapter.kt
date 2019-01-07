@@ -1,6 +1,7 @@
 package food.sharefood.com.sharefood.main
 
 import android.content.Context
+import android.content.Intent
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -8,6 +9,9 @@ import com.bumptech.glide.Glide
 import com.squareup.picasso.Picasso
 
 import food.sharefood.com.sharefood.databinding.ItemImagesFoodBinding
+import food.sharefood.com.sharefood.image_preview.ImagePreviewActivity
+import food.sharefood.com.sharefood.util.Extras
+import food.sharefood.com.sharefood.view_post.ViewPostActivity
 
 import kotlinx.android.synthetic.main.item_images_food.view.*
 
@@ -36,6 +40,12 @@ class FoodImagesAdapter(val context: Context, private val imagesList: ArrayList<
             with(itemView) {
                 Glide.with(context).load(item).into(image_food)
 
+                image_food.setOnClickListener {
+
+                    val intent = Intent(context, ImagePreviewActivity::class.java)
+                    intent.putExtra(Extras.IMAGE_PATH, item)
+                    context.startActivity(intent)
+                }
             }
 
         }

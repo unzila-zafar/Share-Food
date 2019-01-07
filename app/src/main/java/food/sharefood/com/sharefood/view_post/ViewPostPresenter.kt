@@ -2,9 +2,12 @@ package food.sharefood.com.sharefood.view_post
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
+import android.support.v7.app.AlertDialog
 import android.support.v7.widget.LinearLayoutManager
 import android.view.View
 import android.widget.LinearLayout
+import android.widget.Toast
 import food.sharefood.com.sharefood.add_food_post.AddPostActivity
 import food.sharefood.com.sharefood.databinding.ActivityViewFoodPostBinding
 import food.sharefood.com.sharefood.main.FoodImagesAdapter
@@ -42,10 +45,32 @@ class ViewPostPresenter(var context: Context, var postView: PostView, var viewPo
     }
 
 
-    fun sendEditCall(foodSharePost: FoodSharePost) {
-        postView.showProgress()
+    fun showDeleteDialog(foodSharePost: FoodSharePost) {
+        val builder = AlertDialog.Builder(context)
 
-        // viewPostInteractor.requestEditPost(context, foodSharePost, this)
+        // Set the alert dialog title
+        builder.setTitle("Delete Post")
+
+        // Display a message on alert dialog
+        builder.setMessage("Are you sure you want to delete this post?")
+
+        // Set a positive button and its click listener on alert dialog
+        builder.setPositiveButton("Yes") { dialog, which ->
+
+            sendDeleteCall(foodSharePost)
+            dialog.dismiss()
+        }
+
+
+        // Display a negative button on alert dialog
+        builder.setNegativeButton("No") { dialog, which ->
+            dialog.dismiss()
+        }
+
+        val dialog: AlertDialog = builder.create()
+
+        // Display the alert dialog on app interface
+        dialog.show()
     }
 
     private fun setPictures(arrayPic: ArrayList<String>, binding: ActivityViewFoodPostBinding) {

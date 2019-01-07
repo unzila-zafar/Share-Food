@@ -1,0 +1,432 @@
+-- Merging decision tree log ---
+manifest
+ADDED from E:\unzila data\workspace\ShareFood\app\src\main\AndroidManifest.xml:2:1-92:12
+INJECTED from E:\unzila data\workspace\ShareFood\app\src\main\AndroidManifest.xml:2:1-92:12
+INJECTED from E:\unzila data\workspace\ShareFood\app\src\main\AndroidManifest.xml:2:1-92:12
+INJECTED from E:\unzila data\workspace\ShareFood\app\src\main\AndroidManifest.xml:2:1-92:12
+MERGED from [com.android.databinding:adapters:3.2.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\adapters-3.2.1.aar\3ecd53c56a853ad097096ffd9a99a078\AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.databinding:library:3.2.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\library-3.2.1.aar\4d77b368122c7e3bef8d59736e5daadf\AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support:multidex:1.0.2] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\multidex-1.0.2.aar\9bb1a035d6ad2fc9461ed6feab096b73\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:design:27.1.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\design-27.1.1.aar\aeead649761b0bc506a2a6dd4480f4fc\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:appcompat-v7:27.1.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\appcompat-v7-27.1.1.aar\63c1955aaa9bc0771aab20dd8cd1f8c0\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.3.aar\0de0985d4662ecefd60c63d92fca8a32\AndroidManifest.xml:2:1-11:12
+MERGED from [com.android.support:cardview-v7:27.1.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\cardview-v7-27.1.1.aar\1ae4b17589821bf40b5b7658534ffca1\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.volley:volley:1.1.0] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\volley-1.1.0.aar\e7ac624c15f780bfab1ad0c1659dbf50\AndroidManifest.xml:2:1-11:12
+MERGED from [com.cloudinary:cloudinary-android:1.24.0] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\cloudinary-android-1.24.0.aar\9537b55e8349c19dedae9b82dab87e2d\AndroidManifest.xml:2:1-15:12
+MERGED from [com.github.bumptech.glide:glide:4.8.0] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\glide-4.8.0.aar\7b6a0f05d34c70d2da8b40ec6f2bc93e\AndroidManifest.xml:2:1-12:12
+MERGED from [com.google.android.gms:play-services-location:15.0.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\play-services-location-15.0.1.aar\0ecd90d2d44679270f4c5fba6982d7c7\AndroidManifest.xml:2:1-9:12
+MERGED from [com.google.android.gms:play-services-places:15.0.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\play-services-places-15.0.1.aar\722d92120d54f472fa869fb58b02130b\AndroidManifest.xml:17:1-24:12
+MERGED from [com.google.android.gms:play-services-maps:15.0.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\play-services-maps-15.0.1.aar\4bf3c823255625b90c3fb51692cbdbb2\AndroidManifest.xml:17:1-32:12
+MERGED from [com.android.support:recyclerview-v7:27.1.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-27.1.1.aar\cb03e6c4a974a055108e64bd71da120f\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:transition:27.1.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\transition-27.1.1.aar\6d6e563315884d589c7ab52d1f7a0f3b\AndroidManifest.xml:17:1-22:12
+MERGED from [com.google.android.gms:play-services-base:15.0.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\play-services-base-15.0.1.aar\36fa36bf1a85feabb4b0579679ce35cb\AndroidManifest.xml:17:1-29:12
+MERGED from [com.google.android.gms:play-services-places-placereport:15.0.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\play-services-places-placereport-15.0.1.aar\6f2c63375dc0bed5eda7ce7a29074b1e\AndroidManifest.xml:17:1-24:12
+MERGED from [com.google.android.gms:play-services-tasks:15.0.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\play-services-tasks-15.0.1.aar\5b94e5d235be123c0a7d7ebbd45caf1a\AndroidManifest.xml:2:1-9:12
+MERGED from [com.google.android.gms:play-services-basement:15.0.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\play-services-basement-15.0.1.aar\249d54d865eb004455e52ea6f1f4572f\AndroidManifest.xml:17:1-28:12
+MERGED from [com.android.support:support-v4:27.1.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\support-v4-27.1.1.aar\11015f103e422cb724b0b5d6493090ab\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-fragment:27.1.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\support-fragment-27.1.1.aar\2001a0e68e9271123066b402611613f5\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:animated-vector-drawable:27.1.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-27.1.1.aar\c505eb4ca0ebf68616009a6a22a52f65\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-ui:27.1.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\support-core-ui-27.1.1.aar\2fc3647cc6678cec6680f63deb2edfdf\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-utils:27.1.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\support-core-utils-27.1.1.aar\d077f08762f5f1a3f5b411786835a7c3\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-media-compat:27.1.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\support-media-compat-27.1.1.aar\142d017e93ed9cda5c19170a1c0b3f62\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-vector-drawable:27.1.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-27.1.1.aar\1a0529835971ee05b3cd56b3db3a5ba1\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-compat:27.1.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\support-compat-27.1.1.aar\b3b85d3d7abd40a1f6a3bfc918241efa\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:runtime:1.1.0] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\runtime-1.1.0.aar\f7034125c070322dc5a71a1cf41c1767\AndroidManifest.xml:17:1-22:12
+MERGED from [com.github.bumptech.glide:gifdecoder:4.8.0] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\gifdecoder-4.8.0.aar\ac261cada8a9eb654aa0d68afdd4b0b5\AndroidManifest.xml:2:1-11:12
+MERGED from [android.arch.lifecycle:livedata-core:1.1.0] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\livedata-core-1.1.0.aar\3dd5792b2845459ad7a3750472c403f3\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.core:runtime:1.1.0] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\runtime-1.1.0.aar\04fffc82dc5680e63149179b514b4143\AndroidManifest.xml:17:1-22:12
+MERGED from [com.evernote:android-job:1.2.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\android-job-1.2.1.aar\92317219f8dc86cead5ac2dfab380756\AndroidManifest.xml:2:1-65:12
+MERGED from [android.arch.lifecycle:viewmodel:1.1.0] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\viewmodel-1.1.0.aar\efcffc2ab5664b4849e74000eceb1932\AndroidManifest.xml:17:1-22:12
+INJECTED from E:\unzila data\workspace\ShareFood\app\src\main\AndroidManifest.xml:2:1-92:12
+INJECTED from E:\unzila data\workspace\ShareFood\app\src\main\AndroidManifest.xml:2:1-92:12
+INJECTED from E:\unzila data\workspace\ShareFood\app\src\main\AndroidManifest.xml:2:1-92:12
+	package
+		ADDED from E:\unzila data\workspace\ShareFood\app\src\main\AndroidManifest.xml:3:5-43
+		INJECTED from E:\unzila data\workspace\ShareFood\app\src\main\AndroidManifest.xml
+		INJECTED from E:\unzila data\workspace\ShareFood\app\src\main\AndroidManifest.xml
+	android:versionName
+		INJECTED from E:\unzila data\workspace\ShareFood\app\src\main\AndroidManifest.xml
+		ADDED from E:\unzila data\workspace\ShareFood\app\src\main\AndroidManifest.xml:2:1-92:12
+		INJECTED from E:\unzila data\workspace\ShareFood\app\src\main\AndroidManifest.xml
+	android:versionCode
+		INJECTED from E:\unzila data\workspace\ShareFood\app\src\main\AndroidManifest.xml
+		ADDED from E:\unzila data\workspace\ShareFood\app\src\main\AndroidManifest.xml:2:1-92:12
+		INJECTED from E:\unzila data\workspace\ShareFood\app\src\main\AndroidManifest.xml
+	xmlns:android
+		ADDED from E:\unzila data\workspace\ShareFood\app\src\main\AndroidManifest.xml:2:11-69
+uses-permission#android.permission.INTERNET
+ADDED from E:\unzila data\workspace\ShareFood\app\src\main\AndroidManifest.xml:5:5-67
+MERGED from [com.cloudinary:cloudinary-android:1.24.0] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\cloudinary-android-1.24.0.aar\9537b55e8349c19dedae9b82dab87e2d\AndroidManifest.xml:11:5-67
+MERGED from [com.cloudinary:cloudinary-android:1.24.0] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\cloudinary-android-1.24.0.aar\9537b55e8349c19dedae9b82dab87e2d\AndroidManifest.xml:11:5-67
+MERGED from [com.google.android.gms:play-services-maps:15.0.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\play-services-maps-15.0.1.aar\4bf3c823255625b90c3fb51692cbdbb2\AndroidManifest.xml:24:5-67
+MERGED from [com.google.android.gms:play-services-maps:15.0.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\play-services-maps-15.0.1.aar\4bf3c823255625b90c3fb51692cbdbb2\AndroidManifest.xml:24:5-67
+	android:name
+		ADDED from E:\unzila data\workspace\ShareFood\app\src\main\AndroidManifest.xml:5:22-64
+uses-permission#android.permission.CAMERA
+ADDED from E:\unzila data\workspace\ShareFood\app\src\main\AndroidManifest.xml:6:5-65
+	android:name
+		ADDED from E:\unzila data\workspace\ShareFood\app\src\main\AndroidManifest.xml:6:22-62
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from E:\unzila data\workspace\ShareFood\app\src\main\AndroidManifest.xml:7:5-81
+	android:name
+		ADDED from E:\unzila data\workspace\ShareFood\app\src\main\AndroidManifest.xml:7:22-78
+uses-permission#android.permission.READ_EXTERNAL_STORAGE
+ADDED from E:\unzila data\workspace\ShareFood\app\src\main\AndroidManifest.xml:8:5-80
+	android:name
+		ADDED from E:\unzila data\workspace\ShareFood\app\src\main\AndroidManifest.xml:8:22-77
+uses-permission#android.permission.ACCESS_COARSE_LOCATION
+ADDED from E:\unzila data\workspace\ShareFood\app\src\main\AndroidManifest.xml:9:5-81
+	android:name
+		ADDED from E:\unzila data\workspace\ShareFood\app\src\main\AndroidManifest.xml:9:22-78
+uses-permission#android.permission.ACCESS_FINE_LOCATION
+ADDED from E:\unzila data\workspace\ShareFood\app\src\main\AndroidManifest.xml:10:5-79
+	android:name
+		ADDED from E:\unzila data\workspace\ShareFood\app\src\main\AndroidManifest.xml:10:22-76
+application
+ADDED from E:\unzila data\workspace\ShareFood\app\src\main\AndroidManifest.xml:13:5-90:19
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.3.aar\0de0985d4662ecefd60c63d92fca8a32\AndroidManifest.xml:9:5-20
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.3.aar\0de0985d4662ecefd60c63d92fca8a32\AndroidManifest.xml:9:5-20
+MERGED from [com.android.volley:volley:1.1.0] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\volley-1.1.0.aar\e7ac624c15f780bfab1ad0c1659dbf50\AndroidManifest.xml:9:5-20
+MERGED from [com.android.volley:volley:1.1.0] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\volley-1.1.0.aar\e7ac624c15f780bfab1ad0c1659dbf50\AndroidManifest.xml:9:5-20
+MERGED from [com.cloudinary:cloudinary-android:1.24.0] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\cloudinary-android-1.24.0.aar\9537b55e8349c19dedae9b82dab87e2d\AndroidManifest.xml:13:5-67
+MERGED from [com.cloudinary:cloudinary-android:1.24.0] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\cloudinary-android-1.24.0.aar\9537b55e8349c19dedae9b82dab87e2d\AndroidManifest.xml:13:5-67
+MERGED from [com.github.bumptech.glide:glide:4.8.0] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\glide-4.8.0.aar\7b6a0f05d34c70d2da8b40ec6f2bc93e\AndroidManifest.xml:10:5-20
+MERGED from [com.github.bumptech.glide:glide:4.8.0] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\glide-4.8.0.aar\7b6a0f05d34c70d2da8b40ec6f2bc93e\AndroidManifest.xml:10:5-20
+MERGED from [com.google.android.gms:play-services-location:15.0.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\play-services-location-15.0.1.aar\0ecd90d2d44679270f4c5fba6982d7c7\AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-location:15.0.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\play-services-location-15.0.1.aar\0ecd90d2d44679270f4c5fba6982d7c7\AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-places:15.0.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\play-services-places-15.0.1.aar\722d92120d54f472fa869fb58b02130b\AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.gms:play-services-places:15.0.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\play-services-places-15.0.1.aar\722d92120d54f472fa869fb58b02130b\AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.gms:play-services-maps:15.0.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\play-services-maps-15.0.1.aar\4bf3c823255625b90c3fb51692cbdbb2\AndroidManifest.xml:30:5-20
+MERGED from [com.google.android.gms:play-services-maps:15.0.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\play-services-maps-15.0.1.aar\4bf3c823255625b90c3fb51692cbdbb2\AndroidManifest.xml:30:5-20
+MERGED from [com.google.android.gms:play-services-base:15.0.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\play-services-base-15.0.1.aar\36fa36bf1a85feabb4b0579679ce35cb\AndroidManifest.xml:22:5-27:19
+MERGED from [com.google.android.gms:play-services-base:15.0.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\play-services-base-15.0.1.aar\36fa36bf1a85feabb4b0579679ce35cb\AndroidManifest.xml:22:5-27:19
+MERGED from [com.google.android.gms:play-services-places-placereport:15.0.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\play-services-places-placereport-15.0.1.aar\6f2c63375dc0bed5eda7ce7a29074b1e\AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.gms:play-services-places-placereport:15.0.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\play-services-places-placereport-15.0.1.aar\6f2c63375dc0bed5eda7ce7a29074b1e\AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.gms:play-services-tasks:15.0.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\play-services-tasks-15.0.1.aar\5b94e5d235be123c0a7d7ebbd45caf1a\AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-tasks:15.0.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\play-services-tasks-15.0.1.aar\5b94e5d235be123c0a7d7ebbd45caf1a\AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-basement:15.0.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\play-services-basement-15.0.1.aar\249d54d865eb004455e52ea6f1f4572f\AndroidManifest.xml:22:5-26:19
+MERGED from [com.google.android.gms:play-services-basement:15.0.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\play-services-basement-15.0.1.aar\249d54d865eb004455e52ea6f1f4572f\AndroidManifest.xml:22:5-26:19
+MERGED from [com.github.bumptech.glide:gifdecoder:4.8.0] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\gifdecoder-4.8.0.aar\ac261cada8a9eb654aa0d68afdd4b0b5\AndroidManifest.xml:9:5-20
+MERGED from [com.github.bumptech.glide:gifdecoder:4.8.0] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\gifdecoder-4.8.0.aar\ac261cada8a9eb654aa0d68afdd4b0b5\AndroidManifest.xml:9:5-20
+MERGED from [com.evernote:android-job:1.2.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\android-job-1.2.1.aar\92317219f8dc86cead5ac2dfab380756\AndroidManifest.xml:16:5-63:19
+MERGED from [com.evernote:android-job:1.2.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\android-job-1.2.1.aar\92317219f8dc86cead5ac2dfab380756\AndroidManifest.xml:16:5-63:19
+	android:supportsRtl
+		ADDED from E:\unzila data\workspace\ShareFood\app\src\main\AndroidManifest.xml:18:9-35
+	android:label
+		ADDED from E:\unzila data\workspace\ShareFood\app\src\main\AndroidManifest.xml:17:9-41
+	android:hardwareAccelerated
+		ADDED from E:\unzila data\workspace\ShareFood\app\src\main\AndroidManifest.xml:20:9-44
+	android:fullBackupContent
+		ADDED from [com.cloudinary:cloudinary-android:1.24.0] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\cloudinary-android-1.24.0.aar\9537b55e8349c19dedae9b82dab87e2d\AndroidManifest.xml:13:18-64
+	tools:ignore
+		ADDED from [com.evernote:android-job:1.2.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\android-job-1.2.1.aar\92317219f8dc86cead5ac2dfab380756\AndroidManifest.xml:16:18-44
+	android:largeHeap
+		ADDED from E:\unzila data\workspace\ShareFood\app\src\main\AndroidManifest.xml:19:9-33
+	android:icon
+		ADDED from E:\unzila data\workspace\ShareFood\app\src\main\AndroidManifest.xml:16:9-43
+	android:allowBackup
+		ADDED from E:\unzila data\workspace\ShareFood\app\src\main\AndroidManifest.xml:15:9-35
+	android:theme
+		ADDED from E:\unzila data\workspace\ShareFood\app\src\main\AndroidManifest.xml:21:9-40
+	android:name
+		ADDED from E:\unzila data\workspace\ShareFood\app\src\main\AndroidManifest.xml:14:9-46
+activity#food.sharefood.com.sharefood.SplashActivity
+ADDED from E:\unzila data\workspace\ShareFood\app\src\main\AndroidManifest.xml:24:9-32:20
+	android:screenOrientation
+		ADDED from E:\unzila data\workspace\ShareFood\app\src\main\AndroidManifest.xml:26:13-49
+	android:name
+		ADDED from E:\unzila data\workspace\ShareFood\app\src\main\AndroidManifest.xml:25:13-43
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from E:\unzila data\workspace\ShareFood\app\src\main\AndroidManifest.xml:27:13-31:29
+action#android.intent.action.MAIN
+ADDED from E:\unzila data\workspace\ShareFood\app\src\main\AndroidManifest.xml:28:17-69
+	android:name
+		ADDED from E:\unzila data\workspace\ShareFood\app\src\main\AndroidManifest.xml:28:25-66
+category#android.intent.category.LAUNCHER
+ADDED from E:\unzila data\workspace\ShareFood\app\src\main\AndroidManifest.xml:30:17-77
+	android:name
+		ADDED from E:\unzila data\workspace\ShareFood\app\src\main\AndroidManifest.xml:30:27-74
+activity#food.sharefood.com.sharefood.main.MainActivity
+ADDED from E:\unzila data\workspace\ShareFood\app\src\main\AndroidManifest.xml:34:9-36:52
+	android:screenOrientation
+		ADDED from E:\unzila data\workspace\ShareFood\app\src\main\AndroidManifest.xml:36:13-49
+	android:name
+		ADDED from E:\unzila data\workspace\ShareFood\app\src\main\AndroidManifest.xml:35:13-46
+activity#food.sharefood.com.sharefood.login.LoginActivity
+ADDED from E:\unzila data\workspace\ShareFood\app\src\main\AndroidManifest.xml:38:9-40:52
+	android:screenOrientation
+		ADDED from E:\unzila data\workspace\ShareFood\app\src\main\AndroidManifest.xml:40:13-49
+	android:name
+		ADDED from E:\unzila data\workspace\ShareFood\app\src\main\AndroidManifest.xml:39:13-48
+activity#food.sharefood.com.sharefood.signup.SignupActivity
+ADDED from E:\unzila data\workspace\ShareFood\app\src\main\AndroidManifest.xml:42:9-44:52
+	android:screenOrientation
+		ADDED from E:\unzila data\workspace\ShareFood\app\src\main\AndroidManifest.xml:44:13-49
+	android:name
+		ADDED from E:\unzila data\workspace\ShareFood\app\src\main\AndroidManifest.xml:43:13-50
+activity#food.sharefood.com.sharefood.add_food_post.AddPostActivity
+ADDED from E:\unzila data\workspace\ShareFood\app\src\main\AndroidManifest.xml:46:9-48:52
+	android:screenOrientation
+		ADDED from E:\unzila data\workspace\ShareFood\app\src\main\AndroidManifest.xml:48:13-49
+	android:name
+		ADDED from E:\unzila data\workspace\ShareFood\app\src\main\AndroidManifest.xml:47:13-58
+activity#food.sharefood.com.sharefood.view_post.ViewPostActivity
+ADDED from E:\unzila data\workspace\ShareFood\app\src\main\AndroidManifest.xml:50:9-52:52
+	android:screenOrientation
+		ADDED from E:\unzila data\workspace\ShareFood\app\src\main\AndroidManifest.xml:52:13-49
+	android:name
+		ADDED from E:\unzila data\workspace\ShareFood\app\src\main\AndroidManifest.xml:51:13-55
+activity#food.sharefood.com.sharefood.forgot_password.ForgotPassword
+ADDED from E:\unzila data\workspace\ShareFood\app\src\main\AndroidManifest.xml:54:9-56:52
+	android:screenOrientation
+		ADDED from E:\unzila data\workspace\ShareFood\app\src\main\AndroidManifest.xml:56:13-49
+	android:name
+		ADDED from E:\unzila data\workspace\ShareFood\app\src\main\AndroidManifest.xml:55:13-59
+activity#food.sharefood.com.sharefood.add_food_post.MapViewActivity
+ADDED from E:\unzila data\workspace\ShareFood\app\src\main\AndroidManifest.xml:58:9-59:52
+	android:screenOrientation
+		ADDED from E:\unzila data\workspace\ShareFood\app\src\main\AndroidManifest.xml:59:13-49
+	android:name
+		ADDED from E:\unzila data\workspace\ShareFood\app\src\main\AndroidManifest.xml:58:19-64
+activity#food.sharefood.com.sharefood.search.SearchActivity
+ADDED from E:\unzila data\workspace\ShareFood\app\src\main\AndroidManifest.xml:61:9-62:51
+	android:screenOrientation
+		ADDED from E:\unzila data\workspace\ShareFood\app\src\main\AndroidManifest.xml:62:13-49
+	android:name
+		ADDED from E:\unzila data\workspace\ShareFood\app\src\main\AndroidManifest.xml:61:19-56
+activity#food.sharefood.com.sharefood.image_preview.ImagePreviewActivity
+ADDED from E:\unzila data\workspace\ShareFood\app\src\main\AndroidManifest.xml:65:9-66:51
+	android:screenOrientation
+		ADDED from E:\unzila data\workspace\ShareFood\app\src\main\AndroidManifest.xml:66:13-49
+	android:name
+		ADDED from E:\unzila data\workspace\ShareFood\app\src\main\AndroidManifest.xml:65:19-69
+meta-data#CLOUDINARY_URL
+ADDED from E:\unzila data\workspace\ShareFood\app\src\main\AndroidManifest.xml:68:9-70:58
+	android:value
+		ADDED from E:\unzila data\workspace\ShareFood\app\src\main\AndroidManifest.xml:70:13-55
+	android:name
+		ADDED from E:\unzila data\workspace\ShareFood\app\src\main\AndroidManifest.xml:69:13-42
+provider#android.support.v4.content.FileProvider
+ADDED from E:\unzila data\workspace\ShareFood\app\src\main\AndroidManifest.xml:72:9-80:20
+	android:grantUriPermissions
+		ADDED from E:\unzila data\workspace\ShareFood\app\src\main\AndroidManifest.xml:76:13-47
+	android:authorities
+		ADDED from E:\unzila data\workspace\ShareFood\app\src\main\AndroidManifest.xml:74:13-72
+	android:exported
+		ADDED from E:\unzila data\workspace\ShareFood\app\src\main\AndroidManifest.xml:75:13-37
+	android:name
+		ADDED from E:\unzila data\workspace\ShareFood\app\src\main\AndroidManifest.xml:73:13-67
+meta-data#android.support.FILE_PROVIDER_PATHS
+ADDED from E:\unzila data\workspace\ShareFood\app\src\main\AndroidManifest.xml:77:13-79:54
+	android:resource
+		ADDED from E:\unzila data\workspace\ShareFood\app\src\main\AndroidManifest.xml:79:17-51
+	android:name
+		ADDED from E:\unzila data\workspace\ShareFood\app\src\main\AndroidManifest.xml:78:17-67
+meta-data#com.google.android.gms.version
+ADDED from E:\unzila data\workspace\ShareFood\app\src\main\AndroidManifest.xml:82:9-84:69
+MERGED from [com.google.android.gms:play-services-basement:15.0.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\play-services-basement-15.0.1.aar\249d54d865eb004455e52ea6f1f4572f\AndroidManifest.xml:23:9-25:69
+MERGED from [com.google.android.gms:play-services-basement:15.0.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\play-services-basement-15.0.1.aar\249d54d865eb004455e52ea6f1f4572f\AndroidManifest.xml:23:9-25:69
+	android:value
+		ADDED from E:\unzila data\workspace\ShareFood\app\src\main\AndroidManifest.xml:84:13-66
+	android:name
+		ADDED from E:\unzila data\workspace\ShareFood\app\src\main\AndroidManifest.xml:83:13-58
+meta-data#com.google.android.geo.API_KEY
+ADDED from E:\unzila data\workspace\ShareFood\app\src\main\AndroidManifest.xml:86:9-87:53
+	android:value
+		ADDED from E:\unzila data\workspace\ShareFood\app\src\main\AndroidManifest.xml:87:13-51
+	android:name
+		ADDED from E:\unzila data\workspace\ShareFood\app\src\main\AndroidManifest.xml:86:20-65
+uses-sdk
+INJECTED from E:\unzila data\workspace\ShareFood\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from E:\unzila data\workspace\ShareFood\app\src\main\AndroidManifest.xml
+INJECTED from E:\unzila data\workspace\ShareFood\app\src\main\AndroidManifest.xml
+MERGED from [com.android.databinding:adapters:3.2.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\adapters-3.2.1.aar\3ecd53c56a853ad097096ffd9a99a078\AndroidManifest.xml:22:5-44
+MERGED from [com.android.databinding:adapters:3.2.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\adapters-3.2.1.aar\3ecd53c56a853ad097096ffd9a99a078\AndroidManifest.xml:22:5-44
+MERGED from [com.android.databinding:library:3.2.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\library-3.2.1.aar\4d77b368122c7e3bef8d59736e5daadf\AndroidManifest.xml:22:5-44
+MERGED from [com.android.databinding:library:3.2.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\library-3.2.1.aar\4d77b368122c7e3bef8d59736e5daadf\AndroidManifest.xml:22:5-44
+MERGED from [com.android.support:multidex:1.0.2] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\multidex-1.0.2.aar\9bb1a035d6ad2fc9461ed6feab096b73\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:multidex:1.0.2] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\multidex-1.0.2.aar\9bb1a035d6ad2fc9461ed6feab096b73\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:design:27.1.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\design-27.1.1.aar\aeead649761b0bc506a2a6dd4480f4fc\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design:27.1.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\design-27.1.1.aar\aeead649761b0bc506a2a6dd4480f4fc\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:appcompat-v7:27.1.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\appcompat-v7-27.1.1.aar\63c1955aaa9bc0771aab20dd8cd1f8c0\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:appcompat-v7:27.1.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\appcompat-v7-27.1.1.aar\63c1955aaa9bc0771aab20dd8cd1f8c0\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.3.aar\0de0985d4662ecefd60c63d92fca8a32\AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.3.aar\0de0985d4662ecefd60c63d92fca8a32\AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support:cardview-v7:27.1.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\cardview-v7-27.1.1.aar\1ae4b17589821bf40b5b7658534ffca1\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cardview-v7:27.1.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\cardview-v7-27.1.1.aar\1ae4b17589821bf40b5b7658534ffca1\AndroidManifest.xml:20:5-44
+MERGED from [com.android.volley:volley:1.1.0] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\volley-1.1.0.aar\e7ac624c15f780bfab1ad0c1659dbf50\AndroidManifest.xml:7:5-43
+MERGED from [com.android.volley:volley:1.1.0] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\volley-1.1.0.aar\e7ac624c15f780bfab1ad0c1659dbf50\AndroidManifest.xml:7:5-43
+MERGED from [com.cloudinary:cloudinary-android:1.24.0] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\cloudinary-android-1.24.0.aar\9537b55e8349c19dedae9b82dab87e2d\AndroidManifest.xml:7:5-9:41
+MERGED from [com.cloudinary:cloudinary-android:1.24.0] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\cloudinary-android-1.24.0.aar\9537b55e8349c19dedae9b82dab87e2d\AndroidManifest.xml:7:5-9:41
+MERGED from [com.github.bumptech.glide:glide:4.8.0] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\glide-4.8.0.aar\7b6a0f05d34c70d2da8b40ec6f2bc93e\AndroidManifest.xml:6:5-8:41
+MERGED from [com.github.bumptech.glide:glide:4.8.0] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\glide-4.8.0.aar\7b6a0f05d34c70d2da8b40ec6f2bc93e\AndroidManifest.xml:6:5-8:41
+MERGED from [com.google.android.gms:play-services-location:15.0.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\play-services-location-15.0.1.aar\0ecd90d2d44679270f4c5fba6982d7c7\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-location:15.0.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\play-services-location-15.0.1.aar\0ecd90d2d44679270f4c5fba6982d7c7\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-places:15.0.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\play-services-places-15.0.1.aar\722d92120d54f472fa869fb58b02130b\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-places:15.0.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\play-services-places-15.0.1.aar\722d92120d54f472fa869fb58b02130b\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-maps:15.0.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\play-services-maps-15.0.1.aar\4bf3c823255625b90c3fb51692cbdbb2\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-maps:15.0.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\play-services-maps-15.0.1.aar\4bf3c823255625b90c3fb51692cbdbb2\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:recyclerview-v7:27.1.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-27.1.1.aar\cb03e6c4a974a055108e64bd71da120f\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:recyclerview-v7:27.1.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-27.1.1.aar\cb03e6c4a974a055108e64bd71da120f\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:transition:27.1.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\transition-27.1.1.aar\6d6e563315884d589c7ab52d1f7a0f3b\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:transition:27.1.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\transition-27.1.1.aar\6d6e563315884d589c7ab52d1f7a0f3b\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-base:15.0.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\play-services-base-15.0.1.aar\36fa36bf1a85feabb4b0579679ce35cb\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-base:15.0.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\play-services-base-15.0.1.aar\36fa36bf1a85feabb4b0579679ce35cb\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-places-placereport:15.0.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\play-services-places-placereport-15.0.1.aar\6f2c63375dc0bed5eda7ce7a29074b1e\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-places-placereport:15.0.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\play-services-places-placereport-15.0.1.aar\6f2c63375dc0bed5eda7ce7a29074b1e\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-tasks:15.0.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\play-services-tasks-15.0.1.aar\5b94e5d235be123c0a7d7ebbd45caf1a\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-tasks:15.0.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\play-services-tasks-15.0.1.aar\5b94e5d235be123c0a7d7ebbd45caf1a\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-basement:15.0.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\play-services-basement-15.0.1.aar\249d54d865eb004455e52ea6f1f4572f\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-basement:15.0.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\play-services-basement-15.0.1.aar\249d54d865eb004455e52ea6f1f4572f\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-v4:27.1.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\support-v4-27.1.1.aar\11015f103e422cb724b0b5d6493090ab\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-v4:27.1.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\support-v4-27.1.1.aar\11015f103e422cb724b0b5d6493090ab\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:27.1.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\support-fragment-27.1.1.aar\2001a0e68e9271123066b402611613f5\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:27.1.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\support-fragment-27.1.1.aar\2001a0e68e9271123066b402611613f5\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:27.1.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-27.1.1.aar\c505eb4ca0ebf68616009a6a22a52f65\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:27.1.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-27.1.1.aar\c505eb4ca0ebf68616009a6a22a52f65\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:27.1.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\support-core-ui-27.1.1.aar\2fc3647cc6678cec6680f63deb2edfdf\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:27.1.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\support-core-ui-27.1.1.aar\2fc3647cc6678cec6680f63deb2edfdf\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:27.1.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\support-core-utils-27.1.1.aar\d077f08762f5f1a3f5b411786835a7c3\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:27.1.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\support-core-utils-27.1.1.aar\d077f08762f5f1a3f5b411786835a7c3\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-media-compat:27.1.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\support-media-compat-27.1.1.aar\142d017e93ed9cda5c19170a1c0b3f62\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-media-compat:27.1.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\support-media-compat-27.1.1.aar\142d017e93ed9cda5c19170a1c0b3f62\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:27.1.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-27.1.1.aar\1a0529835971ee05b3cd56b3db3a5ba1\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:27.1.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-27.1.1.aar\1a0529835971ee05b3cd56b3db3a5ba1\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:27.1.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\support-compat-27.1.1.aar\b3b85d3d7abd40a1f6a3bfc918241efa\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:27.1.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\support-compat-27.1.1.aar\b3b85d3d7abd40a1f6a3bfc918241efa\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.0] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\runtime-1.1.0.aar\f7034125c070322dc5a71a1cf41c1767\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.0] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\runtime-1.1.0.aar\f7034125c070322dc5a71a1cf41c1767\AndroidManifest.xml:20:5-44
+MERGED from [com.github.bumptech.glide:gifdecoder:4.8.0] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\gifdecoder-4.8.0.aar\ac261cada8a9eb654aa0d68afdd4b0b5\AndroidManifest.xml:5:5-7:41
+MERGED from [com.github.bumptech.glide:gifdecoder:4.8.0] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\gifdecoder-4.8.0.aar\ac261cada8a9eb654aa0d68afdd4b0b5\AndroidManifest.xml:5:5-7:41
+MERGED from [android.arch.lifecycle:livedata-core:1.1.0] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\livedata-core-1.1.0.aar\3dd5792b2845459ad7a3750472c403f3\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.0] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\livedata-core-1.1.0.aar\3dd5792b2845459ad7a3750472c403f3\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.0] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\runtime-1.1.0.aar\04fffc82dc5680e63149179b514b4143\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.0] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\runtime-1.1.0.aar\04fffc82dc5680e63149179b514b4143\AndroidManifest.xml:20:5-44
+MERGED from [com.evernote:android-job:1.2.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\android-job-1.2.1.aar\92317219f8dc86cead5ac2dfab380756\AndroidManifest.xml:8:5-10:41
+MERGED from [com.evernote:android-job:1.2.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\android-job-1.2.1.aar\92317219f8dc86cead5ac2dfab380756\AndroidManifest.xml:8:5-10:41
+MERGED from [android.arch.lifecycle:viewmodel:1.1.0] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\viewmodel-1.1.0.aar\efcffc2ab5664b4849e74000eceb1932\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.0] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\viewmodel-1.1.0.aar\efcffc2ab5664b4849e74000eceb1932\AndroidManifest.xml:20:5-44
+INJECTED from E:\unzila data\workspace\ShareFood\app\src\main\AndroidManifest.xml
+INJECTED from E:\unzila data\workspace\ShareFood\app\src\main\AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from E:\unzila data\workspace\ShareFood\app\src\main\AndroidManifest.xml
+		ADDED from E:\unzila data\workspace\ShareFood\app\src\main\AndroidManifest.xml
+		INJECTED from E:\unzila data\workspace\ShareFood\app\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from E:\unzila data\workspace\ShareFood\app\src\main\AndroidManifest.xml
+		ADDED from E:\unzila data\workspace\ShareFood\app\src\main\AndroidManifest.xml
+		INJECTED from E:\unzila data\workspace\ShareFood\app\src\main\AndroidManifest.xml
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from [com.google.android.gms:play-services-maps:15.0.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\play-services-maps-15.0.1.aar\4bf3c823255625b90c3fb51692cbdbb2\AndroidManifest.xml:23:5-79
+MERGED from [com.evernote:android-job:1.2.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\android-job-1.2.1.aar\92317219f8dc86cead5ac2dfab380756\AndroidManifest.xml:13:5-79
+MERGED from [com.evernote:android-job:1.2.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\android-job-1.2.1.aar\92317219f8dc86cead5ac2dfab380756\AndroidManifest.xml:13:5-79
+	android:name
+		ADDED from [com.google.android.gms:play-services-maps:15.0.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\play-services-maps-15.0.1.aar\4bf3c823255625b90c3fb51692cbdbb2\AndroidManifest.xml:23:22-76
+uses-feature#0x00020000
+ADDED from [com.google.android.gms:play-services-maps:15.0.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\play-services-maps-15.0.1.aar\4bf3c823255625b90c3fb51692cbdbb2\AndroidManifest.xml:26:5-28:35
+	android:glEsVersion
+		ADDED from [com.google.android.gms:play-services-maps:15.0.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\play-services-maps-15.0.1.aar\4bf3c823255625b90c3fb51692cbdbb2\AndroidManifest.xml:27:9-41
+	android:required
+		ADDED from [com.google.android.gms:play-services-maps:15.0.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\play-services-maps-15.0.1.aar\4bf3c823255625b90c3fb51692cbdbb2\AndroidManifest.xml:28:9-32
+activity#com.google.android.gms.common.api.GoogleApiActivity
+ADDED from [com.google.android.gms:play-services-base:15.0.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\play-services-base-15.0.1.aar\36fa36bf1a85feabb4b0579679ce35cb\AndroidManifest.xml:23:9-26:75
+	android:exported
+		ADDED from [com.google.android.gms:play-services-base:15.0.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\play-services-base-15.0.1.aar\36fa36bf1a85feabb4b0579679ce35cb\AndroidManifest.xml:25:13-37
+	android:theme
+		ADDED from [com.google.android.gms:play-services-base:15.0.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\play-services-base-15.0.1.aar\36fa36bf1a85feabb4b0579679ce35cb\AndroidManifest.xml:26:13-72
+	android:name
+		ADDED from [com.google.android.gms:play-services-base:15.0.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\play-services-base-15.0.1.aar\36fa36bf1a85feabb4b0579679ce35cb\AndroidManifest.xml:24:13-79
+uses-permission#android.permission.WAKE_LOCK
+ADDED from [com.evernote:android-job:1.2.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\android-job-1.2.1.aar\92317219f8dc86cead5ac2dfab380756\AndroidManifest.xml:12:5-68
+	android:name
+		ADDED from [com.evernote:android-job:1.2.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\android-job-1.2.1.aar\92317219f8dc86cead5ac2dfab380756\AndroidManifest.xml:12:22-65
+uses-permission#android.permission.RECEIVE_BOOT_COMPLETED
+ADDED from [com.evernote:android-job:1.2.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\android-job-1.2.1.aar\92317219f8dc86cead5ac2dfab380756\AndroidManifest.xml:14:5-81
+	android:name
+		ADDED from [com.evernote:android-job:1.2.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\android-job-1.2.1.aar\92317219f8dc86cead5ac2dfab380756\AndroidManifest.xml:14:22-78
+service#com.evernote.android.job.v21.PlatformJobService
+ADDED from [com.evernote:android-job:1.2.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\android-job-1.2.1.aar\92317219f8dc86cead5ac2dfab380756\AndroidManifest.xml:17:9-20:72
+	android:exported
+		ADDED from [com.evernote:android-job:1.2.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\android-job-1.2.1.aar\92317219f8dc86cead5ac2dfab380756\AndroidManifest.xml:19:13-37
+	android:permission
+		ADDED from [com.evernote:android-job:1.2.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\android-job-1.2.1.aar\92317219f8dc86cead5ac2dfab380756\AndroidManifest.xml:20:13-69
+	android:name
+		ADDED from [com.evernote:android-job:1.2.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\android-job-1.2.1.aar\92317219f8dc86cead5ac2dfab380756\AndroidManifest.xml:18:13-75
+service#com.evernote.android.job.v14.PlatformAlarmService
+ADDED from [com.evernote:android-job:1.2.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\android-job-1.2.1.aar\92317219f8dc86cead5ac2dfab380756\AndroidManifest.xml:21:9-24:72
+	android:exported
+		ADDED from [com.evernote:android-job:1.2.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\android-job-1.2.1.aar\92317219f8dc86cead5ac2dfab380756\AndroidManifest.xml:23:13-37
+	android:permission
+		ADDED from [com.evernote:android-job:1.2.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\android-job-1.2.1.aar\92317219f8dc86cead5ac2dfab380756\AndroidManifest.xml:24:13-69
+	android:name
+		ADDED from [com.evernote:android-job:1.2.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\android-job-1.2.1.aar\92317219f8dc86cead5ac2dfab380756\AndroidManifest.xml:22:13-77
+service#com.evernote.android.job.v14.PlatformAlarmServiceExact
+ADDED from [com.evernote:android-job:1.2.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\android-job-1.2.1.aar\92317219f8dc86cead5ac2dfab380756\AndroidManifest.xml:25:9-27:40
+	android:exported
+		ADDED from [com.evernote:android-job:1.2.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\android-job-1.2.1.aar\92317219f8dc86cead5ac2dfab380756\AndroidManifest.xml:27:13-37
+	android:name
+		ADDED from [com.evernote:android-job:1.2.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\android-job-1.2.1.aar\92317219f8dc86cead5ac2dfab380756\AndroidManifest.xml:26:13-82
+receiver#com.evernote.android.job.v14.PlatformAlarmReceiver
+ADDED from [com.evernote:android-job:1.2.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\android-job-1.2.1.aar\92317219f8dc86cead5ac2dfab380756\AndroidManifest.xml:29:9-38:20
+	android:exported
+		ADDED from [com.evernote:android-job:1.2.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\android-job-1.2.1.aar\92317219f8dc86cead5ac2dfab380756\AndroidManifest.xml:31:13-37
+	android:name
+		ADDED from [com.evernote:android-job:1.2.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\android-job-1.2.1.aar\92317219f8dc86cead5ac2dfab380756\AndroidManifest.xml:30:13-78
+intent-filter#action:name:com.evernote.android.job.v14.RUN_JOB+action:name:net.vrallev.android.job.v14.RUN_JOB
+ADDED from [com.evernote:android-job:1.2.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\android-job-1.2.1.aar\92317219f8dc86cead5ac2dfab380756\AndroidManifest.xml:32:13-37:29
+action#com.evernote.android.job.v14.RUN_JOB
+ADDED from [com.evernote:android-job:1.2.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\android-job-1.2.1.aar\92317219f8dc86cead5ac2dfab380756\AndroidManifest.xml:35:17-79
+	android:name
+		ADDED from [com.evernote:android-job:1.2.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\android-job-1.2.1.aar\92317219f8dc86cead5ac2dfab380756\AndroidManifest.xml:35:25-76
+action#net.vrallev.android.job.v14.RUN_JOB
+ADDED from [com.evernote:android-job:1.2.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\android-job-1.2.1.aar\92317219f8dc86cead5ac2dfab380756\AndroidManifest.xml:36:17-78
+	android:name
+		ADDED from [com.evernote:android-job:1.2.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\android-job-1.2.1.aar\92317219f8dc86cead5ac2dfab380756\AndroidManifest.xml:36:25-75
+receiver#com.evernote.android.job.JobBootReceiver
+ADDED from [com.evernote:android-job:1.2.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\android-job-1.2.1.aar\92317219f8dc86cead5ac2dfab380756\AndroidManifest.xml:39:9-48:20
+	android:exported
+		ADDED from [com.evernote:android-job:1.2.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\android-job-1.2.1.aar\92317219f8dc86cead5ac2dfab380756\AndroidManifest.xml:41:13-37
+	android:name
+		ADDED from [com.evernote:android-job:1.2.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\android-job-1.2.1.aar\92317219f8dc86cead5ac2dfab380756\AndroidManifest.xml:40:13-68
+intent-filter#action:name:android.intent.action.BOOT_COMPLETED+action:name:android.intent.action.MY_PACKAGE_REPLACED+action:name:android.intent.action.QUICKBOOT_POWERON+action:name:com.htc.intent.action.QUICKBOOT_POWERON
+ADDED from [com.evernote:android-job:1.2.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\android-job-1.2.1.aar\92317219f8dc86cead5ac2dfab380756\AndroidManifest.xml:42:13-47:29
+action#android.intent.action.BOOT_COMPLETED
+ADDED from [com.evernote:android-job:1.2.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\android-job-1.2.1.aar\92317219f8dc86cead5ac2dfab380756\AndroidManifest.xml:43:17-79
+	android:name
+		ADDED from [com.evernote:android-job:1.2.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\android-job-1.2.1.aar\92317219f8dc86cead5ac2dfab380756\AndroidManifest.xml:43:25-76
+action#android.intent.action.QUICKBOOT_POWERON
+ADDED from [com.evernote:android-job:1.2.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\android-job-1.2.1.aar\92317219f8dc86cead5ac2dfab380756\AndroidManifest.xml:44:17-82
+	android:name
+		ADDED from [com.evernote:android-job:1.2.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\android-job-1.2.1.aar\92317219f8dc86cead5ac2dfab380756\AndroidManifest.xml:44:25-79
+action#com.htc.intent.action.QUICKBOOT_POWERON
+ADDED from [com.evernote:android-job:1.2.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\android-job-1.2.1.aar\92317219f8dc86cead5ac2dfab380756\AndroidManifest.xml:45:17-82
+	android:name
+		ADDED from [com.evernote:android-job:1.2.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\android-job-1.2.1.aar\92317219f8dc86cead5ac2dfab380756\AndroidManifest.xml:45:25-79
+action#android.intent.action.MY_PACKAGE_REPLACED
+ADDED from [com.evernote:android-job:1.2.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\android-job-1.2.1.aar\92317219f8dc86cead5ac2dfab380756\AndroidManifest.xml:46:17-84
+	android:name
+		ADDED from [com.evernote:android-job:1.2.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\android-job-1.2.1.aar\92317219f8dc86cead5ac2dfab380756\AndroidManifest.xml:46:25-81
+service#com.evernote.android.job.gcm.PlatformGcmService
+ADDED from [com.evernote:android-job:1.2.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\android-job-1.2.1.aar\92317219f8dc86cead5ac2dfab380756\AndroidManifest.xml:50:9-58:19
+	android:enabled
+		ADDED from [com.evernote:android-job:1.2.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\android-job-1.2.1.aar\92317219f8dc86cead5ac2dfab380756\AndroidManifest.xml:52:13-36
+	android:exported
+		ADDED from [com.evernote:android-job:1.2.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\android-job-1.2.1.aar\92317219f8dc86cead5ac2dfab380756\AndroidManifest.xml:53:13-36
+	android:permission
+		ADDED from [com.evernote:android-job:1.2.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\android-job-1.2.1.aar\92317219f8dc86cead5ac2dfab380756\AndroidManifest.xml:54:13-93
+	android:name
+		ADDED from [com.evernote:android-job:1.2.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\android-job-1.2.1.aar\92317219f8dc86cead5ac2dfab380756\AndroidManifest.xml:51:13-75
+intent-filter#action:name:com.google.android.gms.gcm.ACTION_TASK_READY
+ADDED from [com.evernote:android-job:1.2.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\android-job-1.2.1.aar\92317219f8dc86cead5ac2dfab380756\AndroidManifest.xml:55:13-57:29
+action#com.google.android.gms.gcm.ACTION_TASK_READY
+ADDED from [com.evernote:android-job:1.2.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\android-job-1.2.1.aar\92317219f8dc86cead5ac2dfab380756\AndroidManifest.xml:56:17-87
+	android:name
+		ADDED from [com.evernote:android-job:1.2.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\android-job-1.2.1.aar\92317219f8dc86cead5ac2dfab380756\AndroidManifest.xml:56:25-84
+service#com.evernote.android.job.JobRescheduleService
+ADDED from [com.evernote:android-job:1.2.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\android-job-1.2.1.aar\92317219f8dc86cead5ac2dfab380756\AndroidManifest.xml:59:9-62:72
+	android:exported
+		ADDED from [com.evernote:android-job:1.2.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\android-job-1.2.1.aar\92317219f8dc86cead5ac2dfab380756\AndroidManifest.xml:61:13-37
+	android:permission
+		ADDED from [com.evernote:android-job:1.2.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\android-job-1.2.1.aar\92317219f8dc86cead5ac2dfab380756\AndroidManifest.xml:62:13-69
+	android:name
+		ADDED from [com.evernote:android-job:1.2.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\android-job-1.2.1.aar\92317219f8dc86cead5ac2dfab380756\AndroidManifest.xml:60:13-73
