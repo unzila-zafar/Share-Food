@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Thu Jan 03 15:36:58 PKT 2019
+#Mon Jan 07 15:48:37 PKT 2019
 1.base=E\:\\unzila data\\workspace\\ShareFood\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\2
 2.path=classes.dex
 0.baseType=DIRECTORY

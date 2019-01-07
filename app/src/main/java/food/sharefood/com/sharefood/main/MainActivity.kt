@@ -115,6 +115,13 @@ class MainActivity : FragmentActivity() {
                 sendBroadcast(intent)
             }
 
+            Extras.DELETE_POST_DATA ->
+            {
+                val intent = Intent()
+                intent.action = Extras.REFRESH_POSTS_DATA
+                sendBroadcast(intent)
+            }
+
 
         }
     }

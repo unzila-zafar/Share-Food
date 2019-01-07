@@ -3,18 +3,14 @@ package food.sharefood.com.sharefood.settings
 import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.support.v7.app.AppCompatActivity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import com.squareup.picasso.Picasso
 import food.sharefood.com.sharefood.R
 import food.sharefood.com.sharefood.databinding.ActivitySettingsBinding
 import food.sharefood.com.sharefood.user.UserModel
-import android.content.DialogInterface
-import android.graphics.Color
 import android.support.v7.app.AlertDialog
+import com.bumptech.glide.Glide
 
 class FragmentSettings :Fragment()
 {
@@ -31,7 +27,7 @@ class FragmentSettings :Fragment()
 
         if(userModel != null)
         {
-            //Picasso.with(activity).load(userModel.ge)
+            //Glide.with(activity!!).load()
         }
 
         binding.passwordLayout.setOnClickListener {

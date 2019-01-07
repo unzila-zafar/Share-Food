@@ -16,12 +16,12 @@
         "source": "E:\\unzila data\\workspace\\ShareFood\\app\\src\\main\\res\\layout\\fragment_main.xml"
     },
     {
-        "merged": "E:\\unzila data\\workspace\\ShareFood\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_search.xml",
-        "source": "E:\\unzila data\\workspace\\ShareFood\\app\\src\\main\\res\\layout\\activity_search.xml"
-    },
-    {
         "merged": "E:\\unzila data\\workspace\\ShareFood\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_image_preview.xml",
         "source": "E:\\unzila data\\workspace\\ShareFood\\app\\src\\main\\res\\layout\\activity_image_preview.xml"
+    },
+    {
+        "merged": "E:\\unzila data\\workspace\\ShareFood\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_search.xml",
+        "source": "E:\\unzila data\\workspace\\ShareFood\\app\\src\\main\\res\\layout\\activity_search.xml"
     },
     {
         "merged": "E:\\unzila data\\workspace\\ShareFood\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_add_post.xml",

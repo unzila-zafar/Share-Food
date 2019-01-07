@@ -227,6 +227,7 @@ class Extras {
         var EDIT_POST_RESPONSE = 2
         var IS_FROM_HOME = "is_from_home"
         var IMAGE_PATH = "image_path"
+        var DELETE_POST_DATA = 3
     }
 }
 

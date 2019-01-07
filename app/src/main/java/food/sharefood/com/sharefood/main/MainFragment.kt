@@ -29,6 +29,13 @@ class MainFragment : Fragment(), MainView, MainActivity.ShowAlertDialogInterface
     private lateinit var binding: FragmentMainBinding
     private lateinit var mainPresenter: MainPresenter
     private val PLACE_AUTOCOMPLETE_REQUEST_CODE = 188
+    private lateinit var mContext: Context
+
+    override fun onAttach(context: Context?) {
+        super.onAttach(context)
+        mContext = context!!
+    }
+
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_main, container, false)
@@ -38,6 +45,9 @@ class MainFragment : Fragment(), MainView, MainActivity.ShowAlertDialogInterface
         mainPresenter.getListData(activity!!)
 
         MainActivity.setDialogInterface(this)
+
+        LocalBroadcastManager.getInstance(mContext)
+                .registerReceiver(broadCastReceiver, IntentFilter(Extras.REFRESH_POSTS_DATA))
 
         return binding.root
 
@@ -84,19 +94,11 @@ class MainFragment : Fragment(), MainView, MainActivity.ShowAlertDialogInterface
         }
     }
 
-    override fun onStart() {
-        super.onStart()
-        LocalBroadcastManager.getInstance(activity!!)
-                .registerReceiver(broadCastReceiver, IntentFilter(Extras.REFRESH_POSTS_DATA))
-    }
-
-
-    override fun onStop() {
-        super.onStop()
+    override fun onDestroyView() {
+        super.onDestroyView()
         LocalBroadcastManager.getInstance(activity!!)
                 .unregisterReceiver(broadCastReceiver)
     }
-
 
     override fun showDialog(context: Context) {
         mainPresenter.showFilterDialog(context)
