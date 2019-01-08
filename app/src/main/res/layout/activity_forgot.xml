@@ -17,7 +17,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:layout_marginTop="@dimen/twenty_margin"
-            android:textColor="@color/colorPrimary"
+            android:textColor="@color/colorAccent"
+            android:textStyle="bold"
             android:textSize="@dimen/eighteen_text_size"/>
 
         <android.support.design.widget.TextInputLayout

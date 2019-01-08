@@ -20,6 +20,9 @@ public abstract class ActivityLoginBinding extends ViewDataBinding {
   public final Button buttonFB;
 
   @NonNull
+  public final Button buttonForget;
+
+  @NonNull
   public final ConstraintLayout buttonLayout;
 
   @NonNull
@@ -59,13 +62,14 @@ public abstract class ActivityLoginBinding extends ViewDataBinding {
   public final ConstraintLayout topLayout;
 
   protected ActivityLoginBinding(DataBindingComponent _bindingComponent, View _root,
-      int _localFieldCount, Button buttonFB, ConstraintLayout buttonLayout, Button buttonSignIn,
-      TextInputEditText email, TextInputLayout emailLayout, TextView forgetText,
-      ImageView imageView, ConstraintLayout midLayout, TextInputEditText password,
-      TextInputLayout passwordLayout, TextView textOr, TextView textRegister, TextView textSignwith,
-      ConstraintLayout topLayout) {
+      int _localFieldCount, Button buttonFB, Button buttonForget, ConstraintLayout buttonLayout,
+      Button buttonSignIn, TextInputEditText email, TextInputLayout emailLayout,
+      TextView forgetText, ImageView imageView, ConstraintLayout midLayout,
+      TextInputEditText password, TextInputLayout passwordLayout, TextView textOr,
+      TextView textRegister, TextView textSignwith, ConstraintLayout topLayout) {
     super(_bindingComponent, _root, _localFieldCount);
     this.buttonFB = buttonFB;
+    this.buttonForget = buttonForget;
     this.buttonLayout = buttonLayout;
     this.buttonSignIn = buttonSignIn;
     this.email = email;

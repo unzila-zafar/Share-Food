@@ -1,5 +1,6 @@
 package food.sharefood.com.sharefood.util
 
+import android.os.Parcel
 import com.android.volley.Request
 import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
@@ -212,6 +213,7 @@ class SharedPrefKeys {
         var TOKENEND = "token_end"
         var NAME = "name"
         var EMAIL = "email"
+        var PROFILE_PIC = "profile_picture"
     }
 }
 
@@ -237,4 +239,46 @@ data class FoodPostArrays(
 
 
 )
+
+class UserModel {
+
+    companion object {
+        var user_name: String = ""
+        var email: String = ""
+        var userType: String = ""
+        var address: String = ""
+        var picture: String = ""
+
+        fun UserModel(name: String, email_id: String, type : String, user_address: String, profile_pic : String)
+        {
+            user_name = name
+            email = email_id
+            userType = type
+            address = user_address
+            picture = profile_pic
+        }
+
+        fun getName(): String {
+            return user_name
+        }
+
+        fun getUserPicture(): String {
+            return picture
+        }
+
+        fun getUserEmail(): String {
+            return email
+        }
+
+        fun getType(): String {
+            return userType
+        }
+
+        fun getUserAddress(): String {
+            return address
+        }
+
+    }
+
+}
 

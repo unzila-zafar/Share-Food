@@ -66,17 +66,12 @@ class MainPresenter(private var mainView: MainView, private val mainInteractor: 
     fun showFilterDialog(context: Context) {
 
         val dialogBuilder = AlertDialog.Builder(context)
-        // val inflater = getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         binding = DataBindingUtil.inflate(LayoutInflater.from(context), R.layout.dialog_filter, null, false)
-
-        //val dialogView = inflater.inflate(R.layout.dialog_filter, null)
 
         dialogBuilder!!.setView(binding.getRoot())
         dialogBuilder.setCancelable(false)
 
         val dialog: AlertDialog = dialogBuilder!!.create()
-        // val search  = dialogView.findViewById(R.id.searchbutton) as Button
-        // val cancel = dialogView.findViewById(R.id.cancelButton) as Button
 
         binding.searchbutton.setOnClickListener {
             setSearchData(binding)

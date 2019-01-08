@@ -9,12 +9,14 @@ import android.support.constraint.ConstraintLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public abstract class ActivitySettingsBinding extends ViewDataBinding {
   @NonNull
-  public final ImageView imageView;
+  public final ImageView imageEditPic;
 
   @NonNull
   public final ImageView imageView3;
@@ -26,13 +28,16 @@ public abstract class ActivitySettingsBinding extends ViewDataBinding {
   public final ConstraintLayout passwordLayout;
 
   @NonNull
-  public final ConstraintLayout profileLayout;
+  public final FrameLayout picLayout;
+
+  @NonNull
+  public final CircleImageView profileImage;
 
   @NonNull
   public final TextView textLanguage;
 
   @NonNull
-  public final TextView textLocation;
+  public final TextView textUserLocation;
 
   @NonNull
   public final TextView textUserName;
@@ -41,17 +46,18 @@ public abstract class ActivitySettingsBinding extends ViewDataBinding {
   public final TextView textView4;
 
   protected ActivitySettingsBinding(DataBindingComponent _bindingComponent, View _root,
-      int _localFieldCount, ImageView imageView, ImageView imageView3, ImageView imageView4,
-      ConstraintLayout passwordLayout, ConstraintLayout profileLayout, TextView textLanguage,
-      TextView textLocation, TextView textUserName, TextView textView4) {
+      int _localFieldCount, ImageView imageEditPic, ImageView imageView3, ImageView imageView4,
+      ConstraintLayout passwordLayout, FrameLayout picLayout, CircleImageView profileImage,
+      TextView textLanguage, TextView textUserLocation, TextView textUserName, TextView textView4) {
     super(_bindingComponent, _root, _localFieldCount);
-    this.imageView = imageView;
+    this.imageEditPic = imageEditPic;
     this.imageView3 = imageView3;
     this.imageView4 = imageView4;
     this.passwordLayout = passwordLayout;
-    this.profileLayout = profileLayout;
+    this.picLayout = picLayout;
+    this.profileImage = profileImage;
     this.textLanguage = textLanguage;
-    this.textLocation = textLocation;
+    this.textUserLocation = textUserLocation;
     this.textUserName = textUserName;
     this.textView4 = textView4;
   }

@@ -8,6 +8,10 @@
         "source": "E:\\unzila data\\workspace\\ShareFood\\app\\src\\main\\res\\layout\\activity_main.xml"
     },
     {
+        "merged": "E:\\unzila data\\workspace\\ShareFood\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\dialog_password.xml",
+        "source": "E:\\unzila data\\workspace\\ShareFood\\app\\src\\main\\res\\layout\\dialog_password.xml"
+    },
+    {
         "merged": "E:\\unzila data\\workspace\\ShareFood\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_signup.xml",
         "source": "E:\\unzila data\\workspace\\ShareFood\\app\\src\\main\\res\\layout\\activity_signup.xml"
     },

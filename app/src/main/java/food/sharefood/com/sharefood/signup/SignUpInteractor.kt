@@ -4,7 +4,6 @@ import android.content.Context
 import com.fasterxml.jackson.databind.ObjectMapper
 import food.sharefood.com.sharefood.network.ServiceInterface
 import food.sharefood.com.sharefood.network.VolleyClass
-import food.sharefood.com.sharefood.user.UserModel
 import food.sharefood.com.sharefood.util.*
 import org.json.JSONObject
 

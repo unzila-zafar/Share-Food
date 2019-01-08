@@ -11,8 +11,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public abstract class ActivitySignupBinding extends ViewDataBinding {
   @NonNull
@@ -37,7 +39,7 @@ public abstract class ActivitySignupBinding extends ViewDataBinding {
   public final TextInputLayout emailLayout;
 
   @NonNull
-  public final ImageView imageView;
+  public final ImageView imageEditPic;
 
   @NonNull
   public final TextInputEditText nameEdit;
@@ -49,6 +51,12 @@ public abstract class ActivitySignupBinding extends ViewDataBinding {
   public final TextInputLayout passwordLayout;
 
   @NonNull
+  public final FrameLayout picLayout;
+
+  @NonNull
+  public final CircleImageView profileImage;
+
+  @NonNull
   public final TextInputEditText signupPassword;
 
   @NonNull
@@ -57,9 +65,10 @@ public abstract class ActivitySignupBinding extends ViewDataBinding {
   protected ActivitySignupBinding(DataBindingComponent _bindingComponent, View _root,
       int _localFieldCount, TextInputEditText addressEdit, TextInputLayout addressLayout,
       Button buttonSignup, TextInputLayout confirmLayout, TextInputEditText confirmPwdEdit,
-      TextInputEditText emailEdit, TextInputLayout emailLayout, ImageView imageView,
+      TextInputEditText emailEdit, TextInputLayout emailLayout, ImageView imageEditPic,
       TextInputEditText nameEdit, TextInputLayout nameLayout, TextInputLayout passwordLayout,
-      TextInputEditText signupPassword, Spinner spinner) {
+      FrameLayout picLayout, CircleImageView profileImage, TextInputEditText signupPassword,
+      Spinner spinner) {
     super(_bindingComponent, _root, _localFieldCount);
     this.addressEdit = addressEdit;
     this.addressLayout = addressLayout;
@@ -68,10 +77,12 @@ public abstract class ActivitySignupBinding extends ViewDataBinding {
     this.confirmPwdEdit = confirmPwdEdit;
     this.emailEdit = emailEdit;
     this.emailLayout = emailLayout;
-    this.imageView = imageView;
+    this.imageEditPic = imageEditPic;
     this.nameEdit = nameEdit;
     this.nameLayout = nameLayout;
     this.passwordLayout = passwordLayout;
+    this.picLayout = picLayout;
+    this.profileImage = profileImage;
     this.signupPassword = signupPassword;
     this.spinner = spinner;
   }

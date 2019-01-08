@@ -116,6 +116,10 @@ attr chainUseRtl
 attr checkboxStyle
 attr checkedTextViewStyle
 attr circleCrop
+attr civ_border_color
+attr civ_border_overlay
+attr civ_border_width
+attr civ_circle_background_color
 attr closeIcon
 attr closeItemLayout
 attr collapseContentDescription
@@ -501,6 +505,7 @@ color background_floating_material_light
 color background_material_dark
 color background_material_light
 color black
+color border_color
 color bright_foreground_disabled_material_dark
 color bright_foreground_disabled_material_light
 color bright_foreground_inverse_material_dark
@@ -734,9 +739,11 @@ dimen hint_alpha_material_dark
 dimen hint_alpha_material_light
 dimen hint_pressed_alpha_material_dark
 dimen hint_pressed_alpha_material_light
+dimen hundred_size
 dimen item_touch_helper_max_drag_scroll_per_frame
 dimen item_touch_helper_swipe_escape_max_velocity
 dimen item_touch_helper_swipe_escape_velocity
+dimen ninty_six
 dimen notification_action_icon_size
 dimen notification_action_text_size
 dimen notification_big_circle_margin
@@ -894,6 +901,7 @@ drawable design_snackbar_background
 drawable googleg_disabled_color_18
 drawable googleg_standard_color_18
 drawable ic_add
+drawable ic_edit_pic
 drawable ic_filter
 drawable ic_launcher_background
 drawable ic_launcher_foreground
@@ -971,6 +979,7 @@ id btn_cancel
 id btn_ok
 id buttonAdd
 id buttonFB
+id buttonForget
 id buttonPanel
 id buttonSignIn
 id button_layout
@@ -990,6 +999,7 @@ id clip_vertical
 id collapseActionView
 id confirmPwdEdit
 id confirm_layout
+id confirm_pwd
 id container
 id contentPanel
 id coordinator
@@ -1052,6 +1062,7 @@ id imageView
 id imageView2
 id imageView3
 id imageView4
+id image_edit_pic
 id image_food
 id imagesList
 id images_post_List
@@ -1084,11 +1095,15 @@ id nameEdit
 id name_layout
 id navigation_header_container
 id never
+id newPwdEdit
+id new_pwd
 id none
 id normal
 id notification_background
 id notification_main_column
 id notification_main_column_container
+id oldPwdEdit
+id old_pwd
 id onAttachStateChangeListener
 id onDateChanged
 id packed
@@ -1100,6 +1115,7 @@ id password
 id password_layout
 id percent
 id phone_layout
+id pic_layout
 id pick_layout
 id pin
 id place_autocomplete_clear_button
@@ -1112,7 +1128,7 @@ id place_autocomplete_search_input
 id place_autocomplete_separator
 id postBar
 id post_toolbar
-id profile_layout
+id profile_image
 id progressBar
 id progressLayout
 id progress_circular
@@ -1197,7 +1213,6 @@ id textSpacerNoButtons
 id textSpacerNoTitle
 id textSufficientHeading
 id textTitle
-id textUserName
 id textView
 id textView10
 id textView2
@@ -1211,6 +1226,8 @@ id text_input_password_toggle
 id text_item_values
 id text_sharing
 id text_time
+id text_user_location
+id text_user_name
 id textinput_counter
 id textinput_error
 id time
@@ -1304,6 +1321,7 @@ layout design_navigation_menu
 layout design_navigation_menu_item
 layout design_text_input_password_icon
 layout dialog_filter
+layout dialog_password
 layout fragment_main
 layout item_food_list
 layout item_images_food
@@ -1406,7 +1424,9 @@ string google_api_key
 string items
 string location
 string name
+string new_password
 string ok
+string old_password
 string or
 string password
 string password_toggle_content_description
@@ -1834,6 +1854,7 @@ styleable BottomNavigationView elevation itemBackground itemIconTint itemTextCol
 styleable BottomSheetBehavior_Layout behavior_hideable behavior_peekHeight behavior_skipCollapsed
 styleable ButtonBarLayout allowStacking
 styleable CardView android_minWidth android_minHeight cardBackgroundColor cardCornerRadius cardElevation cardMaxElevation cardPreventCornerOverlap cardUseCompatPadding contentPadding contentPaddingBottom contentPaddingLeft contentPaddingRight contentPaddingTop
+styleable CircleImageView civ_border_color civ_border_overlay civ_border_width civ_circle_background_color
 styleable CollapsingToolbarLayout collapsedTitleGravity collapsedTitleTextAppearance contentScrim expandedTitleGravity expandedTitleMargin expandedTitleMarginBottom expandedTitleMarginEnd expandedTitleMarginStart expandedTitleMarginTop expandedTitleTextAppearance scrimAnimationDuration scrimVisibleHeightTrigger statusBarScrim title titleEnabled toolbarId
 styleable CollapsingToolbarLayout_Layout layout_collapseMode layout_collapseParallaxMultiplier
 styleable ColorStateListItem android_color android_alpha alpha

@@ -61,7 +61,7 @@ class SignupActivity : AppCompatActivity(), SignUpView {
 
         }
 
-        binding.imageView.setOnClickListener {
+        binding.profileImage.setOnClickListener {
 
             presenter.alertDialog(this)
         }
@@ -205,7 +205,7 @@ class SignupActivity : AppCompatActivity(), SignUpView {
                 if (mCapturedPhoto != null) {
                     var updatedPic: Bitmap = BitmapFactory.decodeFile(mCapturedPhoto.path)
 
-                    Glide.with(this).load(updatedPic).into(binding.imageView)
+                    Glide.with(this).load(updatedPic).into(binding.profileImage)
 
                     var url: String = MediaManager.get().url().secure(true).generate(mCapturedPhoto.path)
                     presenter.saveSelectedImagePath(url)
@@ -218,7 +218,7 @@ class SignupActivity : AppCompatActivity(), SignUpView {
                 val picturePath = getRealPathFromURI(selectedImageUri!!, this)
                 mCapturedPhoto = selectedImageUri
 
-                Glide.with(this).load(picturePath).into(binding.imageView)
+                Glide.with(this).load(picturePath).into(binding.profileImage)
 
                 var url: String = MediaManager.get().url().secure(true).generate(mCapturedPhoto.path)
                 presenter.saveSelectedImagePath(url)

@@ -15,6 +15,8 @@ import food.sharefood.com.sharefood.databinding.ActivityMainBinding
 import food.sharefood.com.sharefood.settings.FragmentSettings
 
 import android.support.v4.app.FragmentTransaction
+import android.support.v4.content.LocalBroadcastManager
+import android.view.View
 import food.sharefood.com.sharefood.util.Extras
 import food.sharefood.com.sharefood.util.Helper
 
@@ -54,9 +56,15 @@ class MainActivity : FragmentActivity() {
 
                 if (tab.position == 0) {
                     //val fragment: MainFragment = MainFragment()
+                    binding.mainToolbar.imageSearch.visibility = View.VISIBLE
+                    binding.mainToolbar.toolbarTitle.text = resources.getString(R.string.dashboard)
+
                     startFragment(fragment, "main_fragment")
                 } else {
                     //val settingsFragment: FragmentSettings = FragmentSettings()
+                    binding.mainToolbar.imageSearch.visibility = View.GONE
+                    binding.mainToolbar.toolbarTitle.text = resources.getString(R.string.settings)
+
                     startFragment(settingsFragment, "settings")
                 }
 
@@ -88,8 +96,6 @@ class MainActivity : FragmentActivity() {
             {
                 showDialogInterface.showDialog(this)
             }
-            //showFilterDialog()
-            //startActivity(Intent(this@MainActivity, SearchActivity::class.java))
         }
     }
 
@@ -112,15 +118,15 @@ class MainActivity : FragmentActivity() {
             Extras.ADD_POST_DATA -> {
                 val intent = Intent()
                 intent.action = Extras.REFRESH_POSTS_DATA
-                sendBroadcast(intent)
+                LocalBroadcastManager.getInstance(this).sendBroadcast(intent)
             }
 
-            Extras.DELETE_POST_DATA ->
+         /*   Extras.DELETE_POST_DATA ->
             {
                 val intent = Intent()
                 intent.action = Extras.REFRESH_POSTS_DATA
                 sendBroadcast(intent)
-            }
+            }*/
 
 
         }
@@ -140,7 +146,6 @@ class MainActivity : FragmentActivity() {
 
     companion object {
         lateinit var showDialogInterface : ShowAlertDialogInterface
-
 
         fun setDialogInterface(showAlertDialogInterface: ShowAlertDialogInterface)
         {

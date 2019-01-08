@@ -17,6 +17,7 @@ MERGED from [com.github.bumptech.glide:glide:4.8.0] C:\Users\unzila.z\.gradle\ca
 MERGED from [com.google.android.gms:play-services-location:15.0.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\play-services-location-15.0.1.aar\0ecd90d2d44679270f4c5fba6982d7c7\AndroidManifest.xml:2:1-9:12
 MERGED from [com.google.android.gms:play-services-places:15.0.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\play-services-places-15.0.1.aar\722d92120d54f472fa869fb58b02130b\AndroidManifest.xml:17:1-24:12
 MERGED from [com.google.android.gms:play-services-maps:15.0.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\play-services-maps-15.0.1.aar\4bf3c823255625b90c3fb51692cbdbb2\AndroidManifest.xml:17:1-32:12
+MERGED from [de.hdodenhof:circleimageview:3.0.0] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\circleimageview-3.0.0.aar\209f96587d2411704e5f604dd9f5197e\AndroidManifest.xml:2:1-11:12
 MERGED from [com.android.support:recyclerview-v7:27.1.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-27.1.1.aar\cb03e6c4a974a055108e64bd71da120f\AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:transition:27.1.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\transition-27.1.1.aar\6d6e563315884d589c7ab52d1f7a0f3b\AndroidManifest.xml:17:1-22:12
 MERGED from [com.google.android.gms:play-services-base:15.0.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\play-services-base-15.0.1.aar\36fa36bf1a85feabb4b0579679ce35cb\AndroidManifest.xml:17:1-29:12
@@ -98,6 +99,8 @@ MERGED from [com.google.android.gms:play-services-places:15.0.1] C:\Users\unzila
 MERGED from [com.google.android.gms:play-services-places:15.0.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\play-services-places-15.0.1.aar\722d92120d54f472fa869fb58b02130b\AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.gms:play-services-maps:15.0.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\play-services-maps-15.0.1.aar\4bf3c823255625b90c3fb51692cbdbb2\AndroidManifest.xml:30:5-20
 MERGED from [com.google.android.gms:play-services-maps:15.0.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\play-services-maps-15.0.1.aar\4bf3c823255625b90c3fb51692cbdbb2\AndroidManifest.xml:30:5-20
+MERGED from [de.hdodenhof:circleimageview:3.0.0] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\circleimageview-3.0.0.aar\209f96587d2411704e5f604dd9f5197e\AndroidManifest.xml:9:5-20
+MERGED from [de.hdodenhof:circleimageview:3.0.0] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\circleimageview-3.0.0.aar\209f96587d2411704e5f604dd9f5197e\AndroidManifest.xml:9:5-20
 MERGED from [com.google.android.gms:play-services-base:15.0.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\play-services-base-15.0.1.aar\36fa36bf1a85feabb4b0579679ce35cb\AndroidManifest.xml:22:5-27:19
 MERGED from [com.google.android.gms:play-services-base:15.0.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\play-services-base-15.0.1.aar\36fa36bf1a85feabb4b0579679ce35cb\AndroidManifest.xml:22:5-27:19
 MERGED from [com.google.android.gms:play-services-places-placereport:15.0.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\play-services-places-placereport-15.0.1.aar\6f2c63375dc0bed5eda7ce7a29074b1e\AndroidManifest.xml:22:5-20
@@ -266,6 +269,8 @@ MERGED from [com.google.android.gms:play-services-places:15.0.1] C:\Users\unzila
 MERGED from [com.google.android.gms:play-services-places:15.0.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\play-services-places-15.0.1.aar\722d92120d54f472fa869fb58b02130b\AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.gms:play-services-maps:15.0.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\play-services-maps-15.0.1.aar\4bf3c823255625b90c3fb51692cbdbb2\AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.gms:play-services-maps:15.0.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\play-services-maps-15.0.1.aar\4bf3c823255625b90c3fb51692cbdbb2\AndroidManifest.xml:20:5-44
+MERGED from [de.hdodenhof:circleimageview:3.0.0] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\circleimageview-3.0.0.aar\209f96587d2411704e5f604dd9f5197e\AndroidManifest.xml:5:5-7:41
+MERGED from [de.hdodenhof:circleimageview:3.0.0] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\circleimageview-3.0.0.aar\209f96587d2411704e5f604dd9f5197e\AndroidManifest.xml:5:5-7:41
 MERGED from [com.android.support:recyclerview-v7:27.1.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-27.1.1.aar\cb03e6c4a974a055108e64bd71da120f\AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:recyclerview-v7:27.1.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-27.1.1.aar\cb03e6c4a974a055108e64bd71da120f\AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:transition:27.1.1] C:\Users\unzila.z\.gradle\caches\transforms-1\files-1.1\transition-27.1.1.aar\6d6e563315884d589c7ab52d1f7a0f3b\AndroidManifest.xml:20:5-44

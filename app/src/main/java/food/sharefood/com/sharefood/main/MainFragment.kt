@@ -10,6 +10,7 @@ import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.content.LocalBroadcastManager
 import android.support.v7.widget.LinearLayoutManager
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -46,8 +47,10 @@ class MainFragment : Fragment(), MainView, MainActivity.ShowAlertDialogInterface
 
         MainActivity.setDialogInterface(this)
 
+        var intentFilter = IntentFilter()
+        intentFilter.addAction(Extras.REFRESH_POSTS_DATA)
         LocalBroadcastManager.getInstance(mContext)
-                .registerReceiver(broadCastReceiver, IntentFilter(Extras.REFRESH_POSTS_DATA))
+                .registerReceiver(broadCastReceiver, intentFilter)
 
         return binding.root
 
@@ -63,6 +66,7 @@ class MainFragment : Fragment(), MainView, MainActivity.ShowAlertDialogInterface
     }
 
     override fun setData(arrFood: List<FoodSharePost>) {
+
 
         if (arrFood.size != 0) {
             binding.foodList.layoutManager = LinearLayoutManager(activity, LinearLayout.VERTICAL, false)
@@ -85,7 +89,7 @@ class MainFragment : Fragment(), MainView, MainActivity.ShowAlertDialogInterface
 
     val broadCastReceiver = object : BroadcastReceiver() {
         override fun onReceive(contxt: Context?, intent: Intent?) {
-
+            Log.i("broadcast:", "send")
             when (intent?.action) {
                 Extras.REFRESH_POSTS_DATA ->
                     mainPresenter.getListData(activity!!)

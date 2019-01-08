@@ -14,12 +14,13 @@ import android.widget.Toast
 import food.sharefood.com.sharefood.R
 import food.sharefood.com.sharefood.databinding.ActivityLoginBinding
 import food.sharefood.com.sharefood.dialog.DialogUtils
+import food.sharefood.com.sharefood.forgot_password.ForgotPassword
 import food.sharefood.com.sharefood.main.MainActivity
 import food.sharefood.com.sharefood.signup.SignupActivity
-import food.sharefood.com.sharefood.user.UserModel
 import food.sharefood.com.sharefood.util.AppSharedPref
 import food.sharefood.com.sharefood.util.FoodSharer
 import food.sharefood.com.sharefood.util.SharedPrefKeys
+import food.sharefood.com.sharefood.util.UserModel
 
 
 class LoginActivity : AppCompatActivity(), LoginView {
@@ -54,6 +55,11 @@ class LoginActivity : AppCompatActivity(), LoginView {
                 presenter.loginUser(this@LoginActivity, email_id, password)
             }
 
+        }
+
+        binding.buttonForget.setOnClickListener {
+
+            startActivity(Intent(this@LoginActivity, ForgotPassword::class.java))
         }
 
     }
@@ -99,8 +105,9 @@ class LoginActivity : AppCompatActivity(), LoginView {
         AppSharedPref.saveData(SharedPrefKeys.TOKEN, AppSharedPref.STRING, foodSharer.token!!, this)
         AppSharedPref.saveData(SharedPrefKeys.NAME, AppSharedPref.STRING, foodSharer.name, this)
         AppSharedPref.saveData(SharedPrefKeys.EMAIL, AppSharedPref.STRING, foodSharer.loginId, this)
+        AppSharedPref.saveData(SharedPrefKeys.PROFILE_PIC, AppSharedPref.STRING, foodSharer.picture!!, this)
 
-        UserModel(foodSharer.name, foodSharer.loginId, foodSharer.registeredAs!!, foodSharer.address!!, foodSharer.picture!! )
+        UserModel.UserModel(foodSharer.name, foodSharer.loginId, foodSharer.registeredAs!!, foodSharer.address!!, foodSharer.picture!! )
 
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)

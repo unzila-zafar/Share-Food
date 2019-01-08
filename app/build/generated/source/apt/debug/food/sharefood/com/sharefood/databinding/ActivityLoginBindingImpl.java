@@ -24,10 +24,11 @@ public class ActivityLoginBindingImpl extends ActivityLoginBinding  {
         sViewsWithIds.put(R.id.forget_text, 8);
         sViewsWithIds.put(R.id.button_layout, 9);
         sViewsWithIds.put(R.id.buttonSignIn, 10);
-        sViewsWithIds.put(R.id.textOr, 11);
-        sViewsWithIds.put(R.id.textSignwith, 12);
-        sViewsWithIds.put(R.id.buttonFB, 13);
-        sViewsWithIds.put(R.id.textRegister, 14);
+        sViewsWithIds.put(R.id.buttonForget, 11);
+        sViewsWithIds.put(R.id.textOr, 12);
+        sViewsWithIds.put(R.id.textSignwith, 13);
+        sViewsWithIds.put(R.id.buttonFB, 14);
+        sViewsWithIds.put(R.id.textRegister, 15);
     }
     // views
     @NonNull
@@ -38,11 +39,12 @@ public class ActivityLoginBindingImpl extends ActivityLoginBinding  {
     // Inverse Binding Event Handlers
 
     public ActivityLoginBindingImpl(@Nullable android.databinding.DataBindingComponent bindingComponent, @NonNull View root) {
-        this(bindingComponent, root, mapBindings(bindingComponent, root, 15, sIncludes, sViewsWithIds));
+        this(bindingComponent, root, mapBindings(bindingComponent, root, 16, sIncludes, sViewsWithIds));
     }
     private ActivityLoginBindingImpl(android.databinding.DataBindingComponent bindingComponent, View root, Object[] bindings) {
         super(bindingComponent, root, 0
-            , (android.widget.Button) bindings[13]
+            , (android.widget.Button) bindings[14]
+            , (android.widget.Button) bindings[11]
             , (android.support.constraint.ConstraintLayout) bindings[9]
             , (android.widget.Button) bindings[10]
             , (android.support.design.widget.TextInputEditText) bindings[5]
@@ -52,9 +54,9 @@ public class ActivityLoginBindingImpl extends ActivityLoginBinding  {
             , (android.support.constraint.ConstraintLayout) bindings[3]
             , (android.support.design.widget.TextInputEditText) bindings[7]
             , (android.support.design.widget.TextInputLayout) bindings[6]
-            , (android.widget.TextView) bindings[11]
-            , (android.widget.TextView) bindings[14]
             , (android.widget.TextView) bindings[12]
+            , (android.widget.TextView) bindings[15]
+            , (android.widget.TextView) bindings[13]
             , (android.support.constraint.ConstraintLayout) bindings[1]
             );
         this.mboundView0 = (android.support.constraint.ConstraintLayout) bindings[0];

@@ -14,15 +14,16 @@ public class ActivitySettingsBindingImpl extends ActivitySettingsBinding  {
     static {
         sIncludes = null;
         sViewsWithIds = new android.util.SparseIntArray();
-        sViewsWithIds.put(R.id.profile_layout, 1);
-        sViewsWithIds.put(R.id.imageView, 2);
-        sViewsWithIds.put(R.id.textUserName, 3);
-        sViewsWithIds.put(R.id.textLocation, 4);
-        sViewsWithIds.put(R.id.password_layout, 5);
-        sViewsWithIds.put(R.id.textView4, 6);
-        sViewsWithIds.put(R.id.imageView3, 7);
-        sViewsWithIds.put(R.id.textLanguage, 8);
-        sViewsWithIds.put(R.id.imageView4, 9);
+        sViewsWithIds.put(R.id.pic_layout, 1);
+        sViewsWithIds.put(R.id.profile_image, 2);
+        sViewsWithIds.put(R.id.image_edit_pic, 3);
+        sViewsWithIds.put(R.id.text_user_name, 4);
+        sViewsWithIds.put(R.id.text_user_location, 5);
+        sViewsWithIds.put(R.id.password_layout, 6);
+        sViewsWithIds.put(R.id.textView4, 7);
+        sViewsWithIds.put(R.id.imageView3, 8);
+        sViewsWithIds.put(R.id.textLanguage, 9);
+        sViewsWithIds.put(R.id.imageView4, 10);
     }
     // views
     @NonNull
@@ -33,19 +34,20 @@ public class ActivitySettingsBindingImpl extends ActivitySettingsBinding  {
     // Inverse Binding Event Handlers
 
     public ActivitySettingsBindingImpl(@Nullable android.databinding.DataBindingComponent bindingComponent, @NonNull View root) {
-        this(bindingComponent, root, mapBindings(bindingComponent, root, 10, sIncludes, sViewsWithIds));
+        this(bindingComponent, root, mapBindings(bindingComponent, root, 11, sIncludes, sViewsWithIds));
     }
     private ActivitySettingsBindingImpl(android.databinding.DataBindingComponent bindingComponent, View root, Object[] bindings) {
         super(bindingComponent, root, 0
-            , (android.widget.ImageView) bindings[2]
-            , (android.widget.ImageView) bindings[7]
-            , (android.widget.ImageView) bindings[9]
-            , (android.support.constraint.ConstraintLayout) bindings[5]
-            , (android.support.constraint.ConstraintLayout) bindings[1]
-            , (android.widget.TextView) bindings[8]
+            , (android.widget.ImageView) bindings[3]
+            , (android.widget.ImageView) bindings[8]
+            , (android.widget.ImageView) bindings[10]
+            , (android.support.constraint.ConstraintLayout) bindings[6]
+            , (android.widget.FrameLayout) bindings[1]
+            , (de.hdodenhof.circleimageview.CircleImageView) bindings[2]
+            , (android.widget.TextView) bindings[9]
+            , (android.widget.TextView) bindings[5]
             , (android.widget.TextView) bindings[4]
-            , (android.widget.TextView) bindings[3]
-            , (android.widget.TextView) bindings[6]
+            , (android.widget.TextView) bindings[7]
             );
         this.mboundView0 = (android.support.constraint.ConstraintLayout) bindings[0];
         this.mboundView0.setTag(null);

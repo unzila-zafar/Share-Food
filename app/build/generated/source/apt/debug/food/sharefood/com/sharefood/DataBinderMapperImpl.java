@@ -18,6 +18,7 @@ import food.sharefood.com.sharefood.databinding.ActivitySignupBindingImpl;
 import food.sharefood.com.sharefood.databinding.ActivityViewFoodPostBindingImpl;
 import food.sharefood.com.sharefood.databinding.AppToolbarBindingImpl;
 import food.sharefood.com.sharefood.databinding.DialogFilterBindingImpl;
+import food.sharefood.com.sharefood.databinding.DialogPasswordBindingImpl;
 import food.sharefood.com.sharefood.databinding.FragmentMainBindingImpl;
 import food.sharefood.com.sharefood.databinding.ItemFoodListBindingImpl;
 import food.sharefood.com.sharefood.databinding.ItemImagesFoodBindingImpl;
@@ -59,19 +60,21 @@ public class DataBinderMapperImpl extends DataBinderMapper {
 
   private static final int LAYOUT_DIALOGFILTER = 12;
 
-  private static final int LAYOUT_FRAGMENTMAIN = 13;
+  private static final int LAYOUT_DIALOGPASSWORD = 13;
 
-  private static final int LAYOUT_ITEMFOODLIST = 14;
+  private static final int LAYOUT_FRAGMENTMAIN = 14;
 
-  private static final int LAYOUT_ITEMIMAGESFOOD = 15;
+  private static final int LAYOUT_ITEMFOODLIST = 15;
 
-  private static final int LAYOUT_ITEMPHOTO = 16;
+  private static final int LAYOUT_ITEMIMAGESFOOD = 16;
 
-  private static final int LAYOUT_POSTTOOLBAR = 17;
+  private static final int LAYOUT_ITEMPHOTO = 17;
 
-  private static final int LAYOUT_PROGRESSLAYOUT = 18;
+  private static final int LAYOUT_POSTTOOLBAR = 18;
 
-  private static final SparseIntArray INTERNAL_LAYOUT_ID_LOOKUP = new SparseIntArray(18);
+  private static final int LAYOUT_PROGRESSLAYOUT = 19;
+
+  private static final SparseIntArray INTERNAL_LAYOUT_ID_LOOKUP = new SparseIntArray(19);
 
   static {
     INTERNAL_LAYOUT_ID_LOOKUP.put(food.sharefood.com.sharefood.R.layout.activity_add_post, LAYOUT_ACTIVITYADDPOST);
@@ -86,6 +89,7 @@ public class DataBinderMapperImpl extends DataBinderMapper {
     INTERNAL_LAYOUT_ID_LOOKUP.put(food.sharefood.com.sharefood.R.layout.activity_view_food_post, LAYOUT_ACTIVITYVIEWFOODPOST);
     INTERNAL_LAYOUT_ID_LOOKUP.put(food.sharefood.com.sharefood.R.layout.app_toolbar, LAYOUT_APPTOOLBAR);
     INTERNAL_LAYOUT_ID_LOOKUP.put(food.sharefood.com.sharefood.R.layout.dialog_filter, LAYOUT_DIALOGFILTER);
+    INTERNAL_LAYOUT_ID_LOOKUP.put(food.sharefood.com.sharefood.R.layout.dialog_password, LAYOUT_DIALOGPASSWORD);
     INTERNAL_LAYOUT_ID_LOOKUP.put(food.sharefood.com.sharefood.R.layout.fragment_main, LAYOUT_FRAGMENTMAIN);
     INTERNAL_LAYOUT_ID_LOOKUP.put(food.sharefood.com.sharefood.R.layout.item_food_list, LAYOUT_ITEMFOODLIST);
     INTERNAL_LAYOUT_ID_LOOKUP.put(food.sharefood.com.sharefood.R.layout.item_images_food, LAYOUT_ITEMIMAGESFOOD);
@@ -174,6 +178,12 @@ public class DataBinderMapperImpl extends DataBinderMapper {
             return new DialogFilterBindingImpl(component, view);
           }
           throw new IllegalArgumentException("The tag for dialog_filter is invalid. Received: " + tag);
+        }
+        case  LAYOUT_DIALOGPASSWORD: {
+          if ("layout/dialog_password_0".equals(tag)) {
+            return new DialogPasswordBindingImpl(component, view);
+          }
+          throw new IllegalArgumentException("The tag for dialog_password is invalid. Received: " + tag);
         }
         case  LAYOUT_FRAGMENTMAIN: {
           if ("layout/fragment_main_0".equals(tag)) {
@@ -264,7 +274,7 @@ public class DataBinderMapperImpl extends DataBinderMapper {
   }
 
   private static class InnerLayoutIdLookup {
-    static final HashMap<String, Integer> sKeys = new HashMap<String, Integer>(18);
+    static final HashMap<String, Integer> sKeys = new HashMap<String, Integer>(19);
 
     static {
       sKeys.put("layout/activity_add_post_0", food.sharefood.com.sharefood.R.layout.activity_add_post);
@@ -279,6 +289,7 @@ public class DataBinderMapperImpl extends DataBinderMapper {
       sKeys.put("layout/activity_view_food_post_0", food.sharefood.com.sharefood.R.layout.activity_view_food_post);
       sKeys.put("layout/app_toolbar_0", food.sharefood.com.sharefood.R.layout.app_toolbar);
       sKeys.put("layout/dialog_filter_0", food.sharefood.com.sharefood.R.layout.dialog_filter);
+      sKeys.put("layout/dialog_password_0", food.sharefood.com.sharefood.R.layout.dialog_password);
       sKeys.put("layout/fragment_main_0", food.sharefood.com.sharefood.R.layout.fragment_main);
       sKeys.put("layout/item_food_list_0", food.sharefood.com.sharefood.R.layout.item_food_list);
       sKeys.put("layout/item_images_food_0", food.sharefood.com.sharefood.R.layout.item_images_food);

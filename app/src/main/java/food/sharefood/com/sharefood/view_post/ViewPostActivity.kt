@@ -3,6 +3,7 @@ package food.sharefood.com.sharefood.view_post
 import android.content.Intent
 import android.databinding.DataBindingUtil
 import android.os.Bundle
+import android.support.v4.content.LocalBroadcastManager
 import android.support.v4.view.ViewPager
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
@@ -54,10 +55,10 @@ class ViewPostActivity : AppCompatActivity(), PostView {
 
         if (postData != null) {
 
-            if(postData.latitude != null && !postData.latitude!!.isEmpty())
+            if (postData.latitude != null && !postData.latitude!!.isEmpty())
                 latitude = postData.latitude.toString().toDouble()
 
-            if(postData.longitude != null && !postData.longitude!!.isEmpty())
+            if (postData.longitude != null && !postData.longitude!!.isEmpty())
                 longitude = postData.longitude.toString().toDouble()
 
         }
@@ -98,7 +99,7 @@ class ViewPostActivity : AppCompatActivity(), PostView {
 
         var intent = Intent()
         intent.action = Extras.REFRESH_POSTS_DATA
-        sendBroadcast(intent)
+        LocalBroadcastManager.getInstance(this).sendBroadcast(intent)
         finish()
     }
 

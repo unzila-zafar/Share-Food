@@ -9,4 +9,6 @@
     <color name="light_grey">#F3F3F3</color>
     <color name="black">#000000</color>
     <color name="grey">#A9A9A9</color>
+
+    <color name="border_color">#FFFFFFFF</color>
 </resources>
