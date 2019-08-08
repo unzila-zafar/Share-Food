@@ -24,7 +24,7 @@ data class LoginData(
 
 
 data class WebUrls(
-        val BASE_URL: String = "https://foodshareservice.herokuapp.com",
+        val BASE_URL: String = "",
         val LOGIN: String = "$BASE_URL/user/login",
         val GREETING: String = "$BASE_URL/user/greeting",
         val SIGNUP: String = "$BASE_URL/user/signup",
